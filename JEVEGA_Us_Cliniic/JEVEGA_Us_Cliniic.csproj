@@ -218,6 +218,7 @@
     <Content Include="images\facebook_logo_icon.png" />
     <Content Include="images\Facebook_profile_pic.jpg" />
     <Content Include="images\instagram_logo_icon.png" />
+    <Content Include="images\jevega_us_vision.jpg" />
     <Content Include="images\location_icon.png" />
     <Content Include="images\location_icon_ii.png" />
     <Content Include="images\log_user_icon.png" />
