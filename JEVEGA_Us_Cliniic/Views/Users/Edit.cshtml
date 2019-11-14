@@ -1,0 +1,154 @@
+﻿@model JEVEGA_Us_Cliniic.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Update User Info</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="row">
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="div_space20"></div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.MobileNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+    <div class="row">
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-2">
+            <table>
+                <tr>
+                    <td nowrap="nowrap">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.UserType,
+             new List<SelectListItem> {
+                        new SelectListItem { Text = "Admin", Value = "1" },
+                        new SelectListItem { Text = "Radiologist", Value = "2" },
+                        new SelectListItem { Text = "Sonographer", Value = "3" },
+                        new SelectListItem { Text = "Viewer ", Value = "4" }
+                    }  , new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="div_space20"></div>
+    <table class="table table-bordered">
+    <tr>
+        <td>
+            <input type="submit" value="Update" class="btn btn-default" />
+            &nbsp;
+            <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "Users") + "'");" />
+        </td>
+    </tr>
+    </table>
+</div>
+}
+

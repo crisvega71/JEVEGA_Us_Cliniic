@@ -1,0 +1,55 @@
+﻿@model JEVEGA_Us_Cliniic.PatientData
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Patient Info</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+
+<table class="table_clinic table">
+<tr>
+    <td nowrap="nowrap">@Html.LabelFor(model => model.Patient_Id, htmlAttributes: new { @class = "" })</td>
+    <td colspan="5"><h4>@Html.DisplayFor(model => model.Patient_Id)</h4></td>
+</tr>
+<tr>
+    <td><span class="">Fullname</span></td>
+    <td colspan="5"><h4>@Html.DisplayFor(model => model.Lastname), @Html.DisplayFor(model => model.Firstname)</h4></td>
+</tr>
+<tr>
+    <td>@Html.DisplayNameFor(model => model.Age)</td>
+    <td>@Html.DisplayFor(model => model.Age)</td>
+    <td>@Html.DisplayNameFor(model => model.Sex)</td>
+    <td>@Html.DisplayFor(model => model.Sex)</td>
+    <td>@Html.DisplayNameFor(model => model.Status)</td>
+    <td>@Html.DisplayFor(model => model.Status)</td>
+</tr>
+<tr>
+    <td>@Html.DisplayNameFor(model => model.Address)</td>
+    <td colspan="5">@Html.DisplayFor(model => model.Address)</td>
+</tr>
+<tr>
+    <td>@Html.DisplayNameFor(model => model.Email)</td>
+    <td>@Html.DisplayFor(model => model.Email)</td>
+    <td>@Html.DisplayNameFor(model => model.Phone)</td>
+    <td colspan="3">@Html.DisplayFor(model => model.Phone)</td>
+</tr>
+<tr>
+    <td>@Html.DisplayNameFor(model => model.LMP)</td>
+    <td colspan="5">@Html.DisplayFor(model => model.LMP)</td>
+</tr>
+</table>
+
+
+<div class="line_space"></div>
+<table class="table table-bordered">
+<tr>
+    <td>
+        <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientData") + "'");" />
+    </td>
+</tr>
+</table>

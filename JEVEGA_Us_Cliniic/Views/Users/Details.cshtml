@@ -1,0 +1,57 @@
+﻿@model JEVEGA_Us_Cliniic.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>User Info Details</h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h4>@Html.DisplayFor(model => model.GetFullName)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text_form_value">Job Post : @Html.DisplayFor(model => model.Position)</span>
+        </div>
+    </div>
+    <div class="div_space20"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <span class="text_form_value">Email : @Html.DisplayFor(model => model.Email)</span>
+        </div>
+        <div class="col-md-6">
+            <span class="text_form_value">Phone : @Html.DisplayFor(model => model.MobileNo)</span>
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <span class="text_form_value">User Name : @Html.DisplayFor(model => model.Username)</span>
+        </div>
+        <div class="col-md-6">
+            <span class="text_form_value">User Type : @Html.DisplayFor(model => model.UserTypeDesc)</span>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="div_space20"></div>
+<table class="table table-bordered">
+<tr>
+    <td>
+        <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "Users") + "'");" />
+    </td>
+</tr>
+</table>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.PatientExam>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Patient Exams List</h3></td>
+    <td align="right">
+        @{
+            if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Create", "PatientExam")><img src="~/images/add_icon.png" /></a>
+            }
+        }
+    </td>
+</tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.PatientID)</th>
+        <th>@Html.DisplayNameFor(model => model.ExamType)</th>
+        <th>@Html.DisplayNameFor(model => model.ExamDate)</th>
+        <th>@Html.DisplayNameFor(model => model.Sonographer)</th>
+        <th>@Html.DisplayNameFor(model => model.Radiologist)</th>
+        <th>@Html.DisplayNameFor(model => model.SignByDoctor)</th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.getPatientIdName)</td>
+        <td>@Html.DisplayFor(modelItem => item.getExamName)</td>
+        <td>@Html.DisplayFor(modelItem => item.ExamDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.getSonographerName)</td>
+        <td>@Html.DisplayFor(modelItem => item.getDoctorName)</td>
+
+        <td>
+            @if (item.SignByDoctor == "Y")
+            { <span class="text_form_value_ii">@Html.DisplayFor(modelItem => item.getSignDefinition)</span>}
+            else
+            { <span class="text_form_value">@Html.DisplayFor(modelItem => item.getSignDefinition)</span>}
+        </td>
+            
+        <td>
+            @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+            }
+            - <a href=@Url.Action("Details", new { id = item.Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+            - <a href=@Url.Action("ScanImages", new { id = item.Id }) alt="Details"><img src="~/images/scan_images_icon.png" /></a>
+            - <a href=@Url.Action("SignMedicalReport", new { id = item.Id }) alt="Sign Report"><img src="~/images/sign_doc_ico.png" /></a>
+        </td>
+    </tr>
+}
+
+</table>

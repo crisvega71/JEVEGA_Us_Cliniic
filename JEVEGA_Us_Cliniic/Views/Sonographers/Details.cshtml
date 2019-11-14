@@ -1,0 +1,47 @@
+﻿@model JEVEGA_Us_Cliniic.Sonographer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Sonographer Info</h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <h4>@Html.DisplayFor(model => model.GetFullname)</h4><br />
+
+            <span class="text_form_value">Job Title : @Html.DisplayFor(model => model.PostTitle)</span>
+            <br /><br />
+            <span class="text_form_value">Email : @Html.DisplayFor(model => model.Email)</span>
+            <br /><br />
+            <span class="text_form_value">Phone : @Html.DisplayFor(model => model.Phone)</span>
+        </div>
+
+        <div class="col-md-6">
+            @if (ViewBag.profilePic_up)
+            {
+                {<img src="~/ClinicStaff/@ViewBag.profilePic" class="profile_pic" />}
+            }
+        </div>
+    </div>
+
+</div>
+
+<div class="line_space"></div>
+<table class="table table-bordered">
+    <tr>
+        <td>
+            <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "Sonographers") + "'");" />
+            &nbsp;
+            <input type="button" value="Update" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit/"+Model.Id, "Sonographers") + "'");" />
+        </td>
+    </tr>
+</table>

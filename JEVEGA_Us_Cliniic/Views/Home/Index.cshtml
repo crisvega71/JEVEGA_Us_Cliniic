@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<div class="jumbotron">
+
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <img class="img-responsive" src="~/images/US_web_banner.jpg" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>About the Clinic</h2>
+        <br/>
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-responsive" src="~/images/clinic_box_banner_sml.jpg" />
+            </div>
+            <br />
+            <div class="col-md-7">
+                <p>
+                    JEVEGA Diagnostic Ultrasound Clinic was a newly opened clinic with the aim
+                    of providing a fast and accurate diagnostic services that is relatively affordable and caters
+                    to the most common people.
+                </p>
+            </div>
+        </div>
+        <br />
+        <p><a class="btn btn-default" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Diagnostic Services</h2>
+        <br />
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-responsive" src="~/images/diagnostic_services_icon_sml.jpg" />
+            </div>
+            <br />
+            <div class="col-md-7">
+                <p>
+                    JUDC provides variety of ultrasound diagnostic services not only OB but many other exams
+                    that are normally done in some other big hospitals.  To see list of exams that we offer,
+                    click the learn more button below.
+                </p>
+            </div>
+        </div>
+        <br />
+        <p><a class="btn btn-default" href="@Url.Action("Services", "Home")">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Contact Us</h2>
+        <br />
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-responsive" src="~/images/contact_icon_banner_sml.jpg" />
+            </div>
+            <br />
+            <div class="col-md-7">
+                <p>
+                    You may contact us to book an appointment for diagnostic exam either by phone, email or
+                    through our facebook page Jevega Diagnostic Ultrasound Clinic.
+                </p>
+            </div>
+        </div>
+        <br />
+        <p><a class="btn btn-default" href="@Url.Action("Contact", "Home")">Learn more &raquo;</a></p>
+    </div>
+</div>

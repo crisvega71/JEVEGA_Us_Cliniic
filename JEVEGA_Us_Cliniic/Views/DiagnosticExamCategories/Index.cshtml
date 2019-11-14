@@ -1,0 +1,40 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.DiagnosticExamCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader" @*style="background-color:aliceblue; width:100%"*@>
+<tr>
+    <td><h3>Diagnostic Exam Categories</h3></td>
+    <td align="right">
+        @{
+            if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Create", "DiagnosticExamCategories")><img src="~/images/add_icon.png" /></a>
+            }
+        }
+    </td>
+</tr>
+</table>
+
+<table class="table">
+<tr>
+    <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+    <th></th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td><span class="table_field_value">@Html.DisplayFor(modelItem => item.CategoryName)</span></td>
+        <td>
+            @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+            }
+        </td>
+    </tr>
+}
+</table>

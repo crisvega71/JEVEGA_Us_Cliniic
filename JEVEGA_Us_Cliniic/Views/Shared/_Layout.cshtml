@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>@ViewBag.Title - My ASP.NET Application</title>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<style>
+    .navbar-inverse {
+        background-color: #065ca9 !important;
+        border-color: #065ca9;
+    }
+    .menu_text {
+        font-size: 1.00em;
+        color: white !important;
+    }
+
+    .menu_text:hover {
+        color: #08C1B1 !important;
+        text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("JDUC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About The Clinic", "About", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnostic Service&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("OB", "OBGyne", "DiagnosticServices")</a></li>
+                            <li>@Html.ActionLink("Pelvis Male \\ Female", "Pelvis", "DiagnosticServices")</a></li>
+                            <li>@Html.ActionLink("Abdomen (Adult \\ Pediatric)", "Abdomen", "DiagnosticServices")</a></li>
+                            <li>@Html.ActionLink("Vascular Study", "Vascular", "DiagnosticServices")</a></li>
+                            <li>@Html.ActionLink("Small Parts", "Smallparts", "DiagnosticServices")</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Vision", "Vision", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clinic Admin&nbsp;<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Patient Data", "Index", "PatientData")</li>
+                            <li>@Html.ActionLink("Patient Exam", "Index", "PatientExam")</li>
+                            <li>@Html.ActionLink("Diagnostic Exam", "Index", "DiagnosticExams")</li>
+                            <li>@Html.ActionLink("Diagnostic Exam Category", "Index", "DiagnosticExamCategories")</li>
+                            <li><hr /></li>
+                            <li>@Html.ActionLink("Radiologist", "Index", "RadDoctor")</li>
+                            <li>@Html.ActionLink("Sonographer", "Index", "Sonographers")</li>
+                            <li><hr /></li>
+                            <li>@Html.ActionLink("Admin Users", "Index", "Users")
+                        </ul>
+                    </li>
+
+                    <li>
+                        @if (Session["USER_ID"] != null)
+                        {
+                            <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <table>
+                                    <tr>
+                                        <td><img src="~/images/log_user_icon.png" /></td>
+                                        <td>&nbsp;<a href="/Users/Logout" class="menu_text">Logout</a></td>
+                                    </tr>
+                                </table></div>
+                            </div>
+                        }
+                    </li>
+                </ul>
+  
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="container-fluid" style="background-color:#08c1b1">
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="img-responsive" src="~/images/timing_icon.png" />
+                        </div>
+                        <div class="col-md-10">
+                            <h4>Our Timing</h4>
+                            <p>
+                                Monday to Friday : 9:30 AM - 5:30 PM <br />
+                                Saturday : 9:30 AM - 2:00 PM
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="img-responsive" src="~/images/location_icon_ii.png" />
+                        </div>
+                        <div class="col-md-10">
+                            <h4>Our Location</h4>
+                            <p>
+                                317 Roosevelt Ave. EDSA Munoz Quezon City <br />
+                                RADA bldg. 3rd Floor Room 304
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="img-responsive" src="~/images/call_or_text_icon.png" />
+                        </div>
+                        <div class="col-md-10">
+                            <h4>Call or Text Us</h4>
+                            <p>
+                                SMART No. 0998 2547187<br />
+                                GLOBE No. 0915 0333214
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br/>
+    </div>
+
+    <!-- footer -->
+    <div class="container-fluid" style="background-color:#bbbfca">
+        <div class="container">
+            <br />
+            <div class="row">
+                <div class="col-md-10">
+                    <footer><p>&copy; @DateTime.Now.Year JEVEGA Diagnostic Ultrasound Clinic</p></footer>
+                </div>
+                <div class="col-md-2">
+                    <table class="">
+                        <tr>
+                            <td><a href="https://www.facebook.com/jevega.us" target="_blank"><img src="~/images/facebook_logo_icon.png" /></a></td>
+                            <td style="width:20px;"></td>
+                            <td>
+                                <img src="~/images/youtube_logo_icon.png" />
+                            </td>
+                            <td style="width:20px;"></td>
+                            <td>
+                                <img src="~/images/instagram_logo_icon.png" />
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

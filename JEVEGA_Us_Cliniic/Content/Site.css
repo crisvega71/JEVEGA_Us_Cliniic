@@ -1,0 +1,142 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select
+{
+    max-width: 280px;
+}
+
+.div_space20 {
+    height: 20px;
+}
+
+.line_space {
+    height: 5px;
+}
+
+.report_head2 
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    color: black !important;
+}
+
+.report_fieldvalue_01 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    color: black !important;
+    font-weight:500;
+}
+
+.textarea_report {
+    width:100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.30em;
+    color: black !important;
+}
+
+.table_clinic_pageheader {
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.table_clinic {
+    width: 100%;
+}
+
+.table_clinic_sign {
+    width: 100%;
+}
+
+.table_clinic_sign td {
+    border: 1px solid #080808;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.table_clinic_header {
+    border: 1px solid #080808;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.table_clinic_header td {
+    border: 1px solid #080808;
+    padding: 5px;
+}
+
+.table_field_value {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.00em;
+    color: black;
+    font-weight: 600;
+}
+
+.text_form_value {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.20em;
+    color: black;
+    font-weight: 600;
+}
+
+.text_form_value_ii {
+    font-size: 1.20em;
+    color: red;
+    font-weight: 600;
+}
+
+.error_message {
+    -webkit-print-color-adjust: exact;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.15em;
+    color: red !important;
+    font-weight: 500;
+}
+
+.error_message_ii {
+    -webkit-print-color-adjust: exact;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    color: red !important;
+}
+
+.scan_image 
+{
+    width:520px;
+}
+
+.profile_pic {
+    width: 200px;
+}
+
+.signature_file {
+    width: 200px;
+}
+
+.service_image_thumb {
+    width: 120px;
+}
+
+
+
+

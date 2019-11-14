@@ -1,0 +1,46 @@
+﻿@model JEVEGA_Us_Cliniic.DiagnosticExamCategory
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Update Diagnostic Exam Categoy</h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="line_space"></div>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <input type="submit" value="Update Category" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "DiagnosticExamCategories") + "'");" />
+            </td>
+        </tr>
+    </table>
+
+</div>
+}
+

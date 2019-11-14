@@ -1,0 +1,183 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+
+@{
+    ViewBag.Title = "ScanImages";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Scan Images for @ViewBag.PatientName - @ViewBag.PatientExamName on @ViewBag.PatientExamDate</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+
+@using (Html.BeginForm("UploadScanImages", "PatientExam", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <input type="hidden" name="patientExamId" id="patientExamId" value="@ViewBag.patientExamId" />
+    <input type="hidden" name="patiendIDNo" id="patiendIDNo" value="@ViewBag.patiendIDNo" />
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <table class="table_clinic">
+        <tr>
+            <td>
+            @*1st image column --*@
+            <table class="table">
+                <tr><td><span class="permit_textpara">Image 1.</span> </td></tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile01_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile01" class="scan_image" />}
+                    </td>
+                </tr>
+                <tr><td><input type="file" name="file1" id="file1" /></td></tr>
+            </table>
+            </td>
+            <td>
+            <table class="table">
+                <tr><td><span class="permit_textpara">Image 2.</span> </td></tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile02_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile02" class="scan_image" />}
+                    </td>
+                </tr>
+                <tr><td><input type="file" name="file2" id="file2" /></td></tr>
+            </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @*1st image column --*@
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 3.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile03_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile03" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file3" id="file3" /></td></tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 4.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile04_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile04" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file4" id="file4" /></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @*1st image column --*@
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 5.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile05_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile05" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file5" id="file5" /></td></tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 6.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile06_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile06" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file6" id="file6" /></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @*1st image column --*@
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 7.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile07_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile07" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file7" id="file7" /></td></tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 8.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile08_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile08" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file8" id="file8" /></td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @*1st image column --*@
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 9.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile09_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile09" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file9" id="file9" /></td></tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 10.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile10_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile10" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file10" id="file10" /></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div class="line_space"></div>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <input type="submit" value="Upload Scan Images" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+            </td>
+        </tr>
+    </table>
+</div>
+}
+
