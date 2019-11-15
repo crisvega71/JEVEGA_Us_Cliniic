@@ -146,6 +146,7 @@
     <Compile Include="Controllers\RadDoctorController.cs" />
     <Compile Include="Controllers\SonographersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UtilityHelper.cs" />
     <Compile Include="DiagnosticExam.cs">
       <DependentUpon>UsClinicModel.tt</DependentUpon>
     </Compile>
@@ -223,6 +224,7 @@
     <Content Include="images\location_icon_ii.png" />
     <Content Include="images\log_user_icon.png" />
     <Content Include="images\map_clinic.jpg" />
+    <Content Include="images\no_access_symbol.jpg" />
     <Content Include="images\profile_pic_icon.png" />
     <Content Include="images\scan_images_icon.png" />
     <Content Include="images\services_abdomen.jpg" />
@@ -341,6 +343,7 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\UnauthorizedAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

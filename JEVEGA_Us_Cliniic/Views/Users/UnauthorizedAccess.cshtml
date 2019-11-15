@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "UnauthorizedAccess";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td></td>
+</tr>
+</table>
+
+<div class="div_space20"></div>
+
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/images/no_access_symbol.jpg" style="width:200px" />
+    </div>
+
+    <div class="col-md-9">
+        <h4><span class="error_message">@ViewBag.UnauthorizeMessage</span></h4>
+    </div>
+</div>
+
+<div class="div_space20"></div>
+

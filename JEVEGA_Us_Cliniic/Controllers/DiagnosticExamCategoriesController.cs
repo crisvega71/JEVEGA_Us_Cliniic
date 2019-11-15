@@ -18,10 +18,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: DiagnosticExamCategories
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                return View(db.DiagnosticExamCategories.ToList());
+            }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
             
-            return View(db.DiagnosticExamCategories.ToList());
-        }
+        } //--
 
         // GET: DiagnosticExamCategories/Details/5
         public ActionResult Details(int? id)

@@ -21,9 +21,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: PatientData
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
-            return View(db.PatientDatas.ToList());
-        }
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                return View(db.PatientDatas.ToList());
+            }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
+
+        } //--
 
         // GET: PatientData/Details/5
         public ActionResult Details(string id)

@@ -24,6 +24,14 @@
         color: #08C1B1 !important;
         text-decoration: none;
     }
+    .welcome_hd {
+        font-size: 0.90em;
+        color: white !important;
+        padding-top:20px;
+    }
+    .welcome_hd_div {
+        float: right;   padding-top: 7px;
+    }
 
 </style>
 
@@ -44,7 +52,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("About The Clinic", "About", "Home")</li>
-                    
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnostic Service&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -55,7 +63,7 @@
                             <li>@Html.ActionLink("Small Parts", "Smallparts", "DiagnosticServices")</a></li>
                         </ul>
                     </li>
-                    
+
                     <li>@Html.ActionLink("Vision", "Vision", "Home")</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
 
@@ -76,19 +84,30 @@
                     <li>
                         @if (Session["USER_ID"] != null)
                         {
-                           <div class="row" style="padding:10px;">
-                               <div class="col-md-12">
-                               <table>
-                                <tr>
-                                    <td><img src="~/images/log_user_icon.png" /></td>
-                                    <td>&nbsp;<a href="/Users/Logout" class="menu_text">Logout</a></td>
-                                </tr>
-                               </table></div>
-                           </div>
+                            <div class="row" style="padding:10px;">
+                                <div class="col-md-12">
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/images/log_user_icon.png" /></td>
+                                            <td>&nbsp;<a href="/Users/Logout" class="menu_text">Logout</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         }
                     </li>
                 </ul>
+
+                @if (Session["USER_NAME"] != null)
+                {
+                    <div class="welcome_hd_div">
+                        <span class="welcome_hd">Welcome to JUDC @Session["USER_NAME"]!</span>
+                    </div>
+                }
+
             </div>
+
+            
         </div>
     </div>
 

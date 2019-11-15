@@ -18,7 +18,6 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: DiagnosticExams
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
             return View(db.DiagnosticExams.ToList());
         }
 
@@ -40,10 +39,15 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: DiagnosticExams/Create
         public ActionResult Create()
         {
-            ViewBag.ExamCategoryTypes = new SelectList(db.DiagnosticExamCategories, "Id", "CategoryName");
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                ViewBag.ExamCategoryTypes = new SelectList(db.DiagnosticExamCategories, "Id", "CategoryName");
+            }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
 
             return View();
-        }
+        } //--
 
         // POST: DiagnosticExams/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -73,16 +77,20 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.ExamCategoryTypes = new SelectList(db.DiagnosticExamCategories, "Id", "CategoryName");
 
             if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            {   return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
             DiagnosticExam diagnosticExam = db.DiagnosticExams.Find(id);
             if (diagnosticExam == null)
+            {   return HttpNotFound();      }
+
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
             {
-                return HttpNotFound();
+                return View(diagnosticExam);
             }
-            return View(diagnosticExam);
-        }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
+
+        } //--
 
         // POST: DiagnosticExams/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

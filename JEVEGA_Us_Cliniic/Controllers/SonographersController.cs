@@ -21,9 +21,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: Sonographers
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
-            return View(db.Sonographers.ToList());
-        }
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                return View(db.Sonographers.ToList());
+            }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
+
+        } //--
 
         // GET: Sonographers/Details/5
         public ActionResult Details(int? id)

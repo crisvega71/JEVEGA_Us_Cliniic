@@ -17,15 +17,16 @@ namespace JEVEGA_Us_Cliniic.Controllers
     public class PatientExamController : Controller
     {
         private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
+        UtilityHelper utHelp = new UtilityHelper();
 
         // GET: PatientExam
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
             return View(db.PatientExams.ToList());
         }
 
         // GET: PatientExam/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -109,6 +110,12 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: PatientExam/Create
         public ActionResult Create()
         {
+            string usertype = Session["USER_TYPE"].ToString();
+            if (!utHelp.CheckAdminAccess(usertype))
+            {
+                return RedirectToAction("UnauthorizedAccess", "Users");
+            }
+
             ViewBag.PatientList = new SelectList(db.PatientDatas, "Patient_Id", "GetIDFullname");
             ViewBag.ExamtypeList = new SelectList(db.DiagnosticExams, "Id", "GetfullExamName");
             ViewBag.SonographerList = new SelectList(db.Sonographers, "Id", "GetFullname");
@@ -156,6 +163,12 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: PatientExam/Edit/5
         public ActionResult Edit(int? id)
         {
+            string usertype = Session["USER_TYPE"].ToString();
+            if (!utHelp.CheckAdminAccess(usertype))
+            {
+                return RedirectToAction("UnauthorizedAccess", "Users");
+            }
+
             if (id == null)
             {   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);}
 
@@ -250,7 +263,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
         public bool InvalidFileExtension(string file_ext)
         {
-            if (file_ext != ".jpg")
+            if (file_ext.ToLower() != ".jpg")
             {
                 ViewBag.FileErrorMessage = "File Upload ERROR: Only JPG files are allowed to upload ... ";
                 return true;
@@ -262,6 +275,12 @@ namespace JEVEGA_Us_Cliniic.Controllers
         [HttpGet]
         public ActionResult ScanImages(int? id)
         {
+            string usertype = Session["USER_TYPE"].ToString();
+            if (!utHelp.CheckAdminAccess(usertype))
+            {
+                return RedirectToAction("UnauthorizedAccess", "Users");
+            }
+
             if (id == null)
             {   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);   }
 

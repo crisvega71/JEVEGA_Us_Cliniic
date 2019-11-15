@@ -19,12 +19,18 @@ namespace JEVEGA_Us_Cliniic.Controllers
     {
         private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
 
+        UtilityHelper utHelper = new UtilityHelper();
         // GET: Users
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
-        }
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                return View(db.Users.ToList());
+            }
+            else {  return RedirectToAction("UnauthorizedAccess", "Users");     }
+        } //-- 
 
         // GET: Users/Details/5
         [Authorize]
@@ -215,6 +221,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
             Session["USER_EMAIL"] = null;
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public ActionResult UnauthorizedAccess()
+        {
+            ViewBag.UnauthorizeMessage = utHelper.UnauthorizedAccessMessage();
+
+            return View();
         }
     }
 }

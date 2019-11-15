@@ -21,9 +21,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: RadDoctor
         public ActionResult Index()
         {
-            Session["USER_TYPE"] = 1;
-            return View(db.RadiologistDoctors.ToList());
-        }
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype == "1")   //-- Admin user ... 
+            {
+                return View(db.RadiologistDoctors.ToList());
+            }
+            else { return RedirectToAction("UnauthorizedAccess", "Users"); }
+
+        } //--
 
         // GET: RadDoctor/Details/5
         public ActionResult Details(int? id)
