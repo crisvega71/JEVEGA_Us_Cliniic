@@ -179,6 +179,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
                     Session["USER_EMAIL"] = user_entity.Email;
                     
                     FormsAuthentication.SetAuthCookie(userID, false);
+                    utHelper.InsertLogAudit(Session["USER_NAME"].ToString());
+
                     return Redirect(ReturnUrl);
                 }
                 else
