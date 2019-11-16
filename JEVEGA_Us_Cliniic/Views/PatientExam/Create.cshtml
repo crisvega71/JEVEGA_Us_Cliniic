@@ -53,6 +53,16 @@
                 </div>
             </td>
         </tr>
+
+        <tr><td colspan="2">@Html.LabelFor(model => model.History, htmlAttributes: new { @class = "control-label" })</td> </tr>
+        <tr><td><div class="line_space"></div></td></tr>
+        <tr>
+            <td colspan="2">
+                @Html.TextAreaFor(model => model.History, new { @class = "textarea_report", rows = "3" })
+            </td>
+        </tr>
+        <tr><td><div class="div_space20"></div></td></tr>
+
         <tr>
             <td>
                 <div class="form-group">

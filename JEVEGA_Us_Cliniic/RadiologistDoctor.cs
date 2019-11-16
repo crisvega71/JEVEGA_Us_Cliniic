@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace JEVEGA_Us_Cliniic
 {
     using System;
@@ -43,9 +44,13 @@ namespace JEVEGA_Us_Cliniic
         [Display(Name = "Profile Picture")]
         public Nullable<bool> ProfilePic { get; set; }
 
+        [Display(Name = "PRC License No.")]
+        public string PrcLicenseNo { get; set; }
+
         public string GetFullname
         {
             get { return LastName + ", " + FirstName; }
         }
     }
 }
+

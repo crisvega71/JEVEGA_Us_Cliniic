@@ -21,7 +21,7 @@
         <td align="right">
             <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
             &nbsp;
-            <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReport", "PatientExam") + "'");" />
+            <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
             &nbsp;
             <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintImages", "PatientExam") + "'");" />
         </td>
@@ -64,12 +64,22 @@
                 <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.DateSigned)</span></td>
                 <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.DateSigned)</span></td>
             </tr>
+
+            <tr><td colspan="4"><span class="report_fieldvalue_01"><b>History:</b></span></td></tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td colspan="4">
+                    <textarea class="text_form_value" readonly style="width:100%" rows="3">@Html.DisplayFor(model => model.History)</textarea>
+                </td>
+            </tr>
+
+            <tr><td colspan="4"><div class="div_space20"></div></td></tr>
             <tr>
                 <td colspan="4"><span class="report_fieldvalue_01"><b>Diagnostic Report:</b></span></td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ExamReport)</span>
+                    <textarea class="text_form_value" readonly style="width:100%" rows="11">@Html.DisplayFor(model => model.ExamReport)</textarea>
                 </td>
             </tr>
         </table>

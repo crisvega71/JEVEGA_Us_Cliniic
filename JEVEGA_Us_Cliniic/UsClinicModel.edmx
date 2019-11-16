@@ -76,6 +76,7 @@
           <Property Name="Image8" Type="bit" />
           <Property Name="Image9" Type="bit" />
           <Property Name="Image10" Type="bit" />
+          <Property Name="History" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="RadiologistDoctor">
           <Key>
@@ -89,6 +90,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="SignatureImage" Type="bit" />
           <Property Name="ProfilePic" Type="bit" />
+          <Property Name="PrcLicenseNo" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Sonographer">
           <Key>
@@ -101,6 +103,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="ProfilePic" Type="bit" />
+          <Property Name="PrcLicenseNo" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -146,19 +149,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="RadiologistDoctor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PostTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SignatureImage" Type="Boolean" />
-          <Property Name="ProfilePic" Type="Boolean" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -176,12 +166,12 @@
         <EntityContainer Name="JEVEGA_USDB_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DiagnosticExams" EntityType="Self.DiagnosticExam" />
           <EntitySet Name="DiagnosticExamCategories" EntityType="Self.DiagnosticExamCategory" />
-          <EntitySet Name="RadiologistDoctors" EntityType="Self.RadiologistDoctor" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="PatientDatas" EntityType="JEVEGA_USModel.PatientData" />
-          <EntitySet Name="PatientExams" EntityType="JEVEGA_USModel.PatientExam" />
           <EntitySet Name="Genders" EntityType="JEVEGA_USModel.Gender" />
           <EntitySet Name="MaritalStatus" EntityType="JEVEGA_USModel.MaritalStatu" />
+          <EntitySet Name="PatientExams" EntityType="JEVEGA_USModel.PatientExam" />
+          <EntitySet Name="RadiologistDoctors" EntityType="JEVEGA_USModel.RadiologistDoctor" />
           <EntitySet Name="Sonographers" EntityType="JEVEGA_USModel.Sonographer" />
         </EntityContainer>
         <EntityType Name="PatientData">
@@ -200,6 +190,22 @@
           <Property Name="LoginPassword" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="LMP" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GenderCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MaritalStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PatientExam">
           <Key>
@@ -224,22 +230,21 @@
           <Property Name="Image8" Type="Boolean" />
           <Property Name="Image9" Type="Boolean" />
           <Property Name="Image10" Type="Boolean" />
+          <Property Name="History" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Gender">
+        <EntityType Name="RadiologistDoctor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Gender1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="GenderCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="MaritalStatu">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StatusCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SignatureImage" Type="Boolean" />
+          <Property Name="ProfilePic" Type="Boolean" />
+          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sonographer">
           <Key>
@@ -252,6 +257,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ProfilePic" Type="Boolean" />
+          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -273,20 +279,6 @@
               <MappingFragment StoreEntitySet="DiagnosticExamCategory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RadiologistDoctors">
-            <EntityTypeMapping TypeName="JEVEGA_USModel.RadiologistDoctor">
-              <MappingFragment StoreEntitySet="RadiologistDoctor">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
-                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -323,9 +315,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="JEVEGA_USModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaritalStatus">
+            <EntityTypeMapping TypeName="JEVEGA_USModel.MaritalStatu">
+              <MappingFragment StoreEntitySet="MaritalStatus">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PatientExams">
             <EntityTypeMapping TypeName="JEVEGA_USModel.PatientExam">
               <MappingFragment StoreEntitySet="PatientExam">
+                <ScalarProperty Name="History" ColumnName="History" />
                 <ScalarProperty Name="Image10" ColumnName="Image10" />
                 <ScalarProperty Name="Image9" ColumnName="Image9" />
                 <ScalarProperty Name="Image8" ColumnName="Image8" />
@@ -348,20 +359,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Genders">
-            <EntityTypeMapping TypeName="JEVEGA_USModel.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
-                <ScalarProperty Name="Gender1" ColumnName="Gender" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaritalStatus">
-            <EntityTypeMapping TypeName="JEVEGA_USModel.MaritalStatu">
-              <MappingFragment StoreEntitySet="MaritalStatus">
-                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+          <EntitySetMapping Name="RadiologistDoctors">
+            <EntityTypeMapping TypeName="JEVEGA_USModel.RadiologistDoctor">
+              <MappingFragment StoreEntitySet="RadiologistDoctor">
+                <ScalarProperty Name="PrcLicenseNo" ColumnName="PrcLicenseNo" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -369,6 +377,7 @@
           <EntitySetMapping Name="Sonographers">
             <EntityTypeMapping TypeName="JEVEGA_USModel.Sonographer">
               <MappingFragment StoreEntitySet="Sonographer">
+                <ScalarProperty Name="PrcLicenseNo" ColumnName="PrcLicenseNo" />
                 <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

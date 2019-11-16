@@ -65,7 +65,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,SignatureImage,ProfilePic")] RadiologistDoctor radiologistDoctor)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,SignatureImage,ProfilePic,PrcLicenseNo")] RadiologistDoctor radiologistDoctor)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,SignatureImage,ProfilePic")] RadiologistDoctor radiologistDoctor)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,SignatureImage,ProfilePic,PrcLicenseNo")] RadiologistDoctor radiologistDoctor)
         {
             if (ModelState.IsValid)
             {
@@ -153,7 +153,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult UpdateRadiologist([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,ProfilePic,SignatureImage")] RadiologistDoctor radiologistDoctor, HttpPostedFileBase fileSign, HttpPostedFileBase filePic)
+        public ActionResult UpdateRadiologist([Bind(Include = "Id,FirstName,LastName,PostTitle,Email,Phone,ProfilePic,SignatureImage,PrcLicenseNo")] RadiologistDoctor radiologistDoctor, HttpPostedFileBase fileSign, HttpPostedFileBase filePic)
         {
             bool upload_sign, upload_pic;
 
@@ -196,11 +196,12 @@ namespace JEVEGA_Us_Cliniic.Controllers
             using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
             {
                 SqlCommand sqlCmd = new SqlCommand();
-                sqlCmd.CommandText = "Update RadiologistDoctor Set FirstName = @firstname, LastName = @lastname, PostTitle = @post, Email = @email, Phone = @phone, ProfilePic = @pic, SignatureImage = @sign  Where Id = @Id";
+                sqlCmd.CommandText = "Update RadiologistDoctor Set FirstName = @firstname, LastName = @lastname, PostTitle = @post,  PrcLicenseNo = @prc, Email = @email, Phone = @phone, ProfilePic = @pic, SignatureImage = @sign  Where Id = @Id";
 
                 sqlCmd.Parameters.AddWithValue("@firstname", radiologistDoctor.FirstName.ToString());
                 sqlCmd.Parameters.AddWithValue("@lastname", radiologistDoctor.LastName.ToString());
                 sqlCmd.Parameters.AddWithValue("@post", radiologistDoctor.PostTitle.ToString());
+                sqlCmd.Parameters.AddWithValue("@prc", radiologistDoctor.PrcLicenseNo.ToString());
                 sqlCmd.Parameters.AddWithValue("@email", radiologistDoctor.Email.ToString());
                 sqlCmd.Parameters.AddWithValue("@phone", radiologistDoctor.Phone.ToString());
                 sqlCmd.Parameters.AddWithValue("@pic", radiologistDoctor.ProfilePic);

@@ -12,7 +12,7 @@ namespace JEVEGA_Us_Cliniic
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Sonographer
     {
         public int Id { get; set; }
@@ -39,6 +39,9 @@ namespace JEVEGA_Us_Cliniic
 
         [Display(Name = "Profile Picture")]
         public Nullable<bool> ProfilePic { get; set; }
+
+        [Display(Name = "PRC License No.")]
+        public string PrcLicenseNo { get; set; }
 
         public string GetFullname
         {

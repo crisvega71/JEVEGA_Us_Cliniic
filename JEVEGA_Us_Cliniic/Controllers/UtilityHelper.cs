@@ -58,5 +58,36 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
         } //--
 
+        public string getGenderDefinition(string gender_code)
+        {
+            string gender_definition = "";
+            switch (gender_code)
+            {
+                case "F":
+                    gender_definition = "Female"; break;
+                case "M":
+                    gender_definition = "Male"; break;
+            }
+
+            return gender_definition;
+
+        } //-- 
+
+        public string getStatusDefinition(string status_code)
+        {
+            string status_definition = "";
+            switch (status_code)
+            {
+                case "S":
+                    status_definition = "Single"; break;
+                case "M":
+                    status_definition = "Married"; break;
+                case "W":
+                    status_definition = "Widow"; break;
+            }
+
+            return status_definition;
+        }
+
     }
 }

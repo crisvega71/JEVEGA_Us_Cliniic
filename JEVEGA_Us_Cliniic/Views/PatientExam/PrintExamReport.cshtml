@@ -1,0 +1,117 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+
+@{
+    ViewBag.Title = "PrintExamReport";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    <div style="float:right">
+        <span class="">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
+    </div>
+
+    <div class="div_space20"></div>
+    <table class="table-bordered table_clinic">
+        <tr>
+            <td style="width:100px;">
+                <div style="padding:7px;"><span class="print_label">Patiend Id:</span></div>
+            </td>
+            <td><span class="print_value">@Html.DisplayFor(model => model.PatientID)</span></td>
+            <td style="width:100px;"><span class="print_label">Full name:</span></td>
+            <td><span class="print_value">@Html.DisplayFor(model => model.getPatientName)</span></td>
+        </tr>
+
+    </table>
+
+    <div class="div_space20"></div>
+    <table class="table-bordered table_clinic">
+        <tr>
+            <td style="width:100px;">
+                <div style="padding:7px;"><span class="print_label">Sex:</span></div>
+            </td>
+            <td><span class="print_value">@ViewBag.PatientSex</span></td>
+            <td style="width:100px;"><span class="print_label">Age:</span></td>
+            <td><span class="print_value">@ViewBag.Age</span></td>
+            <td style="width:100px;"><span class="print_label">Marital Status:</span></td>
+            <td><span class="print_value">@ViewBag.Status</span></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="padding:7px;"><span class="print_label">Address:</span></div>
+            </td>
+            <td colspan="5">
+                <div style="padding:7px;"><span class="print_label">@ViewBag.PatientHomeAddress</span></div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div><span class="">History</span></div>
+    <div class="line_space"></div>
+    <div class="line_space"></div>
+
+    <table class="table-bordered table_clinic">
+    <tr>
+        <td style="vertical-align:top;">
+            <div style="padding:10px;">
+                <textarea class="" style="width:100%; height:90px;border:hidden;">@Html.DisplayFor(model => model.History)</textarea>
+            </div>
+        </td>
+    </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div><span class="">Exam : @Html.DisplayFor(model => model.getExamName)</span></div>
+    <div class="line_space"></div>
+    <div class="line_space"></div>
+
+    <table class="table-bordered table_clinic" style="height:120px;">
+        <tr>
+            <td style="vertical-align:top;">
+                <div style="padding:10px;">
+                    <textarea class="" style="width:100%; height:240px;border:hidden;">@ViewBag.ExamReport</textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+
+    <div>
+        <table class="table_clinic">
+            <tr>
+                <td><img src="~/ClinicStaff/sign-1.jpg" style="width:200px;" /></td>
+            </tr>
+            <tr><td><div class="line_space"></div></td></tr>
+            <tr>
+                <td>
+                    <span class="">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
+                    <span class="">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+    <div class="line_space"></div>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReport", "PatientExam") + "'");" />
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+}

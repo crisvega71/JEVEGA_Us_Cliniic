@@ -23,74 +23,92 @@
     @Html.HiddenFor(model => model.SignatureImage)
     @Html.HiddenFor(model => model.ProfilePic)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="div_space20"></div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
             @Html.EditorFor(model => model.PostTitle, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="div_space20"></div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.PrcLicenseNo, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.PrcLicenseNo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PrcLicenseNo, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-4">
             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="div_space20"></div>
+
 
     <div class="form-group">
-    @Html.LabelFor(model => model.SignatureImage, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-    <table>
-        <tr>
-            <td>
-                @if (ViewBag.imageSign_Up)
-                {<img src="~/ClinicStaff/@ViewBag.imageSign" class="signature_file" />}
-            </td>
-        </tr>
-        <tr><td><input type="file" name="fileSign" id="fileSign" /></td></tr>
-    </table>
-    </div>
+        @Html.LabelFor(model => model.SignatureImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <table>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageSign_Up)
+                        {<img src="~/ClinicStaff/@ViewBag.imageSign" class="signature_file" />}
+                    </td>
+                </tr>
+                <tr><td><input type="file" name="fileSign" id="fileSign" /></td></tr>
+            </table>
+        </div>
     </div>
 
     <div class="form-group">
-    @Html.LabelFor(model => model.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-    <table>
-        <tr>
-            <td>
-                @if (ViewBag.imageProfilePic_Up)
-                {<img src="~/ClinicStaff/@ViewBag.imageProfilePic" class="profile_pic" />}
-            </td>
-        </tr>
-        <tr><td><input type="file" name="filePic" id="filePic" /></td></tr>
-    </table>
-    </div>
+        @Html.LabelFor(model => model.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <table>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageProfilePic_Up)
+                        {<img src="~/ClinicStaff/@ViewBag.imageProfilePic" class="profile_pic" />}
+                    </td>
+                </tr>
+                <tr><td><input type="file" name="filePic" id="filePic" /></td></tr>
+            </table>
+        </div>
     </div>
 
     <div class="line_space"></div>

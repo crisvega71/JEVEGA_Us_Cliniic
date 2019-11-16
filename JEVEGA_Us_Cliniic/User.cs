@@ -12,7 +12,7 @@ namespace JEVEGA_Us_Cliniic
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class User
     {
         enum userTypes { Admin, Sonographer, Radiologist, Viewer };
@@ -51,14 +51,18 @@ namespace JEVEGA_Us_Cliniic
         [Required(ErrorMessage = "*")]
         public Nullable<short> UserType { get; set; }
 
-        public string GetFullName {
-            get { return Lastname + ", " + Firstname;  }
+        public string GetFullName
+        {
+            get { return Lastname + ", " + Firstname; }
         }
 
-        public string UserTypeDesc {
-            get {
+        public string UserTypeDesc
+        {
+            get
+            {
                 string typedesc = "";
-                switch (UserType) {
+                switch (UserType)
+                {
                     case 1: typedesc = "Admin"; break;
                     case 2: typedesc = "Radiologist"; break;
                     case 3: typedesc = "Admin"; break;

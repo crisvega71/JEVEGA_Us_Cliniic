@@ -20,58 +20,68 @@
 
     <hr />
     <table class="table_clinic">
-    <tr>
-        <td>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ExamDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ExamDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ExamDate, "", new { @class = "text-danger" })
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExamDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExamDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExamDate, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PatientID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <h4>@Html.DisplayFor(model => model.getPatientIdName)</h4>
-                    @Html.HiddenFor(model => model.PatientID)
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PatientID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <h4>@Html.DisplayFor(model => model.getPatientIdName)</h4>
+                        @Html.HiddenFor(model => model.PatientID)
+                    </div>
                 </div>
-            </div>
-        </td>
-        <td nowrap="nowrap">
-            <div class="form-group">
-                @Html.LabelFor(model => model.ExamType, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.ExamType, (SelectList)ViewBag.ExamtypeList, "- Select an Exam -", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ExamType, "", new { @class = "text-danger" })
+            </td>
+            <td nowrap="nowrap">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExamType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ExamType, (SelectList)ViewBag.ExamtypeList, "- Select an Exam -", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ExamType, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Sonographer, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Sonographer, (SelectList)ViewBag.SonographerList, "- Assigned Sonographer -", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Sonographer, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr><td colspan="2">@Html.LabelFor(model => model.History, htmlAttributes: new { @class = "control-label" })</td> </tr>
+        <tr><td><div class="line_space"></div></td></tr>
+        <tr>
+            <td colspan="2">
+                @Html.TextAreaFor(model => model.History, new { @class = "textarea_report", rows = "3" })
+            </td>
+        </tr>
+        <tr><td><div class="div_space20"></div></td></tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sonographer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Sonographer, (SelectList)ViewBag.SonographerList, "- Assigned Sonographer -", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sonographer, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-        </td>
-        <td>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Radiologist, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Radiologist, (SelectList)ViewBag.DoctorList, "- Assigned Doctor -", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Radiologist, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Radiologist, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Radiologist, (SelectList)ViewBag.DoctorList, "- Assigned Doctor -", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Radiologist, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
+            </td>
+        </tr>
     </table>
 
     <div class="line_space"></div>

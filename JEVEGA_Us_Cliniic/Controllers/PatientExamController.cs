@@ -106,7 +106,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             return View(patientExam);
         }
-
+        
         // GET: PatientExam/Create
         public ActionResult Create()
         {
@@ -129,7 +129,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10")] PatientExam patientExam)
+        public ActionResult Create([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History")] PatientExam patientExam)
         {
             if (ModelState.IsValid)
             {
@@ -189,7 +189,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,SignByDoctor,DateSigned,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10")] PatientExam patientExam)
+        public ActionResult Edit([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,SignByDoctor,DateSigned,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History")] PatientExam patientExam)
         {
             if (ModelState.IsValid)
             {
@@ -200,10 +200,11 @@ namespace JEVEGA_Us_Cliniic.Controllers
                 using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
                 {
                     SqlCommand sqlCmd = new SqlCommand();
-                    sqlCmd.CommandText = "Update PatientExam Set ExamDate = @exam_date, ExamType = @exam_type, Radiologist = @doctor_id, Sonographer = @sono_id Where Id = @examId";
+                    sqlCmd.CommandText = "Update PatientExam Set ExamDate = @exam_date, ExamType = @exam_type, History = @history, Radiologist = @doctor_id, Sonographer = @sono_id Where Id = @examId";
 
                     sqlCmd.Parameters.AddWithValue("@exam_date", patientExam.ExamDate);
                     sqlCmd.Parameters.AddWithValue("@exam_type", patientExam.ExamType);
+                    sqlCmd.Parameters.AddWithValue("@history", patientExam.History);
                     sqlCmd.Parameters.AddWithValue("@doctor_id", patientExam.Radiologist);
                     sqlCmd.Parameters.AddWithValue("@sono_id", patientExam.Sonographer);
                     sqlCmd.Parameters.AddWithValue("@examId", patientExam.Id);
@@ -701,5 +702,31 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return RedirectToAction("Details/" + patientExamId);
 ;
         } //**
+
+        [AllowAnonymous]
+        public ActionResult PrintExamReport(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+
+            ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
+            ViewBag.Age = patientData.Age.ToString();
+            ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
+
+            string examReport = patientExam.ExamReport.ToString();
+            //string examReportNewLine = examReport.Replace(".", "<br />");
+            ViewBag.ExamReport = examReport;
+
+            return View(patientExam);
+        }
     }
 }

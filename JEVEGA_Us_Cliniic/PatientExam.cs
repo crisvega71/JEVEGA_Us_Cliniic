@@ -62,6 +62,9 @@ namespace JEVEGA_Us_Cliniic
         public Nullable<bool> Image9 { get; set; }
         public Nullable<bool> Image10 { get; set; }
 
+        [Display(Name = "History")]
+        public string History { get; set; }
+
         public string getPatientIdName
         {
             get
@@ -73,6 +76,16 @@ namespace JEVEGA_Us_Cliniic
             }
         } //**
 
+        public string getPatientName
+        {
+            get
+            {
+                string lastName = dbUSClinic.PatientDatas.Find(PatientID).Lastname.ToString();
+                string firstName = dbUSClinic.PatientDatas.Find(PatientID).Firstname.ToString();
+                return lastName + ", " + firstName;
+            }
+        } //**
+
         public string getDoctorName
         {
             get
@@ -80,6 +93,32 @@ namespace JEVEGA_Us_Cliniic
                 string lastName = dbUSClinic.RadiologistDoctors.Find(Radiologist).LastName.ToString();
                 string firstName = dbUSClinic.RadiologistDoctors.Find(Radiologist).FirstName.ToString();
                 return lastName + ", " + firstName;
+            }
+        }
+
+        public string getDoctorFistLastName
+        {
+            get
+            {
+                string lastName = dbUSClinic.RadiologistDoctors.Find(Radiologist).LastName.ToString();
+                string firstName = dbUSClinic.RadiologistDoctors.Find(Radiologist).FirstName.ToString();
+                return firstName + " " + lastName;
+            }
+        }
+
+        public string getDoctorPostTitle
+        {
+            get
+            {
+                string postTitle = dbUSClinic.RadiologistDoctors.Find(Radiologist).PostTitle.ToString();
+                return postTitle;
+            }
+        }
+
+        public string getDoctorPRCLicenseNo {
+            get {
+                string prcLicenseNo = dbUSClinic.RadiologistDoctors.Find(Radiologist).PrcLicenseNo.ToString();
+                return prcLicenseNo;
             }
         }
 
