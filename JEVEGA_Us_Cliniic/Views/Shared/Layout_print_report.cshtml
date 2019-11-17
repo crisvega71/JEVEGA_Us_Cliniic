@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding-bottom: 20px;
+        padding-top: 10px;
+
+        background-color: #fff;
+    }
+
+    .navbar-inverse {
+        background-color: #065ca9 !important;
+        border-color: #065ca9;
+    }
+
+    .report_logo {
+        height:80px;
+    }
+
+    .div_iconbg {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        opacity: .70;
+        padding-bottom:10px;    padding-right:10px;
+    }
+
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <img class="img-responsive report_logo" src="~/images/UsLogo_print.png" />
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="div_iconbg">
+        <img src="~/images/ultrasound-icon.png" />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -746,6 +746,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return View(patientExam);
         } //--
 
+        [AllowAnonymous]
         public ActionResult PrintExamImages(int? id)
         {
             if (id == null)
@@ -956,5 +957,31 @@ namespace JEVEGA_Us_Cliniic.Controllers
             else
                 return true;
         } //--
+
+        [AllowAnonymous]
+        public ActionResult PrintReportWithLogo(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+
+            ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
+            ViewBag.Age = patientData.Age.ToString();
+            ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
+
+            string examReport = patientExam.ExamReport.ToString();
+            ViewBag.ExamReport = examReport;
+
+            return View(patientExam);
+
+        } //-- 
     }
 }

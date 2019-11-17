@@ -2,15 +2,19 @@
 
 @{
     ViewBag.Title = "PrintExamReport";
-    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+    Layout = "~/Views/Shared/Layout_print_report.cshtml";
 }
 
-
-@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = @Url.Action("PrintReportWithLogo\\" + Model.Id, "PatientExam"), target = "_blank" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div>
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Diagnostic Report</span>
+        </div>
+
         <div style="float:right">
             <span class="report_text2">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
         </div>
@@ -100,20 +104,6 @@
             </table>
         </div>
 
-
-        <div class="div_space20"></div>
-        <div class="div_space20"></div>
-        <div class="line_space"></div>
-        <table class="table table-bordered">
-            <tr>
-                <td>
-                    <input type="submit" value="Print Using Template" class="btn btn-default"  />
-                    &nbsp;
-                    <input type="button" value="Print In LetterHead" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportLetterHead", "PatientExam") + "'");" />
-                </td>
-            </tr>
-        </table>
-
     </div>
 
-    }
+}

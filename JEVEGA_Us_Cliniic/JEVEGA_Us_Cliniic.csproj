@@ -237,6 +237,8 @@
     <Content Include="images\sign_icon.png" />
     <Content Include="images\time_icon.png" />
     <Content Include="images\timing_icon.png" />
+    <Content Include="images\ultrasound-icon.png" />
+    <Content Include="images\UsLogo_print.png" />
     <Content Include="images\US_web_banner.jpg" />
     <Content Include="images\US_web_banner_inner.jpg" />
     <Content Include="images\youtube_logo_icon.png" />
@@ -348,6 +350,8 @@
     <Content Include="Views\PatientExam\PrintExamImages.cshtml" />
     <Content Include="Views\PatientExam\PrintSelectedExamImages.cshtml" />
     <Content Include="Views\Shared\Layout_print_image.cshtml" />
+    <Content Include="Views\PatientExam\PrintReportWithLogo.cshtml" />
+    <Content Include="Views\Shared\Layout_print_report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
