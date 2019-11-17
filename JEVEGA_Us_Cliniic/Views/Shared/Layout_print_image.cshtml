@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .navbar-inverse {
+        background-color: #065ca9 !important;
+        border-color: #065ca9;
+    }
+
+    .menu_text {
+        font-size: 1.00em;
+        color: white !important;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <img class="img-responsive" src="~/images/US_web_banner_inner.jpg" />
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

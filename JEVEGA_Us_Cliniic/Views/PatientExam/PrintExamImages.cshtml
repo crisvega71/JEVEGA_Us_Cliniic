@@ -1,0 +1,256 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+
+@{
+    ViewBag.Title = "PrintExamImages";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Exam Images</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = @Url.Action("PrintSelectedExamImages\\"+Model.Id, "PatientExam"), target = "_blank" }))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table table-bordered">
+    <tr>
+        <td align="right">
+            <input type="submit" value="Print Selected Images" class="btn btn-default" />
+        </td>
+    </tr>
+    </table>
+
+    <div>
+
+        <table class="table_clinic">
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamDate)</span></td>
+                <td colspan="3">
+                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.formattedExamDate)</span>
+                </td>
+            </tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.PatientID)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getPatientIdName)</span></td>
+
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamType)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getExamName)</span></td>
+            </tr>
+
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+        </table>
+
+        <div class="line_space"></div>
+        <table class="table_clinic">
+        <tr>
+            <td>
+                @*1st image column --*@
+                <table class="table">
+                <tr>
+                    <td nowrap="nowrap">
+                        @if (ViewBag.imageFile01_Up) { 
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage1" id="chkImage1" /><span>&nbsp;Image 1.</span>
+                            </label> }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile01_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile01" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile02_Up) { 
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage2" id="chkImage2" /><span>&nbsp;Image 2.</span>
+                            </label> }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile02_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile02" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile03_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage3" id="chkImage3" /><span>&nbsp;Image 3.</span>
+                            </label>}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile03_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile03" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile04_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage4" id="chkImage4" /><span>&nbsp;Image 4.</span>
+                            </label>}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile04_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile04" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile05_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage5" id="chkImage5" /><span>&nbsp;Image 5.</span>
+                            </label>}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile05_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile05" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile06_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage6" id="chkImage6" /><span>&nbsp;Image 6.</span>
+                            </label>}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile06_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile06" class="scan_image" />}
+                    </td>
+                </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                <tr>
+                    <td>
+                        @if (ViewBag.imageFile07_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage7" id="chkImage7" /><span>&nbsp;Image 7.</span>
+                            </label>}
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    @if (ViewBag.imageFile07_Up)
+                    {<img src="~/ExamImages/@ViewBag.imageFile07" class="scan_image" />}
+                </td>
+            </tr>
+            </table>
+            </td>
+
+            <td>
+                <table class="table">
+                <tr><td>
+                        @if (ViewBag.imageFile08_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage8" id="chkImage8" /><span>&nbsp;Image 8.</span>
+                            </label>}
+                </td></tr>
+                <tr><td>
+                        @if (ViewBag.imageFile08_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile08" class="scan_image" />}
+                </td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="table">
+                <tr><td>
+                        @if (ViewBag.imageFile09_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage9" id="chkImage9" /><span>&nbsp;Image 9.</span>
+                            </label>}
+                </td></tr>
+                <tr><td>
+                        @if (ViewBag.imageFile09_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile09" class="scan_image" />}
+                </td></tr>
+                </table>
+            </td>
+
+            <td>
+                <table class="table">
+                <tr><td>
+                        @if (ViewBag.imageFile10_Up)
+                        {
+                            <label class="container_checkbox">
+                                <input type="checkbox" name="chkImage10" id="chkImage10" /><span>&nbsp;Image 10.</span>
+                            </label>}
+                </td></tr>
+                <tr><td>
+                        @if (ViewBag.imageFile10_Up)
+                        {<img src="~/ExamImages/@ViewBag.imageFile10" class="scan_image" />}
+                </td></tr>
+                </table>
+            </td>
+        </tr>
+        </table>
+
+        <div class="line_space"></div>
+        <table class="table table-bordered">
+        <tr>
+            <td><input type="submit" value="Print Selected Images" class="btn btn-default"  /></td>
+        </tr>
+        </table>
+
+    </div>
+
+} 

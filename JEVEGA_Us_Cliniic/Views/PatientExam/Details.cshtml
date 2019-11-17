@@ -23,7 +23,7 @@
             &nbsp;
             <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
             &nbsp;
-            <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintImages", "PatientExam") + "'");" />
+            <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
         </td>
     </tr>
     </table>
@@ -221,15 +221,15 @@
 
         <div class="line_space"></div>
         <table class="table table-bordered">
-            <tr>
-                <td>
-                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
-                    &nbsp;
-                    <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReport", "PatientExam") + "'");" />
-                    &nbsp;
-                    <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintImages", "PatientExam") + "'");" />
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                &nbsp;
+                <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+            </td>
+        </tr>
         </table>
 
     </div>

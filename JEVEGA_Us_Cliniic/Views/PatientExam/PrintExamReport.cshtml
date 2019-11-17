@@ -12,18 +12,18 @@
 
 <div>
     <div style="float:right">
-        <span class="">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
+        <span class="report_text2">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
     </div>
 
     <div class="div_space20"></div>
     <table class="table-bordered table_clinic">
         <tr>
             <td style="width:100px;">
-                <div style="padding:7px;"><span class="print_label">Patiend Id:</span></div>
+                <div style="padding:7px;"><span class="report_text1">Patiend Id:</span></div>
             </td>
-            <td><span class="print_value">@Html.DisplayFor(model => model.PatientID)</span></td>
-            <td style="width:100px;"><span class="print_label">Full name:</span></td>
-            <td><span class="print_value">@Html.DisplayFor(model => model.getPatientName)</span></td>
+            <td><span class="report_text1">@Html.DisplayFor(model => model.PatientID)</span></td>
+            <td style="width:100px;"><span class="report_text1">Full name:</span></td>
+            <td><span class="report_text1">@Html.DisplayFor(model => model.getPatientName)</span></td>
         </tr>
 
     </table>
@@ -51,7 +51,7 @@
     </table>
 
     <div class="div_space20"></div>
-    <div><span class="">History</span></div>
+    <div><span class="report_text1">History</span></div>
     <div class="line_space"></div>
     <div class="line_space"></div>
 
@@ -59,25 +59,25 @@
     <tr>
         <td style="vertical-align:top;">
             <div style="padding:10px;">
-                <textarea class="" style="width:100%; height:90px;border:hidden;">@Html.DisplayFor(model => model.History)</textarea>
+                <textarea class="textarea_exam_history">@Html.DisplayFor(model => model.History)</textarea>
             </div>
         </td>
     </tr>
     </table>
 
     <div class="div_space20"></div>
-    <div><span class="">Exam : @Html.DisplayFor(model => model.getExamName)</span></div>
+    <div><span class="report_text1">Exam : @Html.DisplayFor(model => model.getExamName)</span></div>
     <div class="line_space"></div>
     <div class="line_space"></div>
 
     <table class="table-bordered table_clinic" style="height:120px;">
-        <tr>
-            <td style="vertical-align:top;">
-                <div style="padding:10px;">
-                    <textarea class="" style="width:100%; height:240px;border:hidden;">@ViewBag.ExamReport</textarea>
-                </div>
-            </td>
-        </tr>
+    <tr>
+        <td style="vertical-align:top;">
+            <div style="padding:10px;">
+                <textarea class="textarea_exam_report">@ViewBag.ExamReport</textarea>
+            </div>
+        </td>
+    </tr>
     </table>
 
     <div class="div_space20"></div>
@@ -93,8 +93,8 @@
             <tr><td><div class="line_space"></div></td></tr>
             <tr>
                 <td>
-                    <span class="">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
-                    <span class="">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
+                    <span class="report_text2">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
+                    <span class="report_text2">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
                 </td>
             </tr>
         </table>
@@ -105,11 +105,13 @@
     <div class="div_space20"></div>
     <div class="line_space"></div>
     <table class="table table-bordered">
-        <tr>
-            <td>
-                <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReport", "PatientExam") + "'");" />
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <input type="button" value="Print Using Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportTemplate", "PatientExam") + "'");" />
+            &nbsp;
+            <input type="button" value="Print In LetterHead" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportLetterHead", "PatientExam") + "'");" />
+        </td>
+    </tr>
     </table>
 
 </div>

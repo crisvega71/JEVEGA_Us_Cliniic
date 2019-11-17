@@ -137,6 +137,63 @@ select
     width: 120px;
 }
 
+.image_checkbox {
+    font-size:14px;
+    height:34px;
+}
+
+/*-----------------------------------------------------------------------------*/
+/*report styles ...*/
+.textarea_exam_history 
+{
+    width:100%; 
+    height:90px;
+    border:hidden;
+}
+
+.textarea_exam_report {
+    width: 100%;
+    height: 240px;
+    border: hidden;
+}
+
+.textarea_exam_report_edit {
+    width: 100%;
+    height: 240px;
+}
+
+.report_text1 {
+    font-size: 1.15em;
+}
+
+.report_text2 {
+    font-size: 1.05em;
+}
+
+/*------------------------------------------------------------------------------*/
+/* check box styles for reporting ...  */
+.container_checkbox {
+    display: block;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;     -moz-user-select: none;    -ms-user-select: none;    user-select: none;
+    font-size: 1.25em;
+}
+
+.container_checkbox input {
+    position: absolute;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    padding-right:30px;
+}
+
+.container_checkbox span {
+    margin-left: 25px;
+        
+}
 
 
 
