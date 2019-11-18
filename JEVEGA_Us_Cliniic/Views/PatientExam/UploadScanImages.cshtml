@@ -28,137 +28,265 @@
         <span class="error_message">@ViewBag.FileErrorMessage</span>
 
         <table class="table_clinic">
-        <tr>
-            <td>
-                @*1st image column --*@
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 1.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile01_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile01" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
+            <tr>
+                <td>
+                    @*1st image column --*@
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 1.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile01_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile01" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-            <td>
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 2.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile02_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile02" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @*1st image column --*@
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 3.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile03_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile03" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 2.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile02_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile02" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 3.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile03_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile03" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-            <td>
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 4.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile04_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile04" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @*1st image column --*@
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 5.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile05_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile05" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 4.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile04_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile04" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 5.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile05_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile05" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-            <td>
-                <table class="table">
-                    <tr><td><span class="permit_textpara">Image 6.</span> </td></tr>
-                    <tr>
-                        <td>
-                            @if (ViewBag.imageFile06_Up)
-                            {<img src="~/ExamImages/@ViewBag.imageFile06" class="scan_image" />}
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @*1st image column --*@
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 7.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile07_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile07" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 6.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile06_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile06" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 7.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile07_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile07" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-            <td>
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 8.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile08_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile08" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
-        </tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 8.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile08_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile08" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @*1st image column --*@
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 9.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile09_Up)
-                        {<img src="~/ExamImages/@ViewBag.imageFile09" class="scan_image" />}
-                    </td>
-                </tr>
-                </table>
-            </td>
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 9.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile09_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile09" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
 
-            <td>
-                <table class="table">
-                <tr><td><span class="permit_textpara">Image 10.</span> </td></tr>
-                <tr>
-                    <td>
-                        @if (ViewBag.imageFile10_Up)
-                        {   <img src="~/ExamImages/@ViewBag.imageFile10" class="scan_image" />     }
-                    </td>
-                </tr>
-                </table>
-            </td>
-        </tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 10.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile10_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile10" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 11.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile11_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile11" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 12.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile12_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile12" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 13.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile13_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile13" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 14.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile14_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile14" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 15.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile15_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile15" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 16.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile16_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile16" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 17.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile17_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile17" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 18.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile18_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile18" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 19.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile19_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile19" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 20.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile20_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile20" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
         </table>
 
         <div class="line_space"></div>

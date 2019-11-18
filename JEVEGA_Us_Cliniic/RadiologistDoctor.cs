@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace JEVEGA_Us_Cliniic
 {
     using System;
@@ -53,4 +52,3 @@ namespace JEVEGA_Us_Cliniic
         }
     }
 }
-

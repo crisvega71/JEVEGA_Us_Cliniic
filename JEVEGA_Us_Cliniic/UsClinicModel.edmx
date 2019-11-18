@@ -77,6 +77,16 @@
           <Property Name="Image9" Type="bit" />
           <Property Name="Image10" Type="bit" />
           <Property Name="History" Type="nvarchar" MaxLength="512" />
+          <Property Name="Image11" Type="bit" />
+          <Property Name="Image12" Type="bit" />
+          <Property Name="Image13" Type="bit" />
+          <Property Name="Image14" Type="bit" />
+          <Property Name="Image15" Type="bit" />
+          <Property Name="Image16" Type="bit" />
+          <Property Name="Image17" Type="bit" />
+          <Property Name="Image18" Type="bit" />
+          <Property Name="Image19" Type="bit" />
+          <Property Name="Image20" Type="bit" />
         </EntityType>
         <EntityType Name="RadiologistDoctor">
           <Key>
@@ -170,9 +180,9 @@
           <EntitySet Name="PatientDatas" EntityType="JEVEGA_USModel.PatientData" />
           <EntitySet Name="Genders" EntityType="JEVEGA_USModel.Gender" />
           <EntitySet Name="MaritalStatus" EntityType="JEVEGA_USModel.MaritalStatu" />
-          <EntitySet Name="PatientExams" EntityType="JEVEGA_USModel.PatientExam" />
           <EntitySet Name="RadiologistDoctors" EntityType="JEVEGA_USModel.RadiologistDoctor" />
           <EntitySet Name="Sonographers" EntityType="JEVEGA_USModel.Sonographer" />
+          <EntitySet Name="PatientExams" EntityType="JEVEGA_USModel.PatientExam" />
         </EntityContainer>
         <EntityType Name="PatientData">
           <Key>
@@ -207,31 +217,6 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StatusCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="PatientExam">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="ExamType" Type="Int16" />
-          <Property Name="ExamDate" Type="DateTime" Precision="3" />
-          <Property Name="Sonographer" Type="Int16" />
-          <Property Name="Radiologist" Type="Int16" />
-          <Property Name="ExamReport" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="SignByDoctor" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="DateSigned" Type="DateTime" Precision="3" />
-          <Property Name="Image1" Type="Boolean" />
-          <Property Name="Image2" Type="Boolean" />
-          <Property Name="Image3" Type="Boolean" />
-          <Property Name="Image4" Type="Boolean" Nullable="false" />
-          <Property Name="Image5" Type="Boolean" />
-          <Property Name="Image6" Type="Boolean" />
-          <Property Name="Image7" Type="Boolean" />
-          <Property Name="Image8" Type="Boolean" />
-          <Property Name="Image9" Type="Boolean" />
-          <Property Name="Image10" Type="Boolean" />
-          <Property Name="History" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="RadiologistDoctor">
           <Key>
             <PropertyRef Name="Id" />
@@ -258,6 +243,41 @@
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ProfilePic" Type="Boolean" />
           <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PatientExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ExamType" Type="Int16" />
+          <Property Name="ExamDate" Type="DateTime" Precision="3" />
+          <Property Name="Sonographer" Type="Int16" />
+          <Property Name="Radiologist" Type="Int16" />
+          <Property Name="ExamReport" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="SignByDoctor" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DateSigned" Type="DateTime" Precision="3" />
+          <Property Name="Image1" Type="Boolean" />
+          <Property Name="Image2" Type="Boolean" />
+          <Property Name="Image3" Type="Boolean" />
+          <Property Name="Image4" Type="Boolean" Nullable="false" />
+          <Property Name="Image5" Type="Boolean" />
+          <Property Name="Image6" Type="Boolean" />
+          <Property Name="Image7" Type="Boolean" />
+          <Property Name="Image8" Type="Boolean" />
+          <Property Name="Image9" Type="Boolean" />
+          <Property Name="Image10" Type="Boolean" />
+          <Property Name="History" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Image11" Type="Boolean" />
+          <Property Name="Image12" Type="Boolean" />
+          <Property Name="Image13" Type="Boolean" />
+          <Property Name="Image14" Type="Boolean" />
+          <Property Name="Image15" Type="Boolean" />
+          <Property Name="Image16" Type="Boolean" />
+          <Property Name="Image17" Type="Boolean" />
+          <Property Name="Image18" Type="Boolean" />
+          <Property Name="Image19" Type="Boolean" />
+          <Property Name="Image20" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -333,32 +353,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PatientExams">
-            <EntityTypeMapping TypeName="JEVEGA_USModel.PatientExam">
-              <MappingFragment StoreEntitySet="PatientExam">
-                <ScalarProperty Name="History" ColumnName="History" />
-                <ScalarProperty Name="Image10" ColumnName="Image10" />
-                <ScalarProperty Name="Image9" ColumnName="Image9" />
-                <ScalarProperty Name="Image8" ColumnName="Image8" />
-                <ScalarProperty Name="Image7" ColumnName="Image7" />
-                <ScalarProperty Name="Image6" ColumnName="Image6" />
-                <ScalarProperty Name="Image5" ColumnName="Image5" />
-                <ScalarProperty Name="Image4" ColumnName="Image4" />
-                <ScalarProperty Name="Image3" ColumnName="Image3" />
-                <ScalarProperty Name="Image2" ColumnName="Image2" />
-                <ScalarProperty Name="Image1" ColumnName="Image1" />
-                <ScalarProperty Name="DateSigned" ColumnName="DateSigned" />
-                <ScalarProperty Name="SignByDoctor" ColumnName="SignByDoctor" />
-                <ScalarProperty Name="ExamReport" ColumnName="ExamReport" />
-                <ScalarProperty Name="Radiologist" ColumnName="Radiologist" />
-                <ScalarProperty Name="Sonographer" ColumnName="Sonographer" />
-                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
-                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RadiologistDoctors">
             <EntityTypeMapping TypeName="JEVEGA_USModel.RadiologistDoctor">
               <MappingFragment StoreEntitySet="RadiologistDoctor">
@@ -384,6 +378,42 @@
                 <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientExams">
+            <EntityTypeMapping TypeName="JEVEGA_USModel.PatientExam">
+              <MappingFragment StoreEntitySet="PatientExam">
+                <ScalarProperty Name="Image20" ColumnName="Image20" />
+                <ScalarProperty Name="Image19" ColumnName="Image19" />
+                <ScalarProperty Name="Image18" ColumnName="Image18" />
+                <ScalarProperty Name="Image17" ColumnName="Image17" />
+                <ScalarProperty Name="Image16" ColumnName="Image16" />
+                <ScalarProperty Name="Image15" ColumnName="Image15" />
+                <ScalarProperty Name="Image14" ColumnName="Image14" />
+                <ScalarProperty Name="Image13" ColumnName="Image13" />
+                <ScalarProperty Name="Image12" ColumnName="Image12" />
+                <ScalarProperty Name="Image11" ColumnName="Image11" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Image10" ColumnName="Image10" />
+                <ScalarProperty Name="Image9" ColumnName="Image9" />
+                <ScalarProperty Name="Image8" ColumnName="Image8" />
+                <ScalarProperty Name="Image7" ColumnName="Image7" />
+                <ScalarProperty Name="Image6" ColumnName="Image6" />
+                <ScalarProperty Name="Image5" ColumnName="Image5" />
+                <ScalarProperty Name="Image4" ColumnName="Image4" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="DateSigned" ColumnName="DateSigned" />
+                <ScalarProperty Name="SignByDoctor" ColumnName="SignByDoctor" />
+                <ScalarProperty Name="ExamReport" ColumnName="ExamReport" />
+                <ScalarProperty Name="Radiologist" ColumnName="Radiologist" />
+                <ScalarProperty Name="Sonographer" ColumnName="Sonographer" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

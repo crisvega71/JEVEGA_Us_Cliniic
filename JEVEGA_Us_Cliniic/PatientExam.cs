@@ -62,6 +62,17 @@ namespace JEVEGA_Us_Cliniic
         public Nullable<bool> Image9 { get; set; }
         public Nullable<bool> Image10 { get; set; }
 
+        public Nullable<bool> Image11 { get; set; }
+        public Nullable<bool> Image12 { get; set; }
+        public Nullable<bool> Image13 { get; set; }
+        public Nullable<bool> Image14 { get; set; }
+        public Nullable<bool> Image15 { get; set; }
+        public Nullable<bool> Image16 { get; set; }
+        public Nullable<bool> Image17 { get; set; }
+        public Nullable<bool> Image18 { get; set; }
+        public Nullable<bool> Image19 { get; set; }
+        public Nullable<bool> Image20 { get; set; }
+
         [Display(Name = "History")]
         public string History { get; set; }
 
@@ -115,8 +126,10 @@ namespace JEVEGA_Us_Cliniic
             }
         }
 
-        public string getDoctorPRCLicenseNo {
-            get {
+        public string getDoctorPRCLicenseNo
+        {
+            get
+            {
                 string prcLicenseNo = dbUSClinic.RadiologistDoctors.Find(Radiologist).PrcLicenseNo.ToString();
                 return prcLicenseNo;
             }
