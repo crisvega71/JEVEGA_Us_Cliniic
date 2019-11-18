@@ -84,283 +84,168 @@
             </tr>
         </table>
 
-        <div class="line_space"></div>
-        <table class="table_clinic">
-            <tr>
-                <td>
-                    @*1st image column --*@
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 1.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile01_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile01" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+        <div class="div_space20"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 1.</span><br />
+                @if (ViewBag.imageFile01_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile01" class="img-responsive " />}
+            </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 2.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile02_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile02" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @*1st image column --*@
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 3.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile03_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile03" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 2.</span><br />
+                @if (ViewBag.imageFile02_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile02" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 4.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile04_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile04" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @*1st image column --*@
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 5.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile05_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile05" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 3.</span><br />
+                @if (ViewBag.imageFile03_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile03" class="img-responsive " />}
+            </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 6.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile06_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile06" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @*1st image column --*@
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 7.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile07_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile07" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 4.</span><br />
+                @if (ViewBag.imageFile04_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile04" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 8.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile08_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile08" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 5.</span><br />
+                @if (ViewBag.imageFile05_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile05" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    @*1st image column --*@
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 9.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile09_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile09" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 6.</span><br />
+                @if (ViewBag.imageFile06_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile06" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 10.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile10_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile10" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 7.</span><br />
+                @if (ViewBag.imageFile07_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile07" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 11.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile11_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile11" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 8.</span><br />
+                @if (ViewBag.imageFile08_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile08" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 12.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile12_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile12" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 9.</span><br />
+                @if (ViewBag.imageFile09_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile09" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 13.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile13_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile13" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 10.</span><br />
+                @if (ViewBag.imageFile10_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile10" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 14.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile14_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile14" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 11.</span><br />
+                @if (ViewBag.imageFile11_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile11" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 15.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile15_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile15" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 12.</span><br />
+                @if (ViewBag.imageFile12_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile12" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 16.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile16_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile16" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 13.</span><br />
+                @if (ViewBag.imageFile13_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile13" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 17.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile17_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile17" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 14.</span><br />
+                @if (ViewBag.imageFile14_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile14" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 18.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile18_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile18" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 15.</span><br />
+                @if (ViewBag.imageFile15_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile15" class="img-responsive " />}
+            </div>
 
-            <tr>
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 19.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile19_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile19" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 16.</span><br />
+                @if (ViewBag.imageFile16_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile16" class="img-responsive" />}
+            </div>
+        </div>
 
-                <td>
-                    <table class="table">
-                        <tr><td><span class="permit_textpara">Image 20.</span> </td></tr>
-                        <tr>
-                            <td>
-                                @if (ViewBag.imageFile20_Up)
-                                {<img src="~/ExamImages/@ViewBag.imageFile20" class="scan_image" />}
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 17.</span><br />
+                @if (ViewBag.imageFile17_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile17" class="img-responsive " />}
+            </div>
 
-        </table>
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 18.</span><br />
+                @if (ViewBag.imageFile18_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile18" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 19.</span><br />
+                @if (ViewBag.imageFile19_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile19" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 20.</span><br />
+                @if (ViewBag.imageFile20_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile20" class="img-responsive" />}
+            </div>
+        </div>
+
 
         <div class="line_space"></div>
         <table class="table table-bordered">
-        <tr>
-            <td>
-                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
-                &nbsp;
-                <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
-                &nbsp;
-                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                    &nbsp;
+                    <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
+                    &nbsp;
+                    <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+                </td>
+            </tr>
         </table>
 
     </div>

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Text;
 
 namespace JEVEGA_Us_Cliniic.Controllers
 {
@@ -87,7 +89,27 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
 
             return status_definition;
-        }
+        } //--
+
+        public void SendMailtoUser(string email_subject, string email_body, string email_addressTo)
+        {
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("kaugisaddmin@gmail.com", "Crv@UE8903510");
+
+            string emailAddrFrom = "kaugisaddmin@gmail.com";
+
+            MailMessage mm = new MailMessage(emailAddrFrom, email_addressTo, email_subject, email_body);
+            mm.BodyEncoding = UTF8Encoding.UTF8;
+            mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            client.Send(mm);
+
+        } //**..
 
     }
 }
