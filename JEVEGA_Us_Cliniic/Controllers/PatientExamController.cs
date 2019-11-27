@@ -108,7 +108,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History")] PatientExam patientExam)
+        public ActionResult Create([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History,Image11,Image12,Image13,Image14,Image15,Image16,Image17,Image18,Image19,Image20")] PatientExam patientExam)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +122,16 @@ namespace JEVEGA_Us_Cliniic.Controllers
                 patientExam.Image8 = false;
                 patientExam.Image9 = false;
                 patientExam.Image10 = false;
+                patientExam.Image11 = false;
+                patientExam.Image12 = false;
+                patientExam.Image13 = false;
+                patientExam.Image14 = false;
+                patientExam.Image15 = false;
+                patientExam.Image16 = false;
+                patientExam.Image17 = false;
+                patientExam.Image18 = false;
+                patientExam.Image19 = false;
+                patientExam.Image20 = false;
 
                 db.PatientExams.Add(patientExam);
                 db.SaveChanges();
@@ -1217,6 +1227,22 @@ namespace JEVEGA_Us_Cliniic.Controllers
             } //--
 
             return uploaded;
+        } //--
+
+        public ActionResult SendExamToRadiologist()
+        {
+            string emailSubject, emailBody, emailAddressTo;
+            
+            emailSubject = "Ultrasound Exam - for Patient ";
+            emailBody = "Dear Dr. Fernan \r\n\r\n";
+            emailBody += "Find attached link below for exam images of the patient above ... " + "\r\n";
+            emailBody += "Kindly see and make your official report." + "\r\n";
+
+            emailAddressTo = "crisvega71@gmail.com";
+            utHelp.SendMailtoUser(emailSubject, emailBody, emailAddressTo);
+
+            return RedirectToAction("Index");
+
         } //--
     }
 }

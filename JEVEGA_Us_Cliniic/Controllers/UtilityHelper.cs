@@ -100,9 +100,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             client.Timeout = 10000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("kaugisaddmin@gmail.com", "Crv@UE8903510");
+            client.Credentials = new System.Net.NetworkCredential("crisvega71@gmail.com", "Crv@UEM8903510");
 
-            string emailAddrFrom = "kaugisaddmin@gmail.com";
+            string emailAddrFrom = "crisvega71@gmail.com";
 
             MailMessage mm = new MailMessage(emailAddrFrom, email_addressTo, email_subject, email_body);
             mm.BodyEncoding = UTF8Encoding.UTF8;

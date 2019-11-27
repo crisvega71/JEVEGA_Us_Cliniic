@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/Layout_inner_page.cshtml";
 }
 
+
 <table class="table_clinic_pageheader">
-<tr>
-    <td><h3>Patient Exam Details</h3></td>
-    <td align="right"></td>
-</tr>
+    <tr>
+        <td><h3>Patient Exam Details</h3></td>
+        <td align="right"></td>
+    </tr>
 </table>
 
 @using (Html.BeginForm())
@@ -17,15 +18,18 @@
     @Html.AntiForgeryToken()
 
     <table class="table table-bordered">
-    <tr>
-        <td align="right">
-            <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
-            &nbsp;
-            <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
-            &nbsp;
-            <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
-        </td>
-    </tr>
+        <tr>
+            <td align="right">
+                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                &nbsp;
+                @if (Model.ExamReport != null)
+                {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
+                &nbsp;
+                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
+            </td>
+        </tr>
     </table>
 
     <div>
@@ -241,7 +245,8 @@
                 <td>
                     <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
                     &nbsp;
-                    <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />
+                    @if (Model.ExamReport != null)
+                    {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
                     &nbsp;
                     <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
                 </td>
