@@ -111,5 +111,59 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
         } //**..
 
+        public string SendSMTPmail(string email_subject, string email_body, string email_addressTo, string email_addressFrom, string email_fromPwd)
+        {
+            string result_message = "";
+            string CCemailAdd = "cdvegajr@gmail.com";
+
+            MailMessage m = new MailMessage();
+            SmtpClient sc = new SmtpClient();
+            m.From = new MailAddress(email_addressFrom);
+            m.To.Add(email_addressTo);
+            m.CC.Add(CCemailAdd);
+            m.Subject = email_subject;
+            m.Body = email_body;
+
+            sc.Host = "mail.jevegausdiagnostic.com";
+
+            string str1 = "gmail.com";
+            string str2 = email_addressFrom.ToLower();
+            if (str2.Contains(str1))
+            {
+                try
+                {
+                    sc.Port = 587;
+                    sc.Credentials = new System.Net.NetworkCredential(email_addressFrom, email_fromPwd);
+                    sc.EnableSsl = true;
+                    sc.Send(m);
+                    result_message = "Email Send successfully";
+                }
+                catch (Exception ex)
+                {
+                    result_message = "* Please double check the From Address and Password ...";
+                    throw ex;
+                }
+            }
+            else
+            {
+                try
+                {
+                    sc.Port = 25;
+                    sc.Credentials = new System.Net.NetworkCredential(email_addressFrom, email_fromPwd);
+                    sc.EnableSsl = false;
+                    sc.Send(m);
+                    result_message = "Email Send successfully";
+                }
+                catch (Exception ex)
+                {
+                    result_message = "* Please double check the From Address and Password ...";
+                    throw ex;
+                }
+            }
+
+            return (result_message);
+        } //--
+
+
     }
 }

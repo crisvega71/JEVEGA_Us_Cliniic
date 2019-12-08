@@ -15,9 +15,65 @@
                 <a href=@Url.Action("Create", "PatientData")><img src="~/images/add_icon.png" /></a>
             }
         }
+        &nbsp;
+        <img src="~/images/search_icon.png" class="hand_cursor" data-toggle="collapse" data-target="#collapseSearchDiv" aria-expanded="false" aria-controls="collapseExample" />
+        &nbsp;
     </td>
 </tr>
 </table>
+
+
+<div class="div_space20"></div>
+@using (Html.BeginForm())
+{
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        $("#divLastname").hide();
+        $("#divFirstname").hide();
+
+        $("#searchButton").click(function () {
+
+            var lastname = $("#lastname").val();
+            var firstname = $("#firstname").val();
+
+            if (lastname.length == 0 && firstname.length == 0) {
+                $("#divLastname").show();
+                $("#divFirstname").show();
+            }
+            else {
+                window.location.href = "/PatientData/SearchPatientData?ln=" + lastname + "&fn=" + firstname;
+            }
+        });
+
+    });
+
+</script>
+
+
+<div class="collapse container" id="collapseSearchDiv">
+
+    <div class="search_div">
+        <div class="form-group">
+            <span class="table_field_value">Last Name: </span>
+            <input type="text" class="form-control" id="lastname" name="lastname" />
+            <div id="divLastname"><span class="error_message_jquery">* input Last name</span></div>
+        </div>
+        <div class="form-group">
+            <span class="table_field_value">First Name: </span>
+            <input type="text" class="form-control" id="firstname" name="firstname" />
+            <div id="divFirstname"><span class="error_message_jquery">* input First name</span></div>
+        </div>
+        <div class="form-group">
+            <input type="button" value="Search Patient" id="searchButton" name="searchButton" />
+        </div>
+    </div>
+</div>
+}
+
 
 <table class="table table-striped">
     <tr>
@@ -33,27 +89,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        @*<td>@Html.DisplayFor(modelItem => item.Id)</td>*@
-        <td>@Html.DisplayFor(modelItem => item.Patient_Id)</td>
-        <td>@Html.DisplayFor(modelItem => item.Lastname)</td>
-        <td>@Html.DisplayFor(modelItem => item.Firstname)</td>
-        <td>@Html.DisplayFor(modelItem => item.Age)</td>
-        <td>@Html.DisplayFor(modelItem => item.Sex)</td>
-        <td>@Html.DisplayFor(modelItem => item.Email)</td>
-        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>@Html.DisplayFor(modelItem => item.Id)</td>*@
+            <td>@Html.DisplayFor(modelItem => item.Patient_Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Lastname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Firstname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sex)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
 
-        @*<td>@Html.DisplayFor(modelItem => item.LoginPassword)</td>*@
+            @*<td>@Html.DisplayFor(modelItem => item.LoginPassword)</td>*@
 
-        <td>
-            @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
-            {
-                <a href=@Url.Action("Edit", new { id = item.Patient_Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
-            }
-            - <a href=@Url.Action("Details", new { id = item.Patient_Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
-        </td>
-    </tr>
-}
+            <td>
+                @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Edit", new { id = item.Patient_Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+                }
+                - <a href=@Url.Action("Details", new { id = item.Patient_Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+            </td>
+        </tr>
+    }
 
 </table>

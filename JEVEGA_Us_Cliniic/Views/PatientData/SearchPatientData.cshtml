@@ -1,0 +1,54 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.PatientData>
+
+@{
+    ViewBag.Title = "SearchPatientData";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Search List of Patient Data</h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <tr>
+        @*<th>@Html.DisplayNameFor(model => model.Id)</th>*@
+        <th>@Html.DisplayNameFor(model => model.Patient_Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Lastname)</th>
+        <th>@Html.DisplayNameFor(model => model.Firstname)</th>
+        <th>@Html.DisplayNameFor(model => model.Age)</th>
+        <th>@Html.DisplayNameFor(model => model.Sex)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>@Html.DisplayFor(modelItem => item.Id)</td>*@
+            <td>@Html.DisplayFor(modelItem => item.Patient_Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Lastname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Firstname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sex)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+
+            @*<td>@Html.DisplayFor(modelItem => item.LoginPassword)</td>*@
+
+            <td>
+                @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Edit", new { id = item.Patient_Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+                }
+                - <a href=@Url.Action("Details", new { id = item.Patient_Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+                - <a href=@Url.Action("ShowPatientExam", "PatientExam", new { p_id = item.Patient_Id }) alt="Details"><img src="~/images/ob_exam_icon.png" /></a>
+            </td>
+        </tr>
+    }
+
+</table>

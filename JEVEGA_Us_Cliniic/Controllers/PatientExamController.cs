@@ -22,8 +22,192 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: PatientExam
         public ActionResult Index()
         {
-            return View(db.PatientExams.ToList());
-        }
+            string datelist = "";
+            bool nyear = false;
+            bool nmonth = false;
+
+            DateTime today = DateTime.Now;
+            int this_month = today.Month;
+            int this_year = today.Year;
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            if (this_year == 2019) { nyear = true; } else { nyear = false; }
+            SelectListItem item1 = new SelectListItem { Text = "2019", Value = "2019", Selected=nyear };
+            listOfYears.Add(item1);
+
+            if (this_year == 2020) { nyear = true; } else { nyear = false; }
+            SelectListItem item2 = new SelectListItem { Text = "2020", Value = "2020", Selected = nyear };
+            listOfYears.Add(item2);
+
+            if (this_year == 2021) { nyear = true; } else { nyear = false; }
+            SelectListItem item3 = new SelectListItem { Text = "2021", Value = "2021", Selected = nyear };
+            listOfYears.Add(item3);
+
+            if (this_year == 2022) { nyear = true; } else { nyear = false; }
+            SelectListItem item4 = new SelectListItem { Text = "2022", Value = "2022", Selected = nyear };
+            listOfYears.Add(item4);
+
+            if (this_year == 2023) { nyear = true; } else { nyear = false; }
+            SelectListItem item5 = new SelectListItem { Text = "2023", Value = "2023", Selected = nyear };
+            listOfYears.Add(item5);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            //...............................................................................................
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+
+            if (this_month == 1) { nmonth = true; datelist = "January"; } else { nmonth = false; }
+            SelectListItem mo1 = new SelectListItem { Text = "January", Value = "1", Selected = nmonth };
+            listOfMonths.Add(mo1);
+
+            if (this_month == 2) { nmonth = true; datelist = "February"; } else { nmonth = false; }
+            SelectListItem mo2 = new SelectListItem { Text = "February", Value = "2", Selected = nmonth };
+            listOfMonths.Add(mo2);
+
+            if (this_month == 3) { nmonth = true; datelist = "March"; } else { nmonth = false; }
+            SelectListItem mo3 = new SelectListItem { Text = "March", Value = "3", Selected = nmonth };
+            listOfMonths.Add(mo3);
+
+            if (this_month == 4) { nmonth = true; datelist = "April"; } else { nmonth = false; }
+            SelectListItem mo4 = new SelectListItem { Text = "April", Value = "4", Selected = nmonth };
+            listOfMonths.Add(mo4);
+
+            if (this_month == 5) { nmonth = true; datelist = "May"; } else { nmonth = false; }
+            SelectListItem mo5 = new SelectListItem { Text = "May", Value = "5", Selected = nmonth };
+            listOfMonths.Add(mo5);
+
+            if (this_month == 6) { nmonth = true; datelist = "June"; } else { nmonth = false; }
+            SelectListItem mo6 = new SelectListItem { Text = "June", Value = "6", Selected = nmonth };
+            listOfMonths.Add(mo6);
+
+            if (this_month == 7) { nmonth = true; datelist = "July"; } else { nmonth = false; }
+            SelectListItem mo7 = new SelectListItem { Text = "July", Value = "7", Selected = nmonth };
+            listOfMonths.Add(mo7);
+
+            if (this_month == 8) { nmonth = true; datelist = "August"; } else { nmonth = false; }
+            SelectListItem mo8 = new SelectListItem { Text = "August", Value = "8", Selected = nmonth };
+            listOfMonths.Add(mo8);
+
+            if (this_month == 9) { nmonth = true; datelist = "September"; } else { nmonth = false; }
+            SelectListItem mo9 = new SelectListItem { Text = "September", Value = "9", Selected = nmonth };
+            listOfMonths.Add(mo9);
+
+            if (this_month == 10) { nmonth = true; datelist = "October"; } else { nmonth = false; }
+            SelectListItem mo10 = new SelectListItem { Text = "October", Value = "10", Selected = nmonth };
+            listOfMonths.Add(mo10);
+
+            if (this_month == 11) { nmonth = true; datelist = "November"; } else { nmonth = false; }
+            SelectListItem mo11 = new SelectListItem { Text = "November", Value = "11", Selected = nmonth };
+            listOfMonths.Add(mo11);
+
+            if (this_month == 12) { nmonth = true; datelist = "December"; } else { nmonth = false; }
+            SelectListItem mo12 = new SelectListItem { Text = "December", Value = "12", Selected = nmonth };
+            listOfMonths.Add(mo12);
+
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = datelist + " " + this_year;
+            //...............................................................................................
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+
+            //return View(db.PatientExams.ToList());
+            return View(patientExamList);
+
+        } //-- 
+
+        [HttpPost]
+        public ActionResult Index(FormCollection formCollection)
+        {
+            string str_year = formCollection["ListOfYears"];
+            int this_year = Convert.ToInt32(str_year);
+            bool nyear = false;
+            string datelist = "";
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            if (this_year == 2019) { nyear = true; } else { nyear = false; }
+            SelectListItem item1 = new SelectListItem { Text = "2019", Value = "2019", Selected = nyear };
+            listOfYears.Add(item1);
+
+            if (this_year == 2020) { nyear = true; } else { nyear = false; }
+            SelectListItem item2 = new SelectListItem { Text = "2020", Value = "2020", Selected = nyear };
+            listOfYears.Add(item2);
+
+            if (this_year == 2021) { nyear = true; } else { nyear = false; }
+            SelectListItem item3 = new SelectListItem { Text = "2021", Value = "2021", Selected = nyear };
+            listOfYears.Add(item3);
+
+            if (this_year == 2022) { nyear = true; } else { nyear = false; }
+            SelectListItem item4 = new SelectListItem { Text = "2022", Value = "2022", Selected = nyear };
+            listOfYears.Add(item4);
+
+            if (this_year == 2023) { nyear = true; } else { nyear = false; }
+            SelectListItem item5 = new SelectListItem { Text = "2023", Value = "2023", Selected = nyear };
+            listOfYears.Add(item5);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            //...............................................................................................
+            string str_month = formCollection["ListOfMonths"];
+            int this_month = Convert.ToInt32(str_month);
+            bool nmonth = false;
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+
+            if (this_month == 1) { nmonth = true; datelist = "January"; } else { nmonth = false; }
+            SelectListItem mo1 = new SelectListItem { Text = "January", Value = "1", Selected = nmonth };
+            listOfMonths.Add(mo1);
+
+            if (this_month == 2) { nmonth = true; datelist = "February"; } else { nmonth = false; }
+            SelectListItem mo2 = new SelectListItem { Text = "February", Value = "2", Selected = nmonth };
+            listOfMonths.Add(mo2);
+
+            if (this_month == 3) { nmonth = true; datelist = "March"; } else { nmonth = false; }
+            SelectListItem mo3 = new SelectListItem { Text = "March", Value = "3", Selected = nmonth };
+            listOfMonths.Add(mo3);
+
+            if (this_month == 4) { nmonth = true; datelist = "April"; } else { nmonth = false; }
+            SelectListItem mo4 = new SelectListItem { Text = "April", Value = "4", Selected = nmonth };
+            listOfMonths.Add(mo4);
+
+            if (this_month == 5) { nmonth = true; datelist = "May"; } else { nmonth = false; }
+            SelectListItem mo5 = new SelectListItem { Text = "May", Value = "5", Selected = nmonth };
+            listOfMonths.Add(mo5);
+
+            if (this_month == 6) { nmonth = true; datelist = "June"; } else { nmonth = false; }
+            SelectListItem mo6 = new SelectListItem { Text = "June", Value = "6", Selected = nmonth };
+            listOfMonths.Add(mo6);
+
+            if (this_month == 7) { nmonth = true; datelist = "July"; } else { nmonth = false; }
+            SelectListItem mo7 = new SelectListItem { Text = "July", Value = "7", Selected = nmonth };
+            listOfMonths.Add(mo7);
+
+            if (this_month == 8) { nmonth = true; datelist = "August"; } else { nmonth = false; }
+            SelectListItem mo8 = new SelectListItem { Text = "August", Value = "8", Selected = nmonth };
+            listOfMonths.Add(mo8);
+
+            if (this_month == 9) { nmonth = true; datelist = "September"; } else { nmonth = false; }
+            SelectListItem mo9 = new SelectListItem { Text = "September", Value = "9", Selected = nmonth };
+            listOfMonths.Add(mo9);
+
+            if (this_month == 10) { nmonth = true; datelist = "October"; } else { nmonth = false; }
+            SelectListItem mo10 = new SelectListItem { Text = "October", Value = "10", Selected = nmonth };
+            listOfMonths.Add(mo10);
+
+            if (this_month == 11) { nmonth = true; datelist = "November"; } else { nmonth = false; }
+            SelectListItem mo11 = new SelectListItem { Text = "November", Value = "11", Selected = nmonth };
+            listOfMonths.Add(mo11);
+
+            if (this_month == 12) { nmonth = true; datelist = "December"; } else { nmonth = false; }
+            SelectListItem mo12 = new SelectListItem { Text = "December", Value = "12", Selected = nmonth };
+            listOfMonths.Add(mo12);
+
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = datelist + " " + this_year;
+            //...............................................................................................
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
+
+            return View(patientExamList);
+        } //-- 
 
         // GET: PatientExam/Details/5
         [AllowAnonymous]
@@ -57,6 +241,11 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.imageFile18_Up = patientExam.Image18;
             ViewBag.imageFile19_Up = patientExam.Image19;
             ViewBag.imageFile20_Up = patientExam.Image20;
+
+            bool examImagesExist = checkExamImagesExist(id);
+            if (examImagesExist)
+            {   ViewBag.ExamImagesExist = true; }
+            else { ViewBag.ExamImagesExist = false;   }
 
             string patiendIDNo = patientExam.PatientID.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
@@ -1229,20 +1418,172 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return uploaded;
         } //--
 
-        public ActionResult SendExamToRadiologist()
+        public ActionResult SendExamToRadiologist(int? id)
         {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientName = patientExam.getPatientName;
+            string doctorName = patientExam.getDoctorName;
+
+            string responseMessage = "";
             string emailSubject, emailBody, emailAddressTo;
             
-            emailSubject = "Ultrasound Exam - for Patient ";
-            emailBody = "Dear Dr. Fernan \r\n\r\n";
+            emailSubject = "Ultrasound Exam - for Patient : " + patientName;
+            emailBody = "Dear Dr. " + doctorName + " \r\n\r\n";
             emailBody += "Find attached link below for exam images of the patient above ... " + "\r\n";
+            emailBody += "https://www.jevegausdiagnostic.com/PatientExam/SignMedicalReport/" + id.ToString() + "\r\n\r\n";
             emailBody += "Kindly see and make your official report." + "\r\n";
+            emailBody += "\r\n";
+            emailBody += "Thanks and regards, " + "\r\n";
+            emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
 
             emailAddressTo = "crisvega71@gmail.com";
-            utHelp.SendMailtoUser(emailSubject, emailBody, emailAddressTo);
 
-            return RedirectToAction("Index");
+            string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            string emailAddFromPwd = "Crv@UE8903510";
+
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+
+            return View();
 
         } //--
+
+        public bool checkExamImagesExist(int? exam_id)
+        {
+            bool exist = false;
+
+            PatientExam patientExam = db.PatientExams.Find(exam_id);
+
+            if (patientExam.Image1 == true) { exist = true;  return exist; }
+            if (patientExam.Image2 == true) { exist = true; return exist; }
+            if (patientExam.Image3 == true) { exist = true; return exist; }
+            if (patientExam.Image4 == true) { exist = true; return exist; }
+            if (patientExam.Image5 == true) { exist = true; return exist; }
+            if (patientExam.Image6 == true) { exist = true; return exist; }
+            if (patientExam.Image7 == true) { exist = true; return exist; }
+            if (patientExam.Image8 == true) { exist = true; return exist; }
+            if (patientExam.Image9 == true) { exist = true; return exist; }
+            if (patientExam.Image10 == true) { exist = true; return exist; }
+
+            if (patientExam.Image11 == true) { exist = true; return exist; }
+            if (patientExam.Image12 == true) { exist = true; return exist; }
+            if (patientExam.Image13 == true) { exist = true; return exist; }
+            if (patientExam.Image14 == true) { exist = true; return exist; }
+            if (patientExam.Image15 == true) { exist = true; return exist; }
+            if (patientExam.Image16 == true) { exist = true; return exist; }
+            if (patientExam.Image17 == true) { exist = true; return exist; }
+            if (patientExam.Image18 == true) { exist = true; return exist; }
+            if (patientExam.Image19 == true) { exist = true; return exist; }
+            if (patientExam.Image20 == true) { exist = true; return exist; }
+
+            return exist;
+
+        } //--
+
+        public ActionResult SendExamToOBDoctor(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientName = patientExam.getPatientName;
+            string OBdoctorName = "Teresitta";
+            string OBemailAddress = "crisvega71@gmail.com";
+
+            string responseMessage = "";
+            string emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd;
+
+            emailSubject = "Ultrasound Exam - for Patient : " + patientName;
+            emailBody = "Dear Dr. " + OBdoctorName + " \r\n\r\n";
+            emailBody += "Click on the link below to see exam images of the patient above ... " + "\r\n";
+            emailBody += "https://www.jevegausdiagnostic.com/PatientExam/Details/" + id.ToString() + "\r\n\r\n";
+            emailBody += "Thanks and regards, " + "\r\n";
+            emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
+
+            emailAddressTo = OBemailAddress;
+            emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            emailAddFromPwd = "Crv@UE8903510";
+
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+
+            return View();
+
+        } //--
+
+        public ActionResult SendExamReportToOBDoctor(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientName = patientExam.getPatientName;
+            string OBdoctorName = "Teresitta";
+            string OBemailAddress = "crisvega71@gmail.com";
+
+            string responseMessage = "";
+            string emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd;
+
+            emailSubject = "Official Report of Ultrasound Exam - for Patient : " + patientName;
+            emailBody = "Dear Dr. " + OBdoctorName + " \r\n\r\n";
+            emailBody += "Click on the link below to see the official report of diagnostic examination for the patient above ... " + "\r\n\r\n";
+            
+            emailBody += "https://jevegausdiagnostic.com/PatientExam/PrintReportWithLogo/" + id.ToString() + "\r\n\r\n";
+
+            emailBody += "Thanks and regards, " + "\r\n";
+            emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
+
+            emailAddressTo = OBemailAddress;
+            emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            emailAddFromPwd = "Crv@UE8903510";
+
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+
+            return View();
+        } //--
+
+        public ActionResult SearchPatientExam()
+        {
+            string lastName = Request.QueryString["ln"];
+            string firstName = Request.QueryString["fn"];
+            string patientIDs = "";
+
+            if (lastName.Length > 0 && firstName.Length == 0)
+            {
+                List<PatientData> patientData = db.PatientDatas.Where(p => p.Lastname.ToUpper().Contains(lastName.ToUpper())).ToList();
+
+                int patient_count = patientData.Count;
+                
+                for (int i = 0; i < patient_count; i++)
+                {
+                    patientIDs = patientIDs + patientData[i].Patient_Id.ToString() + ",";
+                }
+            }
+            return View(db.PatientExams.Where(p => p.PatientID.Contains(patientIDs)).ToList());
+
+        } //--
+
+        public ActionResult ShowPatientExam(string p_id)
+        {
+            PatientData patientData = db.PatientDatas.FirstOrDefault(p => p.Patient_Id == p_id);
+            ViewBag.PatientName = patientData.Lastname + ", " + patientData.Firstname;
+
+            List<PatientExam> patientExam = db.PatientExams.Where(p => p.PatientID == p_id).ToList();
+
+            return View(patientExam);
+        }
     }
 }

@@ -1,23 +1,24 @@
 ﻿@model IEnumerable<JEVEGA_Us_Cliniic.PatientExam>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowPatientExam";
     Layout = "~/Views/Shared/Layout_inner_page.cshtml";
 }
 
+
 <table class="table_clinic_pageheader">
-    <tr>
-        <td><h3>Patient Exams List | @ViewBag.DateList</h3></td>
-        <td align="right">
-            @{
-                if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
-                {
-                    <a href=@Url.Action("Create", "PatientExam")><img src="~/images/add_icon.png" /></a>
-                }
+<tr>
+    <td><h3>Exams List for Patient : @ViewBag.PatientName  </h3></td>
+    <td align="right">
+        @{
+            if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Create", "PatientExam")><img src="~/images/add_icon.png" /></a>
             }
-            &nbsp;
-        </td>
-    </tr>
+        }
+        &nbsp;
+    </td>
+</tr>
 </table>
 <div class="div_space20"></div>
 
@@ -29,8 +30,8 @@
         <th>@Html.DisplayNameFor(model => model.ExamDate)</th>
         <th>@Html.DisplayNameFor(model => model.Sonographer)</th>
         <th>@Html.DisplayNameFor(model => model.Radiologist)</th>
-        <th>Images</th>
         <th>@Html.DisplayNameFor(model => model.SignByDoctor)</th>
+
         <th></th>
     </tr>
 
@@ -43,8 +44,6 @@
             <td>@Html.DisplayFor(modelItem => item.getSonographerName)</td>
             <td>@Html.DisplayFor(modelItem => item.getDoctorName)</td>
 
-            <td><span class="text_form_value">@item.IsExamImagesExist()</span></td>
-            
             <td>
                 @if (item.SignByDoctor == "Y")
                 {<span class="text_form_value_ii">@Html.DisplayFor(modelItem => item.getSignDefinition)</span>}
@@ -65,26 +64,3 @@
     }
 
 </table>
-
-@using (Html.BeginForm())
-{
-
-<table class="table table-bordered">
-<tr>
-    <td nowrap="nowrap">
-        @Html.DropDownList("ListOfMonths", (List<SelectListItem>)ViewBag.MonthsList, "- Select an Month -", new { @class = "form-control" })
-    </td>
-    <td>
-        @Html.DropDownList("ListOfYears", (List<SelectListItem>)ViewBag.YearsList, "- Select a Year -", new { @class = "form-control" })
-    </td>
-    <td>
-        <input type="submit" value="Filter by Month/Year" class="btn btn-default" />
-    </td>
-</tr>
-</table>
-
-
-<div class="div_space20"></div>
-
-
-}

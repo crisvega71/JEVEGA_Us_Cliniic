@@ -168,5 +168,24 @@ namespace JEVEGA_Us_Cliniic
                 return (SignByDoctor == "Y" ? "Yes" : "No");
             }
         }
+
+        public bool ExamImagesExist()
+        {
+            bool exist = false;
+
+            if (Image1 == true || Image2 == true || Image3 == true || Image4 == true || Image5 == true || Image6 == true || Image7 == true || Image8 == true || Image9 == true || Image10 == true
+                || Image11 == true || Image12 == true || Image13 == true || Image14 == true || Image15 == true || Image16 == true || Image17 == true || Image18 == true || Image19 == true || Image20 == true)
+            { exist = true; }
+
+            return exist;
+        }
+
+        public string IsExamImagesExist()
+        {
+            if (ExamImagesExist())
+            { return "YES"; }
+            else
+            { return "NONE";  }
+        } //-- 
     }
 }

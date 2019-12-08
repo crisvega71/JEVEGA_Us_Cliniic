@@ -184,5 +184,26 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult SearchPatientData()
+        {
+            string lastName = Request.QueryString["ln"];
+            string firstName = Request.QueryString["fn"];
+
+            if (lastName.Length > 0 && firstName.Length == 0)
+            {
+                return View(db.PatientDatas.Where(p => p.Lastname.ToUpper().Contains(lastName.ToUpper())).ToList());
+            }
+
+            if(lastName.Length == 0 && firstName.Length > 0)
+            {
+                return View(db.PatientDatas.Where(p => p.Firstname.ToUpper().Contains(firstName.ToUpper())).ToList());
+            }
+
+
+            return View(db.PatientDatas.Where(p => p.Lastname.ToUpper().Contains(lastName.ToUpper()) || p.Firstname.ToUpper().Contains(firstName.ToUpper())).ToList());
+
+        } //--
+
     }
 }

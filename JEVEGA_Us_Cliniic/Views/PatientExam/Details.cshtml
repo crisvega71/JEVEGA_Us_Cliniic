@@ -23,11 +23,14 @@
                 <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
                 &nbsp;
                 @if (Model.ExamReport != null)
-                {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
+                {  <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
                 &nbsp;
                 <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
                 &nbsp;
                 <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                @if (ViewBag.ExamImagesExist)
+                {  <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />  }
             </td>
         </tr>
     </table>
@@ -249,6 +252,11 @@
                     {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
                     &nbsp;
                     <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+                    &nbsp;
+                    <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
+                    &nbsp;
+                    @if (ViewBag.ExamImagesExist)
+                    {  <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" /> }
                 </td>
             </tr>
         </table>

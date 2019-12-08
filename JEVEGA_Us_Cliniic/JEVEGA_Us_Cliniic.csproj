@@ -225,8 +225,10 @@
     <Content Include="images\log_user_icon.png" />
     <Content Include="images\map_clinic.jpg" />
     <Content Include="images\no_access_symbol.jpg" />
+    <Content Include="images\ob_exam_icon.png" />
     <Content Include="images\profile_pic_icon.png" />
     <Content Include="images\scan_images_icon.png" />
+    <Content Include="images\search_icon.png" />
     <Content Include="images\services_abdomen.jpg" />
     <Content Include="images\services_obgyne.jpg" />
     <Content Include="images\services_pedia.jpg" />
@@ -353,6 +355,12 @@
     <Content Include="Views\Shared\Layout_print_image.cshtml" />
     <Content Include="Views\PatientExam\PrintReportWithLogo.cshtml" />
     <Content Include="Views\Shared\Layout_print_report.cshtml" />
+    <Content Include="Views\PatientExam\SendExamToRadiologist.cshtml" />
+    <Content Include="Views\PatientExam\SendExamToOBDoctor.cshtml" />
+    <Content Include="Views\PatientExam\SendExamReportToOBDoctor.cshtml" />
+    <Content Include="Views\PatientData\SearchPatientData.cshtml" />
+    <Content Include="Views\PatientExam\SearchPatientExam.cshtml" />
+    <Content Include="Views\PatientExam\ShowPatientExam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
