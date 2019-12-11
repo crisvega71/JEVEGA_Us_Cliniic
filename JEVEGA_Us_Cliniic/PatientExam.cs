@@ -73,8 +73,26 @@ namespace JEVEGA_Us_Cliniic
         public Nullable<bool> Image19 { get; set; }
         public Nullable<bool> Image20 { get; set; }
 
+        public Nullable<bool> Image21 { get; set; }
+        public Nullable<bool> Image22 { get; set; }
+        public Nullable<bool> Image23 { get; set; }
+        public Nullable<bool> Image24 { get; set; }
+        public Nullable<bool> Image25 { get; set; }
+        public Nullable<bool> Image26 { get; set; }
+        public Nullable<bool> Image27 { get; set; }
+        public Nullable<bool> Image28 { get; set; }
+        public Nullable<bool> Image29 { get; set; }
+        public Nullable<bool> Image30 { get; set; }
+        public Nullable<bool> Image31 { get; set; }
+        public Nullable<bool> Image32 { get; set; }
+
+
         [Display(Name = "History")]
         public string History { get; set; }
+
+        [Display(Name = "Exam ID")]
+        [Required(ErrorMessage = "*")]
+        public string ExamId { get; set; }
 
         public string getPatientIdName
         {
@@ -185,7 +203,7 @@ namespace JEVEGA_Us_Cliniic
             if (ExamImagesExist())
             { return "YES"; }
             else
-            { return "NONE";  }
+            { return "NONE"; }
         } //-- 
     }
 }

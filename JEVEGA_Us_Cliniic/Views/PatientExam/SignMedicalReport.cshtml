@@ -224,6 +224,95 @@
         </div>
     </div>
 
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 21.</span><br />
+            @if (ViewBag.imageFile21_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile21" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 22.</span><br />
+            @if (ViewBag.imageFile22_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile22" class="img-responsive" />}
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 23.</span><br />
+            @if (ViewBag.imageFile23_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile23" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 24.</span><br />
+            @if (ViewBag.imageFile24_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile24" class="img-responsive" />}
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 25.</span><br />
+            @if (ViewBag.imageFile25_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile25" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 26.</span><br />
+            @if (ViewBag.imageFile26_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile26" class="img-responsive" />}
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 27.</span><br />
+            @if (ViewBag.imageFile27_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile27" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 28.</span><br />
+            @if (ViewBag.imageFile28_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile28" class="img-responsive" />}
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 29.</span><br />
+            @if (ViewBag.imageFile29_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile29" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 30.</span><br />
+            @if (ViewBag.imageFile30_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile30" class="img-responsive" />}
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 31.</span><br />
+            @if (ViewBag.imageFile31_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile31" class="img-responsive " />}
+        </div>
+
+        <div class="col-md-6">
+            <span class="report_fieldvalue_01">Image 32.</span><br />
+            @if (ViewBag.imageFile32_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile32" class="img-responsive" />}
+        </div>
+    </div>
 
     <div class="line_space"></div>
 
@@ -231,11 +320,11 @@
     {
         <div class="div_space20"></div>
         <table class="table table-bordered">
-            <tr>
-                <td>
-                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+            </td>
+        </tr>
         </table>
     }
     else
@@ -246,7 +335,7 @@
                 <td>
                     <input type="submit" value="Save & Sign" class="btn btn-default" />
                     &nbsp;
-                    <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                    <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                 </td>
             </tr>
         </table>

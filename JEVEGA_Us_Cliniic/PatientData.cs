@@ -68,7 +68,12 @@ namespace JEVEGA_Us_Cliniic
             get
             { return Patient_Id + " - " + Lastname + ", " + Firstname; }
         }
+
+        public string GetFullname
+        {
+            get
+            { return Lastname + ", " + Firstname; }
+        }
     }
 
 }
-

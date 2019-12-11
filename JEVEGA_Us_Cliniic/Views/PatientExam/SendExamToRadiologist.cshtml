@@ -6,8 +6,33 @@
 
 <h3>Send Mail Notification to Radiologist</h3>
 
-<div class="div_space20"></div>
+@if (!ViewBag.Posted)
+{
+  <hr />
+  using (Html.BeginForm())
+  {
+    <div>
+        <textarea id="mail_subject" name="mail_subject" class="textarea_report" rows="1">@ViewBag.MailSubject</textarea>
+    </div>
+
+    <div class="div_space20"></div>
+
+    <div>
+        <textarea id="mail_body" name="mail_body" class="textarea_report" rows="14">@ViewBag.MailBody</textarea>
+    </div>
+
+    <div class="div_space20"></div>
+
+    <div style="float:right">
+        <input type="submit" value="Send Mail" class="btn btn-default" />
+        &nbsp;
+        <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details/" + ViewBag.PatientExamId, "PatientExam") + "'");" />
+    </div>
+
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+  }
+}
 
 <span class="error_message">@ViewBag.ResponseMessage</span>
-
 <div class="div_space20"></div>

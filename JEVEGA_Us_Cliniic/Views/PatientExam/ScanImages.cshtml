@@ -7,7 +7,7 @@
 
 <table class="table_clinic_pageheader">
 <tr>
-    <td><h3>Scan Images for @ViewBag.PatientName - @ViewBag.PatientExamName on @ViewBag.PatientExamDate</h3></td>
+    <td><h3>Scan Images for @ViewBag.PatientName - @ViewBag.PatientExamName on @ViewBag.PatientExamDate | Exam Id: @ViewBag.PatientExamId</h3></td>
     <td align="right"></td>
 </tr>
 </table>
@@ -18,7 +18,7 @@
     
 <div class="form-horizontal">
 
-    <input type="hidden" name="patientExamId" id="patientExamId" value="@ViewBag.patientExamId" />
+    <input type="hidden" name="patientExamId" id="patientExamId" value="@ViewBag.patientExamEntityKey" />
     <input type="hidden" name="patiendIDNo" id="patiendIDNo" value="@ViewBag.patiendIDNo" />
 
     <hr />
@@ -254,7 +254,7 @@
                     <tr>
                         <td>
                             @if (ViewBag.imageFile17_Up)
-                            {<img src="~/ExamImages/@ViewBag.imageFile17" class="scan_image" /> }
+                            {<img src="~/ExamImages/@ViewBag.imageFile17" class="scan_image" />}
                         </td>
                     </tr>
                     <tr><td><input type="file" name="file17" id="file17" /></td></tr>
@@ -303,8 +303,167 @@
             </td>
         </tr>
 
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 21.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile21_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile21" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file21" id="file21" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 22.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile22_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile22" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file22" id="file22" /></td></tr>
+                </table>
+            </td>
+        </tr>
 
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 23.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile23_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile23" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file23" id="file23" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 24.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile24_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile24" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file24" id="file24" /></td></tr>
+                </table>
+            </td>
+        </tr>
 
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 25.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile25_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile25" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file25" id="file25" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 26.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile26_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile26" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file26" id="file26" /></td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 27.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile27_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile27" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file27" id="file27" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 28.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile28_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile28" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file28" id="file28" /></td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 29.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile29_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile29" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file29" id="file29" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 30.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile30_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile30" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file30" id="file30" /></td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 31.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile31_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile31" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file31" id="file31" /></td></tr>
+                </table>
+            </td>
+            <td>
+                <table class="table">
+                    <tr><td><span class="permit_textpara">Image 32.</span> </td></tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.imageFile32_Up)
+                            {<img src="~/ExamImages/@ViewBag.imageFile32" class="scan_image" />}
+                        </td>
+                    </tr>
+                    <tr><td><input type="file" name="file32" id="file32" /></td></tr>
+                </table>
+            </td>
+        </tr>
 
     </table>
 
@@ -314,7 +473,7 @@
             <td>
                 <input type="submit" value="Upload Scan Images" class="btn btn-default" />
                 &nbsp;
-                <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
             </td>
         </tr>
     </table>

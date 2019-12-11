@@ -33,6 +33,7 @@ namespace JEVEGA_Us_Cliniic
         public virtual DbSet<MaritalStatu> MaritalStatus { get; set; }
         public virtual DbSet<RadiologistDoctor> RadiologistDoctors { get; set; }
         public virtual DbSet<Sonographer> Sonographers { get; set; }
+        public virtual DbSet<ConsultingDoctor> ConsultingDoctors { get; set; }
         public virtual DbSet<PatientExam> PatientExams { get; set; }
     }
 }

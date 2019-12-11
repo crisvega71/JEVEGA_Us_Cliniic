@@ -135,6 +135,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ConsultingDoctor.cs">
+      <DependentUpon>UsClinicModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountLoginController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DiagnosticExamCategoriesController.cs" />

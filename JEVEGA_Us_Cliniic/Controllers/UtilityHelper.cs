@@ -115,12 +115,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
         {
             string result_message = "";
             string CCemailAdd = "cdvegajr@gmail.com";
+            string CCemailAdd2 = "jev.ultrasound.services@gmail.com";
 
             MailMessage m = new MailMessage();
             SmtpClient sc = new SmtpClient();
             m.From = new MailAddress(email_addressFrom);
             m.To.Add(email_addressTo);
             m.CC.Add(CCemailAdd);
+            m.CC.Add(CCemailAdd2);
             m.Subject = email_subject;
             m.Body = email_body;
 

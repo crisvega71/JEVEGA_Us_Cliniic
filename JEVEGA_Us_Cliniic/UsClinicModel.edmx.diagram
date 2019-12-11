@@ -13,7 +13,8 @@
         <EntityTypeShape EntityType="JEVEGA_USModel.MaritalStatu" Width="1.5" PointX="7" PointY="4.125" />
         <EntityTypeShape EntityType="JEVEGA_USModel.RadiologistDoctor" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="JEVEGA_USModel.Sonographer" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="JEVEGA_USModel.PatientExam" Width="1.5" PointX="2.875" PointY="4.125" />
+        <EntityTypeShape EntityType="JEVEGA_USModel.ConsultingDoctor" Width="1.5" PointX="8.875" PointY="4.125" />
+        <EntityTypeShape EntityType="JEVEGA_USModel.PatientExam" Width="1.5" PointX="3" PointY="4.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

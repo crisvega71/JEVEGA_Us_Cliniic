@@ -32,6 +32,20 @@
             </td>
             <td></td>
         </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExamId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExamId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExamId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+
         <tr>
             <td>
                 <div class="form-group">
@@ -90,7 +104,7 @@
         <td>
             <input type="submit" value="Update" class="btn btn-default" />
             &nbsp;
-            <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+            <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
         </td>
     </tr>
     </table>

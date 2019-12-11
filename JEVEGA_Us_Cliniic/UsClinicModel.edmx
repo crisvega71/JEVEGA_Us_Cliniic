@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="JEVEGA_USModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConsultingDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostTitle" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProfilePic" Type="bit" />
+          <Property Name="PRCLicenseNo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="DiagnosticExam">
           <Key>
             <PropertyRef Name="Id" />
@@ -87,6 +100,19 @@
           <Property Name="Image18" Type="bit" />
           <Property Name="Image19" Type="bit" />
           <Property Name="Image20" Type="bit" />
+          <Property Name="Image21" Type="bit" />
+          <Property Name="Image22" Type="bit" />
+          <Property Name="Image23" Type="bit" />
+          <Property Name="Image24" Type="bit" />
+          <Property Name="Image25" Type="bit" />
+          <Property Name="Image26" Type="bit" />
+          <Property Name="Image27" Type="bit" />
+          <Property Name="Image28" Type="bit" />
+          <Property Name="Image29" Type="bit" />
+          <Property Name="Image30" Type="bit" />
+          <Property Name="Image31" Type="bit" />
+          <Property Name="Image32" Type="bit" />
+          <Property Name="ExamId" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="RadiologistDoctor">
           <Key>
@@ -130,6 +156,7 @@
           <Property Name="UserType" Type="smallint" />
         </EntityType>
         <EntityContainer Name="JEVEGA_USModelStoreContainer">
+          <EntitySet Name="ConsultingDoctor" EntityType="Self.ConsultingDoctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiagnosticExam" EntityType="Self.DiagnosticExam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiagnosticExamCategory" EntityType="Self.DiagnosticExamCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
@@ -182,6 +209,7 @@
           <EntitySet Name="MaritalStatus" EntityType="JEVEGA_USModel.MaritalStatu" />
           <EntitySet Name="RadiologistDoctors" EntityType="JEVEGA_USModel.RadiologistDoctor" />
           <EntitySet Name="Sonographers" EntityType="JEVEGA_USModel.Sonographer" />
+          <EntitySet Name="ConsultingDoctors" EntityType="JEVEGA_USModel.ConsultingDoctor" />
           <EntitySet Name="PatientExams" EntityType="JEVEGA_USModel.PatientExam" />
         </EntityContainer>
         <EntityType Name="PatientData">
@@ -244,6 +272,19 @@
           <Property Name="ProfilePic" Type="Boolean" />
           <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ConsultingDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="Boolean" />
+          <Property Name="PRCLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="PatientExam">
           <Key>
             <PropertyRef Name="Id" />
@@ -278,6 +319,19 @@
           <Property Name="Image18" Type="Boolean" />
           <Property Name="Image19" Type="Boolean" />
           <Property Name="Image20" Type="Boolean" />
+          <Property Name="Image21" Type="Boolean" />
+          <Property Name="Image22" Type="Boolean" />
+          <Property Name="Image23" Type="Boolean" />
+          <Property Name="Image24" Type="Boolean" />
+          <Property Name="Image25" Type="Boolean" />
+          <Property Name="Image26" Type="Boolean" />
+          <Property Name="Image27" Type="Boolean" />
+          <Property Name="Image28" Type="Boolean" />
+          <Property Name="Image29" Type="Boolean" />
+          <Property Name="Image30" Type="Boolean" />
+          <Property Name="Image31" Type="Boolean" />
+          <Property Name="Image32" Type="Boolean" />
+          <Property Name="ExamId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -382,9 +436,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ConsultingDoctors">
+            <EntityTypeMapping TypeName="JEVEGA_USModel.ConsultingDoctor">
+              <MappingFragment StoreEntitySet="ConsultingDoctor">
+                <ScalarProperty Name="PRCLicenseNo" ColumnName="PRCLicenseNo" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PatientExams">
             <EntityTypeMapping TypeName="JEVEGA_USModel.PatientExam">
               <MappingFragment StoreEntitySet="PatientExam">
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="Image32" ColumnName="Image32" />
+                <ScalarProperty Name="Image31" ColumnName="Image31" />
+                <ScalarProperty Name="Image30" ColumnName="Image30" />
+                <ScalarProperty Name="Image29" ColumnName="Image29" />
+                <ScalarProperty Name="Image28" ColumnName="Image28" />
+                <ScalarProperty Name="Image27" ColumnName="Image27" />
+                <ScalarProperty Name="Image26" ColumnName="Image26" />
+                <ScalarProperty Name="Image25" ColumnName="Image25" />
+                <ScalarProperty Name="Image24" ColumnName="Image24" />
+                <ScalarProperty Name="Image23" ColumnName="Image23" />
+                <ScalarProperty Name="Image22" ColumnName="Image22" />
+                <ScalarProperty Name="Image21" ColumnName="Image21" />
                 <ScalarProperty Name="Image20" ColumnName="Image20" />
                 <ScalarProperty Name="Image19" ColumnName="Image19" />
                 <ScalarProperty Name="Image18" ColumnName="Image18" />

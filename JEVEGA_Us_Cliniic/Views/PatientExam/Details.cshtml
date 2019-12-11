@@ -20,7 +20,7 @@
     <table class="table table-bordered">
         <tr>
             <td align="right">
-                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                 &nbsp;
                 @if (Model.ExamReport != null)
                 {  <input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
@@ -41,8 +41,12 @@
             <tr><td colspan="4"><div class="line_space"></div></td></tr>
             <tr>
                 <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamDate)</span></td>
-                <td colspan="3">
+                <td>
                     <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.formattedExamDate)</span>
+                </td>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamId)</span></td>
+                <td>
+                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ExamId)</span>
                 </td>
             </tr>
             <tr><td colspan="4"><div class="line_space"></div></td></tr>
@@ -241,12 +245,101 @@
             </div>
         </div>
 
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 21.</span><br />
+                @if (ViewBag.imageFile21_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile21" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 22.</span><br />
+                @if (ViewBag.imageFile22_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile22" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 23.</span><br />
+                @if (ViewBag.imageFile23_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile23" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 24.</span><br />
+                @if (ViewBag.imageFile24_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile24" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 25.</span><br />
+                @if (ViewBag.imageFile25_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile25" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 26.</span><br />
+                @if (ViewBag.imageFile26_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile26" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 27.</span><br />
+                @if (ViewBag.imageFile27_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile27" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 28.</span><br />
+                @if (ViewBag.imageFile28_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile28" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 29.</span><br />
+                @if (ViewBag.imageFile29_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile29" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 30.</span><br />
+                @if (ViewBag.imageFile30_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile30" class="img-responsive" />}
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 31.</span><br />
+                @if (ViewBag.imageFile31_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile31" class="img-responsive " />}
+            </div>
+
+            <div class="col-md-6">
+                <span class="report_fieldvalue_01">Image 32.</span><br />
+                @if (ViewBag.imageFile32_Up)
+                {<img src="~/ExamImages/@ViewBag.imageFile32" class="img-responsive" />}
+            </div>
+        </div>
 
         <div class="line_space"></div>
         <table class="table table-bordered">
             <tr>
                 <td>
-                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                     &nbsp;
                     @if (Model.ExamReport != null)
                     {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
@@ -256,7 +349,7 @@
                     <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
                     &nbsp;
                     @if (ViewBag.ExamImagesExist)
-                    {  <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" /> }
+                    {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
                 </td>
             </tr>
         </table>

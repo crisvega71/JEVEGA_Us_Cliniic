@@ -286,6 +286,155 @@
                 </td>
             </tr>
 
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 21.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile21_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile21" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 22.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile22_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile22" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 23.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile23_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile23" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 24.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile24_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile24" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 25.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile25_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile25" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 26.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile26_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile26" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 27.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile27_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile27" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 28.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile28_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile28" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 29.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile29_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile29" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 30.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile30_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile30" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 31.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile31_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile31" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="table">
+                        <tr><td><span class="permit_textpara">Image 32.</span> </td></tr>
+                        <tr>
+                            <td>
+                                @if (ViewBag.imageFile32_Up)
+                                {<img src="~/ExamImages/@ViewBag.imageFile32" class="scan_image" />}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
 
         </table>
 
@@ -293,7 +442,7 @@
         <table class="table table-bordered">
         <tr>
             <td>
-                <input type="button" value="Back to List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                <input type="button" value="Back to List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                 &nbsp;
                 <input type="button" value="Upload Again" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("ScanImages", "PatientExam", new { id = ViewBag.patientExamId }) + "'");" />
             </td>
