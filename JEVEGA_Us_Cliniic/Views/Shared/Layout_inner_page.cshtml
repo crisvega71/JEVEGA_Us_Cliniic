@@ -1,41 +1,43 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
 
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-<style>
+    <style>
 
-    .navbar-inverse {
-        background-color: #065ca9 !important;
-        border-color: #065ca9;
-    }
+        .navbar-inverse {
+            background-color: #065ca9 !important;
+            border-color: #065ca9;
+        }
 
-    .menu_text {
-        font-size: 1.00em;
-        color: white !important;
-    }
+        .menu_text {
+            font-size: 1.00em;
+            color: white !important;
+        }
 
-    .menu_text:hover {
-        color: #08C1B1 !important;
-        text-decoration: none;
-    }
-    .welcome_hd {
-        font-size: 0.90em;
-        color: white !important;
-        padding-top:20px;
-    }
-    .welcome_hd_div {
-        float: right;   padding-top: 7px;
-    }
+            .menu_text:hover {
+                color: #08C1B1 !important;
+                text-decoration: none;
+            }
 
-</style>
+        .welcome_hd {
+            font-size: 0.90em;
+            color: white !important;
+            padding-top: 20px;
+        }
 
+        .welcome_hd_div {
+            float: right;
+            padding-top: 7px;
+        }
+    </style>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
 
@@ -207,6 +209,31 @@
             </div>
             <br />
         </div>
+    </div>
+
+
+    <div class="sidemenu_div">
+
+        <table>
+        <tr>
+            <td>
+                <a href="/PatientData/Index"><img src="~/images/patient_data_icon.png" border="0" /></a>
+            </td>
+        </tr>
+        <tr><td><div class="div_space20"></div></td></tr>
+        <tr>
+            <td>
+                <a href="/PatientExam/Index"><img src="~/images/patient_exam_icon.png" border="0" /></a>
+            </td>
+        </tr>
+        <tr><td><div class="div_space20"></div></td></tr>
+        <tr>
+            <td>
+                <a href="/DiagnosticExams/Index"><img src="~/images/diagnostic_exam_category_icon.png" border="0" /></a>
+            </td>
+        </tr>
+        </table>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

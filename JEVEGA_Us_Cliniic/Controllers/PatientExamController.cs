@@ -273,42 +273,43 @@ namespace JEVEGA_Us_Cliniic.Controllers
             else { ViewBag.ExamImagesExist = false;   }
 
             string patiendIDNo = patientExam.PatientID.ToString();
+            string examIdNo = patientExam.ExamId.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
 
-            ViewBag.imageFile01 = getImageFileUploaded(ViewBag.imageFile01_Up, patiendIDNo, "-01.jpg");
-            ViewBag.imageFile02 = getImageFileUploaded(ViewBag.imageFile02_Up, patiendIDNo, "-02.jpg");
-            ViewBag.imageFile03 = getImageFileUploaded(ViewBag.imageFile03_Up, patiendIDNo, "-03.jpg");
-            ViewBag.imageFile04 = getImageFileUploaded(ViewBag.imageFile04_Up, patiendIDNo, "-04.jpg");
-            ViewBag.imageFile05 = getImageFileUploaded(ViewBag.imageFile05_Up, patiendIDNo, "-05.jpg");
-            ViewBag.imageFile06 = getImageFileUploaded(ViewBag.imageFile06_Up, patiendIDNo, "-06.jpg");
-            ViewBag.imageFile07 = getImageFileUploaded(ViewBag.imageFile07_Up, patiendIDNo, "-07.jpg");
-            ViewBag.imageFile08 = getImageFileUploaded(ViewBag.imageFile08_Up, patiendIDNo, "-08.jpg");
-            ViewBag.imageFile09 = getImageFileUploaded(ViewBag.imageFile09_Up, patiendIDNo, "-09.jpg");
-            ViewBag.imageFile10 = getImageFileUploaded(ViewBag.imageFile10_Up, patiendIDNo, "-10.jpg");
+            ViewBag.imageFile01 = getImageFileUploaded(ViewBag.imageFile01_Up, examIdNo, "-01.jpg");
+            ViewBag.imageFile02 = getImageFileUploaded(ViewBag.imageFile02_Up, examIdNo, "-02.jpg");
+            ViewBag.imageFile03 = getImageFileUploaded(ViewBag.imageFile03_Up, examIdNo, "-03.jpg");
+            ViewBag.imageFile04 = getImageFileUploaded(ViewBag.imageFile04_Up, examIdNo, "-04.jpg");
+            ViewBag.imageFile05 = getImageFileUploaded(ViewBag.imageFile05_Up, examIdNo, "-05.jpg");
+            ViewBag.imageFile06 = getImageFileUploaded(ViewBag.imageFile06_Up, examIdNo, "-06.jpg");
+            ViewBag.imageFile07 = getImageFileUploaded(ViewBag.imageFile07_Up, examIdNo, "-07.jpg");
+            ViewBag.imageFile08 = getImageFileUploaded(ViewBag.imageFile08_Up, examIdNo, "-08.jpg");
+            ViewBag.imageFile09 = getImageFileUploaded(ViewBag.imageFile09_Up, examIdNo, "-09.jpg");
+            ViewBag.imageFile10 = getImageFileUploaded(ViewBag.imageFile10_Up, examIdNo, "-10.jpg");
 
-            ViewBag.imageFile11 = getImageFileUploaded(ViewBag.imageFile11_Up, patiendIDNo, "-11.jpg");
-            ViewBag.imageFile12 = getImageFileUploaded(ViewBag.imageFile12_Up, patiendIDNo, "-12.jpg");
-            ViewBag.imageFile13 = getImageFileUploaded(ViewBag.imageFile13_Up, patiendIDNo, "-13.jpg");
-            ViewBag.imageFile14 = getImageFileUploaded(ViewBag.imageFile14_Up, patiendIDNo, "-14.jpg");
-            ViewBag.imageFile15 = getImageFileUploaded(ViewBag.imageFile15_Up, patiendIDNo, "-15.jpg");
-            ViewBag.imageFile16 = getImageFileUploaded(ViewBag.imageFile16_Up, patiendIDNo, "-16.jpg");
-            ViewBag.imageFile17 = getImageFileUploaded(ViewBag.imageFile17_Up, patiendIDNo, "-17.jpg");
-            ViewBag.imageFile18 = getImageFileUploaded(ViewBag.imageFile18_Up, patiendIDNo, "-18.jpg");
-            ViewBag.imageFile19 = getImageFileUploaded(ViewBag.imageFile19_Up, patiendIDNo, "-19.jpg");
-            ViewBag.imageFile20 = getImageFileUploaded(ViewBag.imageFile20_Up, patiendIDNo, "-20.jpg");
+            ViewBag.imageFile11 = getImageFileUploaded(ViewBag.imageFile11_Up, examIdNo, "-11.jpg");
+            ViewBag.imageFile12 = getImageFileUploaded(ViewBag.imageFile12_Up, examIdNo, "-12.jpg");
+            ViewBag.imageFile13 = getImageFileUploaded(ViewBag.imageFile13_Up, examIdNo, "-13.jpg");
+            ViewBag.imageFile14 = getImageFileUploaded(ViewBag.imageFile14_Up, examIdNo, "-14.jpg");
+            ViewBag.imageFile15 = getImageFileUploaded(ViewBag.imageFile15_Up, examIdNo, "-15.jpg");
+            ViewBag.imageFile16 = getImageFileUploaded(ViewBag.imageFile16_Up, examIdNo, "-16.jpg");
+            ViewBag.imageFile17 = getImageFileUploaded(ViewBag.imageFile17_Up, examIdNo, "-17.jpg");
+            ViewBag.imageFile18 = getImageFileUploaded(ViewBag.imageFile18_Up, examIdNo, "-18.jpg");
+            ViewBag.imageFile19 = getImageFileUploaded(ViewBag.imageFile19_Up, examIdNo, "-19.jpg");
+            ViewBag.imageFile20 = getImageFileUploaded(ViewBag.imageFile20_Up, examIdNo, "-20.jpg");
 
-            ViewBag.imageFile21 = getImageFileUploaded(ViewBag.imageFile21_Up, patiendIDNo, "-21.jpg");
-            ViewBag.imageFile22 = getImageFileUploaded(ViewBag.imageFile22_Up, patiendIDNo, "-22.jpg");
-            ViewBag.imageFile23 = getImageFileUploaded(ViewBag.imageFile23_Up, patiendIDNo, "-23.jpg");
-            ViewBag.imageFile24 = getImageFileUploaded(ViewBag.imageFile24_Up, patiendIDNo, "-24.jpg");
-            ViewBag.imageFile25 = getImageFileUploaded(ViewBag.imageFile25_Up, patiendIDNo, "-25.jpg");
-            ViewBag.imageFile26 = getImageFileUploaded(ViewBag.imageFile26_Up, patiendIDNo, "-26.jpg");
-            ViewBag.imageFile27 = getImageFileUploaded(ViewBag.imageFile27_Up, patiendIDNo, "-27.jpg");
-            ViewBag.imageFile28 = getImageFileUploaded(ViewBag.imageFile28_Up, patiendIDNo, "-28.jpg");
-            ViewBag.imageFile29 = getImageFileUploaded(ViewBag.imageFile29_Up, patiendIDNo, "-29.jpg");
-            ViewBag.imageFile30 = getImageFileUploaded(ViewBag.imageFile30_Up, patiendIDNo, "-30.jpg");
-            ViewBag.imageFile31 = getImageFileUploaded(ViewBag.imageFile31_Up, patiendIDNo, "-31.jpg");
-            ViewBag.imageFile32 = getImageFileUploaded(ViewBag.imageFile32_Up, patiendIDNo, "-32.jpg");
+            ViewBag.imageFile21 = getImageFileUploaded(ViewBag.imageFile21_Up, examIdNo, "-21.jpg");
+            ViewBag.imageFile22 = getImageFileUploaded(ViewBag.imageFile22_Up, examIdNo, "-22.jpg");
+            ViewBag.imageFile23 = getImageFileUploaded(ViewBag.imageFile23_Up, examIdNo, "-23.jpg");
+            ViewBag.imageFile24 = getImageFileUploaded(ViewBag.imageFile24_Up, examIdNo, "-24.jpg");
+            ViewBag.imageFile25 = getImageFileUploaded(ViewBag.imageFile25_Up, examIdNo, "-25.jpg");
+            ViewBag.imageFile26 = getImageFileUploaded(ViewBag.imageFile26_Up, examIdNo, "-26.jpg");
+            ViewBag.imageFile27 = getImageFileUploaded(ViewBag.imageFile27_Up, examIdNo, "-27.jpg");
+            ViewBag.imageFile28 = getImageFileUploaded(ViewBag.imageFile28_Up, examIdNo, "-28.jpg");
+            ViewBag.imageFile29 = getImageFileUploaded(ViewBag.imageFile29_Up, examIdNo, "-29.jpg");
+            ViewBag.imageFile30 = getImageFileUploaded(ViewBag.imageFile30_Up, examIdNo, "-30.jpg");
+            ViewBag.imageFile31 = getImageFileUploaded(ViewBag.imageFile31_Up, examIdNo, "-31.jpg");
+            ViewBag.imageFile32 = getImageFileUploaded(ViewBag.imageFile32_Up, examIdNo, "-32.jpg");
 
             ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
             ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
@@ -637,7 +638,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             ViewBag.patiendIDNo = patient_id_number;
             ViewBag.patientExamId = patientExam.Id;
-            ViewBag.PatientName = patientExam.getPatientIdName.ToString();
+            ViewBag.PatientUSexamID = patient_ExamIdNo;
+            ViewBag.PatientName = patientExam.getPatientName.ToString();
             ViewBag.PatientExamName = patientExam.getExamName.ToString();
             ViewBag.PatientExamDate = patientExam.ExamDate.ToString();
 
@@ -909,237 +911,206 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             bool examImagesExist = false;
 
-            ViewBag.imageFile01_Up = patientExam.Image1;
-            ViewBag.imageFile02_Up = patientExam.Image2;
-            ViewBag.imageFile03_Up = patientExam.Image3;
-            ViewBag.imageFile04_Up = patientExam.Image4;
-            ViewBag.imageFile05_Up = patientExam.Image5;
-            ViewBag.imageFile06_Up = patientExam.Image6;
-            ViewBag.imageFile07_Up = patientExam.Image7;
-            ViewBag.imageFile08_Up = patientExam.Image8;
-            ViewBag.imageFile09_Up = patientExam.Image9;
-            ViewBag.imageFile10_Up = patientExam.Image10;
+            SetViewBagFileUpStatus(patientExam);
 
-            ViewBag.imageFile11_Up = patientExam.Image11;
-            ViewBag.imageFile12_Up = patientExam.Image12;
-            ViewBag.imageFile13_Up = patientExam.Image13;
-            ViewBag.imageFile14_Up = patientExam.Image14;
-            ViewBag.imageFile15_Up = patientExam.Image15;
-            ViewBag.imageFile16_Up = patientExam.Image16;
-            ViewBag.imageFile17_Up = patientExam.Image17;
-            ViewBag.imageFile18_Up = patientExam.Image18;
-            ViewBag.imageFile19_Up = patientExam.Image19;
-            ViewBag.imageFile20_Up = patientExam.Image20;
-
-            ViewBag.imageFile21_Up = patientExam.Image21;
-            ViewBag.imageFile22_Up = patientExam.Image22;
-            ViewBag.imageFile23_Up = patientExam.Image23;
-            ViewBag.imageFile24_Up = patientExam.Image24;
-            ViewBag.imageFile25_Up = patientExam.Image25;
-            ViewBag.imageFile26_Up = patientExam.Image26;
-            ViewBag.imageFile27_Up = patientExam.Image27;
-            ViewBag.imageFile28_Up = patientExam.Image28;
-            ViewBag.imageFile29_Up = patientExam.Image29;
-            ViewBag.imageFile30_Up = patientExam.Image30;
-            ViewBag.imageFile31_Up = patientExam.Image31;
-            ViewBag.imageFile32_Up = patientExam.Image32;
 
             string patiendIDNo = patientExam.PatientID.ToString();
+            string patientExamIdNo = patientExam.ExamId.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
 
             if (ViewBag.imageFile01_Up)
             {
-                string filename01 = patiendIDNo + "-01.jpg";
+                string filename01 = patientExamIdNo + "-01.jpg";
                 ViewBag.imageFile01 = filename01;
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile02_Up)
             {
-                string filename02 = patiendIDNo + "-02.jpg";
+                string filename02 = patientExamIdNo + "-02.jpg";
                 ViewBag.imageFile02 = filename02;
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile03_Up)
             {
-                string filename03 = patiendIDNo + "-03.jpg";
+                string filename03 = patientExamIdNo + "-03.jpg";
                 ViewBag.imageFile03 = filename03;
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile04_Up)
             {
-                string filename04 = patiendIDNo + "-04.jpg";
+                string filename04 = patientExamIdNo + "-04.jpg";
                 ViewBag.imageFile04 = filename04;
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile05_Up)
             {
-                ViewBag.imageFile05 = patiendIDNo + "-05.jpg";
+                ViewBag.imageFile05 = patientExamIdNo + "-05.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile06_Up)
             {
-                ViewBag.imageFile06 = patiendIDNo + "-06.jpg";
+                ViewBag.imageFile06 = patientExamIdNo + "-06.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile07_Up)
             {
-                ViewBag.imageFile07 = patiendIDNo + "-07.jpg";
+                ViewBag.imageFile07 = patientExamIdNo + "-07.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile08_Up)
             {
-                ViewBag.imageFile08 = patiendIDNo + "-08.jpg";
+                ViewBag.imageFile08 = patientExamIdNo + "-08.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile09_Up)
             {
-                ViewBag.imageFile09 = patiendIDNo + "-09.jpg";
+                ViewBag.imageFile09 = patientExamIdNo + "-09.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile10_Up)
             {
-                ViewBag.imageFile10 = patiendIDNo + "-10.jpg";
+                ViewBag.imageFile10 = patientExamIdNo + "-10.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile11_Up)
             {
-                ViewBag.imageFile11 = patiendIDNo + "-11.jpg";
+                ViewBag.imageFile11 = patientExamIdNo + "-11.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile12_Up)
             {
-                ViewBag.imageFile12 = patiendIDNo + "-12.jpg";
+                ViewBag.imageFile12 = patientExamIdNo + "-12.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile13_Up)
             {
-                ViewBag.imageFile13 = patiendIDNo + "-13.jpg";
+                ViewBag.imageFile13 = patientExamIdNo + "-13.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile14_Up)
             {
-                ViewBag.imageFile14 = patiendIDNo + "-14.jpg";
+                ViewBag.imageFile14 = patientExamIdNo + "-14.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile15_Up)
             {
-                ViewBag.imageFile15 = patiendIDNo + "-15.jpg";
+                ViewBag.imageFile15 = patientExamIdNo + "-15.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile16_Up)
             {
-                ViewBag.imageFile16 = patiendIDNo + "-16.jpg";
+                ViewBag.imageFile16 = patientExamIdNo + "-16.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile17_Up)
             {
-                ViewBag.imageFile17 = patiendIDNo + "-17.jpg";
+                ViewBag.imageFile17 = patientExamIdNo + "-17.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile18_Up)
             {
-                ViewBag.imageFile18 = patiendIDNo + "-18.jpg";
+                ViewBag.imageFile18 = patientExamIdNo + "-18.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile19_Up)
             {
-                ViewBag.imageFile19 = patiendIDNo + "-19.jpg";
+                ViewBag.imageFile19 = patientExamIdNo + "-19.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile20_Up)
             {
-                ViewBag.imageFile20 = patiendIDNo + "-20.jpg";
+                ViewBag.imageFile20 = patientExamIdNo + "-20.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile21_Up)
             {
-                ViewBag.imageFile21 = patiendIDNo + "-21.jpg";
+                ViewBag.imageFile21 = patientExamIdNo + "-21.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile22_Up)
             {
-                ViewBag.imageFile22 = patiendIDNo + "-22.jpg";
+                ViewBag.imageFile22 = patientExamIdNo + "-22.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile23_Up)
             {
-                ViewBag.imageFile23 = patiendIDNo + "-23.jpg";
+                ViewBag.imageFile23 = patientExamIdNo + "-23.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile24_Up)
             {
-                ViewBag.imageFile24 = patiendIDNo + "-24.jpg";
+                ViewBag.imageFile24 = patientExamIdNo + "-24.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile25_Up)
             {
-                ViewBag.imageFile25 = patiendIDNo + "-25.jpg";
+                ViewBag.imageFile25 = patientExamIdNo + "-25.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile26_Up)
             {
-                ViewBag.imageFile26 = patiendIDNo + "-26.jpg";
+                ViewBag.imageFile26 = patientExamIdNo + "-26.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile27_Up)
             {
-                ViewBag.imageFile27 = patiendIDNo + "-27.jpg";
+                ViewBag.imageFile27 = patientExamIdNo + "-27.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile28_Up)
             {
-                ViewBag.imageFile28 = patiendIDNo + "-28.jpg";
+                ViewBag.imageFile28 = patientExamIdNo + "-28.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile29_Up)
             {
-                ViewBag.imageFile29 = patiendIDNo + "-29.jpg";
+                ViewBag.imageFile29 = patientExamIdNo + "-29.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile30_Up)
             {
-                ViewBag.imageFile30 = patiendIDNo + "-30.jpg";
+                ViewBag.imageFile30 = patientExamIdNo + "-30.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile31_Up)
             {
-                ViewBag.imageFile31 = patiendIDNo + "-31.jpg";
+                ViewBag.imageFile31 = patientExamIdNo + "-31.jpg";
                 examImagesExist = true;
             } //--
 
             if (ViewBag.imageFile32_Up)
             {
-                ViewBag.imageFile32 = patiendIDNo + "-32.jpg";
+                ViewBag.imageFile32 = patientExamIdNo + "-32.jpg";
                 examImagesExist = true;
             } //--
 
@@ -1724,10 +1695,11 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             string patientName = patientExam.getPatientName;
             string doctorName = patientExam.getDoctorName;
+            string doctorEmail = patientExam.getRadDoctorEmail;
             string emailSubject, emailBody;
             
             emailSubject = "Ultrasound Exam - for Patient : " + patientName + " | Exam Id : " + patientExam.ExamId;
-            emailBody = "Dear Dr. " + doctorName + " \r\n\r\n";
+            emailBody = "Dear Dr. " + doctorName + ": \r\n\r\n";
             emailBody += "Find attached link below for exam images of the patient above ... " + "\r\n";
             emailBody += "https://www.jevegausdiagnostic.com/PatientExam/SignMedicalReport/" + id.ToString() + "\r\n\r\n";
             emailBody += "Kindly see and make your official report." + "\r\n";
@@ -1738,6 +1710,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.MailSubject = emailSubject;
             ViewBag.MailBody = emailBody;
             ViewBag.PatientExamId = patientExam.Id;
+            ViewBag.RadDoctorEmail = doctorEmail;
             ViewBag.Posted = false;
 
             return View();
@@ -1749,8 +1722,11 @@ namespace JEVEGA_Us_Cliniic.Controllers
         {
             string emailSubject = formCollection["mail_subject"].ToString();
             string emailBody = formCollection["mail_body"].ToString();
-            
-            string emailAddressTo = "crisvega71@gmail.com";
+            string emailRadDoctor = formCollection["mail_rad_doctor"].ToString();
+
+            //string emailAddressTo = "crisvega71@gmail.com";
+            string emailAddressTo = emailRadDoctor;
+
             string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
             string emailAddFromPwd = "Crv@UE8903510";
 
@@ -1794,6 +1770,19 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam.Image19 == true) { exist = true; return exist; }
             if (patientExam.Image20 == true) { exist = true; return exist; }
 
+            if (patientExam.Image21 == true) { exist = true; return exist; }
+            if (patientExam.Image22 == true) { exist = true; return exist; }
+            if (patientExam.Image23 == true) { exist = true; return exist; }
+            if (patientExam.Image24 == true) { exist = true; return exist; }
+            if (patientExam.Image25 == true) { exist = true; return exist; }
+            if (patientExam.Image26 == true) { exist = true; return exist; }
+            if (patientExam.Image27 == true) { exist = true; return exist; }
+            if (patientExam.Image28 == true) { exist = true; return exist; }
+            if (patientExam.Image29 == true) { exist = true; return exist; }
+            if (patientExam.Image30 == true) { exist = true; return exist; }
+            if (patientExam.Image31 == true) { exist = true; return exist; }
+            if (patientExam.Image32 == true) { exist = true; return exist; }
+
             return exist;
 
         } //--
@@ -1808,28 +1797,46 @@ namespace JEVEGA_Us_Cliniic.Controllers
             { return HttpNotFound(); }
 
             string patientName = patientExam.getPatientName;
-            string OBdoctorName = "Teresitta";
-            string OBemailAddress = "crisvega71@gmail.com";
+            string OBdoctorName = "Teresitta VillaFuerte";
+            
+            string emailSubject, emailBody;
 
-            string responseMessage = "";
-            string emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd;
-
-            emailSubject = "Ultrasound Exam - for Patient : " + patientName;
-            emailBody = "Dear Dr. " + OBdoctorName + " \r\n\r\n";
+            emailSubject = "Ultrasound Exam - for Patient : " + patientName + " | Exam Id : " + patientExam.ExamId; ;
+            emailBody = "Dear Dr. " + OBdoctorName + ": \r\n\r\n";
             emailBody += "Click on the link below to see exam images of the patient above ... " + "\r\n";
             emailBody += "https://www.jevegausdiagnostic.com/PatientExam/Details/" + id.ToString() + "\r\n\r\n";
             emailBody += "Thanks and regards, " + "\r\n";
             emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
 
-            emailAddressTo = OBemailAddress;
-            emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
-            emailAddFromPwd = "Crv@UE8903510";
-
-            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
-            ViewBag.ResponseMessage = responseMessage;
+            ViewBag.MailSubject = emailSubject;
+            ViewBag.MailBody = emailBody;
+            ViewBag.PatientExamId = patientExam.Id;
+            ViewBag.Posted = false;
 
             return View();
 
+        } //--
+
+        [HttpPost]
+        public ActionResult SendExamToOBDoctor(FormCollection formCollection)
+        {
+            string emailSubject = formCollection["mail_subject"].ToString();
+            string emailBody = formCollection["mail_body"].ToString();
+
+            string emailAddressTo = "crisvega71@gmail.com";
+            string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            string emailAddFromPwd = "Crv@UE8903510";
+
+            //string OBemailAddress = "crisvega71@gmail.com";
+            string OBemailAddress = "teresitavillafuerte@yahoo.com";
+            emailAddressTo = OBemailAddress;
+
+            string responseMessage = "";
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+            ViewBag.Posted = true;
+
+            return View();
         } //--
 
         public ActionResult SendExamReportToOBDoctor(int? id)
@@ -1896,6 +1903,161 @@ namespace JEVEGA_Us_Cliniic.Controllers
             List<PatientExam> patientExam = db.PatientExams.Where(p => p.PatientID == p_id).ToList();
 
             return View(patientExam);
-        }
+        } //---
+
+        public ActionResult UploadMultipleFiles(int? id)
+        {
+            string usertype = Session["USER_TYPE"].ToString();
+            if (!utHelp.CheckAdminAccess(usertype))
+            {
+                return RedirectToAction("UnauthorizedAccess", "Users");
+            }
+
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)  {  return HttpNotFound();     }
+
+            ViewBag.patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.patientExamEntityKey = patientExam.Id;
+            ViewBag.PatientName = patientExam.getPatientName.ToString();
+            ViewBag.PatientExamName = patientExam.getExamName.ToString();
+            ViewBag.PatientExamDate = patientExam.ExamDate.ToString();
+            ViewBag.PatientExamId = patientExam.ExamId.ToString();
+
+            return View();
+        } //--
+
+
+        [HttpPost]
+        public ActionResult UploadMultipleExamImages(int patientExamId, string patientExamIdNo, HttpPostedFileBase[] file_exams)
+        {
+            string examImageFilename;
+            int file_counter = 0;
+            bool[] upload_status = new bool[32];
+
+            foreach (HttpPostedFileBase file in file_exams)
+            {
+                if (file != null)
+                {
+                    file_counter++;
+                    if (file_counter < 10)
+                    {
+                        examImageFilename = patientExamIdNo + "-0" + file_counter.ToString() + ".jpg";
+                    }
+                    else  {
+                        examImageFilename = patientExamIdNo + "-" + file_counter.ToString() + ".jpg";
+                    }
+
+                    string file_ext = Path.GetExtension(file.FileName);
+                    if (!InvalidFileExtension(file_ext))
+                    {
+                        string path = Server.MapPath("~/ExamImages/" + examImageFilename);
+                        file.SaveAs(path);
+                        upload_status[file_counter - 1] = true;
+                    }
+                }
+            }
+
+            for (int n = file_counter-1; n < 32; n++)
+            {
+                upload_status[file_counter] = false;
+            }
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Update PatientExam Set Image1 = @upload01, Image2 = @upload02, Image3 = @upload03, Image4 = @upload04, Image5 = @upload05, Image6 = @upload06, Image7 = @upload07, Image8 = @upload08, Image9 = @upload09, Image10 = @upload10, " +
+                    "Image11 = @upload11, Image12 = @upload12, Image13 = @upload13, Image14 = @upload14, Image15 = @upload15, Image16 = @upload16, Image17 = @upload17, Image18 = @upload18, Image19 = @upload19, Image20 = @upload20, Image21 = @upload21, " +
+                    "Image22 = @upload22, Image23 = @upload23,  Image24 = @upload24, Image25 = @upload25, Image26 = @upload26, Image27 = @upload27, Image28 = @upload28, Image29 = @upload29, Image30 = @upload30, Image31 = @upload31,  Image32 = @upload32 Where Id = @examId";
+
+                sqlCmd.Parameters.AddWithValue("@upload01", upload_status[0]);
+                sqlCmd.Parameters.AddWithValue("@upload02", upload_status[1]);
+                sqlCmd.Parameters.AddWithValue("@upload03", upload_status[2]);
+                sqlCmd.Parameters.AddWithValue("@upload04", upload_status[3]);
+                sqlCmd.Parameters.AddWithValue("@upload05", upload_status[4]);
+                sqlCmd.Parameters.AddWithValue("@upload06", upload_status[5]);
+                sqlCmd.Parameters.AddWithValue("@upload07", upload_status[6]);
+                sqlCmd.Parameters.AddWithValue("@upload08", upload_status[7]);
+                sqlCmd.Parameters.AddWithValue("@upload09", upload_status[8]);
+                sqlCmd.Parameters.AddWithValue("@upload10", upload_status[9]);
+
+                sqlCmd.Parameters.AddWithValue("@upload11", upload_status[10]);
+                sqlCmd.Parameters.AddWithValue("@upload12", upload_status[11]);
+                sqlCmd.Parameters.AddWithValue("@upload13", upload_status[12]);
+                sqlCmd.Parameters.AddWithValue("@upload14", upload_status[13]);
+                sqlCmd.Parameters.AddWithValue("@upload15", upload_status[14]);
+                sqlCmd.Parameters.AddWithValue("@upload16", upload_status[15]);
+                sqlCmd.Parameters.AddWithValue("@upload17", upload_status[16]);
+                sqlCmd.Parameters.AddWithValue("@upload18", upload_status[17]);
+                sqlCmd.Parameters.AddWithValue("@upload19", upload_status[18]);
+                sqlCmd.Parameters.AddWithValue("@upload20", upload_status[19]);
+
+                sqlCmd.Parameters.AddWithValue("@upload21", upload_status[20]);
+                sqlCmd.Parameters.AddWithValue("@upload22", upload_status[21]);
+                sqlCmd.Parameters.AddWithValue("@upload23", upload_status[22]);
+                sqlCmd.Parameters.AddWithValue("@upload24", upload_status[23]);
+                sqlCmd.Parameters.AddWithValue("@upload25", upload_status[24]);
+                sqlCmd.Parameters.AddWithValue("@upload26", upload_status[25]);
+                sqlCmd.Parameters.AddWithValue("@upload27", upload_status[26]);
+                sqlCmd.Parameters.AddWithValue("@upload28", upload_status[27]);
+                sqlCmd.Parameters.AddWithValue("@upload29", upload_status[28]);
+                sqlCmd.Parameters.AddWithValue("@upload30", upload_status[29]);
+                sqlCmd.Parameters.AddWithValue("@upload31", upload_status[30]);
+                sqlCmd.Parameters.AddWithValue("@upload32", upload_status[31]);
+
+                sqlCmd.Parameters.AddWithValue("@examId", patientExamId);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+
+            return RedirectToAction("Details/" + patientExamId);
+
+        } //--
+
+        public void SetViewBagFileUpStatus(PatientExam patientExam)
+        {
+
+            ViewBag.imageFile01_Up = patientExam.Image1;
+            ViewBag.imageFile02_Up = patientExam.Image2;
+            ViewBag.imageFile03_Up = patientExam.Image3;
+            ViewBag.imageFile04_Up = patientExam.Image4;
+            ViewBag.imageFile05_Up = patientExam.Image5;
+            ViewBag.imageFile06_Up = patientExam.Image6;
+            ViewBag.imageFile07_Up = patientExam.Image7;
+            ViewBag.imageFile08_Up = patientExam.Image8;
+            ViewBag.imageFile09_Up = patientExam.Image9;
+            ViewBag.imageFile10_Up = patientExam.Image10;
+
+            ViewBag.imageFile11_Up = patientExam.Image11;
+            ViewBag.imageFile12_Up = patientExam.Image12;
+            ViewBag.imageFile13_Up = patientExam.Image13;
+            ViewBag.imageFile14_Up = patientExam.Image14;
+            ViewBag.imageFile15_Up = patientExam.Image15;
+            ViewBag.imageFile16_Up = patientExam.Image16;
+            ViewBag.imageFile17_Up = patientExam.Image17;
+            ViewBag.imageFile18_Up = patientExam.Image18;
+            ViewBag.imageFile19_Up = patientExam.Image19;
+            ViewBag.imageFile20_Up = patientExam.Image20;
+
+            ViewBag.imageFile21_Up = patientExam.Image21;
+            ViewBag.imageFile22_Up = patientExam.Image22;
+            ViewBag.imageFile23_Up = patientExam.Image23;
+            ViewBag.imageFile24_Up = patientExam.Image24;
+            ViewBag.imageFile25_Up = patientExam.Image25;
+            ViewBag.imageFile26_Up = patientExam.Image26;
+            ViewBag.imageFile27_Up = patientExam.Image27;
+            ViewBag.imageFile28_Up = patientExam.Image28;
+            ViewBag.imageFile29_Up = patientExam.Image29;
+            ViewBag.imageFile30_Up = patientExam.Image30;
+            ViewBag.imageFile31_Up = patientExam.Image31;
+            ViewBag.imageFile32_Up = patientExam.Image32;
+
+        } //-- 
+
     }
 }

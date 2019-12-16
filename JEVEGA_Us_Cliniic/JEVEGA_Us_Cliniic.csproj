@@ -143,6 +143,7 @@
     <Compile Include="Controllers\DiagnosticExamCategoriesController.cs" />
     <Compile Include="Controllers\DiagnosticExamsController.cs" />
     <Compile Include="Controllers\DiagnosticServicesController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\PatientExamController.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="MaritalStatu.cs">
       <DependentUpon>UsClinicModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="PatientData.cs">
       <DependentUpon>UsClinicModel.tt</DependentUpon>
     </Compile>
@@ -216,6 +218,7 @@
     <Content Include="images\contact_icon_banner.jpg" />
     <Content Include="images\contact_icon_banner_sml.jpg" />
     <Content Include="images\details_ico.png" />
+    <Content Include="images\diagnostic_exam_category_icon.png" />
     <Content Include="images\diagnostic_services_icon.jpg" />
     <Content Include="images\diagnostic_services_icon_sml.jpg" />
     <Content Include="images\edit_ico.png" />
@@ -229,6 +232,8 @@
     <Content Include="images\map_clinic.jpg" />
     <Content Include="images\no_access_symbol.jpg" />
     <Content Include="images\ob_exam_icon.png" />
+    <Content Include="images\patient_data_icon.png" />
+    <Content Include="images\patient_exam_icon.png" />
     <Content Include="images\profile_pic_icon.png" />
     <Content Include="images\scan_images_icon.png" />
     <Content Include="images\search_icon.png" />
@@ -247,6 +252,7 @@
     <Content Include="images\US_web_banner.jpg" />
     <Content Include="images\US_web_banner_inner.jpg" />
     <Content Include="images\youtube_logo_icon.png" />
+    <Content Include="images\zoom_icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -364,13 +370,14 @@
     <Content Include="Views\PatientData\SearchPatientData.cshtml" />
     <Content Include="Views\PatientExam\SearchPatientExam.cshtml" />
     <Content Include="Views\PatientExam\ShowPatientExam.cshtml" />
+    <Content Include="Views\PatientExam\UploadMultipleFiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ClinicStaff\" />
     <Folder Include="ExamImages\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\AccountLogin\" />
+    <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

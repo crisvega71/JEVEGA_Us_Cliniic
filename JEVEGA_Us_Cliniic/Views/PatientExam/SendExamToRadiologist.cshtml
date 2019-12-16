@@ -11,6 +11,8 @@
   <hr />
   using (Html.BeginForm())
   {
+    <input type="hidden" id="mail_rad_doctor" name="mail_rad_doctor" value="@ViewBag.RadDoctorEmail" />
+
     <div>
         <textarea id="mail_subject" name="mail_subject" class="textarea_report" rows="1">@ViewBag.MailSubject</textarea>
     </div>

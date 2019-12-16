@@ -125,6 +125,14 @@ namespace JEVEGA_Us_Cliniic
             }
         }
 
+        public string getRadDoctorEmail
+        {
+            get
+            {   string rad_doctor_email = dbUSClinic.RadiologistDoctors.Find(Radiologist).Email.ToString();
+                return rad_doctor_email;
+            }
+        }
+
         public string getDoctorFistLastName
         {
             get
@@ -192,7 +200,8 @@ namespace JEVEGA_Us_Cliniic
             bool exist = false;
 
             if (Image1 == true || Image2 == true || Image3 == true || Image4 == true || Image5 == true || Image6 == true || Image7 == true || Image8 == true || Image9 == true || Image10 == true
-                || Image11 == true || Image12 == true || Image13 == true || Image14 == true || Image15 == true || Image16 == true || Image17 == true || Image18 == true || Image19 == true || Image20 == true)
+                || Image11 == true || Image12 == true || Image13 == true || Image14 == true || Image15 == true || Image16 == true || Image17 == true || Image18 == true || Image19 == true || Image20 == true
+                || Image21 == true || Image22 == true || Image23 == true || Image24 == true || Image25 == true || Image26 == true || Image27 == true || Image28 == true || Image29 == true || Image30 == true || Image31 == true || Image32 == true)
             { exist = true; }
 
             return exist;
