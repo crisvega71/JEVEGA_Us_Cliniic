@@ -232,5 +232,119 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             return View();
         }
+
+        public ActionResult ForgetPass()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgetPass(string user_name, string email, string newpass, string confirmpass)
+        {
+            string username = user_name;
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "select * from Users where Username = @username And Email = @email";
+
+                sqlCmd.Parameters.AddWithValue("@username", user_name);
+                sqlCmd.Parameters.AddWithValue("@email", email);
+                
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+
+                SqlDataReader rdrUsers = sqlCmd.ExecuteReader();
+                if (!rdrUsers.HasRows)
+                {
+                    ViewBag.errorResetPassword = "User Id and / or Email does not exist ... ";
+                }
+                else {
+                    
+                    if (newpass != confirmpass) {
+                        ViewBag.errorResetPassword = "Password entries does not match ... ";
+                    } else  {
+                        return RedirectToAction("EmailResetPass", "Users", new { em = email, usr = username, pwd = newpass });
+                    }
+
+                }
+                sqlCon.Close();
+            }
+
+            return View();
+        } //--
+         
+        public ActionResult EmailResetPass()
+        {
+            UtilityHelper utHelp = new UtilityHelper();
+
+            string eMail = Request.QueryString["em"].ToString();
+            string passWord = Request.QueryString["pwd"].ToString();
+            string userId = Request.QueryString["usr"].ToString();
+
+            string hashPassword = sha256_hash(passWord);
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Update Users set HashPassVerification = @hashpass where Email = @email";
+                sqlCmd.Parameters.AddWithValue("@hashpass", hashPassword);
+                sqlCmd.Parameters.AddWithValue("@email", eMail);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+
+                sqlCon.Close();
+            }
+            //-- send email verification to user .... 
+            string emailSubject, emailBody;
+            emailSubject = "Reset Password for User " + userId;
+            emailBody = "Dear " + userId + ": \r\n\r\n";
+            emailBody += "Click on the link below to complete the process of resetting you password ... " + "\r\n";
+            emailBody += "https://www.jevegausdiagnostic.com/Users/PasswordEmailVerified?em=" + eMail + "&hashpwd=" + hashPassword + "\r\n\r\n";
+            emailBody += "Thanks and regards, " + "\r\n";
+            emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
+
+            string emailAddressTo = eMail;
+            string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            string emailAddFromPwd = "Crv@UE8903510";
+
+            string responseMessage = "";
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+
+            ViewBag.UserId = userId;
+            ViewBag.UserEmail = eMail;
+
+            return View();
+        } //--
+
+        public ActionResult PasswordEmailVerified()
+        {
+            string eMail = Request.QueryString["em"].ToString();
+            string passWord = Request.QueryString["hashpwd"].ToString();
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Update Users set Password = @hashpass where Email = @email";
+                sqlCmd.Parameters.AddWithValue("@hashpass", passWord);
+                sqlCmd.Parameters.AddWithValue("@email", eMail);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+
+                sqlCon.Close();
+            }
+            ViewBag.EmailId = eMail;
+
+            return View();
+        } //--
+
     }
 }

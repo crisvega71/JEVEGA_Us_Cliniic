@@ -232,40 +232,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             {   return HttpNotFound();  }
 
-            ViewBag.imageFile01_Up = patientExam.Image1;
-            ViewBag.imageFile02_Up = patientExam.Image2;
-            ViewBag.imageFile03_Up = patientExam.Image3;
-            ViewBag.imageFile04_Up = patientExam.Image4;
-            ViewBag.imageFile05_Up = patientExam.Image5;
-            ViewBag.imageFile06_Up = patientExam.Image6;
-            ViewBag.imageFile07_Up = patientExam.Image7;
-            ViewBag.imageFile08_Up = patientExam.Image8;
-            ViewBag.imageFile09_Up = patientExam.Image9;
-            ViewBag.imageFile10_Up = patientExam.Image10;
-
-            ViewBag.imageFile11_Up = patientExam.Image11;
-            ViewBag.imageFile12_Up = patientExam.Image12;
-            ViewBag.imageFile13_Up = patientExam.Image13;
-            ViewBag.imageFile14_Up = patientExam.Image14;
-            ViewBag.imageFile15_Up = patientExam.Image15;
-            ViewBag.imageFile16_Up = patientExam.Image16;
-            ViewBag.imageFile17_Up = patientExam.Image17;
-            ViewBag.imageFile18_Up = patientExam.Image18;
-            ViewBag.imageFile19_Up = patientExam.Image19;
-            ViewBag.imageFile20_Up = patientExam.Image20;
-
-            ViewBag.imageFile21_Up = patientExam.Image21;
-            ViewBag.imageFile22_Up = patientExam.Image22;
-            ViewBag.imageFile23_Up = patientExam.Image23;
-            ViewBag.imageFile24_Up = patientExam.Image24;
-            ViewBag.imageFile25_Up = patientExam.Image25;
-            ViewBag.imageFile26_Up = patientExam.Image26;
-            ViewBag.imageFile27_Up = patientExam.Image27;
-            ViewBag.imageFile28_Up = patientExam.Image28;
-            ViewBag.imageFile29_Up = patientExam.Image29;
-            ViewBag.imageFile30_Up = patientExam.Image30;
-            ViewBag.imageFile31_Up = patientExam.Image31;
-            ViewBag.imageFile32_Up = patientExam.Image32;
+            SetViewBagFileUpStatus(patientExam);
 
             bool examImagesExist = checkExamImagesExist(id);
             if (examImagesExist)
@@ -539,40 +506,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.PatientExamDate = patientExam.ExamDate.ToString();
             ViewBag.PatientExamId = patientExam.ExamId.ToString();
 
-            ViewBag.imageFile01_Up = patientExam.Image1;
-            ViewBag.imageFile02_Up = patientExam.Image2;
-            ViewBag.imageFile03_Up = patientExam.Image3;
-            ViewBag.imageFile04_Up = patientExam.Image4;
-            ViewBag.imageFile05_Up = patientExam.Image5;
-            ViewBag.imageFile06_Up = patientExam.Image6;
-            ViewBag.imageFile07_Up = patientExam.Image7;
-            ViewBag.imageFile08_Up = patientExam.Image8;
-            ViewBag.imageFile09_Up = patientExam.Image9;
-            ViewBag.imageFile10_Up = patientExam.Image10;
-
-            ViewBag.imageFile11_Up = patientExam.Image11;
-            ViewBag.imageFile12_Up = patientExam.Image12;
-            ViewBag.imageFile13_Up = patientExam.Image13;
-            ViewBag.imageFile14_Up = patientExam.Image14;
-            ViewBag.imageFile15_Up = patientExam.Image15;
-            ViewBag.imageFile16_Up = patientExam.Image16;
-            ViewBag.imageFile17_Up = patientExam.Image17;
-            ViewBag.imageFile18_Up = patientExam.Image18;
-            ViewBag.imageFile19_Up = patientExam.Image19;
-            ViewBag.imageFile20_Up = patientExam.Image20;
-
-            ViewBag.imageFile21_Up = patientExam.Image21;
-            ViewBag.imageFile22_Up = patientExam.Image22;
-            ViewBag.imageFile23_Up = patientExam.Image23;
-            ViewBag.imageFile24_Up = patientExam.Image24;
-            ViewBag.imageFile25_Up = patientExam.Image25;
-            ViewBag.imageFile26_Up = patientExam.Image26;
-            ViewBag.imageFile27_Up = patientExam.Image27;
-            ViewBag.imageFile28_Up = patientExam.Image28;
-            ViewBag.imageFile29_Up = patientExam.Image29;
-            ViewBag.imageFile30_Up = patientExam.Image30;
-            ViewBag.imageFile31_Up = patientExam.Image31;
-            ViewBag.imageFile32_Up = patientExam.Image32;
+            SetViewBagFileUpStatus(patientExam);
 
             string patiendIDNo = patientExam.PatientID.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
@@ -1192,78 +1126,46 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             { return HttpNotFound(); }
 
-            ViewBag.imageFile01_Up = patientExam.Image1;
-            ViewBag.imageFile02_Up = patientExam.Image2;
-            ViewBag.imageFile03_Up = patientExam.Image3;
-            ViewBag.imageFile04_Up = patientExam.Image4;
-            ViewBag.imageFile05_Up = patientExam.Image5;
-            ViewBag.imageFile06_Up = patientExam.Image6;
-            ViewBag.imageFile07_Up = patientExam.Image7;
-            ViewBag.imageFile08_Up = patientExam.Image8;
-            ViewBag.imageFile09_Up = patientExam.Image9;
-            ViewBag.imageFile10_Up = patientExam.Image10;
-
-            ViewBag.imageFile11_Up = patientExam.Image11;
-            ViewBag.imageFile12_Up = patientExam.Image12;
-            ViewBag.imageFile13_Up = patientExam.Image13;
-            ViewBag.imageFile14_Up = patientExam.Image14;
-            ViewBag.imageFile15_Up = patientExam.Image15;
-            ViewBag.imageFile16_Up = patientExam.Image16;
-            ViewBag.imageFile17_Up = patientExam.Image17;
-            ViewBag.imageFile18_Up = patientExam.Image18;
-            ViewBag.imageFile19_Up = patientExam.Image19;
-            ViewBag.imageFile20_Up = patientExam.Image20;
-
-            ViewBag.imageFile21_Up = patientExam.Image21;
-            ViewBag.imageFile22_Up = patientExam.Image22;
-            ViewBag.imageFile23_Up = patientExam.Image23;
-            ViewBag.imageFile24_Up = patientExam.Image24;
-            ViewBag.imageFile25_Up = patientExam.Image25;
-            ViewBag.imageFile26_Up = patientExam.Image26;
-            ViewBag.imageFile27_Up = patientExam.Image27;
-            ViewBag.imageFile28_Up = patientExam.Image28;
-            ViewBag.imageFile29_Up = patientExam.Image29;
-            ViewBag.imageFile30_Up = patientExam.Image30;
-            ViewBag.imageFile31_Up = patientExam.Image31;
-            ViewBag.imageFile32_Up = patientExam.Image32;
+            SetViewBagFileUpStatus(patientExam);
 
             string patiendIDNo = patientExam.PatientID.ToString();
+            string patientExamIdNo = patientExam.ExamId.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
 
-            ViewBag.imageFile01 = getImageFileUploaded(ViewBag.imageFile01_Up, patiendIDNo, "-01.jpg");
-            ViewBag.imageFile02 = getImageFileUploaded(ViewBag.imageFile02_Up, patiendIDNo, "-02.jpg");
-            ViewBag.imageFile03 = getImageFileUploaded(ViewBag.imageFile03_Up, patiendIDNo, "-03.jpg");
-            ViewBag.imageFile04 = getImageFileUploaded(ViewBag.imageFile04_Up, patiendIDNo, "-04.jpg");
-            ViewBag.imageFile05 = getImageFileUploaded(ViewBag.imageFile05_Up, patiendIDNo, "-05.jpg");
-            ViewBag.imageFile06 = getImageFileUploaded(ViewBag.imageFile06_Up, patiendIDNo, "-06.jpg");
-            ViewBag.imageFile07 = getImageFileUploaded(ViewBag.imageFile07_Up, patiendIDNo, "-07.jpg");
-            ViewBag.imageFile08 = getImageFileUploaded(ViewBag.imageFile08_Up, patiendIDNo, "-08.jpg");
-            ViewBag.imageFile09 = getImageFileUploaded(ViewBag.imageFile09_Up, patiendIDNo, "-09.jpg");
-            ViewBag.imageFile10 = getImageFileUploaded(ViewBag.imageFile10_Up, patiendIDNo, "-10.jpg");
+            ViewBag.imageFile01 = getImageFileUploaded(ViewBag.imageFile01_Up, patientExamIdNo, "-01.jpg");
+            ViewBag.imageFile02 = getImageFileUploaded(ViewBag.imageFile02_Up, patientExamIdNo, "-02.jpg");
+            ViewBag.imageFile03 = getImageFileUploaded(ViewBag.imageFile03_Up, patientExamIdNo, "-03.jpg");
+            ViewBag.imageFile04 = getImageFileUploaded(ViewBag.imageFile04_Up, patientExamIdNo, "-04.jpg");
+            ViewBag.imageFile05 = getImageFileUploaded(ViewBag.imageFile05_Up, patientExamIdNo, "-05.jpg");
+            ViewBag.imageFile06 = getImageFileUploaded(ViewBag.imageFile06_Up, patientExamIdNo, "-06.jpg");
+            ViewBag.imageFile07 = getImageFileUploaded(ViewBag.imageFile07_Up, patientExamIdNo, "-07.jpg");
+            ViewBag.imageFile08 = getImageFileUploaded(ViewBag.imageFile08_Up, patientExamIdNo, "-08.jpg");
+            ViewBag.imageFile09 = getImageFileUploaded(ViewBag.imageFile09_Up, patientExamIdNo, "-09.jpg");
+            ViewBag.imageFile10 = getImageFileUploaded(ViewBag.imageFile10_Up, patientExamIdNo, "-10.jpg");
 
-            ViewBag.imageFile11 = getImageFileUploaded(ViewBag.imageFile11_Up, patiendIDNo, "-11.jpg");
-            ViewBag.imageFile12 = getImageFileUploaded(ViewBag.imageFile12_Up, patiendIDNo, "-12.jpg");
-            ViewBag.imageFile13 = getImageFileUploaded(ViewBag.imageFile13_Up, patiendIDNo, "-13.jpg");
-            ViewBag.imageFile14 = getImageFileUploaded(ViewBag.imageFile14_Up, patiendIDNo, "-14.jpg");
-            ViewBag.imageFile15 = getImageFileUploaded(ViewBag.imageFile15_Up, patiendIDNo, "-15.jpg");
-            ViewBag.imageFile16 = getImageFileUploaded(ViewBag.imageFile16_Up, patiendIDNo, "-16.jpg");
-            ViewBag.imageFile17 = getImageFileUploaded(ViewBag.imageFile17_Up, patiendIDNo, "-17.jpg");
-            ViewBag.imageFile18 = getImageFileUploaded(ViewBag.imageFile18_Up, patiendIDNo, "-18.jpg");
-            ViewBag.imageFile19 = getImageFileUploaded(ViewBag.imageFile18_Up, patiendIDNo, "-18.jpg");
-            ViewBag.imageFile20 = getImageFileUploaded(ViewBag.imageFile20_Up, patiendIDNo, "-20.jpg");
+            ViewBag.imageFile11 = getImageFileUploaded(ViewBag.imageFile11_Up, patientExamIdNo, "-11.jpg");
+            ViewBag.imageFile12 = getImageFileUploaded(ViewBag.imageFile12_Up, patientExamIdNo, "-12.jpg");
+            ViewBag.imageFile13 = getImageFileUploaded(ViewBag.imageFile13_Up, patientExamIdNo, "-13.jpg");
+            ViewBag.imageFile14 = getImageFileUploaded(ViewBag.imageFile14_Up, patientExamIdNo, "-14.jpg");
+            ViewBag.imageFile15 = getImageFileUploaded(ViewBag.imageFile15_Up, patientExamIdNo, "-15.jpg");
+            ViewBag.imageFile16 = getImageFileUploaded(ViewBag.imageFile16_Up, patientExamIdNo, "-16.jpg");
+            ViewBag.imageFile17 = getImageFileUploaded(ViewBag.imageFile17_Up, patientExamIdNo, "-17.jpg");
+            ViewBag.imageFile18 = getImageFileUploaded(ViewBag.imageFile18_Up, patientExamIdNo, "-18.jpg");
+            ViewBag.imageFile19 = getImageFileUploaded(ViewBag.imageFile18_Up, patientExamIdNo, "-18.jpg");
+            ViewBag.imageFile20 = getImageFileUploaded(ViewBag.imageFile20_Up, patientExamIdNo, "-20.jpg");
 
-            ViewBag.imageFile21 = getImageFileUploaded(ViewBag.imageFile21_Up, patiendIDNo, "-21.jpg");
-            ViewBag.imageFile22 = getImageFileUploaded(ViewBag.imageFile22_Up, patiendIDNo, "-22.jpg");
-            ViewBag.imageFile23 = getImageFileUploaded(ViewBag.imageFile23_Up, patiendIDNo, "-23.jpg");
-            ViewBag.imageFile24 = getImageFileUploaded(ViewBag.imageFile24_Up, patiendIDNo, "-24.jpg");
-            ViewBag.imageFile25 = getImageFileUploaded(ViewBag.imageFile25_Up, patiendIDNo, "-25.jpg");
-            ViewBag.imageFile26 = getImageFileUploaded(ViewBag.imageFile26_Up, patiendIDNo, "-26.jpg");
-            ViewBag.imageFile27 = getImageFileUploaded(ViewBag.imageFile27_Up, patiendIDNo, "-27.jpg");
-            ViewBag.imageFile28 = getImageFileUploaded(ViewBag.imageFile28_Up, patiendIDNo, "-28.jpg");
-            ViewBag.imageFile29 = getImageFileUploaded(ViewBag.imageFile28_Up, patiendIDNo, "-28.jpg");
-            ViewBag.imageFile30 = getImageFileUploaded(ViewBag.imageFile30_Up, patiendIDNo, "-30.jpg");
-            ViewBag.imageFile31 = getImageFileUploaded(ViewBag.imageFile31_Up, patiendIDNo, "-31.jpg");
-            ViewBag.imageFile32 = getImageFileUploaded(ViewBag.imageFile32_Up, patiendIDNo, "-32.jpg");
+            ViewBag.imageFile21 = getImageFileUploaded(ViewBag.imageFile21_Up, patientExamIdNo, "-21.jpg");
+            ViewBag.imageFile22 = getImageFileUploaded(ViewBag.imageFile22_Up, patientExamIdNo, "-22.jpg");
+            ViewBag.imageFile23 = getImageFileUploaded(ViewBag.imageFile23_Up, patientExamIdNo, "-23.jpg");
+            ViewBag.imageFile24 = getImageFileUploaded(ViewBag.imageFile24_Up, patientExamIdNo, "-24.jpg");
+            ViewBag.imageFile25 = getImageFileUploaded(ViewBag.imageFile25_Up, patientExamIdNo, "-25.jpg");
+            ViewBag.imageFile26 = getImageFileUploaded(ViewBag.imageFile26_Up, patientExamIdNo, "-26.jpg");
+            ViewBag.imageFile27 = getImageFileUploaded(ViewBag.imageFile27_Up, patientExamIdNo, "-27.jpg");
+            ViewBag.imageFile28 = getImageFileUploaded(ViewBag.imageFile28_Up, patientExamIdNo, "-28.jpg");
+            ViewBag.imageFile29 = getImageFileUploaded(ViewBag.imageFile28_Up, patientExamIdNo, "-28.jpg");
+            ViewBag.imageFile30 = getImageFileUploaded(ViewBag.imageFile30_Up, patientExamIdNo, "-30.jpg");
+            ViewBag.imageFile31 = getImageFileUploaded(ViewBag.imageFile31_Up, patientExamIdNo, "-31.jpg");
+            ViewBag.imageFile32 = getImageFileUploaded(ViewBag.imageFile32_Up, patientExamIdNo, "-32.jpg");
 
             return View(patientExam);
         } //-- 
@@ -1278,51 +1180,19 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             { return HttpNotFound(); }
 
-            ViewBag.imageFile01_Up = patientExam.Image1;
-            ViewBag.imageFile02_Up = patientExam.Image2;
-            ViewBag.imageFile03_Up = patientExam.Image3;
-            ViewBag.imageFile04_Up = patientExam.Image4;
-            ViewBag.imageFile05_Up = patientExam.Image5;
-            ViewBag.imageFile06_Up = patientExam.Image6;
-            ViewBag.imageFile07_Up = patientExam.Image7;
-            ViewBag.imageFile08_Up = patientExam.Image8;
-            ViewBag.imageFile09_Up = patientExam.Image9;
-            ViewBag.imageFile10_Up = patientExam.Image10;
-
-            ViewBag.imageFile11_Up = patientExam.Image11;
-            ViewBag.imageFile12_Up = patientExam.Image12;
-            ViewBag.imageFile13_Up = patientExam.Image13;
-            ViewBag.imageFile14_Up = patientExam.Image14;
-            ViewBag.imageFile15_Up = patientExam.Image15;
-            ViewBag.imageFile16_Up = patientExam.Image16;
-            ViewBag.imageFile17_Up = patientExam.Image17;
-            ViewBag.imageFile18_Up = patientExam.Image18;
-            ViewBag.imageFile19_Up = patientExam.Image19;
-            ViewBag.imageFile20_Up = patientExam.Image20;
-
-            ViewBag.imageFile21_Up = patientExam.Image21;
-            ViewBag.imageFile22_Up = patientExam.Image22;
-            ViewBag.imageFile23_Up = patientExam.Image23;
-            ViewBag.imageFile24_Up = patientExam.Image24;
-            ViewBag.imageFile25_Up = patientExam.Image25;
-            ViewBag.imageFile26_Up = patientExam.Image26;
-            ViewBag.imageFile27_Up = patientExam.Image27;
-            ViewBag.imageFile28_Up = patientExam.Image28;
-            ViewBag.imageFile29_Up = patientExam.Image29;
-            ViewBag.imageFile30_Up = patientExam.Image30;
-            ViewBag.imageFile31_Up = patientExam.Image31;
-            ViewBag.imageFile32_Up = patientExam.Image32;
+            SetViewBagFileUpStatus(patientExam);
 
             string patiendIDNo = patientExam.PatientID.ToString();
+            string patientExamIdNo = patientExam.ExamId.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
 
-            string[] examImages = new string[20];
+            string[] examImages = new string[32];
             int examImageCounter = 0;
 
             bool chkImage1 = checkImageSelected(checkBoxImages["chkImage1"]);
             if (ViewBag.imageFile01_Up && chkImage1)
             {
-                string filename01 = patiendIDNo + "-01.jpg";
+                string filename01 = patientExamIdNo + "-01.jpg";
                 ViewBag.imageFile01 = filename01;
                 examImages[examImageCounter] = filename01;
                 ++examImageCounter;
@@ -1331,7 +1201,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage2 = checkImageSelected(checkBoxImages["chkImage2"]);
             if (ViewBag.imageFile02_Up && chkImage2)
             {
-                string filename02 = patiendIDNo + "-02.jpg";
+                string filename02 = patientExamIdNo + "-02.jpg";
                 ViewBag.imageFile02 = filename02;
                 examImages[examImageCounter] = filename02;
                 ++examImageCounter;
@@ -1340,7 +1210,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage3 = checkImageSelected(checkBoxImages["chkImage3"]);
             if (ViewBag.imageFile03_Up && chkImage3)
             {
-                string filename03 = patiendIDNo + "-03.jpg";
+                string filename03 = patientExamIdNo + "-03.jpg";
                 ViewBag.imageFile03 = filename03;
                 examImages[examImageCounter] = filename03;
                 ++examImageCounter;
@@ -1349,7 +1219,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage4 = checkImageSelected(checkBoxImages["chkImage4"]);
             if (ViewBag.imageFile04_Up && chkImage4)
             {
-                string filename04 = patiendIDNo + "-04.jpg";
+                string filename04 = patientExamIdNo + "-04.jpg";
                 ViewBag.imageFile04 = filename04;
                 examImages[examImageCounter] = filename04;
                 ++examImageCounter;
@@ -1358,7 +1228,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage5 = checkImageSelected(checkBoxImages["chkImage5"]);
             if (ViewBag.imageFile05_Up && chkImage5)
             {
-                string filename05 = patiendIDNo + "-05.jpg";
+                string filename05 = patientExamIdNo + "-05.jpg";
                 ViewBag.imageFile05 = filename05;
                 examImages[examImageCounter] = filename05;
                 ++examImageCounter;
@@ -1367,7 +1237,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage6 = checkImageSelected(checkBoxImages["chkImage6"]);
             if (ViewBag.imageFile06_Up && chkImage6)
             {
-                string filename06 = patiendIDNo + "-06.jpg";
+                string filename06 = patientExamIdNo + "-06.jpg";
                 ViewBag.imageFile06 = filename06;
                 examImages[examImageCounter] = filename06;
                 ++examImageCounter;
@@ -1376,8 +1246,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage7 = checkImageSelected(checkBoxImages["chkImage7"]);
             if (ViewBag.imageFile07_Up && chkImage7)
             {
-                string filename07 = patiendIDNo + "-07.jpg";
-                ViewBag.imageFile07 = patiendIDNo + "-07.jpg";
+                string filename07 = patientExamIdNo + "-07.jpg";
+                ViewBag.imageFile07 = filename07;
                 examImages[examImageCounter] = filename07;
                 ++examImageCounter;
 
@@ -1386,8 +1256,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage8 = checkImageSelected(checkBoxImages["chkImage8"]);
             if (ViewBag.imageFile08_Up && chkImage8)
             {
-                string filename08 = patiendIDNo + "-08.jpg";
-                ViewBag.imageFile08 = patiendIDNo + "-08.jpg";
+                string filename08 = patientExamIdNo + "-08.jpg";
+                ViewBag.imageFile08 = patientExamIdNo + "-08.jpg";
                 examImages[examImageCounter] = filename08;
                 ++examImageCounter;
             } //--
@@ -1395,8 +1265,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage9 = checkImageSelected(checkBoxImages["chkImage9"]);
             if (ViewBag.imageFile09_Up && chkImage9)
             {
-                string filename09 = patiendIDNo + "-09.jpg";
-                ViewBag.imageFile09 = patiendIDNo + "-09.jpg";
+                string filename09 = patientExamIdNo + "-09.jpg";
+                ViewBag.imageFile09 = patientExamIdNo + "-09.jpg";
                 examImages[examImageCounter] = filename09;
                 ++examImageCounter;
             } //--
@@ -1404,8 +1274,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage10 = checkImageSelected(checkBoxImages["chkImage10"]);
             if (ViewBag.imageFile10_Up && chkImage10)
             {
-                string filename10 = patiendIDNo + "-10.jpg";
-                ViewBag.imageFile10 = patiendIDNo + "-10.jpg";
+                string filename10 = patientExamIdNo + "-10.jpg";
+                ViewBag.imageFile10 = patientExamIdNo + "-10.jpg";
                 examImages[examImageCounter] = filename10;
                 ++examImageCounter;
             } //--
@@ -1413,8 +1283,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage11 = checkImageSelected(checkBoxImages["chkImage11"]);
             if (ViewBag.imageFile11_Up && chkImage11)
             {
-                string filename11 = patiendIDNo + "-11.jpg";
-                ViewBag.imageFile11 = patiendIDNo + "-11.jpg";
+                string filename11 = patientExamIdNo + "-11.jpg";
+                ViewBag.imageFile11 = patientExamIdNo + "-11.jpg";
                 examImages[examImageCounter] = filename11;
                 ++examImageCounter;
             } //--
@@ -1422,8 +1292,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage12 = checkImageSelected(checkBoxImages["chkImage12"]);
             if (ViewBag.imageFile12_Up && chkImage12)
             {
-                string filename12 = patiendIDNo + "-12.jpg";
-                ViewBag.imageFile12 = patiendIDNo + "-12.jpg";
+                string filename12 = patientExamIdNo + "-12.jpg";
+                ViewBag.imageFile12 = patientExamIdNo + "-12.jpg";
                 examImages[examImageCounter] = filename12;
                 ++examImageCounter;
             } //--
@@ -1431,8 +1301,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage13 = checkImageSelected(checkBoxImages["chkImage13"]);
             if (ViewBag.imageFile13_Up && chkImage13)
             {
-                string filename13 = patiendIDNo + "-13.jpg";
-                ViewBag.imageFile13 = patiendIDNo + "-13.jpg";
+                string filename13 = patientExamIdNo + "-13.jpg";
+                ViewBag.imageFile13 = patientExamIdNo + "-13.jpg";
                 examImages[examImageCounter] = filename13;
                 ++examImageCounter;
             } //--
@@ -1440,8 +1310,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage14 = checkImageSelected(checkBoxImages["chkImage14"]);
             if (ViewBag.imageFile14_Up && chkImage14)
             {
-                string filename14 = patiendIDNo + "-14.jpg";
-                ViewBag.imageFile14 = patiendIDNo + "-14.jpg";
+                string filename14 = patientExamIdNo + "-14.jpg";
+                ViewBag.imageFile14 = patientExamIdNo + "-14.jpg";
                 examImages[examImageCounter] = filename14;
                 ++examImageCounter;
             } //--
@@ -1449,8 +1319,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage15 = checkImageSelected(checkBoxImages["chkImage15"]);
             if (ViewBag.imageFile15_Up && chkImage15)
             {
-                string filename15 = patiendIDNo + "-15.jpg";
-                ViewBag.imageFile15 = patiendIDNo + "-15.jpg";
+                string filename15 = patientExamIdNo + "-15.jpg";
+                ViewBag.imageFile15 = patientExamIdNo + "-15.jpg";
                 examImages[examImageCounter] = filename15;
                 ++examImageCounter;
             } //--
@@ -1458,8 +1328,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage16 = checkImageSelected(checkBoxImages["chkImage16"]);
             if (ViewBag.imageFile16_Up && chkImage16)
             {
-                string filename16 = patiendIDNo + "-16.jpg";
-                ViewBag.imageFile16 = patiendIDNo + "-16.jpg";
+                string filename16 = patientExamIdNo + "-16.jpg";
+                ViewBag.imageFile16 = patientExamIdNo + "-16.jpg";
                 examImages[examImageCounter] = filename16;
                 ++examImageCounter;
             } //--
@@ -1467,8 +1337,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage17 = checkImageSelected(checkBoxImages["chkImage17"]);
             if (ViewBag.imageFile17_Up && chkImage17)
             {
-                string filename17 = patiendIDNo + "-17.jpg";
-                ViewBag.imageFile17 = patiendIDNo + "-17.jpg";
+                string filename17 = patientExamIdNo + "-17.jpg";
+                ViewBag.imageFile17 = patientExamIdNo + "-17.jpg";
                 examImages[examImageCounter] = filename17;
                 ++examImageCounter;
             } //--
@@ -1476,8 +1346,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage18 = checkImageSelected(checkBoxImages["chkImage18"]);
             if (ViewBag.imageFile18_Up && chkImage18)
             {
-                string filename18 = patiendIDNo + "-18.jpg";
-                ViewBag.imageFile18 = patiendIDNo + "-18.jpg";
+                string filename18 = patientExamIdNo + "-18.jpg";
+                ViewBag.imageFile18 = patientExamIdNo + "-18.jpg";
                 examImages[examImageCounter] = filename18;
                 ++examImageCounter;
             } //--
@@ -1485,8 +1355,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage19 = checkImageSelected(checkBoxImages["chkImage19"]);
             if (ViewBag.imageFile19_Up && chkImage19)
             {
-                string filename19 = patiendIDNo + "-19.jpg";
-                ViewBag.imageFile19 = patiendIDNo + "-19.jpg";
+                string filename19 = patientExamIdNo + "-19.jpg";
+                ViewBag.imageFile19 = patientExamIdNo + "-19.jpg";
                 examImages[examImageCounter] = filename19;
                 ++examImageCounter;
             } //--
@@ -1494,8 +1364,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage20 = checkImageSelected(checkBoxImages["chkImage20"]);
             if (ViewBag.imageFile20_Up && chkImage20)
             {
-                string filename20 = patiendIDNo + "-20.jpg";
-                ViewBag.imageFile20 = patiendIDNo + "-20.jpg";
+                string filename20 = patientExamIdNo + "-20.jpg";
+                ViewBag.imageFile20 = patientExamIdNo + "-20.jpg";
                 examImages[examImageCounter] = filename20;
                 ++examImageCounter;
             } //--
@@ -1503,8 +1373,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage21 = checkImageSelected(checkBoxImages["chkImage21"]);
             if (ViewBag.imageFile21_Up && chkImage21)
             {
-                string filename21 = patiendIDNo + "-21.jpg";
-                ViewBag.imageFile21 = patiendIDNo + "-21.jpg";
+                string filename21 = patientExamIdNo + "-21.jpg";
+                ViewBag.imageFile21 = patientExamIdNo + "-21.jpg";
                 examImages[examImageCounter] = filename21;
                 ++examImageCounter;
             } //--
@@ -1512,8 +1382,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage22 = checkImageSelected(checkBoxImages["chkImage22"]);
             if (ViewBag.imageFile22_Up && chkImage22)
             {
-                string filename22 = patiendIDNo + "-22.jpg";
-                ViewBag.imageFile22 = patiendIDNo + "-22.jpg";
+                string filename22 = patientExamIdNo + "-22.jpg";
+                ViewBag.imageFile22 = patientExamIdNo + "-22.jpg";
                 examImages[examImageCounter] = filename22;
                 ++examImageCounter;
             } //--
@@ -1521,8 +1391,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage23 = checkImageSelected(checkBoxImages["chkImage23"]);
             if (ViewBag.imageFile23_Up && chkImage23)
             {
-                string filename23 = patiendIDNo + "-23.jpg";
-                ViewBag.imageFile23 = patiendIDNo + "-23.jpg";
+                string filename23 = patientExamIdNo + "-23.jpg";
+                ViewBag.imageFile23 = patientExamIdNo + "-23.jpg";
                 examImages[examImageCounter] = filename23;
                 ++examImageCounter;
             } //--
@@ -1530,8 +1400,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage24 = checkImageSelected(checkBoxImages["chkImage24"]);
             if (ViewBag.imageFile24_Up && chkImage24)
             {
-                string filename24 = patiendIDNo + "-24.jpg";
-                ViewBag.imageFile24 = patiendIDNo + "-24.jpg";
+                string filename24 = patientExamIdNo + "-24.jpg";
+                ViewBag.imageFile24 = patientExamIdNo + "-24.jpg";
                 examImages[examImageCounter] = filename24;
                 ++examImageCounter;
             } //--
@@ -1539,8 +1409,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage25 = checkImageSelected(checkBoxImages["chkImage25"]);
             if (ViewBag.imageFile25_Up && chkImage25)
             {
-                string filename25 = patiendIDNo + "-25.jpg";
-                ViewBag.imageFile25 = patiendIDNo + "-25.jpg";
+                string filename25 = patientExamIdNo + "-25.jpg";
+                ViewBag.imageFile25 = patientExamIdNo + "-25.jpg";
                 examImages[examImageCounter] = filename25;
                 ++examImageCounter;
             } //--
@@ -1548,8 +1418,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage26 = checkImageSelected(checkBoxImages["chkImage26"]);
             if (ViewBag.imageFile26_Up && chkImage26)
             {
-                string filename26 = patiendIDNo + "-26.jpg";
-                ViewBag.imageFile26 = patiendIDNo + "-26.jpg";
+                string filename26 = patientExamIdNo + "-26.jpg";
+                ViewBag.imageFile26 = patientExamIdNo + "-26.jpg";
                 examImages[examImageCounter] = filename26;
                 ++examImageCounter;
             } //--
@@ -1557,8 +1427,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage27 = checkImageSelected(checkBoxImages["chkImage27"]);
             if (ViewBag.imageFile27_Up && chkImage27)
             {
-                string filename27 = patiendIDNo + "-27.jpg";
-                ViewBag.imageFile27 = patiendIDNo + "-27.jpg";
+                string filename27 = patientExamIdNo + "-27.jpg";
+                ViewBag.imageFile27 = patientExamIdNo + "-27.jpg";
                 examImages[examImageCounter] = filename27;
                 ++examImageCounter;
             } //--
@@ -1566,8 +1436,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage28 = checkImageSelected(checkBoxImages["chkImage28"]);
             if (ViewBag.imageFile28_Up && chkImage28)
             {
-                string filename28 = patiendIDNo + "-28.jpg";
-                ViewBag.imageFile28 = patiendIDNo + "-28.jpg";
+                string filename28 = patientExamIdNo + "-28.jpg";
+                ViewBag.imageFile28 = patientExamIdNo + "-28.jpg";
                 examImages[examImageCounter] = filename28;
                 ++examImageCounter;
             } //--
@@ -1575,8 +1445,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage29 = checkImageSelected(checkBoxImages["chkImage29"]);
             if (ViewBag.imageFile29_Up && chkImage29)
             {
-                string filename29 = patiendIDNo + "-29.jpg";
-                ViewBag.imageFile29 = patiendIDNo + "-29.jpg";
+                string filename29 = patientExamIdNo + "-29.jpg";
+                ViewBag.imageFile29 = patientExamIdNo + "-29.jpg";
                 examImages[examImageCounter] = filename29;
                 ++examImageCounter;
             } //--
@@ -1584,8 +1454,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage30 = checkImageSelected(checkBoxImages["chkImage30"]);
             if (ViewBag.imageFile30_Up && chkImage30)
             {
-                string filename30 = patiendIDNo + "-30.jpg";
-                ViewBag.imageFile30 = patiendIDNo + "-30.jpg";
+                string filename30 = patientExamIdNo + "-30.jpg";
+                ViewBag.imageFile30 = patientExamIdNo + "-30.jpg";
                 examImages[examImageCounter] = filename30;
                 ++examImageCounter;
             } //--
@@ -1593,8 +1463,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage31 = checkImageSelected(checkBoxImages["chkImage31"]);
             if (ViewBag.imageFile31_Up && chkImage31)
             {
-                string filename31 = patiendIDNo + "-31.jpg";
-                ViewBag.imageFile31 = patiendIDNo + "-31.jpg";
+                string filename31 = patientExamIdNo + "-31.jpg";
+                ViewBag.imageFile31 = patientExamIdNo + "-31.jpg";
                 examImages[examImageCounter] = filename31;
                 ++examImageCounter;
             } //--
@@ -1602,8 +1472,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             bool chkImage32 = checkImageSelected(checkBoxImages["chkImage32"]);
             if (ViewBag.imageFile32_Up && chkImage32)
             {
-                string filename32 = patiendIDNo + "-32.jpg";
-                ViewBag.imageFile32 = patiendIDNo + "-32.jpg";
+                string filename32 = patientExamIdNo + "-32.jpg";
+                ViewBag.imageFile32 = patientExamIdNo + "-32.jpg";
                 examImages[examImageCounter] = filename32;
                 ++examImageCounter;
             } //--

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "EmailResetPass";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<h3>Send eMail Notification to Reset Password | User : @ViewBag.UserId</h3>
+<br /><br />
+<span class="table_field_value">Please check your email @ViewBag.UserEmail to complete the process of resetting your password.</span>
+
+<br /><br />
+<span class="error_message">@ViewBag.ResponseMessage</span>
+
+

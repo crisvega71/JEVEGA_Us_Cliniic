@@ -371,6 +371,9 @@
     <Content Include="Views\PatientExam\SearchPatientExam.cshtml" />
     <Content Include="Views\PatientExam\ShowPatientExam.cshtml" />
     <Content Include="Views\PatientExam\UploadMultipleFiles.cshtml" />
+    <Content Include="Views\Users\ForgetPass.cshtml" />
+    <Content Include="Views\Users\EmailResetPass.cshtml" />
+    <Content Include="Views\Users\PasswordEmailVerified.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

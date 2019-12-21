@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "ForgetPass";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    <div ng-app="resetPassApp" ng-controller="resetPassCtrl">
+
+        <div class=""><h3>Forget and Reset Password</h3></div>
+
+        <div class="div_space20"></div>
+        <div class="">
+            <input type="text" class="form-control" id="user_name" name="user_name" ng-model="user_name" required placeholder="User Name" />
+        </div>
+
+        <div class="line_space"></div>
+        <div class="line_space"></div>
+        <div class="">
+            <input type="email" class="form-control" id="email" name="email" ng-model="email" required placeholder="Email" />
+        </div>
+
+        <div class="div_space20"></div>
+
+        <div class="">
+            <input type="password" class="form-control" id="newpass" name="newpass" ng-model="newpass" required placeholder="New Password" />
+        </div>
+
+        <div class="line_space"></div>
+        <div class="line_space"></div>
+        <div class="">
+            <input type="password" class="form-control" id="confirmpass" name="confirmpass" ng-model="confirmpass" required placeholder="Confirm Password" />
+        </div>
+
+
+        <br /><br />
+        <div>
+            <input type="submit" value="Reset Password" class="btn btn-primary btn-block" />
+        </div>
+
+
+        <br /><br />
+        <div class="col-md-12 bg-warning">
+            <p class="text-danger">@ViewBag.errorResetPassword</p>
+        </div>
+
+
+    </div>
+
+    <script>
+        var AJSapp = angular.module('resetPassApp', []);
+
+        AJSapp.controller('resetPassCtrl', function ($scope)
+        {
+
+        });
+
+    </script>
+
+}
