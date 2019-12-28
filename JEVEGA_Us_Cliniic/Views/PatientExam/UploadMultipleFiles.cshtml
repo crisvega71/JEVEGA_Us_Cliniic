@@ -45,27 +45,61 @@
         <table class="table table-bordered">
             <tr>
                 <td>
-                    <input type="submit" value="Upload Scan Images" class="btn btn-default" />
+                    <input type="submit" id="submitButton" name="submitButton" value="Upload Scan Images" class="btn btn-default" />
                     &nbsp;
                     <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                 </td>
             </tr>
         </table>
     </div>
+
+    <div id="divError" name="divError">
+        <br />
+        <span class="error_message_ii">Some image files are not valid!  Please select file images again.</span>
+        <br />
+    </div>
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+
+    $(document).ready(function ()
+    {
+        $("#divError").hide();
+        $("#submitButton").prop("disabled", true);
+    });
 
     function updateFileList()
     {
         var input = document.getElementById('file_exams');
         var output = document.getElementById('fileList');
+        var isImageFileValid;
 
+        isImageFileValid = true;
         output.innerHTML = '<ul>';
-        for (var i = 0; i < input.files.length; ++i) {
+        for (var i = 0; i < input.files.length; ++i)
+        {
+            var inputFilename = input.files.item(i).name;
+            if (inputFilename.indexOf(".JPG") == -1 && inputFilename.indexOf(".jpg") == -1) {
+                isImageFileValid = false;
+            }
+
             output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
         }
         output.innerHTML += '</ul>';
+
+
+        if (isImageFileValid) {
+            $("#submitButton").prop("disabled", false);
+            $("#divError").hide();
+        }
+        else
+        {
+            $("#submitButton").prop("disabled", true);
+            $("#divError").show();
+        }
+
     }
+
 
 </script>

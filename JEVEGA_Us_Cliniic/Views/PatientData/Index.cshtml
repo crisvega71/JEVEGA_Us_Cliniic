@@ -10,6 +10,9 @@
     <td><h3>Patient Data List</h3></td>
     <td align="right">
         @{
+            if (Session["USER_TYPE"] == null)
+            { Response.Redirect("/Users/Login"); }
+
             if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
             {
                 <a href=@Url.Action("Create", "PatientData")><img src="~/images/add_icon.png" /></a>

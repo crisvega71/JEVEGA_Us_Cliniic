@@ -232,6 +232,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             {   return HttpNotFound();  }
 
+            string patientDataID = patientExam.PatientID;
+            PatientData patientData = db.PatientDatas.Find(patientDataID);
+
             SetViewBagFileUpStatus(patientExam);
 
             bool examImagesExist = checkExamImagesExist(id);
@@ -280,6 +283,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
             ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc;
 
             return View(patientExam);
         } //--
@@ -843,6 +849,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             {   return HttpNotFound();  }
 
+            string patientDataID = patientExam.PatientID.ToString();
+            PatientData patientData = db.PatientDatas.Find(patientDataID);
+
             bool examImagesExist = false;
 
             SetViewBagFileUpStatus(patientExam);
@@ -1057,6 +1066,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
             ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc.ToString();
 
             return View(patientExam);
 

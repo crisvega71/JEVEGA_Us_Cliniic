@@ -4,87 +4,149 @@
     Layout = "~/Views/Shared/Layout_inner_page.cshtml";
 }
 
-<table class="table_clinic_pageheader">
-    <tr>
-        <td><h3>Diagnostic Services </h3></td>
-        <td align="right"></td>
-    </tr>
-</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
 
-<div class="div_space20"></div>
+    $(document).ready(function () {
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/services_obgyne.jpg" style="width:200px;" />
+        $("#obgyneButt").click(function()
+        {
+            $("#serviceInfo").load("/HtmlContent/OBGyne.html");
+        });
+
+        $("#pelvisButt").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Pelvis.html");
+        });
+
+        $("#abdomenButt").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Abdomen.html");
+        });
+
+        $("#vascularButt").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Vascular.html");
+        });
+
+        $("#smallpartButt").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Smallparts.html");
+        });
+
+    });
+
+</script>
+
+<div id="serviceInfo">
+
+    <table class="table_clinic_pageheader">
+        <tr>
+            <td><h3>Diagnostic Services </h3></td>
+            <td align="right"></td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/services_obgyne.jpg" style="width:200px;" />
+        </div>
+
+        <div class="col-md-9">
+            <h4>OBGyne</h4>
+            <p>
+                Obstetric ultrasound uses sound waves to produce pictures of a baby (embryo or fetus) within a pregnant woman, as well as the mother's uterus and ovaries.
+            </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("OBGyne", "DiagnosticServices")">Learn more &raquo;</a></p>*@
+
+            <input type="button" id="obgyneButt" name="obgyneButt" value="Load more info &raquo;" class="btn btn-default" />
+        </div>
     </div>
 
-    <div class="col-md-9">
-        <h4>OBGyne</h4>
-        <p>
-            Obstetric ultrasound uses sound waves to produce pictures of a baby (embryo or fetus) within a pregnant woman, as well as the mother's uterus and ovaries.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("OBGyne", "DiagnosticServices")">Learn more &raquo;</a></p>
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/services_pelvis.jpg" style="width:200px;" />
+        </div>
+        <div class="col-md-9">
+            <h4>Pelvis Female</h4>
+            <p>
+                A pelvic ultrasound is a noninvasive diagnostic exam that produces images that are used to assess organs and structures within the female pelvis.
+            </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Pelvis", "DiagnosticServices")">Learn more &raquo;</a></p>*@
+
+            <input type="button" id="pelvisButt" name="pelvisButt" value="Load more info &raquo;" class="btn btn-default" />
+        </div>
     </div>
+
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/services_abdomen.jpg" style="width:200px;" />
+        </div>
+        <div class="col-md-9">
+            <h4>Abdomen (Adult / Pediatric)</h4>
+            <p>
+                Abdominal ultrasound is a type of imaging test. It is used to look at organs in the abdomen, including the liver, gallbladder, spleen, pancreas, and kidneys.
+            </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Abdomen", "DiagnosticServices")">Learn more &raquo;</a></p>*@
+
+            <input type="button" id="abdomenButt" name="abdomenButt" value="Load more info &raquo;" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/services_vascular.jpg" style="width:200px;" />
+        </div>
+        <div class="col-md-9">
+            <h4>Vascular Study</h4>
+            <p>
+                Vascular studies are tests that check the blood flow in your arteries and veins. These tests are noninvasive. Vascular studies use high-frequency sound waves (ultrasound) to measure the amount of blood flow in your blood vessels.
+            </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Vascular", "DiagnosticServices")">Learn more &raquo;</a></p>*@
+
+            <input type="button" id="vascularButt" name="vascularButt" value="Load more info &raquo;" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/services_thyroid.jpg" style="width:200px;" />
+        </div>
+        <div class="col-md-9">
+            <h4>Small Parts</h4>
+            <p>
+                Ultrasound imaging of small parts is a useful way of evaluating many of the superficial organs of the body such as the thyroid gland, the neck and the testes. The ultrasound images can help an ultrasound practitioner to evaluate these organs and look for signs of disease.
+            </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Smallparts", "DiagnosticServices")">Learn more &raquo;</a></p>*@
+
+            <input type="button" id="smallpartButt" name="smallpartButt" value="Load more info &raquo;" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="div_space20"></div>
+
 </div>
 
-<div class="div_space20"></div>
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/services_pelvis.jpg" style="width:200px;" />
-    </div>
-    <div class="col-md-9">
-        <h4>Pelvis Female</h4>
-        <p>
-            A pelvic ultrasound is a noninvasive diagnostic exam that produces images that are used to assess organs and structures within the female pelvis.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Pelvis", "DiagnosticServices")">Learn more &raquo;</a></p>
-    </div>
-</div>
+<script>
 
-<div class="div_space20"></div>
+    $(document).ready(function () {
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/services_abdomen.jpg" style="width:200px;" />
-    </div>
-    <div class="col-md-9">
-        <h4>Abdomen (Adult / Pediatric)</h4>
-        <p>
-            Abdominal ultrasound is a type of imaging test. It is used to look at organs in the abdomen, including the liver, gallbladder, spleen, pancreas, and kidneys.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Abdomen", "DiagnosticServices")">Learn more &raquo;</a></p>
-    </div>
-</div>
+        $("#buttVascular").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Vascular.html");
+        });
 
-<div class="div_space20"></div>
+        $("#buttSmallparts").click(function () {
+            $("#serviceInfo").load("/HtmlContent/Smallparts.html");
+        });
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/services_vascular.jpg" style="width:200px;" />
-    </div>
-    <div class="col-md-9">
-        <h4>Vascular Study</h4>
-        <p>
-            Vascular studies are tests that check the blood flow in your arteries and veins. These tests are noninvasive. Vascular studies use high-frequency sound waves (ultrasound) to measure the amount of blood flow in your blood vessels.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Vascular", "DiagnosticServices")">Learn more &raquo;</a></p>
-    </div>
-</div>
+    });
 
-<div class="div_space20"></div>
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/services_thyroid.jpg" style="width:200px;" />
-    </div>
-    <div class="col-md-9">
-        <h4>Small Parts</h4>
-        <p>
-            Ultrasound imaging of small parts is a useful way of evaluating many of the superficial organs of the body such as the thyroid gland, the neck and the testes. The ultrasound images can help an ultrasound practitioner to evaluate these organs and look for signs of disease.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Smallparts", "DiagnosticServices")">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-<div class="div_space20"></div>
+</script>

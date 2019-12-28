@@ -9,7 +9,10 @@
     <tr>
         <td><h3>Patient Exams List | @ViewBag.DateList</h3></td>
         <td align="right">
-            @{
+            @{   
+                if (Session["USER_TYPE"] == null)
+                {   Response.Redirect("/Users/Login");  }
+
                 if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
                 {
                     <a href=@Url.Action("Create", "PatientExam")><img src="~/images/add_icon.png" /></a>
@@ -28,7 +31,7 @@
         <th>@Html.DisplayNameFor(model => model.ExamId)</th>
         <th>@Html.DisplayNameFor(model => model.ExamType)</th>
         <th>@Html.DisplayNameFor(model => model.ExamDate)</th>
-        <th>@Html.DisplayNameFor(model => model.Sonographer)</th>
+        @*<th>@Html.DisplayNameFor(model => model.Sonographer)</th>*@
         <th>@Html.DisplayNameFor(model => model.Radiologist)</th>
         <th>Images</th>
         <th>@Html.DisplayNameFor(model => model.SignByDoctor)</th>
@@ -38,11 +41,11 @@
     @foreach (var item in Model)
     {
     <tr>
-        <td>@Html.DisplayFor(modelItem => item.getPatientIdName)</td>
+        <td>@Html.DisplayFor(modelItem => item.getPatientName)</td>
         <td>@Html.DisplayFor(modelItem => item.ExamId)</td>
         <td>@Html.DisplayFor(modelItem => item.getExamName)</td>
         <td>@Html.DisplayFor(modelItem => item.ExamDate)</td>
-        <td>@Html.DisplayFor(modelItem => item.getSonographerName)</td>
+        @*<td>@Html.DisplayFor(modelItem => item.getSonographerName)</td>*@
         <td>@Html.DisplayFor(modelItem => item.getDoctorName)</td>
 
         <td><span class="text_form_value">@item.IsExamImagesExist()</span></td>

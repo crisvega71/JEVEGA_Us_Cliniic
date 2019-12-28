@@ -209,6 +209,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HtmlContent\Abdomen.html" />
+    <Content Include="HtmlContent\Pelvis.html" />
+    <Content Include="HtmlContent\ServicesButtonAction.js" />
+    <Content Include="HtmlContent\Smallparts.html" />
+    <Content Include="HtmlContent\Vascular.html" />
     <Content Include="images\about_JEVEGA_Us.jpg" />
     <Content Include="images\add_icon.png" />
     <Content Include="images\call_or_text_icon.png" />
@@ -281,6 +286,7 @@
       <DependentUpon>UsClinicModel.edmx</DependentUpon>
       <LastGenOutput>UsClinicModel.cs</LastGenOutput>
     </Content>
+    <Content Include="HtmlContent\OBGyne.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

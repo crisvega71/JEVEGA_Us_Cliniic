@@ -246,6 +246,14 @@
                     <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamType)</span></td>
                     <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getExamName)</span></td>
                 </tr>
+                <tr><td colspan="4"><div class="line_space"></div></td></tr>
+                <tr>
+                    <td><span class="report_fieldvalue_01">Age</span></td>
+                    <td><span class="report_fieldvalue_01">@ViewBag.PatientAge</span></td>
+
+                    <td><span class="report_fieldvalue_01">Marital Status</span></td>
+                    <td><span class="report_fieldvalue_01">@ViewBag.PatientStatus</span></td>
+                </tr>
 
                 <tr>
                     <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.Radiologist)</span></td>
@@ -260,7 +268,7 @@
                 <tr><td colspan="4"><div class="line_space"></div></td></tr>
                 <tr>
                     <td colspan="4">
-                        <textarea class="text_form_value" readonly style="width:100%" rows="3">@Html.DisplayFor(model => model.History)</textarea>
+                        <textarea class="text_form_value" readonly style="width:100%" rows="4">@Html.DisplayFor(model => model.History)</textarea>
                     </td>
                 </tr>
 
@@ -276,9 +284,7 @@
                             @Html.TextAreaFor(model => model.ExamReport, new { @class = "textarea_report", rows = "11" })
                         }
                         else
-                        {
-                            <div><span class="error_message">@ViewBag.ReportImageError</span></div>
-                        }
+                        {   <div><span class="error_message">@ViewBag.ReportImageError</span></div>     }
                     </td>
                 </tr>
             </table>

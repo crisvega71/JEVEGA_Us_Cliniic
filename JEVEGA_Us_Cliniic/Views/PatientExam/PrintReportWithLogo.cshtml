@@ -22,37 +22,23 @@
         <div class="div_space20"></div>
         <table class="table-bordered table_clinic">
             <tr>
-                <td style="width:100px;">
-                    <div style="padding:7px;"><span class="report_text1">Patiend Id:</span></div>
+                <td style="width:140px;"><span class="report_text1" style="padding:7px;">Patient Name:</span></td>
+                <td colspan="2"><span class="report_text1">@Html.DisplayFor(model => model.getPatientName)</span></td>
+                <td style="width:140px;">
+                    <div style="padding:7px;"><span class="report_text1">Exam Id:</span></div>
                 </td>
-                <td><span class="report_text1">@Html.DisplayFor(model => model.PatientID)</span></td>
-                <td style="width:100px;"><span class="report_text1">Full name:</span></td>
-                <td><span class="report_text1">@Html.DisplayFor(model => model.getPatientName)</span></td>
+                <td><span class="report_text1">@Html.DisplayFor(model => model.ExamId)</span></td>
             </tr>
 
-        </table>
-
-        <div class="div_space20"></div>
-        <table class="table-bordered table_clinic">
             <tr>
-                <td style="width:100px;">
-                    <div style="padding:7px;"><span class="print_label">Sex:</span></div>
-                </td>
+                <td><div style="padding:7px;"><span class="print_label">Sex:</span></div></td>
                 <td><span class="print_value">@ViewBag.PatientSex</span></td>
-                <td style="width:100px;"><span class="print_label">Age:</span></td>
-                <td><span class="print_value">@ViewBag.Age</span></td>
-                <td style="width:100px;"><span class="print_label">Marital Status:</span></td>
+                <td><span class="print_label" style="padding:7px;">Age:&nbsp;&nbsp;@ViewBag.Age</span></td>
+                <td><span class="print_label" style="padding:7px;">Marital Status:</span></td>
                 <td><span class="print_value">@ViewBag.Status</span></td>
             </tr>
-            <tr>
-                <td>
-                    <div style="padding:7px;"><span class="print_label">Address:</span></div>
-                </td>
-                <td colspan="5">
-                    <div style="padding:7px;"><span class="print_label">@ViewBag.PatientHomeAddress</span></div>
-                </td>
-            </tr>
         </table>
+
 
         <div class="div_space20"></div>
         <div><span class="report_text1">History</span></div>
@@ -62,7 +48,7 @@
         <table class="table-bordered table_clinic">
             <tr>
                 <td style="vertical-align:top;">
-                    <div style="padding:10px;">
+                    <div class="div_textarea">
                         <textarea class="textarea_exam_history" readonly >@Html.DisplayFor(model => model.History)</textarea>
                     </div>
                 </td>
@@ -77,7 +63,7 @@
         <table class="table-bordered table_clinic" style="height:120px;">
             <tr>
                 <td style="vertical-align:top;">
-                    <div style="padding:10px;">
+                    <div class="div_textarea">
                         <textarea class="textarea_exam_report" readonly >@ViewBag.ExamReport</textarea>
                     </div>
                 </td>

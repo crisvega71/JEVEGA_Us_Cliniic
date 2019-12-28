@@ -74,6 +74,22 @@ namespace JEVEGA_Us_Cliniic
             get
             { return Lastname + ", " + Firstname; }
         }
+
+        public string getStatusDesc
+        {
+            get {
+                string status_desc = "";
+                switch (Status)
+                {
+                    case "S":
+                        status_desc = "Single";  break;
+                    case "M":
+                        status_desc = "Married"; break;
+                }
+                return status_desc;
+            }
+        } //--
+
     }
 
 }
