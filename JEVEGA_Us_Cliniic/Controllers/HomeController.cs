@@ -47,5 +47,10 @@ namespace JEVEGA_Us_Cliniic.Controllers
         {
             return View();
         }
+
+        public ActionResult DataPrivacy()
+        {
+            return View();
+        }
     }
 }

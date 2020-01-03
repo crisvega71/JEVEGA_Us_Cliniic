@@ -115,6 +115,15 @@ namespace JEVEGA_Us_Cliniic
             }
         } //**
 
+        public string getPatientEmail
+        {
+            get {
+                string email = dbUSClinic.PatientDatas.Find(PatientID).Email.ToString();
+                return email;
+            }
+        }
+
+
         public string getDoctorName
         {
             get

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "SendExamReportToPatient";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<h3>Send to Patient's eMail - Diagnostic Official Report</h3>
+
+@if (!ViewBag.Posted)
+{
+    <hr />
+    using (Html.BeginForm())
+    {
+        <input type="hidden" id="mail_rad_doctor" name="mail_patient" value="@ViewBag.PatientEmail" />
+        
+        <div>
+            <textarea id="mail_subject" name="mail_subject" class="textarea_report" rows="1">@ViewBag.MailSubject</textarea>
+        </div>
+
+        <div class="div_space20"></div>
+
+        <div>
+            <textarea id="mail_body" name="mail_body" class="textarea_report" rows="14">@ViewBag.MailBody</textarea>
+        </div>
+
+        <div class="div_space20"></div>
+
+        <div style="float:right">
+            <input type="submit" value="Send Mail" class="btn btn-default" />
+            &nbsp;
+            <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details/" + ViewBag.PatientExamId, "PatientExam") + "'");" />
+        </div>
+
+        <div class="div_space20"></div>
+        <div class="div_space20"></div>
+    }
+}
+
+<span class="error_message">@ViewBag.ResponseMessage</span>
+<div class="div_space20"></div>
+

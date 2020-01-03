@@ -1,0 +1,178 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+
+
+@{
+    ViewBag.Title = "Print Patient Report";
+    Layout = "~/Views/Shared/Layout_print_report.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Diagnostic Report</span>
+        </div>
+
+        <div style="float:right">
+            <span class="report_text2">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
+        </div>
+
+        <div class="div_space20"></div>
+        <table class="table-bordered table_clinic">
+            <tr>
+                <td style="width:140px;"><span class="report_text1" style="padding:7px;">Patient Name:</span></td>
+                <td colspan="2"><span class="report_text1">@Html.DisplayFor(model => model.getPatientName)</span></td>
+                <td style="width:140px;">
+                    <div style="padding:7px;"><span class="report_text1">Exam Id:</span></div>
+                </td>
+                <td><span class="report_text1">@Html.DisplayFor(model => model.ExamId)</span></td>
+            </tr>
+
+            <tr>
+                <td><div style="padding:7px;"><span class="print_label">Sex:</span></div></td>
+                <td><span class="print_value">@ViewBag.PatientSex</span></td>
+                <td><span class="print_label" style="padding:7px;">Age:&nbsp;&nbsp;@ViewBag.Age</span></td>
+                <td><span class="print_label" style="padding:7px;">Marital Status:</span></td>
+                <td><span class="print_value">@ViewBag.Status</span></td>
+            </tr>
+        </table>
+
+
+        <div class="div_space20"></div>
+        <div><span class="report_text1">History</span></div>
+        <div class="line_space"></div>
+        <div class="line_space"></div>
+
+        <table class="table-bordered table_clinic">
+            <tr>
+                <td style="vertical-align:top;">
+                    <div class="div_textarea">
+                        <textarea class="textarea_exam_history" readonly>@Html.DisplayFor(model => model.History)</textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="div_space20"></div>
+        <div><span class="report_text1">Exam : @Html.DisplayFor(model => model.getExamName)</span></div>
+        <div class="line_space"></div>
+        <div class="line_space"></div>
+
+        <table class="table-bordered table_clinic" style="height:120px;">
+            <tr>
+                <td style="vertical-align:top;">
+                    <div class="div_textarea">
+                        <textarea class="textarea_exam_report" readonly>@ViewBag.ExamReport</textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="div_space20"></div>
+        <div class="div_space20"></div>
+        <div class="div_space20"></div>
+        <div class="div_space20"></div>
+
+        <div>
+            <table class="table_clinic">
+                <tr>
+                    <td><img src="~/ClinicStaff/sign-1.jpg" style="width:200px;" /></td>
+                </tr>
+                <tr><td><div class="line_space"></div></td></tr>
+                <tr>
+                    <td>
+                        <span class="report_text2">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
+                        <span class="report_text2">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <br />
+    <input type="button" class="btn btn-default" value="Print" id="btnPrint" name="btnPrint" />
+
+
+    <div class="modal" id="modalPolicy" name="modalPolicy">
+        <div class="modal-content">
+        <h2>Data Privacy Policy</h2>
+
+        <p>
+            We <span class="text_form_value">JEVEGA Diagnostic Ultrasound Clinic</span> highly value the confidentiality of
+            information you have entrusted us.  We highly regard your personal, sensitive and privileged information such
+            that it will only be used for its intended purpose (or as may be required by existing national and local laws,
+            rules and regulations), kept within the agreed period and protected against data privacy breach.  Any personal,
+            sensitive and privileged information that you provide shall be kept safe under the Data Privacy Act of 2012
+            (the “Act”), applicable laws of the Philippines and the Company’s very own commitment through its
+            Data Privacy Policy.
+
+            <br /><br />
+            Personal, sensitive and privileged information that you provide shall be used for procedures related to the
+            clinic’s diagnostic work flow process.
+
+            <br /><br />
+            All information collected by our clinic shall be considered accurate unless the Patient requests for update.
+            It shall never be the responsibility of the Clinic to ensure validity / accuracy of information shared by the Patient.
+
+            <br /><br />
+            We have implemented technological, organizational and physical security measures to protect your information
+            from loss, misuse, modification, unauthorized or accidental access or disclosure, alteration or destruction.
+            We put in effect safeguards such as:
+
+            <ol>
+                <li>Keeping and protecting your information using a secured server behind a firewall, deploying encryption on computing devices and physical security controls.</li>
+                <li>Restricting access to your information only to qualified and authorized personnel who hold your information with strict confidentiality including third-party personnel / company who may be required to process your information.</li>
+            </ol>
+
+            <br /><br />
+            The data will be kept within 5 years from date of last engagement (e.g. medical report and images) or as may be
+            required by existing laws, rules and regulations, unless you request your data to be deleted in our systems,
+            databases and hardcopies earlier than this date, subject to limitation of applicable laws and / or the Act.
+            Once deleted, your information will no longer be searchable or included in anonymous searches and will be
+            completely removed from all the storage location.
+
+            <br /><br />
+            Moreover, with regards to our data privacy policy, we assume that you are full responsible for the personal
+            privacy of you diagnostic report given and shared to you through our website.
+
+            <br /><br />
+            By clicking the button “I Agree” below, you explicitly and unambiguously consent to the collection, processing
+            and storage of your personal, sensitive and privileged data JEVEGA Diagnostic Ultrasound Clinic for the
+            purpose(s) described in this Data Privacy Notice.  Please ensure that you have completely read and comprehended
+            the terms above before submitting.
+
+            <br /><br />
+            <input type="button" class="btn btn-default" value="I Agree" id="btnAgree" name="btnAgree" />
+        </p>
+
+        <div class="div_space20"></div>
+        </div>
+     </div>
+
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function ()
+    {
+
+        $("#btnPrint").click(function () {
+            window.print();
+        });
+
+
+        $("#btnAgree").click(function ()
+        {
+            $("#modalPolicy").fadeOut("slow");
+            
+        });
+
+    });
+
+</script>

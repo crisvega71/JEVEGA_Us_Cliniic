@@ -97,6 +97,8 @@
                     <input type="button" value="Print In LetterHead" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportLetterHead", "PatientExam") + "'");" />
                     &nbsp;
                     <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />
+                    &nbsp;
+                    <input type="button" value="Send to Patient" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToPatient\\" + Model.Id, "PatientExam") + "'");" />
                 </td>
             </tr>
         </table>

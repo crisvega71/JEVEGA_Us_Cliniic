@@ -240,6 +240,7 @@
     <Content Include="images\patient_data_icon.png" />
     <Content Include="images\patient_exam_icon.png" />
     <Content Include="images\profile_pic_icon.png" />
+    <Content Include="images\report_initial.png" />
     <Content Include="images\scan_images_icon.png" />
     <Content Include="images\search_icon.png" />
     <Content Include="images\services_abdomen.jpg" />
@@ -380,6 +381,9 @@
     <Content Include="Views\Users\ForgetPass.cshtml" />
     <Content Include="Views\Users\EmailResetPass.cshtml" />
     <Content Include="Views\Users\PasswordEmailVerified.cshtml" />
+    <Content Include="Views\PatientExam\SendExamReportToPatient.cshtml" />
+    <Content Include="Views\PatientExam\PrintPatientReport.cshtml" />
+    <Content Include="Views\Home\DataPrivacy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

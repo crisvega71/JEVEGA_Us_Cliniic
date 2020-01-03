@@ -22,6 +22,11 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // GET: PatientExam
         public ActionResult Index()
         {
+            if (Session["USER_TYPE"] == null)
+            {
+                return RedirectToAction("Login", "Users", new { @ReturnUrl = "/PatientExam/Index" });
+            }
+
             string datelist = "";
             bool nyear = false;
             bool nmonth = false;
@@ -1527,7 +1532,33 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             return View(patientExam);
 
-        } //-- 
+        } //--
+
+        [AllowAnonymous]
+        public ActionResult PrintPatientReport(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+
+            ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
+            ViewBag.Age = patientData.Age.ToString();
+            ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
+
+            string examReport = patientExam.ExamReport.ToString();
+            ViewBag.ExamReport = examReport;
+
+            return View(patientExam);
+
+        } //--
 
         public string getImageFileUploaded(bool isUploaded, string patiendID, string filename_ext)
         {
@@ -1754,6 +1785,62 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             return View();
         } //--
+
+        public ActionResult SendExamReportToPatient(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientName = patientExam.getPatientName;
+            string patientEmailAddress = patientExam.getPatientEmail;
+
+            string emailSubject, emailBody;
+
+            emailSubject = "Official Report of Ultrasound Exam - for Patient : " + patientName;
+            emailBody = "Dear " + patientName + " \r\n\r\n";
+            emailBody += "Click on the link below to see the your official report of diagnostic examination ... " + "\r\n\r\n";
+
+            emailBody += "https://jevegausdiagnostic.com/PatientExam/PrintPatientReport/" + id.ToString() + "\r\n\r\n";
+
+            emailBody += "Thanks and regards, " + "\r\n";
+            emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
+
+            ViewBag.MailSubject = emailSubject;
+            ViewBag.MailBody = emailBody;
+            ViewBag.PatientExamId = patientExam.Id;
+            ViewBag.PatientEmail = patientEmailAddress;
+            ViewBag.Posted = false;
+
+            return View();
+        } //--
+
+        [HttpPost]
+        public ActionResult SendExamReportToPatient(FormCollection formCollection)
+        {
+            string emailSubject = formCollection["mail_subject"].ToString();
+            string emailBody = formCollection["mail_body"].ToString();
+            string emailPatient = formCollection["mail_patient"].ToString();
+
+            string emailAddressTo = emailPatient;
+
+            string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            string emailAddFromPwd = "Crv@UE8903510";
+
+            string responseMessage = "";
+
+            responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
+            ViewBag.ResponseMessage = responseMessage;
+
+            ViewBag.MailSubject = emailSubject;
+            ViewBag.MailBody = emailBody;
+            ViewBag.Posted = true;
+
+            return View();
+        }
 
         public ActionResult SearchPatientExam()
         {
