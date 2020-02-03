@@ -17,11 +17,11 @@ namespace JEVEGA_Us_Cliniic
     {
         public int Id { get; set; }
 
-        [Display(Name = "Firstname")]
+        [Display(Name = "First Name")]
         [Required(ErrorMessage = "*")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Lastname")]
+        [Display(Name = "Last Name")]
         [Required(ErrorMessage = "*")]
         public string LastName { get; set; }
 

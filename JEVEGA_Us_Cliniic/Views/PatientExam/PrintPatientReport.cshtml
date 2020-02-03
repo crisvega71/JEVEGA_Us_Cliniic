@@ -98,7 +98,7 @@
 
 
     <div class="modal" id="modalPolicy" name="modalPolicy">
-        <div class="modal-content">
+        <div class="modal-content" id="modalPrivacyContent">
         <h2>Data Privacy Policy</h2>
 
         <p>
@@ -161,6 +161,9 @@
 
     $(document).ready(function ()
     {
+        $("#modalPrivacyContent").css("width", "80%");
+        $("#modalPrivacyContent").css("background-color", "#fefefe");
+        $("#modalPrivacyContent").css("padding", "20");
 
         $("#btnPrint").click(function () {
             window.print();
@@ -170,7 +173,6 @@
         $("#btnAgree").click(function ()
         {
             $("#modalPolicy").fadeOut("slow");
-            
         });
 
     });

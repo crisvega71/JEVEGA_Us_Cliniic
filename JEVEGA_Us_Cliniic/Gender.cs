@@ -14,8 +14,8 @@ namespace JEVEGA_Us_Cliniic
     
     public partial class Gender
     {
-        public short Id { get; set; }
         public string Gender1 { get; set; }
         public string GenderCode { get; set; }
+        public int Id { get; set; }
     }
 }

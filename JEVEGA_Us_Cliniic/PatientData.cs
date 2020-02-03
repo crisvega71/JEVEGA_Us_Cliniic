@@ -15,7 +15,7 @@ namespace JEVEGA_Us_Cliniic
 
     public partial class PatientData
     {
-        private JEVEGA_USDB_Entities dbUSClinic = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities dbUSClinic = new JEVEGA_UsDbEntities();
         public int Id { get; set; }
 
         [Display(Name = "Patient ID")]
@@ -77,12 +77,13 @@ namespace JEVEGA_Us_Cliniic
 
         public string getStatusDesc
         {
-            get {
+            get
+            {
                 string status_desc = "";
                 switch (Status)
                 {
                     case "S":
-                        status_desc = "Single";  break;
+                        status_desc = "Single"; break;
                     case "M":
                         status_desc = "Married"; break;
                 }
@@ -91,5 +92,4 @@ namespace JEVEGA_Us_Cliniic
         } //--
 
     }
-
 }

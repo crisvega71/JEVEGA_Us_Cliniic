@@ -14,8 +14,8 @@ namespace JEVEGA_Us_Cliniic
     
     public partial class MaritalStatu
     {
-        public short Id { get; set; }
         public string Status { get; set; }
         public string StatusCode { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
     [Authorize]
     public class PatientExamController : Controller
     {
-        private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
         UtilityHelper utHelp = new UtilityHelper();
 
         // GET: PatientExam
@@ -238,7 +238,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {   return HttpNotFound();  }
 
             string patientDataID = patientExam.PatientID;
-            PatientData patientData = db.PatientDatas.Find(patientDataID);
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
 
             SetViewBagFileUpStatus(patientExam);
 
@@ -843,6 +845,67 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult InitialReport(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientDataID = patientExam.PatientID.ToString();
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            bool examImagesExist = false;
+            SetViewBagFileUpStatus(patientExam);
+
+            string patientExamIdNo = patientExam.ExamId.ToString();
+            examImagesExist = CheckAndSetImageStatusFilename(patientExamIdNo);
+
+            ViewBag.ExamImageExist = examImagesExist;
+            if (!examImagesExist)
+            {
+                ViewBag.ReportImageError = "Cannot create a report without an exam images!";
+            }
+
+            ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
+            ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc.ToString();
+            ViewBag.ReportTemplateList = new SelectList(db.ExamReportTemplates, "Id", "ReportName");
+
+            return View(patientExam);
+        } //-- 
+
+        [HttpPost]
+        public ActionResult InitialReport([Bind(Include = "Id,PatientID,ExamReport")] PatientExam patientExam)
+        {
+            int patientExamId = patientExam.Id;
+            string examReport = patientExam.ExamReport.ToString();
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Update PatientExam Set ExamReport = @exam_report Where Id = @examId";
+
+                sqlCmd.Parameters.AddWithValue("@exam_report", examReport);
+                sqlCmd.Parameters.AddWithValue("@examId", patientExamId);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+
+            return RedirectToAction("Details/" + patientExamId);
+            ;
+        } //**
 
         [HttpGet]
         public ActionResult SignMedicalReport(int? id)
@@ -1118,8 +1181,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             string patiendIDNo = patientExam.PatientID.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
+            int id_key = utHelp.getPatientIdKey(patiendIDNo);
 
-            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+            PatientData patientData = db.PatientDatas.Find(id_key);
 
             ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
             ViewBag.Age = patientData.Age.ToString();
@@ -1520,8 +1584,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             string patiendIDNo = patientExam.PatientID.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
+            int id_key = utHelp.getPatientIdKey(patiendIDNo);
 
-            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+            PatientData patientData = db.PatientDatas.Find(id_key);
 
             ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
             ViewBag.Age = patientData.Age.ToString();
@@ -2026,6 +2091,233 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.imageFile32_Up = patientExam.Image32;
 
         } //-- 
+        
+        public string loadReportTemplate(int Id)
+        {
+            string report_template;
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Select * from ExamReportTemplate Where Id = @tempId";
+                sqlCmd.Parameters.AddWithValue("@tempId", Id);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+
+                SqlDataReader tempRdr = sqlCmd.ExecuteReader();
+                tempRdr.Read();
+
+                report_template = tempRdr["ReportWriteUps"].ToString();
+            }
+
+            ViewBag.ReportTemplate = report_template;
+
+            //return View();
+
+            return report_template;
+
+        } //--
+
+        public bool CheckAndSetImageStatusFilename(string patientExamIdNo)
+        {
+            bool examImagesExist = false;
+
+            if (ViewBag.imageFile01_Up)
+            {
+                ViewBag.imageFile01 = patientExamIdNo + "-01.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile02_Up)
+            {
+                ViewBag.imageFile02 = patientExamIdNo + "-02.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile03_Up)
+            {
+                ViewBag.imageFile03 = patientExamIdNo + "-03.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile04_Up)
+            {
+                ViewBag.imageFile04 = patientExamIdNo + "-04.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile05_Up)
+            {
+                ViewBag.imageFile05 = patientExamIdNo + "-05.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile06_Up)
+            {
+                ViewBag.imageFile06 = patientExamIdNo + "-06.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile07_Up)
+            {
+                ViewBag.imageFile07 = patientExamIdNo + "-07.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile08_Up)
+            {
+                ViewBag.imageFile08 = patientExamIdNo + "-08.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile09_Up)
+            {
+                ViewBag.imageFile09 = patientExamIdNo + "-09.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile10_Up)
+            {
+                ViewBag.imageFile10 = patientExamIdNo + "-10.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile11_Up)
+            {
+                ViewBag.imageFile11 = patientExamIdNo + "-11.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile12_Up)
+            {
+                ViewBag.imageFile12 = patientExamIdNo + "-12.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile13_Up)
+            {
+                ViewBag.imageFile13 = patientExamIdNo + "-13.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile14_Up)
+            {
+                ViewBag.imageFile14 = patientExamIdNo + "-14.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile15_Up)
+            {
+                ViewBag.imageFile15 = patientExamIdNo + "-15.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile16_Up)
+            {
+                ViewBag.imageFile16 = patientExamIdNo + "-16.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile17_Up)
+            {
+                ViewBag.imageFile17 = patientExamIdNo + "-17.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile18_Up)
+            {
+                ViewBag.imageFile18 = patientExamIdNo + "-18.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile19_Up)
+            {
+                ViewBag.imageFile19 = patientExamIdNo + "-19.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile20_Up)
+            {
+                ViewBag.imageFile20 = patientExamIdNo + "-20.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile21_Up)
+            {
+                ViewBag.imageFile21 = patientExamIdNo + "-21.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile22_Up)
+            {
+                ViewBag.imageFile22 = patientExamIdNo + "-22.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile23_Up)
+            {
+                ViewBag.imageFile23 = patientExamIdNo + "-23.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile24_Up)
+            {
+                ViewBag.imageFile24 = patientExamIdNo + "-24.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile25_Up)
+            {
+                ViewBag.imageFile25 = patientExamIdNo + "-25.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile26_Up)
+            {
+                ViewBag.imageFile26 = patientExamIdNo + "-26.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile27_Up)
+            {
+                ViewBag.imageFile27 = patientExamIdNo + "-27.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile28_Up)
+            {
+                ViewBag.imageFile28 = patientExamIdNo + "-28.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile29_Up)
+            {
+                ViewBag.imageFile29 = patientExamIdNo + "-29.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile30_Up)
+            {
+                ViewBag.imageFile30 = patientExamIdNo + "-30.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile31_Up)
+            {
+                ViewBag.imageFile31 = patientExamIdNo + "-31.jpg";
+                examImagesExist = true;
+            } //--
+
+            if (ViewBag.imageFile32_Up)
+            {
+                ViewBag.imageFile32 = patientExamIdNo + "-32.jpg";
+                examImagesExist = true;
+            } //--
+
+            return examImagesExist;
+        } //--
 
     }
 }

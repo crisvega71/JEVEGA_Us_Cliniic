@@ -109,9 +109,9 @@
             <td>
                 @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
                 {
-                    <a href=@Url.Action("Edit", new { id = item.Patient_Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+                    <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
                 }
-                - <a href=@Url.Action("Details", new { id = item.Patient_Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+                - <a href=@Url.Action("Details", new { id = item.Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
             </td>
         </tr>
     }

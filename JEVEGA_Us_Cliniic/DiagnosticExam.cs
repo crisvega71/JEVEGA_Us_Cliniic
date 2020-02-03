@@ -14,7 +14,7 @@ namespace JEVEGA_Us_Cliniic
     using System.ComponentModel.DataAnnotations;
     public partial class DiagnosticExam
     {
-        private JEVEGA_USDB_Entities dbUSClinic = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities dbUSClinic = new JEVEGA_UsDbEntities();
         public int Id { get; set; }
 
         [Display(Name = "Category")]

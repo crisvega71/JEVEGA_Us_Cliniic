@@ -18,7 +18,6 @@ namespace JEVEGA_Us_Cliniic
         enum userTypes { Admin, Sonographer, Radiologist, Viewer };
 
         public int Id { get; set; }
-
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "*")]
         public string Firstname { get; set; }
@@ -51,6 +50,8 @@ namespace JEVEGA_Us_Cliniic
         [Required(ErrorMessage = "*")]
         public Nullable<short> UserType { get; set; }
 
+        public string HashPassVerification { get; set; }
+
         public string GetFullName
         {
             get { return Lastname + ", " + Firstname; }
@@ -71,6 +72,6 @@ namespace JEVEGA_Us_Cliniic
                 return typedesc;
             }
         }
+
     }
 }
-

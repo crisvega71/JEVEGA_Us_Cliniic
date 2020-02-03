@@ -135,9 +135,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ConsultingDoctor.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountLoginController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DiagnosticExamCategoriesController.cs" />
@@ -148,55 +145,59 @@
     <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\PatientExamController.cs" />
     <Compile Include="Controllers\RadDoctorController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportTemplatesController.cs" />
     <Compile Include="Controllers\SonographersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UtilityHelper.cs" />
     <Compile Include="DiagnosticExam.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DiagnosticExamCategory.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamReportTemplate.cs">
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Gender.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MaritalStatu.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FileModel.cs" />
     <Compile Include="PatientData.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PatientExam.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadiologistDoctor.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Sonographer.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsClinicModel.Context.cs">
+    <Compile Include="UsClinicDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsClinicModel.Context.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsClinicModel.cs">
+    <Compile Include="UsClinicDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsClinicModel.Designer.cs">
+    <Compile Include="UsClinicDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsClinicModel.edmx</DependentUpon>
+      <DependentUpon>UsClinicDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>UsClinicModel.tt</DependentUpon>
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
@@ -277,17 +278,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="UsClinicModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsClinicModel.edmx</DependentUpon>
-      <LastGenOutput>UsClinicModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="UsClinicModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UsClinicModel.edmx</DependentUpon>
-      <LastGenOutput>UsClinicModel.cs</LastGenOutput>
-    </Content>
     <Content Include="HtmlContent\OBGyne.html" />
+    <Content Include="UsClinicDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsClinicDBModel.edmx</DependentUpon>
+      <LastGenOutput>UsClinicDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UsClinicDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsClinicDBModel.edmx</DependentUpon>
+      <LastGenOutput>UsClinicDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -306,13 +307,6 @@
     <Content Include="Views\Home\Vision.cshtml" />
     <Content Include="Views\Home\DiagnosticServices.cshtml" />
     <Content Include="Views\Admin\Patients.cshtml" />
-    <EntityDeploy Include="UsClinicModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UsClinicModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="UsClinicModel.edmx.diagram">
-      <DependentUpon>UsClinicModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\PatientData\Create.cshtml" />
     <Content Include="Views\PatientData\Delete.cshtml" />
     <Content Include="Views\PatientData\Details.cshtml" />
@@ -384,13 +378,31 @@
     <Content Include="Views\PatientExam\SendExamReportToPatient.cshtml" />
     <Content Include="Views\PatientExam\PrintPatientReport.cshtml" />
     <Content Include="Views\Home\DataPrivacy.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Create.cshtml" />
+    <EntityDeploy Include="UsClinicDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UsClinicDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="UsClinicDBModel.edmx.diagram">
+      <DependentUpon>UsClinicDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\PatientExam\InitialReport.cshtml" />
+    <Content Include="Views\ReportTemplates\Create.cshtml" />
+    <Content Include="Views\ReportTemplates\Delete.cshtml" />
+    <Content Include="Views\ReportTemplates\Details.cshtml" />
+    <Content Include="Views\ReportTemplates\Edit.cshtml" />
+    <Content Include="Views\ReportTemplates\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ClinicStaff\" />
     <Folder Include="ExamImages\" />
+    <Folder Include="Models\" />
+    <Folder Include="ReportTemplate\" />
     <Folder Include="Views\AccountLogin\" />
     <Folder Include="Views\FileUpload\" />
+    <Folder Include="Views\ReportTemplate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

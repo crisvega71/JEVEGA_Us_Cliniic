@@ -16,7 +16,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
     [Authorize]
     public class RadDoctorController : Controller
     {
-        private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
 
         // GET: RadDoctor
         public ActionResult Index()

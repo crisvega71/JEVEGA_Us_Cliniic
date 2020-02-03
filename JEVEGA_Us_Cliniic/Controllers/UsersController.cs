@@ -17,7 +17,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
 {
     public class UsersController : Controller
     {
-        private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
 
         UtilityHelper utHelper = new UtilityHelper();
         // GET: Users

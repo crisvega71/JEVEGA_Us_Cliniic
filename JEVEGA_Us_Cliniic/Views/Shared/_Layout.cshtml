@@ -70,6 +70,7 @@
                             <li>@Html.ActionLink("Patient Exam", "Index", "PatientExam")</li>
                             <li>@Html.ActionLink("Diagnostic Exam", "Index", "DiagnosticExams")</li>
                             <li>@Html.ActionLink("Diagnostic Exam Category", "Index", "DiagnosticExamCategories")</li>
+                            <li>@Html.ActionLink("Report Template", "Index", "ReportTemplates")</li>
                             <li><hr /></li>
                             <li>@Html.ActionLink("Radiologist", "Index", "RadDoctor")</li>
                             <li>@Html.ActionLink("Sonographer", "Index", "Sonographers")</li>
@@ -98,7 +99,7 @@
                 @if (Session["USER_NAME"] != null)
                 {
                     <div class="welcome_hd_div">
-                        <span class="welcome_hd">Welcome to JUDC @Session["USER_NAME"]!</span>
+                        <span class="welcome_hd">Welcome to JDUC @Session["USER_NAME"]!</span>
                     </div>
                 }
 

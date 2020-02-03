@@ -13,10 +13,10 @@ namespace JEVEGA_Us_Cliniic
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JEVEGA_USDB_Entities : DbContext
+    public partial class JEVEGA_UsDbEntities : DbContext
     {
-        public JEVEGA_USDB_Entities()
-            : base("name=JEVEGA_USDB_Entities")
+        public JEVEGA_UsDbEntities()
+            : base("name=JEVEGA_UsDbEntities")
         {
         }
     
@@ -27,13 +27,13 @@ namespace JEVEGA_Us_Cliniic
     
         public virtual DbSet<DiagnosticExam> DiagnosticExams { get; set; }
         public virtual DbSet<DiagnosticExamCategory> DiagnosticExamCategories { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<PatientData> PatientDatas { get; set; }
+        public virtual DbSet<ExamReportTemplate> ExamReportTemplates { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<MaritalStatu> MaritalStatus { get; set; }
+        public virtual DbSet<PatientData> PatientDatas { get; set; }
+        public virtual DbSet<PatientExam> PatientExams { get; set; }
         public virtual DbSet<RadiologistDoctor> RadiologistDoctors { get; set; }
         public virtual DbSet<Sonographer> Sonographers { get; set; }
-        public virtual DbSet<ConsultingDoctor> ConsultingDoctors { get; set; }
-        public virtual DbSet<PatientExam> PatientExams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

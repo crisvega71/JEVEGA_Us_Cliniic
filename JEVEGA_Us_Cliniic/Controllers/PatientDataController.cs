@@ -15,7 +15,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
     [Authorize]
     public class PatientDataController : Controller
     {
-        private JEVEGA_USDB_Entities db = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
         public static string patient_id_number = "";
 
 
@@ -26,14 +26,14 @@ namespace JEVEGA_Us_Cliniic.Controllers
             string usertype = Session["USER_TYPE"].ToString();
             if (usertype == "1")   //-- Admin user ... 
             {
-                return View(db.PatientDatas.ToList());
+                return View(db.PatientDatas.OrderBy(pd => pd.Lastname).ToList());
             }
             else { return RedirectToAction("UnauthorizedAccess", "Users"); }
 
         } //--
 
         // GET: PatientData/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -106,9 +106,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             return View(patientData);
         }
-
+         
         // GET: PatientData/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {

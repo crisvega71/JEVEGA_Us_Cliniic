@@ -12,7 +12,6 @@ namespace JEVEGA_Us_Cliniic.Controllers
 {
     public class UtilityHelper : Controller
     {
-
         public string UnauthorizedAccessMessage()
         {
             string uaccess_msg = "Unauthorized Access! You are not allowed to access admin pages!";
@@ -25,7 +24,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {
                 return false;
             }
-            else {
+            else
+            {
                 return true;
             }
 
@@ -164,6 +164,17 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
 
             return (result_message);
+        } //--
+
+        public int getPatientIdKey(string patient_id)
+        {
+            int id_key;
+
+            JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
+            PatientData patientData = db.PatientDatas.Where(p => p.Patient_Id == patient_id).First();
+
+            id_key = patientData.Id;
+            return id_key;
         } //--
 
 

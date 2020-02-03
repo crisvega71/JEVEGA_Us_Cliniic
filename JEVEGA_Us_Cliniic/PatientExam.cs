@@ -12,10 +12,15 @@ namespace JEVEGA_Us_Cliniic
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using JEVEGA_Us_Cliniic.Controllers;
 
     public partial class PatientExam
     {
-        private JEVEGA_USDB_Entities dbUSClinic = new JEVEGA_USDB_Entities();
+        private JEVEGA_UsDbEntities dbUSClinic = new JEVEGA_UsDbEntities();
+        private UtilityHelper utHelper = new UtilityHelper();
+
         public int Id { get; set; }
 
         [Display(Name = "Patient")]
@@ -98,8 +103,10 @@ namespace JEVEGA_Us_Cliniic
         {
             get
             {
-                string lastName = dbUSClinic.PatientDatas.Find(PatientID).Lastname.ToString();
-                string firstName = dbUSClinic.PatientDatas.Find(PatientID).Firstname.ToString();
+                int Id = utHelper.getPatientIdKey(PatientID);
+
+                string lastName = dbUSClinic.PatientDatas.Find(Id).Lastname.ToString();
+                string firstName = dbUSClinic.PatientDatas.Find(Id).Firstname.ToString();
                 string patiendIdName = PatientID + " - " + lastName + ", " + firstName;
                 return patiendIdName;
             }
@@ -109,16 +116,21 @@ namespace JEVEGA_Us_Cliniic
         {
             get
             {
-                string lastName = dbUSClinic.PatientDatas.Find(PatientID).Lastname.ToString();
-                string firstName = dbUSClinic.PatientDatas.Find(PatientID).Firstname.ToString();
+                int Id = utHelper.getPatientIdKey(PatientID);
+
+                string lastName = dbUSClinic.PatientDatas.Find(Id).Lastname.ToString();
+                string firstName = dbUSClinic.PatientDatas.Find(Id).Firstname.ToString();
                 return lastName + ", " + firstName;
             }
         } //**
 
         public string getPatientEmail
         {
-            get {
-                string email = dbUSClinic.PatientDatas.Find(PatientID).Email.ToString();
+            get
+            {
+                int Id = utHelper.getPatientIdKey(PatientID);
+
+                string email = dbUSClinic.PatientDatas.Find(Id).Email.ToString();
                 return email;
             }
         }
@@ -137,7 +149,8 @@ namespace JEVEGA_Us_Cliniic
         public string getRadDoctorEmail
         {
             get
-            {   string rad_doctor_email = dbUSClinic.RadiologistDoctors.Find(Radiologist).Email.ToString();
+            {
+                string rad_doctor_email = dbUSClinic.RadiologistDoctors.Find(Radiologist).Email.ToString();
                 return rad_doctor_email;
             }
         }
@@ -222,6 +235,8 @@ namespace JEVEGA_Us_Cliniic
             { return "YES"; }
             else
             { return "NONE"; }
+
         } //-- 
+
     }
 }

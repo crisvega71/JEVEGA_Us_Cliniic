@@ -10,114 +10,123 @@ using JEVEGA_Us_Cliniic;
 
 namespace JEVEGA_Us_Cliniic.Controllers
 {
-    [Authorize]
-    public class DiagnosticExamCategoriesController : Controller
+    public class ReportTemplatesController : Controller
     {
         private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
 
-        // GET: DiagnosticExamCategories
+        // GET: ReportTemplates
         public ActionResult Index()
         {
             string usertype = Session["USER_TYPE"].ToString();
             if (usertype == "1")   //-- Admin user ... 
             {
-                return View(db.DiagnosticExamCategories.ToList());
+                return View(db.ExamReportTemplates.ToList());
             }
             else { return RedirectToAction("UnauthorizedAccess", "Users"); }
-            
+
         } //--
 
-        // GET: DiagnosticExamCategories/Details/5
+        // GET: ReportTemplates/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DiagnosticExamCategory diagnosticExamCategory = db.DiagnosticExamCategories.Find(id);
-            if (diagnosticExamCategory == null)
+            ExamReportTemplate examReportTemplate = db.ExamReportTemplates.Find(id);
+            if (examReportTemplate == null)
             {
                 return HttpNotFound();
             }
-            return View(diagnosticExamCategory);
+            return View(examReportTemplate);
         }
 
-        // GET: DiagnosticExamCategories/Create
+        // GET: ReportTemplates/Create
         public ActionResult Create()
         {
+            ViewBag.ReportCategories = new SelectList(db.DiagnosticExams, "Id", "ExamName");
+
             return View();
         }
 
-        // POST: DiagnosticExamCategories/Create
+        // POST: ReportTemplates/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryName")] DiagnosticExamCategory diagnosticExamCategory)
+        public ActionResult Create([Bind(Include = "Id,ReportCategory,ReportWriteUps,ReportName")] ExamReportTemplate examReportTemplate)
         {
             if (ModelState.IsValid)
             {
-                db.DiagnosticExamCategories.Add(diagnosticExamCategory);
+                db.ExamReportTemplates.Add(examReportTemplate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            else
+            {
+                ViewBag.ReportCategories = new SelectList(db.DiagnosticExams, "Id", "ExamName");
+            }
 
-            return View(diagnosticExamCategory);
+            return View(examReportTemplate);
         }
 
-        // GET: DiagnosticExamCategories/Edit/5
+        // GET: ReportTemplates/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DiagnosticExamCategory diagnosticExamCategory = db.DiagnosticExamCategories.Find(id);
-            if (diagnosticExamCategory == null)
+            ExamReportTemplate examReportTemplate = db.ExamReportTemplates.Find(id);
+            if (examReportTemplate == null)
             {
                 return HttpNotFound();
             }
-            return View(diagnosticExamCategory);
-        }
 
-        // POST: DiagnosticExamCategories/Edit/5
+            ViewBag.ReportCategories = new SelectList(db.DiagnosticExams, "Id", "ExamName");
+
+            return View(examReportTemplate);
+        } //--
+
+        // POST: ReportTemplates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryName")] DiagnosticExamCategory diagnosticExamCategory)
+        public ActionResult Edit([Bind(Include = "Id,ReportCategory,ReportWriteUps,ReportName")] ExamReportTemplate examReportTemplate)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(diagnosticExamCategory).State = EntityState.Modified;
+                db.Entry(examReportTemplate).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(diagnosticExamCategory);
+
+            return View(examReportTemplate);
         }
 
-        // GET: DiagnosticExamCategories/Delete/5
+        // GET: ReportTemplates/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DiagnosticExamCategory diagnosticExamCategory = db.DiagnosticExamCategories.Find(id);
-            if (diagnosticExamCategory == null)
+            ExamReportTemplate examReportTemplate = db.ExamReportTemplates.Find(id);
+            if (examReportTemplate == null)
             {
                 return HttpNotFound();
             }
-            return View(diagnosticExamCategory);
+            return View(examReportTemplate);
         }
 
-        // POST: DiagnosticExamCategories/Delete/5
+        // POST: ReportTemplates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DiagnosticExamCategory diagnosticExamCategory = db.DiagnosticExamCategories.Find(id);
-            db.DiagnosticExamCategories.Remove(diagnosticExamCategory);
+            ExamReportTemplate examReportTemplate = db.ExamReportTemplates.Find(id);
+            db.ExamReportTemplates.Remove(examReportTemplate);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -130,5 +139,6 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
