@@ -1,0 +1,64 @@
+﻿@model JEVEGA_Us_Cliniic.Models.ExamVideo
+
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Upload Video for Patient </h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+
+@using (Html.BeginForm("Video", "ExamVideo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Patient_IdKey)
+        @Html.HiddenFor(model => model.Patient_ExamId)
+        @Html.HiddenFor(model => model.VideoName)
+
+        <div class="line_space"></div>
+
+        <table class="table_clinic">
+        <tr>
+            <td><h4>Patient Name : </h4></td>
+            <td><h4>@Html.DisplayFor(model => model.getPatientName)</h4></td>
+        </tr>
+        <tr>
+            <td><h4>Exam No. : </h4></td>
+            <td><h4>@Html.DisplayFor(model => model.Patient_ExamId)</h4></td>
+        </tr>
+        <tr>
+            <td><h4>Video file : </h4></td>
+            <td><input type="file" name="videoFile" id="videoFile" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span class="error_message_ii">@ViewBag.FileErrorMessage</span>
+            </td>
+        </tr>
+        </table>
+
+
+        <div class="div_space20"></div>
+        <table class="table table-bordered">
+        <tr>
+            <td>
+                <input type="submit" value="Upload" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "ExamVideo") + "'");" />
+            </td>
+        </tr>
+        </table>
+
+    </div>
+}
+

@@ -918,7 +918,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {   return HttpNotFound();  }
 
             string patientDataID = patientExam.PatientID.ToString();
-            PatientData patientData = db.PatientDatas.Find(patientDataID);
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
 
             bool examImagesExist = false;
 
@@ -1609,10 +1611,10 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             { return HttpNotFound(); }
 
-            string patiendIDNo = patientExam.PatientID.ToString();
-            ViewBag.PatientIdNo = patiendIDNo;
+            string patientDataID = patientExam.PatientID;
+            int id_key = utHelp.getPatientIdKey(patientDataID);
 
-            PatientData patientData = db.PatientDatas.Find(patientExam.PatientID);
+            PatientData patientData = db.PatientDatas.Find(id_key);
 
             ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
             ViewBag.Age = patientData.Age.ToString();
@@ -1816,6 +1818,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return View();
         } //--
 
+        [HttpGet]
         public ActionResult SendExamReportToOBDoctor(int? id)
         {
             if (id == null)
@@ -1825,28 +1828,47 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             { return HttpNotFound(); }
 
+            string emailSubject, emailBody;
             string patientName = patientExam.getPatientName;
-            string OBdoctorName = "Teresitta";
-            string OBemailAddress = "crisvega71@gmail.com";
-
-            string responseMessage = "";
-            string emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd;
-
+            string OBdoctorName = "Teresita";
+            
             emailSubject = "Official Report of Ultrasound Exam - for Patient : " + patientName;
             emailBody = "Dear Dr. " + OBdoctorName + " \r\n\r\n";
             emailBody += "Click on the link below to see the official report of diagnostic examination for the patient above ... " + "\r\n\r\n";
-            
             emailBody += "https://jevegausdiagnostic.com/PatientExam/PrintReportWithLogo/" + id.ToString() + "\r\n\r\n";
-
             emailBody += "Thanks and regards, " + "\r\n";
             emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";
 
-            emailAddressTo = OBemailAddress;
-            emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
-            emailAddFromPwd = "Crv@UE8903510";
+            ViewBag.MailSubject = emailSubject;
+            ViewBag.MailBody = emailBody;
+
+            ViewBag.PatientExamId = patientExam.Id;
+            ViewBag.OBDoctorEmail = "teresitavillafuerte@yahoo.com";
+            ViewBag.Posted = false;
+
+            return View();
+        } //--
+
+        [HttpPost]
+        public ActionResult SendExamReportToOBDoctor(FormCollection formCollection)
+        {
+            string emailSubject = formCollection["mail_subject"].ToString();
+            string emailBody = formCollection["mail_body"].ToString();
+            string emailOBDoctor = formCollection["mail_ob_doctor"].ToString();
+
+            string emailAddressTo = emailOBDoctor;
+
+            string emailAddressFrom = "JevegaUSadmin@jevegausdiagnostic.com";
+            string emailAddFromPwd = "Crv@UE8903510";
+
+            string responseMessage = "";
 
             responseMessage = utHelp.SendSMTPmail(emailSubject, emailBody, emailAddressTo, emailAddressFrom, emailAddFromPwd);
             ViewBag.ResponseMessage = responseMessage;
+
+            ViewBag.MailSubject = emailSubject;
+            ViewBag.MailBody = emailBody;
+            ViewBag.Posted = true;
 
             return View();
         } //--

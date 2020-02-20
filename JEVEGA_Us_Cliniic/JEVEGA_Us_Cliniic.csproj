@@ -140,6 +140,7 @@
     <Compile Include="Controllers\DiagnosticExamCategoriesController.cs" />
     <Compile Include="Controllers\DiagnosticExamsController.cs" />
     <Compile Include="Controllers\DiagnosticServicesController.cs" />
+    <Compile Include="Controllers\ExamVideoController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
@@ -168,6 +169,8 @@
     <Compile Include="MaritalStatu.cs">
       <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExamVideo.cs" />
+    <Compile Include="Models\UsDBContext.cs" />
     <Compile Include="PatientData.cs">
       <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
@@ -258,6 +261,8 @@
     <Content Include="images\UsLogo_print.png" />
     <Content Include="images\US_web_banner.jpg" />
     <Content Include="images\US_web_banner_inner.jpg" />
+    <Content Include="images\VideoLink_icon.png" />
+    <Content Include="images\video_icon.png" />
     <Content Include="images\youtube_logo_icon.png" />
     <Content Include="images\zoom_icon.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -393,12 +398,17 @@
     <Content Include="Views\ReportTemplates\Details.cshtml" />
     <Content Include="Views\ReportTemplates\Edit.cshtml" />
     <Content Include="Views\ReportTemplates\Index.cshtml" />
+    <Content Include="Views\ExamVideo\Index.cshtml" />
+    <Content Include="Views\ExamVideo\Create.cshtml" />
+    <Content Include="Views\ExamVideo\Video.cshtml" />
+    <Content Include="Views\ExamVideo\Details.cshtml" />
+    <Content Include="Views\ExamVideo\SendVideoToPatient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ClinicStaff\" />
+    <Folder Include="ClinicVideo\" />
     <Folder Include="ExamImages\" />
-    <Folder Include="Models\" />
     <Folder Include="ReportTemplate\" />
     <Folder Include="Views\AccountLogin\" />
     <Folder Include="Views\FileUpload\" />
