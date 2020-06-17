@@ -25,15 +25,17 @@ namespace JEVEGA_Us_Cliniic
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DiagnosticExam> DiagnosticExams { get; set; }
         public virtual DbSet<DiagnosticExamCategory> DiagnosticExamCategories { get; set; }
         public virtual DbSet<ExamReportTemplate> ExamReportTemplates { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<MaritalStatu> MaritalStatus { get; set; }
         public virtual DbSet<PatientData> PatientDatas { get; set; }
-        public virtual DbSet<PatientExam> PatientExams { get; set; }
-        public virtual DbSet<RadiologistDoctor> RadiologistDoctors { get; set; }
         public virtual DbSet<Sonographer> Sonographers { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<DiagnosticExam> DiagnosticExams { get; set; }
+        public virtual DbSet<RadiologistDoctor> RadiologistDoctors { get; set; }
+        public virtual DbSet<CashDisbursement> CashDisbursements { get; set; }
+        public virtual DbSet<ExpenseCategory> ExpenseCategories { get; set; }
+        public virtual DbSet<PatientExam> PatientExams { get; set; }
     }
 }

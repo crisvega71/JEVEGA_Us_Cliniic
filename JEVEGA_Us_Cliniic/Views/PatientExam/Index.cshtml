@@ -84,11 +84,13 @@
     <td>
         <input type="submit" value="Filter by Month/Year" class="btn btn-default" />
     </td>
+    <td>
+        <input type="button" value="Show Monthly Sales" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("MonthlySales", "PatientExam", new { mo=ViewBag.SelectedMonth, yr=ViewBag.SelectedYear }) + "'");" />
+    </td>
 </tr>
 </table>
 
 
 <div class="div_space20"></div>
-
 
 }

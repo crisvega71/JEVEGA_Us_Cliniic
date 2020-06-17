@@ -77,6 +77,25 @@
 </div>
 }
 
+<table class="table table-bordered">
+<tr>
+    @{
+        var currentIndex = ViewBag.IndexAlpha;
+        foreach (var indexChar in (IEnumerable<string>)ViewBag.IndexNameChar)
+        {
+            if (indexChar == "A")
+            {
+                <td class="active_cell">@indexChar</td>
+            }
+            else
+            {
+                <td class="non_active_cell"><a href=@Url.Action("IndexSurname", new { id = indexChar })>@indexChar</a></td>
+            }
+        }
+    }
+</tr>
+</table>
+
 
 <table class="table table-striped">
     <tr>

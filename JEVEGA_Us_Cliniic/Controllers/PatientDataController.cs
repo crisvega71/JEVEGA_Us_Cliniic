@@ -18,17 +18,78 @@ namespace JEVEGA_Us_Cliniic.Controllers
         private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
         public static string patient_id_number = "";
 
+        public string[] nameIndexChar = {"All", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"};
 
         [Authorize]
+        [OutputCache (Duration = 60)]
         // GET: PatientData
         public ActionResult Index()
         {
-            string usertype = Session["USER_TYPE"].ToString();
+            string usertype;
+            try
+            {   usertype = Session["USER_TYPE"].ToString();     }
+            catch (NullReferenceException ex)
+            {
+                ViewBag.NullUser = ex.Message.ToString();
+                usertype = "Empty Username";
+            }
+            
             if (usertype == "1")   //-- Admin user ... 
             {
-                return View(db.PatientDatas.OrderBy(pd => pd.Lastname).ToList());
+                //return View(db.PatientDatas.OrderBy(pd => pd.Lastname).ToList());
+                //IEnumerable<PatientData> listPatients = db.PatientDatas.Where(pd => pd.Lastname.StartsWith("A")).OrderBy(l => l.Lastname).ToList();
+
+                //.... return by default names where surname starts with "A" ....
+                IEnumerable<PatientData> listPatients = db.PatientDatas.Where(p => p.Lastname.StartsWith("A")).OrderBy(l => l.Lastname).ToList();
+
+                //IQueryable<PatientData> listPatients = db.PatientDatas.AsQueryable().OrderBy(l => l.Lastname);
+
+                int countPatients = listPatients.Count();
+                int oldestAge = (int)listPatients.Max(p => p.Age);
+                PatientData oldestPatient = listPatients.FirstOrDefault(p => p.Age == 60);
+
+                ViewBag.IndexNameChar = nameIndexChar;
+
+                return View(listPatients);
             }
             else { return RedirectToAction("UnauthorizedAccess", "Users"); }
+
+        } //--
+
+        [OutputCache (Duration = 60, VaryByParam = "id")]
+        public ActionResult IndexSurname(string id)
+        {
+            IEnumerable<PatientData> listPatientsBySNameIndex;
+
+            if (id == "All")
+            {
+                listPatientsBySNameIndex = db.PatientDatas.OrderBy(p => p.Lastname).ToList();
+            }
+            else {
+                listPatientsBySNameIndex = db.PatientDatas.Where(p => p.Lastname.StartsWith(id)).OrderBy(p => p.Lastname).ToList();
+            }
+
+            ViewBag.IndexNameChar = nameIndexChar;
+            ViewBag.IndexAlpha = id.ToString();
+
+            return View(listPatientsBySNameIndex);
+        }
+
+        public ActionResult ListPatient()
+        {
+            if (Session["USER_TYPE"] == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
+            string usertype = Session["USER_TYPE"].ToString();
+            if (usertype != "1")   //-- Admin user ... 
+            {
+                return RedirectToAction("UnauthorizedAccess", "Users");
+            }
+
+            ViewBag.IndexNameChar = nameIndexChar;
+            return View();
 
         } //--
 
@@ -78,31 +139,30 @@ namespace JEVEGA_Us_Cliniic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Patient_Id,Lastname,Firstname,Age,Sex,Address,Email,Phone,Status,LMP")] PatientData patientData)
         {
-            string patientId = patientData.Patient_Id;
-            bool patientIdExist = checkPatientExamIdExist(patientId);
+            if (ModelState.IsValid)
+            {
+                string patientId = patientData.Patient_Id;
+                bool patientIdExist = checkPatientExamIdExist(patientId);
 
-            if (ModelState.IsValid && !patientIdExist)
-            {
-                db.PatientDatas.Add(patientData);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
                 if (patientIdExist)
                 {
                     ViewBag.ErrorDuplicatePatientId = "Patient  Id No. " + patientId + " already existed!  Please enter a different Id number.";
                 }
-
-                ViewBag.MaritalStatusList = new SelectList(db.MaritalStatus, "StatusCode", "Status");
-
-                List<SelectListItem> genderList = new List<SelectListItem>();
-                SelectListItem item1 = new SelectListItem { Text = "Male", Value = "M" };
-                genderList.Add(item1);
-                SelectListItem item2 = new SelectListItem { Text = "Female", Value = "F" };
-                genderList.Add(item2);
-                ViewBag.GenderList = genderList;
+                else {
+                    db.PatientDatas.Add(patientData);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+
+            ViewBag.MaritalStatusList = new SelectList(db.MaritalStatus, "StatusCode", "Status");
+
+            List<SelectListItem> genderList = new List<SelectListItem>();
+            SelectListItem item1 = new SelectListItem { Text = "Male", Value = "M" };
+            genderList.Add(item1);
+            SelectListItem item2 = new SelectListItem { Text = "Female", Value = "F" };
+            genderList.Add(item2);
+            ViewBag.GenderList = genderList;
 
             return View(patientData);
         }
@@ -145,7 +205,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {
                 db.Entry(patientData).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/" + patientData.Id.ToString());
             }
             else {
                 ViewBag.MaritalStatusList = new SelectList(db.MaritalStatus, "StatusCode", "Status");

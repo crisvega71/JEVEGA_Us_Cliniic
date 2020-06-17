@@ -147,10 +147,10 @@ namespace JEVEGA_Us_Cliniic.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            if (Session["USER_ID"] != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (Session["USER_ID"] != null)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
 
             return View();
         } //--

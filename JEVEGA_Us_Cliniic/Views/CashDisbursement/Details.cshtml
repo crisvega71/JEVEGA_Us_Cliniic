@@ -1,0 +1,99 @@
+﻿@model JEVEGA_Us_Cliniic.CashDisbursement
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#cashref').on({
+            click: function () {
+                $('#cashrefimage').attr('src', '/CashImages/@ViewBag.imageCashFile');
+            }
+        });
+    });
+
+</script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:1024px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cash Reference : @Model.ItemDescription | @Model.Id</h4>
+            </div>
+            <div class="modal-body"><img id="cashrefimage" src="" class="img-fluid" style="width:980px" /></div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Cash Disbursement Details</h3></td>
+        <td align="right"></td>
+    </tr>
+</table>
+
+<div>
+    <hr />
+
+    <table class="table_clinic">
+        <tr><td colspan="4"><div class="line_space"></div></td></tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemDescription)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ItemDescription)</span>
+            </td>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemCategory)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getCategoryName)</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.Amount)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.Amount)</span>
+            </td>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.DateSpent)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.DateSpent)</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ReferenceNo)</span></td>
+            <td colspan="3">
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ReferenceNo)</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemImage)</span></td>
+            <td colspan="3">
+                @{ if (Model.ItemImage == true)
+                    {
+                        <img src="~/images/cash_expense_ico_lrg.png" id="cashref" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" />
+                    }
+                }
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<div class="line_space"></div>
+<table class="table table-bordered">
+<tr>
+    <td>
+        <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "CashDisbursement", new { mo=ViewBag.DetailMonth, yr=ViewBag.DetailYear }) + "'");" />
+    </td>
+</tr>
+</table>

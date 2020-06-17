@@ -23,24 +23,42 @@
 <tr>
     <th>@Html.DisplayNameFor(model => model.ExamCategory)</th>
     <th>@Html.DisplayNameFor(model => model.ExamName)</th>
+
+    @if (Session["USER_TYPE"].ToString() == "1")
+    {
+        <th>@Html.DisplayNameFor(model => model.ClinicBasePrice)</th>
+        <th>@Html.DisplayNameFor(model => model.DoctorBasePrice)</th>
+    }
+
     <th></th>
 </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td><span class="table_field_value">@Html.DisplayFor(modelItem => item.GetCategoryName)</span></td>
-    <td>
-        <span class="table_field_value">@Html.DisplayFor(modelItem => item.ExamName)</span>
-    </td>
+    <tr>
+        <td><span class="table_field_value">@Html.DisplayFor(modelItem => item.GetCategoryName)</span></td>
+        <td>
+            <span class="table_field_value">@Html.DisplayFor(modelItem => item.ExamName)</span>
+        </td>
 
-    <td>
-        @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+        @if (Session["USER_TYPE"].ToString() == "1")
         {
-            <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
-        }
-    </td>
+            <td>
+                <span class="table_field_value">@Html.DisplayFor(modelItem => item.ClinicBasePrice)</span>
+            </td>
 
-</tr>
+            <td>
+                <span class="table_field_value">@Html.DisplayFor(modelItem => item.DoctorBasePrice)</span>
+            </td>
+        }
+
+        <td>
+            @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+            }
+        </td>
+
+    </tr>
 }
 
 </table>

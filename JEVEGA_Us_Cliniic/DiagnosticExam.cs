@@ -25,6 +25,14 @@ namespace JEVEGA_Us_Cliniic
         [Required(ErrorMessage = "*")]
         public string ExamName { get; set; }
 
+        [Display(Name = "Clinic Price")]
+        [Required(ErrorMessage = "*")]
+        public Nullable<int> ClinicBasePrice { get; set; }
+
+        [Display(Name = "Doctor's Price")]
+        [Required(ErrorMessage = "*")]
+        public Nullable<int> DoctorBasePrice { get; set; }
+
         public string GetCategoryName
         {
             get

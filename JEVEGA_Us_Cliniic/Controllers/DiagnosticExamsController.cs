@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -54,12 +56,13 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ExamCategory,ExamName")] DiagnosticExam diagnosticExam)
+        public ActionResult Create([Bind(Include = "Id,ExamCategory,ExamName,ClinicBasePrice,DoctorBasePrice")] DiagnosticExam diagnosticExam)
         {
             if (ModelState.IsValid)
             {
                 db.DiagnosticExams.Add(diagnosticExam);
                 db.SaveChanges();
+                CreateExamPriceHistory(diagnosticExam);
                 return RedirectToAction("Index");
             }
             else
@@ -97,20 +100,22 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ExamCategory,ExamName")] DiagnosticExam diagnosticExam)
+        public ActionResult Edit([Bind(Include = "Id,ExamCategory,ExamName,ClinicBasePrice,DoctorBasePrice")] DiagnosticExam diagnosticExam)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(diagnosticExam).State = EntityState.Modified;
                 db.SaveChanges();
+                CreateExamPriceHistory(diagnosticExam);
                 return RedirectToAction("Index");
             }
             else
             {
                 ViewBag.ExamCategoryTypes = new SelectList(db.DiagnosticExamCategories, "Id", "CategoryName");
             }
+
             return View(diagnosticExam);
-        }
+        } //--
 
         // GET: DiagnosticExams/Delete/5
         public ActionResult Delete(int? id)
@@ -146,5 +151,27 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void CreateExamPriceHistory(DiagnosticExam diagnosticExam)
+        {
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString;
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Insert ExamPriceHistory(ExamCategory, ExamName, ClinicBasePrice, DoctorBasePrice, PriceDate, ExamNameId) Values(@examcat, @examname, @clprice, @docprice, @date, @examname_id)";
+
+                sqlCmd.Parameters.AddWithValue("@examcat", diagnosticExam.ExamCategory);
+                sqlCmd.Parameters.AddWithValue("@examname", diagnosticExam.ExamName);
+                sqlCmd.Parameters.AddWithValue("@clprice", diagnosticExam.ClinicBasePrice);
+                sqlCmd.Parameters.AddWithValue("@docprice", diagnosticExam.DoctorBasePrice);
+                sqlCmd.Parameters.AddWithValue("@date", DateTime.Now);
+                sqlCmd.Parameters.AddWithValue("@examname_id", diagnosticExam.Id);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+        } //--
     }
 }

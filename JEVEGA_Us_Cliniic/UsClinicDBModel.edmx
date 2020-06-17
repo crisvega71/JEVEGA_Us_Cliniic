@@ -4,7 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JEVEGA_UsClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JEVEGA_UsClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CashDisbursement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemCategory" Type="smallint" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="DateSpent" Type="datetime" Nullable="false" />
+          <Property Name="ReferenceNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ItemImage" Type="bit" />
+        </EntityType>
         <EntityType Name="DiagnosticExam">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +24,8 @@
           <Property Name="ExamCategory" Type="smallint" />
           <Property Name="ExamName" Type="nvarchar" MaxLength="50" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicBasePrice" Type="int" />
+          <Property Name="DoctorBasePrice" Type="int" />
         </EntityType>
         <EntityType Name="DiagnosticExamCategory">
           <Key>
@@ -28,6 +42,13 @@
           <Property Name="ReportCategory" Type="int" />
           <Property Name="ReportWriteUps" Type="nvarchar" MaxLength="2048" />
           <Property Name="ReportName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="ExpenseCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenseCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -71,7 +92,7 @@
           <Property Name="ExamDate" Type="datetime" />
           <Property Name="Sonographer" Type="smallint" />
           <Property Name="Radiologist" Type="smallint" />
-          <Property Name="ExamReport" Type="nvarchar" MaxLength="1024" />
+          <Property Name="ExamReport" Type="nvarchar" MaxLength="2048" />
           <Property Name="SignByDoctor" Type="varchar" MaxLength="1" />
           <Property Name="DateSigned" Type="datetime" />
           <Property Name="Image1" Type="bit" />
@@ -109,6 +130,8 @@
           <Property Name="Image32" Type="bit" />
           <Property Name="ExamId" Type="nvarchar" MaxLength="10" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExtraCharge" Type="int" />
+          <Property Name="ExamPrice" Type="int" />
         </EntityType>
         <EntityType Name="RadiologistDoctor">
           <Key>
@@ -123,6 +146,7 @@
           <Property Name="ProfilePic" Type="bit" />
           <Property Name="PrcLicenseNo" Type="nvarchar" MaxLength="10" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PercentageFee" Type="int" />
         </EntityType>
         <EntityType Name="Sonographer">
           <Key>
@@ -153,9 +177,11 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityContainer Name="JEVEGA_UsClinicDBModelStoreContainer">
+          <EntitySet Name="CashDisbursement" EntityType="Self.CashDisbursement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiagnosticExam" EntityType="Self.DiagnosticExam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiagnosticExamCategory" EntityType="Self.DiagnosticExamCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamReportTemplate" EntityType="Self.ExamReportTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpenseCategory" EntityType="Self.ExpenseCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PatientData" EntityType="Self.PatientData" Schema="dbo" store:Type="Tables" />
@@ -164,19 +190,10 @@
           <EntitySet Name="Sonographer" EntityType="Self.Sonographer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JEVEGA_UsClinicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="DiagnosticExam">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="ExamCategory" Type="Int16" />
-          <Property Name="ExamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="DiagnosticExamCategory">
           <Key>
             <PropertyRef Name="Id" />
@@ -226,6 +243,92 @@
           <Property Name="LMP" Type="DateTime" Precision="0" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
+        <EntityType Name="Sonographer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="Boolean" />
+          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="Int16" />
+          <Property Name="HashPassVerification" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="JEVEGA_UsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DiagnosticExamCategories" EntityType="Self.DiagnosticExamCategory" />
+          <EntitySet Name="ExamReportTemplates" EntityType="Self.ExamReportTemplate" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+          <EntitySet Name="PatientDatas" EntityType="Self.PatientData" />
+          <EntitySet Name="Sonographers" EntityType="Self.Sonographer" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="DiagnosticExams" EntityType="JEVEGA_UsClinicDBModel.DiagnosticExam" />
+          <EntitySet Name="RadiologistDoctors" EntityType="JEVEGA_UsClinicDBModel.RadiologistDoctor" />
+          <EntitySet Name="CashDisbursements" EntityType="JEVEGA_UsClinicDBModel.CashDisbursement" />
+          <EntitySet Name="ExpenseCategories" EntityType="JEVEGA_UsClinicDBModel.ExpenseCategory" />
+          <EntitySet Name="PatientExams" EntityType="JEVEGA_UsClinicDBModel.PatientExam" />
+        </EntityContainer>
+        <EntityType Name="DiagnosticExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ExamCategory" Type="Int16" />
+          <Property Name="ExamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicBasePrice" Type="Int32" />
+          <Property Name="DoctorBasePrice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RadiologistDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SignatureImage" Type="Boolean" />
+          <Property Name="ProfilePic" Type="Boolean" />
+          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PercentageFee" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CashDisbursement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategory" Type="Int16" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DateSpent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReferenceNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ItemImage" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ExpenseCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseCategory1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="PatientExam">
           <Key>
             <PropertyRef Name="Id" />
@@ -235,7 +338,7 @@
           <Property Name="ExamDate" Type="DateTime" Precision="3" />
           <Property Name="Sonographer" Type="Int16" />
           <Property Name="Radiologist" Type="Int16" />
-          <Property Name="ExamReport" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="ExamReport" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Name="SignByDoctor" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="DateSigned" Type="DateTime" Precision="3" />
           <Property Name="Image1" Type="Boolean" />
@@ -273,76 +376,15 @@
           <Property Name="Image32" Type="Boolean" />
           <Property Name="ExamId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExtraCharge" Type="Int32" />
+          <Property Name="ExamPrice" Type="Int32" />
         </EntityType>
-        <EntityType Name="RadiologistDoctor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PostTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SignatureImage" Type="Boolean" />
-          <Property Name="ProfilePic" Type="Boolean" />
-          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Sonographer">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ProfilePic" Type="Boolean" />
-          <Property Name="PrcLicenseNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserType" Type="Int16" />
-          <Property Name="HashPassVerification" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityContainer Name="JEVEGA_UsDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="DiagnosticExams" EntityType="Self.DiagnosticExam" />
-          <EntitySet Name="DiagnosticExamCategories" EntityType="Self.DiagnosticExamCategory" />
-          <EntitySet Name="ExamReportTemplates" EntityType="Self.ExamReportTemplate" />
-          <EntitySet Name="Genders" EntityType="Self.Gender" />
-          <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
-          <EntitySet Name="PatientDatas" EntityType="Self.PatientData" />
-          <EntitySet Name="PatientExams" EntityType="Self.PatientExam" />
-          <EntitySet Name="RadiologistDoctors" EntityType="Self.RadiologistDoctor" />
-          <EntitySet Name="Sonographers" EntityType="Self.Sonographer" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="JEVEGA_UsClinicDBModelStoreContainer" CdmEntityContainer="JEVEGA_UsDbEntities">
-          <EntitySetMapping Name="DiagnosticExams">
-            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.DiagnosticExam">
-              <MappingFragment StoreEntitySet="DiagnosticExam">
-                <ScalarProperty Name="ExamCategory" ColumnName="ExamCategory" />
-                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DiagnosticExamCategories">
             <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.DiagnosticExamCategory">
               <MappingFragment StoreEntitySet="DiagnosticExamCategory">
@@ -397,70 +439,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PatientExams">
-            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.PatientExam">
-              <MappingFragment StoreEntitySet="PatientExam">
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
-                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
-                <ScalarProperty Name="Sonographer" ColumnName="Sonographer" />
-                <ScalarProperty Name="Radiologist" ColumnName="Radiologist" />
-                <ScalarProperty Name="ExamReport" ColumnName="ExamReport" />
-                <ScalarProperty Name="SignByDoctor" ColumnName="SignByDoctor" />
-                <ScalarProperty Name="DateSigned" ColumnName="DateSigned" />
-                <ScalarProperty Name="Image1" ColumnName="Image1" />
-                <ScalarProperty Name="Image2" ColumnName="Image2" />
-                <ScalarProperty Name="Image3" ColumnName="Image3" />
-                <ScalarProperty Name="Image4" ColumnName="Image4" />
-                <ScalarProperty Name="Image5" ColumnName="Image5" />
-                <ScalarProperty Name="Image6" ColumnName="Image6" />
-                <ScalarProperty Name="Image7" ColumnName="Image7" />
-                <ScalarProperty Name="Image8" ColumnName="Image8" />
-                <ScalarProperty Name="Image9" ColumnName="Image9" />
-                <ScalarProperty Name="Image10" ColumnName="Image10" />
-                <ScalarProperty Name="History" ColumnName="History" />
-                <ScalarProperty Name="Image11" ColumnName="Image11" />
-                <ScalarProperty Name="Image12" ColumnName="Image12" />
-                <ScalarProperty Name="Image13" ColumnName="Image13" />
-                <ScalarProperty Name="Image14" ColumnName="Image14" />
-                <ScalarProperty Name="Image15" ColumnName="Image15" />
-                <ScalarProperty Name="Image16" ColumnName="Image16" />
-                <ScalarProperty Name="Image17" ColumnName="Image17" />
-                <ScalarProperty Name="Image18" ColumnName="Image18" />
-                <ScalarProperty Name="Image19" ColumnName="Image19" />
-                <ScalarProperty Name="Image20" ColumnName="Image20" />
-                <ScalarProperty Name="Image21" ColumnName="Image21" />
-                <ScalarProperty Name="Image22" ColumnName="Image22" />
-                <ScalarProperty Name="Image23" ColumnName="Image23" />
-                <ScalarProperty Name="Image24" ColumnName="Image24" />
-                <ScalarProperty Name="Image25" ColumnName="Image25" />
-                <ScalarProperty Name="Image26" ColumnName="Image26" />
-                <ScalarProperty Name="Image27" ColumnName="Image27" />
-                <ScalarProperty Name="Image28" ColumnName="Image28" />
-                <ScalarProperty Name="Image29" ColumnName="Image29" />
-                <ScalarProperty Name="Image30" ColumnName="Image30" />
-                <ScalarProperty Name="Image31" ColumnName="Image31" />
-                <ScalarProperty Name="Image32" ColumnName="Image32" />
-                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RadiologistDoctors">
-            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.RadiologistDoctor">
-              <MappingFragment StoreEntitySet="RadiologistDoctor">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
-                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
-                <ScalarProperty Name="PrcLicenseNo" ColumnName="PrcLicenseNo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sonographers">
             <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.Sonographer">
               <MappingFragment StoreEntitySet="Sonographer">
@@ -488,6 +466,105 @@
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="HashPassVerification" ColumnName="HashPassVerification" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiagnosticExams">
+            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.DiagnosticExam">
+              <MappingFragment StoreEntitySet="DiagnosticExam">
+                <ScalarProperty Name="DoctorBasePrice" ColumnName="DoctorBasePrice" />
+                <ScalarProperty Name="ClinicBasePrice" ColumnName="ClinicBasePrice" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="ExamCategory" ColumnName="ExamCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RadiologistDoctors">
+            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.RadiologistDoctor">
+              <MappingFragment StoreEntitySet="RadiologistDoctor">
+                <ScalarProperty Name="PercentageFee" ColumnName="PercentageFee" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrcLicenseNo" ColumnName="PrcLicenseNo" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashDisbursements">
+            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.CashDisbursement">
+              <MappingFragment StoreEntitySet="CashDisbursement">
+                <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
+                <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+                <ScalarProperty Name="DateSpent" ColumnName="DateSpent" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseCategories">
+            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.ExpenseCategory">
+              <MappingFragment StoreEntitySet="ExpenseCategory">
+                <ScalarProperty Name="ExpenseCategory1" ColumnName="ExpenseCategory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientExams">
+            <EntityTypeMapping TypeName="JEVEGA_UsClinicDBModel.PatientExam">
+              <MappingFragment StoreEntitySet="PatientExam">
+                <ScalarProperty Name="ExamPrice" ColumnName="ExamPrice" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="Image32" ColumnName="Image32" />
+                <ScalarProperty Name="Image31" ColumnName="Image31" />
+                <ScalarProperty Name="Image30" ColumnName="Image30" />
+                <ScalarProperty Name="Image29" ColumnName="Image29" />
+                <ScalarProperty Name="Image28" ColumnName="Image28" />
+                <ScalarProperty Name="Image27" ColumnName="Image27" />
+                <ScalarProperty Name="Image26" ColumnName="Image26" />
+                <ScalarProperty Name="Image25" ColumnName="Image25" />
+                <ScalarProperty Name="Image24" ColumnName="Image24" />
+                <ScalarProperty Name="Image23" ColumnName="Image23" />
+                <ScalarProperty Name="Image22" ColumnName="Image22" />
+                <ScalarProperty Name="Image21" ColumnName="Image21" />
+                <ScalarProperty Name="Image20" ColumnName="Image20" />
+                <ScalarProperty Name="Image19" ColumnName="Image19" />
+                <ScalarProperty Name="Image18" ColumnName="Image18" />
+                <ScalarProperty Name="Image17" ColumnName="Image17" />
+                <ScalarProperty Name="Image16" ColumnName="Image16" />
+                <ScalarProperty Name="Image15" ColumnName="Image15" />
+                <ScalarProperty Name="Image14" ColumnName="Image14" />
+                <ScalarProperty Name="Image13" ColumnName="Image13" />
+                <ScalarProperty Name="Image12" ColumnName="Image12" />
+                <ScalarProperty Name="Image11" ColumnName="Image11" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Image10" ColumnName="Image10" />
+                <ScalarProperty Name="Image9" ColumnName="Image9" />
+                <ScalarProperty Name="Image8" ColumnName="Image8" />
+                <ScalarProperty Name="Image7" ColumnName="Image7" />
+                <ScalarProperty Name="Image6" ColumnName="Image6" />
+                <ScalarProperty Name="Image5" ColumnName="Image5" />
+                <ScalarProperty Name="Image4" ColumnName="Image4" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="DateSigned" ColumnName="DateSigned" />
+                <ScalarProperty Name="SignByDoctor" ColumnName="SignByDoctor" />
+                <ScalarProperty Name="ExamReport" ColumnName="ExamReport" />
+                <ScalarProperty Name="Radiologist" ColumnName="Radiologist" />
+                <ScalarProperty Name="Sonographer" ColumnName="Sonographer" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

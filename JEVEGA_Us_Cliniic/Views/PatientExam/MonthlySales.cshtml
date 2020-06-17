@@ -1,0 +1,68 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.PatientExam>
+
+@{
+    ViewBag.Title = "MonthlySales";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Monthly Sales | @ViewBag.DateList</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+<div class="div_space20"></div>
+
+<table class="table table-striped">
+    <tr>
+        <td><span class="text_form_value">@Html.DisplayNameFor(model => model.PatientID)</span></td>
+        <td><span class="text_form_value">@Html.DisplayNameFor(model => model.ExamId)</span></td>
+        <td><span class="text_form_value">@Html.DisplayNameFor(model => model.ExamType)</span></td>
+        <td><span class="text_form_value">@Html.DisplayNameFor(model => model.ExamDate)</span></td>
+
+        <td align="right"><span class="text_form_value">@Html.DisplayNameFor(model => model.ExtraCharge)</span></td>
+        <td align="right"><span class="text_form_value">Exam Price</span></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.getPatientName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ExamId)</td>
+            <td>@Html.DisplayFor(modelItem => item.getExamName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ExamDate)</td>
+            <td align="right">@Html.DisplayFor(modelItem => item.ExtraCharge)</td>
+            <td align="right">@Html.DisplayFor(modelItem => item.ExamPrice)</td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="4"><span class="text_form_value">TOTAL :</span></td>
+        <td align="right"><span class="text_form_value">@ViewBag.TotalExtraCharge</span></td>
+        <td align="right"><span class="text_form_value">@ViewBag.TotalSalesAmount</span></td>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm())
+{
+
+    <table class="table table-bordered">
+    <tr>
+        <td nowrap="nowrap">
+            @Html.DropDownList("ListOfMonths", (List<SelectListItem>)ViewBag.MonthsList, "- Select an Month -", new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.DropDownList("ListOfYears", (List<SelectListItem>)ViewBag.YearsList, "- Select a Year -", new { @class = "form-control" })
+        </td>
+        <td><input type="submit" value="Filter by Month/Year" class="btn btn-default" /></td>
+
+        <td align="right">
+            <a href="PrintSalesReport?month_id=@ViewBag.MonthReport" class="btn btn-default" target="_blank">Print Sales Report</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="div_space20"></div>
+
+}

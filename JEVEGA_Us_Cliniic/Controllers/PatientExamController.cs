@@ -19,6 +19,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
         private JEVEGA_UsDbEntities db = new JEVEGA_UsDbEntities();
         UtilityHelper utHelp = new UtilityHelper();
 
+        public string[] fullMonthName = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+
         // GET: PatientExam
         public ActionResult Index()
         {
@@ -26,10 +28,6 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {
                 return RedirectToAction("Login", "Users", new { @ReturnUrl = "/PatientExam/Index" });
             }
-
-            string datelist = "";
-            bool nyear = false;
-            bool nmonth = false;
 
             string query_month = Request.QueryString["mo"];
             string query_year = Request.QueryString["yr"];
@@ -48,81 +46,19 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
 
             List<SelectListItem> listOfYears = new List<SelectListItem>();
-            if (this_year == 2019) { nyear = true; } else { nyear = false; }
-            SelectListItem item1 = new SelectListItem { Text = "2019", Value = "2019", Selected=nyear };
-            listOfYears.Add(item1);
-
-            if (this_year == 2020) { nyear = true; } else { nyear = false; }
-            SelectListItem item2 = new SelectListItem { Text = "2020", Value = "2020", Selected = nyear };
-            listOfYears.Add(item2);
-
-            if (this_year == 2021) { nyear = true; } else { nyear = false; }
-            SelectListItem item3 = new SelectListItem { Text = "2021", Value = "2021", Selected = nyear };
-            listOfYears.Add(item3);
-
-            if (this_year == 2022) { nyear = true; } else { nyear = false; }
-            SelectListItem item4 = new SelectListItem { Text = "2022", Value = "2022", Selected = nyear };
-            listOfYears.Add(item4);
-
-            if (this_year == 2023) { nyear = true; } else { nyear = false; }
-            SelectListItem item5 = new SelectListItem { Text = "2023", Value = "2023", Selected = nyear };
-            listOfYears.Add(item5);
+            listOfYears = utHelp.CreateListOfYears(this_year);
 
             ViewBag.YearsList = listOfYears.ToList();
             //...............................................................................................
 
             List<SelectListItem> listOfMonths = new List<SelectListItem>();
-
-            if (this_month == 1) { nmonth = true; datelist = "January"; } else { nmonth = false; }
-            SelectListItem mo1 = new SelectListItem { Text = "January", Value = "1", Selected = nmonth };
-            listOfMonths.Add(mo1);
-
-            if (this_month == 2) { nmonth = true; datelist = "February"; } else { nmonth = false; }
-            SelectListItem mo2 = new SelectListItem { Text = "February", Value = "2", Selected = nmonth };
-            listOfMonths.Add(mo2);
-
-            if (this_month == 3) { nmonth = true; datelist = "March"; } else { nmonth = false; }
-            SelectListItem mo3 = new SelectListItem { Text = "March", Value = "3", Selected = nmonth };
-            listOfMonths.Add(mo3);
-
-            if (this_month == 4) { nmonth = true; datelist = "April"; } else { nmonth = false; }
-            SelectListItem mo4 = new SelectListItem { Text = "April", Value = "4", Selected = nmonth };
-            listOfMonths.Add(mo4);
-
-            if (this_month == 5) { nmonth = true; datelist = "May"; } else { nmonth = false; }
-            SelectListItem mo5 = new SelectListItem { Text = "May", Value = "5", Selected = nmonth };
-            listOfMonths.Add(mo5);
-
-            if (this_month == 6) { nmonth = true; datelist = "June"; } else { nmonth = false; }
-            SelectListItem mo6 = new SelectListItem { Text = "June", Value = "6", Selected = nmonth };
-            listOfMonths.Add(mo6);
-
-            if (this_month == 7) { nmonth = true; datelist = "July"; } else { nmonth = false; }
-            SelectListItem mo7 = new SelectListItem { Text = "July", Value = "7", Selected = nmonth };
-            listOfMonths.Add(mo7);
-
-            if (this_month == 8) { nmonth = true; datelist = "August"; } else { nmonth = false; }
-            SelectListItem mo8 = new SelectListItem { Text = "August", Value = "8", Selected = nmonth };
-            listOfMonths.Add(mo8);
-
-            if (this_month == 9) { nmonth = true; datelist = "September"; } else { nmonth = false; }
-            SelectListItem mo9 = new SelectListItem { Text = "September", Value = "9", Selected = nmonth };
-            listOfMonths.Add(mo9);
-
-            if (this_month == 10) { nmonth = true; datelist = "October"; } else { nmonth = false; }
-            SelectListItem mo10 = new SelectListItem { Text = "October", Value = "10", Selected = nmonth };
-            listOfMonths.Add(mo10);
-
-            if (this_month == 11) { nmonth = true; datelist = "November"; } else { nmonth = false; }
-            SelectListItem mo11 = new SelectListItem { Text = "November", Value = "11", Selected = nmonth };
-            listOfMonths.Add(mo11);
-
-            if (this_month == 12) { nmonth = true; datelist = "December"; } else { nmonth = false; }
-            SelectListItem mo12 = new SelectListItem { Text = "December", Value = "12", Selected = nmonth };
-            listOfMonths.Add(mo12);
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
 
             ViewBag.MonthsList = listOfMonths.ToList();
-            ViewBag.DateList = datelist + " " + this_year;
+            ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
+
+            ViewBag.SelectedMonth = this_month;
+            ViewBag.SelectedYear = this_year;
             //...............................................................................................
 
             List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
@@ -137,94 +73,256 @@ namespace JEVEGA_Us_Cliniic.Controllers
         {
             string str_year = formCollection["ListOfYears"];
             int this_year = Convert.ToInt32(str_year);
-            bool nyear = false;
-            string datelist = "";
 
             List<SelectListItem> listOfYears = new List<SelectListItem>();
-            if (this_year == 2019) { nyear = true; } else { nyear = false; }
-            SelectListItem item1 = new SelectListItem { Text = "2019", Value = "2019", Selected = nyear };
-            listOfYears.Add(item1);
-
-            if (this_year == 2020) { nyear = true; } else { nyear = false; }
-            SelectListItem item2 = new SelectListItem { Text = "2020", Value = "2020", Selected = nyear };
-            listOfYears.Add(item2);
-
-            if (this_year == 2021) { nyear = true; } else { nyear = false; }
-            SelectListItem item3 = new SelectListItem { Text = "2021", Value = "2021", Selected = nyear };
-            listOfYears.Add(item3);
-
-            if (this_year == 2022) { nyear = true; } else { nyear = false; }
-            SelectListItem item4 = new SelectListItem { Text = "2022", Value = "2022", Selected = nyear };
-            listOfYears.Add(item4);
-
-            if (this_year == 2023) { nyear = true; } else { nyear = false; }
-            SelectListItem item5 = new SelectListItem { Text = "2023", Value = "2023", Selected = nyear };
-            listOfYears.Add(item5);
+            listOfYears = utHelp.CreateListOfYears(this_year);
 
             ViewBag.YearsList = listOfYears.ToList();
             //...............................................................................................
             string str_month = formCollection["ListOfMonths"];
             int this_month = Convert.ToInt32(str_month);
-            bool nmonth = false;
 
             List<SelectListItem> listOfMonths = new List<SelectListItem>();
-
-            if (this_month == 1) { nmonth = true; datelist = "January"; } else { nmonth = false; }
-            SelectListItem mo1 = new SelectListItem { Text = "January", Value = "1", Selected = nmonth };
-            listOfMonths.Add(mo1);
-
-            if (this_month == 2) { nmonth = true; datelist = "February"; } else { nmonth = false; }
-            SelectListItem mo2 = new SelectListItem { Text = "February", Value = "2", Selected = nmonth };
-            listOfMonths.Add(mo2);
-
-            if (this_month == 3) { nmonth = true; datelist = "March"; } else { nmonth = false; }
-            SelectListItem mo3 = new SelectListItem { Text = "March", Value = "3", Selected = nmonth };
-            listOfMonths.Add(mo3);
-
-            if (this_month == 4) { nmonth = true; datelist = "April"; } else { nmonth = false; }
-            SelectListItem mo4 = new SelectListItem { Text = "April", Value = "4", Selected = nmonth };
-            listOfMonths.Add(mo4);
-
-            if (this_month == 5) { nmonth = true; datelist = "May"; } else { nmonth = false; }
-            SelectListItem mo5 = new SelectListItem { Text = "May", Value = "5", Selected = nmonth };
-            listOfMonths.Add(mo5);
-
-            if (this_month == 6) { nmonth = true; datelist = "June"; } else { nmonth = false; }
-            SelectListItem mo6 = new SelectListItem { Text = "June", Value = "6", Selected = nmonth };
-            listOfMonths.Add(mo6);
-
-            if (this_month == 7) { nmonth = true; datelist = "July"; } else { nmonth = false; }
-            SelectListItem mo7 = new SelectListItem { Text = "July", Value = "7", Selected = nmonth };
-            listOfMonths.Add(mo7);
-
-            if (this_month == 8) { nmonth = true; datelist = "August"; } else { nmonth = false; }
-            SelectListItem mo8 = new SelectListItem { Text = "August", Value = "8", Selected = nmonth };
-            listOfMonths.Add(mo8);
-
-            if (this_month == 9) { nmonth = true; datelist = "September"; } else { nmonth = false; }
-            SelectListItem mo9 = new SelectListItem { Text = "September", Value = "9", Selected = nmonth };
-            listOfMonths.Add(mo9);
-
-            if (this_month == 10) { nmonth = true; datelist = "October"; } else { nmonth = false; }
-            SelectListItem mo10 = new SelectListItem { Text = "October", Value = "10", Selected = nmonth };
-            listOfMonths.Add(mo10);
-
-            if (this_month == 11) { nmonth = true; datelist = "November"; } else { nmonth = false; }
-            SelectListItem mo11 = new SelectListItem { Text = "November", Value = "11", Selected = nmonth };
-            listOfMonths.Add(mo11);
-
-            if (this_month == 12) { nmonth = true; datelist = "December"; } else { nmonth = false; }
-            SelectListItem mo12 = new SelectListItem { Text = "December", Value = "12", Selected = nmonth };
-            listOfMonths.Add(mo12);
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
 
             ViewBag.MonthsList = listOfMonths.ToList();
-            ViewBag.DateList = datelist + " " + this_year;
+            ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
+
+            ViewBag.SelectedMonth = this_month;
+            ViewBag.SelectedYear = this_year;
             //...............................................................................................
 
             List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
 
             return View(patientExamList);
         } //-- 
+
+        public ActionResult DoctorsPF()
+        {
+            if (Session["USER_TYPE"] == null)
+            {
+                return RedirectToAction("Login", "Users", new { @ReturnUrl = "/PatientExam/Index" });
+            }
+
+            string query_month = Request.QueryString["mo"];
+            string query_year = Request.QueryString["yr"];
+
+            int this_month;
+            int this_year;
+            if (query_month == null)
+            {
+                DateTime today = DateTime.Now;
+                this_month = today.Month;
+                this_year = today.Year;
+            }
+            else
+            {
+                this_month = Convert.ToInt32(query_month);
+                this_year = Convert.ToInt32(query_year);
+            }
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            listOfYears = utHelp.CreateListOfYears(this_year);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            //...............................................................................................
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
+
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = fullMonthName[this_month-1] + " " + this_year;
+            //...............................................................................................
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+
+            int? totalAmount = patientExamList.Sum(a => a.getDoctorsExamPrice);
+            double? totalPF = patientExamList.Sum(a => a.getDoctorsPF);
+
+            string strTotalAmount = string.Format("{0:0.00}", totalAmount);
+            string strTotalPF = string.Format("{0:0.00}", totalPF);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalDoctorsPF = strTotalPF;
+            ViewBag.MonthReport = this_month;
+
+            return View(patientExamList);
+        } //--
+
+        [HttpPost]
+        public ActionResult DoctorsPF(FormCollection formCollection)
+        {
+            string str_year = formCollection["ListOfYears"];
+            int this_year = Convert.ToInt32(str_year);
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            listOfYears = utHelp.CreateListOfYears(this_year);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            //...............................................................................................
+            string str_month = formCollection["ListOfMonths"];
+            int this_month = Convert.ToInt32(str_month);
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
+
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
+            //...............................................................................................
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
+
+            int? totalAmount = patientExamList.Sum(a => a.getDoctorsExamPrice);
+            double? totalPF = patientExamList.Sum(a => a.getDoctorsPF);
+
+            string strTotalAmount = string.Format("{0:0.00}", totalAmount);
+            string strTotalPF = string.Format("{0:0.00}", totalPF);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalDoctorsPF = strTotalPF;
+            ViewBag.MonthReport = this_month;
+
+            return View(patientExamList);
+
+        } //==
+
+        public ActionResult PrintDoctorsPF(int month_id)
+        {
+            string[] monthName = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            DateTime today = DateTime.Now;
+            string yearReport = today.Year.ToString();
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == month_id).ToList();
+
+            int? totalAmount = patientExamList.Sum(a => a.getDoctorsExamPrice);
+            double? totalPF = patientExamList.Sum(a => a.getDoctorsPF);
+
+            string strTotalAmount = string.Format("{0:0.00}", totalAmount);
+            string strTotalPF = string.Format("{0:0.00}", totalPF);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalDoctorsPF = strTotalPF;
+            ViewBag.ReportDate = monthName[month_id - 1] + " " + yearReport;
+
+            return View(patientExamList);
+        } //--
+
+        public ActionResult MonthlySales()
+        {
+            if (Session["USER_TYPE"] == null)
+            {
+                return RedirectToAction("Login", "Users", new { @ReturnUrl = "/PatientExam/Index" });
+            }
+
+            string query_month = Request.QueryString["mo"];
+            string query_year = Request.QueryString["yr"];
+
+            int this_month;
+            int this_year;
+            if (query_month == null)
+            {
+                DateTime today = DateTime.Now;
+                this_month = today.Month;
+                this_year = today.Year;
+            }
+            else
+            {   this_month = Convert.ToInt32(query_month);
+                this_year = Convert.ToInt32(query_year);
+            }
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            listOfYears = utHelp.CreateListOfYears(this_year);
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
+            //...............................................................................................
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+
+            int? totalSalesAmount = patientExamList.Sum(a => a.ExamPrice);
+            string strTotalAmount = string.Format("{0:0,0.00}", totalSalesAmount);
+
+            int? totalExtraCharge = patientExamList.Sum(a => a.ExtraCharge);
+            string strTotalExtraCharge = string.Format("{0:0,0.00}", totalExtraCharge);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalExtraCharge = strTotalExtraCharge;
+            ViewBag.MonthReport = this_month;
+
+            return View(patientExamList);
+        } //--
+
+        [HttpPost]
+        public ActionResult MonthlySales(FormCollection formCollection)
+        {
+            string str_year = formCollection["ListOfYears"];
+            int this_year = Convert.ToInt32(str_year);
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            listOfYears = utHelp.CreateListOfYears(this_year);
+
+            string str_month = formCollection["ListOfMonths"];
+            int this_month = Convert.ToInt32(str_month);
+
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+            listOfMonths = utHelp.CreateListMonthNames(this_month);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            ViewBag.MonthsList = listOfMonths.ToList();
+            ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
+            //...............................................................................................
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
+
+            int? totalSalesAmount = patientExamList.Sum(a => a.ExamPrice);
+            string strTotalAmount = string.Format("{0:0,0.00}", totalSalesAmount);
+
+            int? totalExtraCharge = patientExamList.Sum(a => a.ExtraCharge);
+            string strTotalExtraCharge = string.Format("{0:0,0.00}", totalExtraCharge);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalExtraCharge = strTotalExtraCharge;
+            ViewBag.MonthReport = this_month;
+
+            return View(patientExamList);
+        } //--
+
+        public ActionResult SalesSummary()
+        {
+            DateTime today = DateTime.Now;
+            int this_year = today.Year;
+
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            listOfYears = utHelp.CreateListOfYears(this_year);
+
+            ViewBag.YearsList = listOfYears.ToList();
+            ViewBag.BusinessYear = this_year;
+
+            return View();
+        } //--
+
+        public ActionResult PrintSalesReport(int month_id)
+        {
+            string[] monthName = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            DateTime today = DateTime.Now;
+            string yearReport = today.Year.ToString();
+
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == month_id).ToList();
+
+            int? totalAmount = patientExamList.Sum(a => a.ExamPrice);
+            string strTotalAmount = string.Format("{0:0.00}", totalAmount);
+
+            int? totalExtraCharge = patientExamList.Sum(a => a.ExtraCharge);
+            string strTotalExtraCharge = string.Format("{0:0,0.00}", totalExtraCharge);
+
+            ViewBag.TotalSalesAmount = strTotalAmount;
+            ViewBag.TotalExtraCharge = strTotalExtraCharge;
+            ViewBag.ReportDate = monthName[month_id - 1] + " " + yearReport;
+
+            return View(patientExamList);
+        } //--
 
         // GET: PatientExam/Details/5
         [AllowAnonymous]
@@ -396,6 +494,17 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
             ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
 
+            int? examPrice = patientExam.ExamPrice;
+            int? examCurrentPrice = patientExam.getClinicExamPrice;
+            if (examPrice == 0 || examPrice == null)
+            {
+                patientExam.ExamPrice = examCurrentPrice;
+            }
+            if (patientExam.ExtraCharge == 0 || patientExam.ExtraCharge == null)
+            {   patientExam.ExtraCharge = 0; }
+
+            ViewBag.NoteCurrentExamPrice = "Current exam price = " + examCurrentPrice.ToString() ;
+
             return View(patientExam);
         }
 
@@ -404,7 +513,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,SignByDoctor,DateSigned,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History,Image21,Image22,Image23,Image24,Image25,Image26,Image27,Image28,Image29,Image30,Image31,Image32,ExamId")] PatientExam patientExam, string ReturnUrl)
+        public ActionResult Edit([Bind(Include = "Id,PatientID,ExamType,ExamDate,Sonographer,Radiologist,ExamReport,SignByDoctor,DateSigned,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,History,Image21,Image22,Image23,Image24,Image25,Image26,Image27,Image28,Image29,Image30,Image31,Image32,ExamId,ExtraCharge,ExamPrice")] PatientExam patientExam, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -415,7 +524,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
                 using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
                 {
                     SqlCommand sqlCmd = new SqlCommand();
-                    sqlCmd.CommandText = "Update PatientExam Set ExamDate = @exam_date, ExamType = @exam_type, History = @history, Radiologist = @doctor_id, Sonographer = @sono_id, ExamId = @exam_Id Where Id = @examId";
+                    sqlCmd.CommandText = "Update PatientExam Set ExamDate = @exam_date, ExamType = @exam_type, History = @history, Radiologist = @doctor_id, Sonographer = @sono_id, ExamId = @exam_Id, ExtraCharge = @extracharge, ExamPrice = @examprice Where Id = @examId";
 
                     if (patientExam.History == null) { patientExam.History = ""; }
 
@@ -425,6 +534,8 @@ namespace JEVEGA_Us_Cliniic.Controllers
                     sqlCmd.Parameters.AddWithValue("@doctor_id", patientExam.Radiologist);
                     sqlCmd.Parameters.AddWithValue("@sono_id", patientExam.Sonographer);
                     sqlCmd.Parameters.AddWithValue("@examId", patientExam.Id);
+                    sqlCmd.Parameters.AddWithValue("@extracharge", patientExam.ExtraCharge);
+                    sqlCmd.Parameters.AddWithValue("@examprice", patientExam.ExamPrice);
                     sqlCmd.Parameters.AddWithValue("@exam_Id", patientExam.ExamId);
 
                     sqlCmd.Connection = sqlCon;

@@ -1,0 +1,57 @@
+﻿@model JEVEGA_Us_Cliniic.CashDisbursement
+
+@{
+    ViewBag.Title = "UploadCashRef";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Upload Cash Reference Image</h3></td>
+    <td align="right"></td>
+</tr>
+</table>
+
+
+@using (Html.BeginForm("UploadCashRefImage", "CashDisbursement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <table class="table_clinic">
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemDescription)</span></td>
+                <td>
+                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ItemDescription)</span>
+                </td>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemCategory)</span></td>
+                <td>
+                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getCategoryName)</span>
+                </td>
+            </tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">Cash Reference Image</span></td>
+                <td colspan="3"><input type="file" name="fileCashRef" id="fileCashRef" /></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div class="line_space"></div>
+    <table class="table table-bordered">
+    <tr>
+        <td>
+            <input type="submit" value="Upload" class="btn btn-default" />
+            &nbsp;
+            <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "CashDisbursement", new { mo=ViewBag.DetailMonth, yr=ViewBag.DetailYear }) + "'");" />
+        </td>
+    </tr>
+    </table>
+
+}

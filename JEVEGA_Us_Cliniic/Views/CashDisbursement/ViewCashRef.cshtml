@@ -1,0 +1,50 @@
+﻿@model JEVEGA_Us_Cliniic.CashDisbursement
+
+@{
+    ViewBag.Title = "ViewCashRef";
+    Layout = "~/Views/Shared/Layout_print_report.cshtml";
+}
+
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Cash Disbursement Reference</h3></td>
+</tr>
+</table>
+
+<div>
+
+    <table class="table_clinic">
+        <tr><td colspan="4"><div class="line_space"></div></td></tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemDescription)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ItemDescription)</span>
+            </td>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemCategory)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getCategoryName)</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.Amount)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.Amount)</span>
+            </td>
+            <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.DateSpent)</span></td>
+            <td>
+                <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.DateSpent)</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4"><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ItemImage)</span></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <img src="~/CashImages/@ViewBag.imageCashFile" class="img-responsive" border="0" />
+            </td>
+        </tr>
+    </table>
+
+</div>

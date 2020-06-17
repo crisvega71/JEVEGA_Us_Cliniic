@@ -99,6 +99,14 @@ namespace JEVEGA_Us_Cliniic
         [Required(ErrorMessage = "*")]
         public string ExamId { get; set; }
 
+        [Display(Name = "eXtra Charge")]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        public Nullable<int> ExtraCharge { get; set; }
+
+        [Display(Name = "Exam Price")]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        public Nullable<int> ExamPrice { get; set; }
+
         public string getPatientIdName
         {
             get
@@ -199,6 +207,38 @@ namespace JEVEGA_Us_Cliniic
             {
                 string examtype_name = dbUSClinic.DiagnosticExams.Find(ExamType).GetfullExamName;
                 return examtype_name;
+            }
+        }
+
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
+        public int? getDoctorsExamPrice
+        {
+            get
+            {
+                int? exam_price = dbUSClinic.DiagnosticExams.Find(ExamType).DoctorBasePrice;
+                return exam_price;
+            }
+        }
+
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
+        public double? getDoctorsPF
+        {
+            get
+            {
+                int? exam_price = dbUSClinic.DiagnosticExams.Find(ExamType).DoctorBasePrice;
+                int? doctorsPercentage = dbUSClinic.RadiologistDoctors.Find(Radiologist).PercentageFee;
+                double? doctorsPF = (double)exam_price * (double)(doctorsPercentage / 100.00);
+                return doctorsPF;
+            }
+        }
+
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
+        public int? getClinicExamPrice
+        {
+            get
+            {
+                int? exam_price = dbUSClinic.DiagnosticExams.Find(ExamType).ClinicBasePrice;
+                return exam_price;
             }
         }
 

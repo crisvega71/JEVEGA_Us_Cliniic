@@ -32,6 +32,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
         }  //--
 
         // GET: ExamVideo/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -195,7 +196,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             emailBody = "Dear " + patientName + " \r\n\r\n";
             emailBody += "Click on the link below to see and download the video ... " + "\r\n\r\n";
 
-            emailBody += "https://jevegausdiagnostic.com/ExamVideo/Video/" + id.ToString() + "\r\n\r\n";
+            emailBody += "https://jevegausdiagnostic.com/ExamVideo/Details/" + id.ToString() + "\r\n\r\n";
 
             emailBody += "Thanks and regards, " + "\r\n";
             emailBody += "JEVEGA Ultrasound Diagnostic ADMIN";

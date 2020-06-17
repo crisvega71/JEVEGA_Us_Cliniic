@@ -1,0 +1,89 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.CashDisbursement>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Cash Disbursement | @ViewBag.DateList</h3></td>
+        <td align="right">
+            @{
+                if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Create", "CashDisbursement")><img src="~/images/add_icon.png" /></a>
+                }
+            }
+            &nbsp;
+        </td>
+    </tr>
+</table>
+<div class="div_space20"></div>
+
+<table class="table table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ItemDescription)</th>
+        <th>@Html.DisplayNameFor(model => model.ItemCategory)</th>
+        <th style="float:right">@Html.DisplayNameFor(model => model.Amount)</th>
+        <th>@Html.DisplayNameFor(model => model.DateSpent)</th>
+        <th>@Html.DisplayNameFor(model => model.ReferenceNo)</th>
+        <th>@Html.DisplayNameFor(model => model.ItemImage)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ItemDescription)</td>
+            <td>@Html.DisplayFor(modelItem => item.getCategoryName)</td>
+            <td align="right">@Html.DisplayFor(modelItem => item.Amount)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateSpent)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReferenceNo)</td>
+
+            <td>
+                @if (item.ItemImage == true)
+                {
+                    <a href="CashDisbursement/ViewCashRef/@item.Id" onclick="window.open(this.href, 'windowName', 'width=1000, height=700, left=70, top=70, scrollbars, resizable'); return false;">
+                        <img src="~/images/cash_expense_ico.png" id="cashref" class="hand_cursor" border="0" />
+                    </a>
+                }
+            </td>
+
+            <td>
+                @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+                }
+                - <a href=@Url.Action("Details", new { id = item.Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+                - <a href=@Url.Action("UploadCashRef", new { id = item.Id })><img src="~/images/upload_cashref_ico.png" /></a>
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="2"><span class="text_form_value">TOTAL :</span></td>
+        <td align="right"><span class="text_form_value">@ViewBag.TotalCashDisburseAmount</span></td>
+        <td colspan="4"></td>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered">
+    <tr>
+        <td nowrap="nowrap">
+            @Html.DropDownList("ListOfMonths", (List<SelectListItem>)ViewBag.MonthsList, "- Select an Month -", new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.DropDownList("ListOfYears", (List<SelectListItem>)ViewBag.YearsList, "- Select a Year -", new { @class = "form-control" })
+        </td>
+
+        <td><input type="submit" value="Filter by Month/Year" class="btn btn-default" /></td>
+    </tr>
+    </table>
+
+    <div class="div_space20"></div>
+}

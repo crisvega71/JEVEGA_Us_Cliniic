@@ -74,6 +74,7 @@
                 @Html.TextAreaFor(model => model.History, new { @class = "textarea_report", rows = "3" })
             </td>
         </tr>
+
         <tr><td><div class="div_space20"></div></td></tr>
 
         <tr>
@@ -95,6 +96,30 @@
                     </div>
                 </div>
             </td>
+        </tr>
+        <tr><td colspan="2"><hr /></td></tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExamPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExamPrice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExamPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExtraCharge, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExtraCharge, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExtraCharge, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="error_message_jquery">@ViewBag.NoteCurrentExamPrice</span></td>
         </tr>
     </table>
 

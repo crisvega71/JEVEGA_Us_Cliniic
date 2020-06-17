@@ -16,6 +16,7 @@ namespace JEVEGA_Us_Cliniic
     public partial class DiagnosticExamCategory
     {
         public int Id { get; set; }
+
         [Display(Name = "Exam Category Name")]
         [Required(ErrorMessage = "*")]
         public string CategoryName { get; set; }

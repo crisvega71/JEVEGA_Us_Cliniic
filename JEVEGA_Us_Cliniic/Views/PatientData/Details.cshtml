@@ -50,6 +50,8 @@
 <tr>
     <td>
         <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientData") + "'");" />
+        &nbsp;
+        <input type="button" value="Update Patient Info" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit/"+Model.Id.ToString(), "PatientData") + "'");" />
     </td>
 </tr>
 </table>

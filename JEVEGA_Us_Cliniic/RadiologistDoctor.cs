@@ -46,6 +46,10 @@ namespace JEVEGA_Us_Cliniic
         [Display(Name = "PRC License No.")]
         public string PrcLicenseNo { get; set; }
 
+        [Display(Name = "Percentage Fee")]
+        [Required(ErrorMessage = "*")]
+        public Nullable<int> PercentageFee { get; set; }
+
         public string GetFullname
         {
             get { return LastName + ", " + FirstName; }

@@ -56,6 +56,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -64,6 +67,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -135,14 +144,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CashDisbursement.cs">
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountLoginController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CashDisbursementController.cs" />
     <Compile Include="Controllers\DiagnosticExamCategoriesController.cs" />
     <Compile Include="Controllers\DiagnosticExamsController.cs" />
     <Compile Include="Controllers\DiagnosticServicesController.cs" />
     <Compile Include="Controllers\ExamVideoController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientDataApiController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\PatientExamController.cs" />
     <Compile Include="Controllers\RadDoctorController.cs" />
@@ -158,6 +173,9 @@
       <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ExamReportTemplate.cs">
+      <DependentUpon>UsClinicDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseCategory.cs">
       <DependentUpon>UsClinicDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Gender.cs">
@@ -221,6 +239,8 @@
     <Content Include="images\about_JEVEGA_Us.jpg" />
     <Content Include="images\add_icon.png" />
     <Content Include="images\call_or_text_icon.png" />
+    <Content Include="images\cash_expense_ico.png" />
+    <Content Include="images\cash_expense_ico_lrg.png" />
     <Content Include="images\clinic_box_banner.jpg" />
     <Content Include="images\clinic_box_banner_sml.jpg" />
     <Content Include="images\clinic_icon_banner.jpg" />
@@ -233,6 +253,8 @@
     <Content Include="images\edit_ico.png" />
     <Content Include="images\facebook_logo_icon.png" />
     <Content Include="images\Facebook_profile_pic.jpg" />
+    <Content Include="images\folder_close_icon.png" />
+    <Content Include="images\folder_icon.png" />
     <Content Include="images\instagram_logo_icon.png" />
     <Content Include="images\jevega_us_vision.jpg" />
     <Content Include="images\location_icon.png" />
@@ -258,6 +280,7 @@
     <Content Include="images\time_icon.png" />
     <Content Include="images\timing_icon.png" />
     <Content Include="images\ultrasound-icon.png" />
+    <Content Include="images\upload_cashref_ico.png" />
     <Content Include="images\UsLogo_print.png" />
     <Content Include="images\US_web_banner.jpg" />
     <Content Include="images\US_web_banner_inner.jpg" />
@@ -294,7 +317,9 @@
       <DependentUpon>UsClinicDBModel.edmx</DependentUpon>
       <LastGenOutput>UsClinicDBModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -403,9 +428,24 @@
     <Content Include="Views\ExamVideo\Video.cshtml" />
     <Content Include="Views\ExamVideo\Details.cshtml" />
     <Content Include="Views\ExamVideo\SendVideoToPatient.cshtml" />
+    <Content Include="Views\PatientData\IndexSurname.cshtml" />
+    <Content Include="Views\PatientData\ListPatient.cshtml" />
+    <Content Include="Views\PatientExam\DoctorsPF.cshtml" />
+    <Content Include="Views\PatientExam\PrintDoctorsPF.cshtml" />
+    <Content Include="Views\PatientExam\MonthlySales.cshtml" />
+    <Content Include="Views\PatientExam\PrintSalesReport.cshtml" />
+    <Content Include="Views\CashDisbursement\Create.cshtml" />
+    <Content Include="Views\CashDisbursement\Delete.cshtml" />
+    <Content Include="Views\CashDisbursement\Details.cshtml" />
+    <Content Include="Views\CashDisbursement\Edit.cshtml" />
+    <Content Include="Views\CashDisbursement\Index.cshtml" />
+    <Content Include="Views\CashDisbursement\UploadCashRef.cshtml" />
+    <Content Include="Views\CashDisbursement\ViewCashRef.cshtml" />
+    <Content Include="Views\PatientExam\SalesSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CashImages\" />
     <Folder Include="ClinicStaff\" />
     <Folder Include="ClinicVideo\" />
     <Folder Include="ExamImages\" />

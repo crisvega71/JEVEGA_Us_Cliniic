@@ -1,0 +1,103 @@
+﻿@model IEnumerable<JEVEGA_Us_Cliniic.PatientData>
+
+@{
+    ViewBag.Title = "IndexSurname";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Patients Data | Surname Starts With - @ViewBag.IndexAlpha</h3></td>
+        <td align="right">
+            @{
+                if (Session["USER_TYPE"] == null)
+                { Response.Redirect("/Users/Login"); }
+
+                if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Create", "PatientData")><img src="~/images/add_icon.png" /></a>
+                }
+            }
+        </td>
+    </tr>
+</table>
+
+
+<div class="div_space20"></div>
+@using (Html.BeginForm())
+{
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+    $(document).ready(function() {
+
+    });
+
+    </script>
+
+}
+
+<table class="table table-bordered">
+    <tr>
+        @{
+            var currentIndex = ViewBag.IndexAlpha;
+            foreach (var indexChar in (IEnumerable<string>)ViewBag.IndexNameChar)
+            {
+                if (indexChar == currentIndex)
+                {
+                    <td class="active_cell">@indexChar</td>
+                }
+                else
+                {
+                    if (indexChar == "All")
+                    {
+                        <td class="non_active_cell"><a href=@Url.Action("Index")>@indexChar</a></td>
+                    }
+                    else  {
+                        <td class="non_active_cell"><a href=@Url.Action("IndexSurname", new { id = indexChar })>@indexChar</a></td>
+                    }
+
+                } //-- if ..
+            }
+        }
+    </tr>
+</table>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Patient_Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Lastname)</th>
+        <th>@Html.DisplayNameFor(model => model.Firstname)</th>
+        <th>@Html.DisplayNameFor(model => model.Age)</th>
+        <th>@Html.DisplayNameFor(model => model.Sex)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Patient_Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Lastname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Firstname)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sex)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+
+
+            <td>
+                @if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+                {
+                    <a href=@Url.Action("Edit", new { id = item.Id }) alt="Edit"><img src="~/images/edit_ico.png" /></a>
+                }
+                - <a href=@Url.Action("Details", new { id = item.Id }) alt="Details"><img src="~/images/details_ico.png" /></a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -177,6 +177,89 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return id_key;
         } //--
 
+        public List<SelectListItem> CreateListMonthNames(int this_month)
+        {
+            bool nmonth;
+            List<SelectListItem> listOfMonths = new List<SelectListItem>();
+
+            if (this_month == 1) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo1 = new SelectListItem { Text = "January", Value = "1", Selected = nmonth };
+            listOfMonths.Add(mo1);
+
+            if (this_month == 2) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo2 = new SelectListItem { Text = "February", Value = "2", Selected = nmonth };
+            listOfMonths.Add(mo2);
+
+            if (this_month == 3) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo3 = new SelectListItem { Text = "March", Value = "3", Selected = nmonth };
+            listOfMonths.Add(mo3);
+
+            if (this_month == 4) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo4 = new SelectListItem { Text = "April", Value = "4", Selected = nmonth };
+            listOfMonths.Add(mo4);
+
+            if (this_month == 5) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo5 = new SelectListItem { Text = "May", Value = "5", Selected = nmonth };
+            listOfMonths.Add(mo5);
+
+            if (this_month == 6) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo6 = new SelectListItem { Text = "June", Value = "6", Selected = nmonth };
+            listOfMonths.Add(mo6);
+
+            if (this_month == 7) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo7 = new SelectListItem { Text = "July", Value = "7", Selected = nmonth };
+            listOfMonths.Add(mo7);
+
+            if (this_month == 8) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo8 = new SelectListItem { Text = "August", Value = "8", Selected = nmonth };
+            listOfMonths.Add(mo8);
+
+            if (this_month == 9) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo9 = new SelectListItem { Text = "September", Value = "9", Selected = nmonth };
+            listOfMonths.Add(mo9);
+
+            if (this_month == 10) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo10 = new SelectListItem { Text = "October", Value = "10", Selected = nmonth };
+            listOfMonths.Add(mo10);
+
+            if (this_month == 11) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo11 = new SelectListItem { Text = "November", Value = "11", Selected = nmonth };
+            listOfMonths.Add(mo11);
+
+            if (this_month == 12) { nmonth = true;  } else { nmonth = false; }
+            SelectListItem mo12 = new SelectListItem { Text = "December", Value = "12", Selected = nmonth };
+            listOfMonths.Add(mo12);
+
+            return listOfMonths;
+        } //--
+
+        public List<SelectListItem> CreateListOfYears(int this_year)
+        {
+            bool nyear;
+            List<SelectListItem> listOfYears = new List<SelectListItem>();
+
+            if (this_year == 2019) { nyear = true; } else { nyear = false; }
+            SelectListItem item1 = new SelectListItem { Text = "2019", Value = "2019", Selected = nyear };
+            listOfYears.Add(item1);
+
+            if (this_year == 2020) { nyear = true; } else { nyear = false; }
+            SelectListItem item2 = new SelectListItem { Text = "2020", Value = "2020", Selected = nyear };
+            listOfYears.Add(item2);
+
+            if (this_year == 2021) { nyear = true; } else { nyear = false; }
+            SelectListItem item3 = new SelectListItem { Text = "2021", Value = "2021", Selected = nyear };
+            listOfYears.Add(item3);
+
+            if (this_year == 2022) { nyear = true; } else { nyear = false; }
+            SelectListItem item4 = new SelectListItem { Text = "2022", Value = "2022", Selected = nyear };
+            listOfYears.Add(item4);
+
+            if (this_year == 2023) { nyear = true; } else { nyear = false; }
+            SelectListItem item5 = new SelectListItem { Text = "2023", Value = "2023", Selected = nyear };
+            listOfYears.Add(item5);
+
+            return listOfYears;
+        } //--
 
     }
 }

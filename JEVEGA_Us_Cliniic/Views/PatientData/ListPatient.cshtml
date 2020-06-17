@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "ListPatient";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<table class="table_clinic_pageheader">
+<tr>
+    <td><h3>Patient Data List</h3></td>
+    <td align="right">
+        @{
+            if (Session["USER_TYPE"].ToString() == "1" || Session["USER_TYPE"].ToString() == "2")
+            {
+                <a href=@Url.Action("Create", "PatientData")><img src="~/images/add_icon.png" /></a>
+            }
+        }
+        &nbsp;
+        <img src="~/images/search_icon.png" class="hand_cursor" data-toggle="collapse" data-target="#collapseSearchDiv" aria-expanded="false" aria-controls="collapseExample" />
+        &nbsp;
+    </td>
+</tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        var ulistPatient = $('#ulPatients');
+        $.ajax({
+            type: 'GET',
+            url: '/api/PatientDataApi?indexchar=A',
+            dataType: 'json',
+            success: function (data) {
+
+                ulistPatient.empty();
+                $.each(data, function (index, val) {
+
+                    //var fullname = val.Lastname + ", " + val.Firstname;
+                    //ulistPatient.append('<li>' + fullname + '</li>');
+
+                    var markup = "<tr><td>" + val.Lastname + "</td> <td>" + val.Firstname + "</td><td>" + val.Age + "</td><td>" + val.Sex + "</td><td>" + val.Email + "</td><td>" + val.Phone + "</td></tr>";
+                    $("#listtable tbody").append(markup);
+                });
+            }
+
+        });
+
+        $("#buttA").click(function () {
+            alert("Display patient name starts with A...");
+        });
+
+        $("#buttB").click(function ()
+        {
+            $("#listtable tbody").empty();
+            $.ajax({
+                type: 'GET',
+                url: '/api/PatientDataApi?indexchar=B',
+                dataType: 'json',
+                success: function (data) {
+
+                    ulistPatient.empty();
+                    $.each(data, function (index, val)
+                    {
+                        var markup = "<tr><td>" + val.Lastname + "</td> <td>" + val.Firstname + "</td><td>" + val.Age + "</td><td>" + val.Sex + "</td><td>" + val.Email + "</td><td>" + val.Phone + "</td></tr>";
+                        $("#listtable tbody").append(markup);
+                    });
+                }
+
+            });
+        });
+
+
+        $("#buttC").click(function ()
+        {
+            $("#listtable tbody").empty();
+            $.ajax({
+                type: 'GET',
+                url: '/api/PatientDataApi?indexchar=C',
+                dataType: 'json',
+                success: function (data) {
+
+                    ulistPatient.empty();
+                    $.each(data, function (index, val) {
+                        var markup = "<tr><td>" + val.Lastname + "</td> <td>" + val.Firstname + "</td><td>" + val.Age + "</td><td>" + val.Sex + "</td><td>" + val.Email + "</td><td>" + val.Phone + "</td></tr>";
+                        $("#listtable tbody").append(markup);
+                    });
+                }
+
+            });
+        });
+
+        $("#buttD").click(function () {
+            alert("Display patient name starts with D...");
+        });
+
+        //$("button").click(function () {
+
+        //    //var buttId = this.id;
+        //    alert("Display patient name starts with ... get index .. ");
+        //});
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function ListPatient() {
+        alert("Display patient name starts with");
+    }
+
+</script>
+
+<div class="">
+
+    <table class="table table-bordered">
+    <tr>
+        @{
+            var currentIndex = ViewBag.IndexAlpha;
+            foreach (var indexChar in (IEnumerable<string>)ViewBag.IndexNameChar)
+            {
+                var butt_id = "butt" + indexChar.ToString();
+
+                if (indexChar == "A")
+                {
+                    <td class="active_cell">@indexChar</td>
+                }
+                else
+                {
+                    <td class="non_active_cell"><input type="button" value="@indexChar" id="@butt_id" /></td>
+                }
+            }
+        }
+    </tr>
+    </table>
+
+    <table class="table table-striped" id="listtable">
+        <thead>
+            <tr>
+                <th><span class="table_field_value">Last Name</span></th>
+                <th><span class="table_field_value">First Name</span></th>
+                <th><span class="table_field_value">Age</span></th>
+                <th><span class="table_field_value">Sex</span></th>
+                <th><span class="table_field_value">Email</span></th>
+                <th><span class="table_field_value">Phone</span></th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+
+</div>
+

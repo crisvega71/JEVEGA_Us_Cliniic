@@ -5,10 +5,9 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEVEGA_Us_Cliniic", "JEVEGA_Us_Cliniic\JEVEGA_Us_Cliniic.csproj", "{06044298-90EA-49C2-BC0F-44673AF04C23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEVEGA_Us_Cliniic.Test", "JEVEGA_Us_Cliniic.Test\JEVEGA_Us_Cliniic.Test.csproj", "{AA371C34-BBC2-4627-8D48-46F820DE95E1}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -18,11 +17,18 @@ Global
 		{06044298-90EA-49C2-BC0F-44673AF04C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06044298-90EA-49C2-BC0F-44673AF04C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06044298-90EA-49C2-BC0F-44673AF04C23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA371C34-BBC2-4627-8D48-46F820DE95E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA371C34-BBC2-4627-8D48-46F820DE95E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA371C34-BBC2-4627-8D48-46F820DE95E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA371C34-BBC2-4627-8D48-46F820DE95E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C7E6D3D-6233-4ADB-B1A7-CABDDD340DCB}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
