@@ -32,7 +32,7 @@ namespace JEVEGA_Us_Cliniic
 
         [Display(Name = "Age")]
         [Required(ErrorMessage = "*")]
-        [Range(14, 60, ErrorMessage = "*age must be 14 to 60")]
+        [Range(7, 80, ErrorMessage = "*age must be 7 to 80")]
         public Nullable<short> Age { get; set; }
 
         [Display(Name = "Sex")]

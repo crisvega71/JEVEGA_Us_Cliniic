@@ -127,22 +127,28 @@
 
             </div>
 
-            
+
         </div>
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <img class="img-responsive" src="~/images/US_web_banner_inner.jpg" />
-            </div>
-        </div>
+        <img class="img-responsive" src="~/images/US_web_banner_inner.jpg" />
         <hr />
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    @{
+        if (ViewBag.PageViewMode == 2) //** split view ----
+        {
+            <div class="container-fluid body-content">
+                @RenderBody()
+            </div>
+        }
+        else  //** normal view ----
+        {   <div class="container body-content">
+                @RenderBody()
+            </div>
+        }
+    }
 
     <div class="container-fluid" style="background-color:#08c1b1">
         <br />
@@ -232,23 +238,23 @@
     <div class="sidemenu_div">
 
         <table>
-        <tr>
-            <td>
-                <a href="/PatientData/Index"><img src="~/images/patient_data_icon.png" border="0" /></a>
-            </td>
-        </tr>
-        <tr><td><div class="div_space20"></div></td></tr>
-        <tr>
-            <td>
-                <a href="/PatientExam/Index"><img src="~/images/patient_exam_icon.png" border="0" /></a>
-            </td>
-        </tr>
-        <tr><td><div class="div_space20"></div></td></tr>
-        <tr>
-            <td>
-                <a href="/DiagnosticExams/Index"><img src="~/images/diagnostic_exam_category_icon.png" border="0" /></a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a href="/PatientData/Index"><img src="~/images/patient_data_icon.png" border="0" /></a>
+                </td>
+            </tr>
+            <tr><td><div class="div_space20"></div></td></tr>
+            <tr>
+                <td>
+                    <a href="/PatientExam/Index"><img src="~/images/patient_exam_icon.png" border="0" /></a>
+                </td>
+            </tr>
+            <tr><td><div class="div_space20"></div></td></tr>
+            <tr>
+                <td>
+                    <a href="/DiagnosticExams/Index"><img src="~/images/diagnostic_exam_category_icon.png" border="0" /></a>
+                </td>
+            </tr>
         </table>
 
     </div>

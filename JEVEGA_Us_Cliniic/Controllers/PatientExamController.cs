@@ -293,12 +293,51 @@ namespace JEVEGA_Us_Cliniic.Controllers
         {
             DateTime today = DateTime.Now;
             int this_year = today.Year;
+            int this_month = today.Month;
 
-            List<SelectListItem> listOfYears = new List<SelectListItem>();
+            int?[] monthlySales = new int?[this_month];
+            int?[] monthlyExpenses = new int?[this_month];
+            int?[] monthlyNetSales = new int?[this_month];
+
+            int? grandTotalSales = 0, grandTotalExpenses = 0, grandTotalNetSales = 0;
+
+            List<PatientExam> patientExamList;
+            List<CashDisbursement> cashDisbursementList;
+            for (int mo = 1; mo <= this_month; ++mo)
+            {
+                patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == mo && p.ExamDate.Value.Year == this_year).ToList();
+                int? totalSalesAmount = patientExamList.Sum(a => a.ExamPrice);
+                int? totalExtraCharge = patientExamList.Sum(a => a.ExtraCharge);
+                monthlySales[mo - 1] = totalSalesAmount + totalExtraCharge;
+
+                cashDisbursementList = db.CashDisbursements.Where(c => c.DateSpent.Month == mo).ToList();
+                int totalCashDisbursement = (int)cashDisbursementList.Sum(a => a.Amount);
+                monthlyExpenses[mo - 1] = totalCashDisbursement;
+
+                monthlyNetSales[mo - 1] = monthlySales[mo - 1] - monthlyExpenses[mo - 1];
+
+                grandTotalSales = grandTotalSales + monthlySales[mo - 1];
+                grandTotalExpenses = grandTotalExpenses + monthlyExpenses[mo - 1];
+
+            } //-- for
+            grandTotalNetSales = grandTotalSales - grandTotalExpenses;
+
+            List <SelectListItem> listOfYears = new List<SelectListItem>();
             listOfYears = utHelp.CreateListOfYears(this_year);
 
             ViewBag.YearsList = listOfYears.ToList();
             ViewBag.BusinessYear = this_year;
+            ViewBag.CurrentMonth = this_month;
+
+            ViewBag.SummaryMonthlySales = monthlySales;
+            ViewBag.SummaryCashExpenses = monthlyExpenses;
+            ViewBag.MonthNetSales = monthlyNetSales;
+            ViewBag.MonthFullName = fullMonthName;
+
+            ViewBag.AsOfToday = DateTime.Now;
+            ViewBag.GTotalGrossSales = grandTotalSales;
+            ViewBag.GTotalExpenses = grandTotalExpenses;
+            ViewBag.GTotalNetSales = grandTotalNetSales;
 
             return View();
         } //--
@@ -391,12 +430,87 @@ namespace JEVEGA_Us_Cliniic.Controllers
 
             ViewBag.PatientAge = patientData.Age;
             ViewBag.PatientStatus = patientData.getStatusDesc;
+            ViewBag.PatientInfoId = id_key;
 
             return View(patientExam);
         } //--
-        
+
+        public ActionResult DetailSplitView(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientDataID = patientExam.PatientID;
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            SetViewBagFileUpStatus(patientExam);
+
+            bool examImagesExist = checkExamImagesExist(id);
+            if (examImagesExist)
+            { ViewBag.ExamImagesExist = true; }
+            else { ViewBag.ExamImagesExist = false; }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            string examIdNo = patientExam.ExamId.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            string[] arrImagefile = new string[32];
+
+            arrImagefile[0] = getImageFileUploaded(ViewBag.imageFile01_Up, examIdNo, "-01.jpg");
+            arrImagefile[1] = getImageFileUploaded(ViewBag.imageFile02_Up, examIdNo, "-02.jpg");
+            arrImagefile[2] = getImageFileUploaded(ViewBag.imageFile03_Up, examIdNo, "-03.jpg");
+            arrImagefile[3] = getImageFileUploaded(ViewBag.imageFile04_Up, examIdNo, "-04.jpg");
+            arrImagefile[4] = getImageFileUploaded(ViewBag.imageFile05_Up, examIdNo, "-05.jpg");
+            arrImagefile[5] = getImageFileUploaded(ViewBag.imageFile06_Up, examIdNo, "-06.jpg");
+            arrImagefile[6] = getImageFileUploaded(ViewBag.imageFile07_Up, examIdNo, "-07.jpg");
+            arrImagefile[7] = getImageFileUploaded(ViewBag.imageFile08_Up, examIdNo, "-08.jpg");
+            arrImagefile[8] = getImageFileUploaded(ViewBag.imageFile09_Up, examIdNo, "-09.jpg");
+            arrImagefile[9] = getImageFileUploaded(ViewBag.imageFile10_Up, examIdNo, "-10.jpg");
+
+            arrImagefile[10] = getImageFileUploaded(ViewBag.imageFile11_Up, examIdNo, "-11.jpg");
+            arrImagefile[11] = getImageFileUploaded(ViewBag.imageFile12_Up, examIdNo, "-12.jpg");
+            arrImagefile[12] = getImageFileUploaded(ViewBag.imageFile13_Up, examIdNo, "-13.jpg");
+            arrImagefile[13] = getImageFileUploaded(ViewBag.imageFile14_Up, examIdNo, "-14.jpg");
+            arrImagefile[14] = getImageFileUploaded(ViewBag.imageFile15_Up, examIdNo, "-15.jpg");
+            arrImagefile[15] = getImageFileUploaded(ViewBag.imageFile16_Up, examIdNo, "-16.jpg");
+            arrImagefile[16] = getImageFileUploaded(ViewBag.imageFile17_Up, examIdNo, "-17.jpg");
+            arrImagefile[17] = getImageFileUploaded(ViewBag.imageFile18_Up, examIdNo, "-18.jpg");
+            arrImagefile[18] = getImageFileUploaded(ViewBag.imageFile19_Up, examIdNo, "-19.jpg");
+            arrImagefile[19] = getImageFileUploaded(ViewBag.imageFile20_Up, examIdNo, "-20.jpg");
+
+            arrImagefile[20] = getImageFileUploaded(ViewBag.imageFile21_Up, examIdNo, "-21.jpg");
+            arrImagefile[21] = getImageFileUploaded(ViewBag.imageFile22_Up, examIdNo, "-22.jpg");
+            arrImagefile[22] = getImageFileUploaded(ViewBag.imageFile23_Up, examIdNo, "-23.jpg");
+            arrImagefile[23] = getImageFileUploaded(ViewBag.imageFile24_Up, examIdNo, "-24.jpg");
+            arrImagefile[24] = getImageFileUploaded(ViewBag.imageFile25_Up, examIdNo, "-25.jpg");
+            arrImagefile[25] = getImageFileUploaded(ViewBag.imageFile26_Up, examIdNo, "-26.jpg");
+            arrImagefile[26] = getImageFileUploaded(ViewBag.imageFile27_Up, examIdNo, "-27.jpg");
+            arrImagefile[27] = getImageFileUploaded(ViewBag.imageFile28_Up, examIdNo, "-28.jpg");
+            arrImagefile[28] = getImageFileUploaded(ViewBag.imageFile29_Up, examIdNo, "-29.jpg");
+            arrImagefile[29] = getImageFileUploaded(ViewBag.imageFile30_Up, examIdNo, "-30.jpg");
+            arrImagefile[30] = getImageFileUploaded(ViewBag.imageFile31_Up, examIdNo, "-31.jpg");
+            arrImagefile[31] = getImageFileUploaded(ViewBag.imageFile32_Up, examIdNo, "-32.jpg");
+
+            ViewBag.ListUsoundImages = arrImagefile;
+            ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
+            ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc;
+            ViewBag.PageViewMode = 2; //** split view ... 
+            ViewBag.PatientInfoId = id_key;
+
+            return View(patientExam);
+        } //--
+
         // GET: PatientExam/Create
-        public ActionResult Create()
+        public ActionResult Create(string p_id, DateTime? lmp)
         {
             string usertype = Session["USER_TYPE"].ToString();
             if (!utHelp.CheckAdminAccess(usertype))
@@ -409,8 +523,25 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.SonographerList = new SelectList(db.Sonographers, "Id", "GetFullname");
             ViewBag.DoctorList = new SelectList(db.RadiologistDoctors, "Id", "GetFullname");
 
-            return View();
-        }
+            string patientID = p_id;
+            DateTime? patientLMP = lmp;
+            string patientExamID = patientID;  //-- default exam Id = patient Id at 1st instance ...
+
+            PatientExam patientExam = new PatientExam();
+            patientExam.ExamDate = DateTime.Now;
+            patientExam.PatientID = patientID;
+            patientExam.ExamId = patientExamID;
+            if (patientLMP != null)
+            {
+                DateTime? dtLMP = lmp;
+                patientExam.History = "- LMP: " + String.Format("{0:dd MMM yyyy}", dtLMP);
+            }
+            else {
+                patientExam.History = "- LMP: ";
+            }
+
+            return View(patientExam);
+        } //--
 
         // POST: PatientExam/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -1015,6 +1146,68 @@ namespace JEVEGA_Us_Cliniic.Controllers
             }
 
             return RedirectToAction("Details/" + patientExamId);
+        } //**
+
+        [HttpGet]
+        public ActionResult InitialRepSplitView(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientDataID = patientExam.PatientID.ToString();
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            bool examImagesExist = false;
+            SetViewBagFileUpStatus(patientExam);
+
+            string patientExamIdNo = patientExam.ExamId.ToString();
+            examImagesExist = CheckAndSetImageStatusFilename(patientExamIdNo);
+
+            ViewBag.ExamImageExist = examImagesExist;
+            if (!examImagesExist)
+            {
+                ViewBag.ReportImageError = "Cannot create a report without an exam images!";
+            }
+
+            ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
+            ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc.ToString();
+            ViewBag.ReportTemplateList = new SelectList(db.ExamReportTemplates, "Id", "ReportName");
+            ViewBag.PageViewMode = 2; //** split view ... 
+
+            return View(patientExam);
+        } //**
+
+        [HttpPost]
+        public ActionResult InitialRepSplitView([Bind(Include = "Id,PatientID,ExamReport")] PatientExam patientExam)
+        {
+            int patientExamId = patientExam.Id;
+            string examReport = patientExam.ExamReport.ToString();
+
+            string US_ConnStr = ConfigurationManager.ConnectionStrings["USClinic_ADO"].ConnectionString; ;
+
+            using (SqlConnection sqlCon = new SqlConnection(US_ConnStr))
+            {
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = "Update PatientExam Set ExamReport = @exam_report Where Id = @examId";
+
+                sqlCmd.Parameters.AddWithValue("@exam_report", examReport);
+                sqlCmd.Parameters.AddWithValue("@examId", patientExamId);
+
+                sqlCmd.Connection = sqlCon;
+                sqlCon.Open();
+                int rowaffected = sqlCmd.ExecuteNonQuery();
+                sqlCon.Close();
+            }
+
+            return RedirectToAction("Details/" + patientExamId);
             ;
         } //**
 
@@ -1282,6 +1475,39 @@ namespace JEVEGA_Us_Cliniic.Controllers
 ;
         } //**
 
+        public ActionResult SignMedReportSplitView(int? id)
+        {
+            PatientExam patientExam = db.PatientExams.Find(id);
+
+            string patientDataID = patientExam.PatientID.ToString();
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            SetViewBagFileUpStatus(patientExam);
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            bool examImagesExist = false;
+            string patientExamIdNo = patientExam.ExamId.ToString();
+            examImagesExist = CheckAndSetImageStatusFilename(patientExamIdNo);
+
+            ViewBag.ExamImageExist = examImagesExist;
+            if (!examImagesExist)
+            {
+                ViewBag.ReportImageError = "Cannot create a report without an exam images!";
+            }
+
+            ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
+            ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc.ToString();
+            ViewBag.PageViewMode = 2; //** split view ...
+
+            return View(patientExam);
+        } //**
+
         [AllowAnonymous]
         public ActionResult PrintExamReport(int? id)
         {
@@ -1305,6 +1531,12 @@ namespace JEVEGA_Us_Cliniic.Controllers
             string examReport = patientExam.ExamReport.ToString();
             //string examReportNewLine = examReport.Replace(".", "<br />");
             ViewBag.ExamReport = examReport;
+
+            ViewBag.PatientHasEmail = false;
+            if (patientExam.getPatientEmail != null)
+            {
+                ViewBag.PatientHasEmail = true;
+            }
 
             return View(patientExam);
         } //--

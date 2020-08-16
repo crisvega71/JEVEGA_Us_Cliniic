@@ -242,7 +242,7 @@
 <table class="table_clinic_pageheader">
     <tr>
         <td><h3>Exam Diagnostic Report</h3></td>
-        <td align="right"></td>
+        <td align="right"><input type="button" value="Split View" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialRepSplitView", "PatientExam", new { id=Model.Id }) + "'");" /></td>
     </tr>
 </table>
 

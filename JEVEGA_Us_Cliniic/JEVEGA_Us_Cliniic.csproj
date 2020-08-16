@@ -265,6 +265,7 @@
     <Content Include="images\ob_exam_icon.png" />
     <Content Include="images\patient_data_icon.png" />
     <Content Include="images\patient_exam_icon.png" />
+    <Content Include="images\patient_info_icon.png" />
     <Content Include="images\profile_pic_icon.png" />
     <Content Include="images\report_initial.png" />
     <Content Include="images\scan_images_icon.png" />
@@ -442,6 +443,9 @@
     <Content Include="Views\CashDisbursement\UploadCashRef.cshtml" />
     <Content Include="Views\CashDisbursement\ViewCashRef.cshtml" />
     <Content Include="Views\PatientExam\SalesSummary.cshtml" />
+    <Content Include="Views\PatientExam\InitialRepSplitView.cshtml" />
+    <Content Include="Views\PatientExam\SignMedReportSplitView.cshtml" />
+    <Content Include="Views\PatientExam\DetailSplitView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

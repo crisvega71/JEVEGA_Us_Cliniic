@@ -10,23 +10,72 @@
 </table>
 <div class="div_space20"></div>
 
+@{
+    int currentMonth = ViewBag.CurrentMonth;
+    int month_idx;
 
-@using (Html.BeginForm())
-{
+    string[] monthName = ViewBag.MonthFullName;
+    int?[] monthlySales = ViewBag.SummaryMonthlySales;
+    int?[] monthlyExpenses = ViewBag.SummaryCashExpenses;
+    int?[] monthlyNetSales = ViewBag.MonthNetSales;
+
+    for (month_idx = 0; month_idx < currentMonth; ++month_idx)
+    {
+        <table class="table table-bordered">
+            <tr>
+                <td class="td_reportheader">@monthName[month_idx]</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="td_reportcolhdr" style="width:33%">Gross Sales</td>
+                <td class="td_reportcolhdr" style="width:33%">Monthly Expenses</td>
+                <td class="td_reportcolhdr" style="width:33%">Net Sales</td>
+            </tr>
+            <tr>
+                <td class="td_reportcell">@String.Format("{0:0,0.00}", monthlySales[month_idx])</td>
+                <td class="td_reportcell">@String.Format("{0:0,0.00}", monthlyExpenses[month_idx])</td>
+                <td class="td_reportcell">@String.Format("{0:0,0.00}", monthlyNetSales[month_idx])</td>
+            </tr>
+        </table>
+        <div class="div_space20"></div>
+
+    } //-- for
 
     <table class="table table-bordered">
     <tr>
-        <td>
-            <div class="row">
-                <div class="col-md-3">
-                    @Html.DropDownList("ListOfYears", (List<SelectListItem>)ViewBag.YearsList, "- Select a Year -", new { @class = "form-control" })
-                </div>
-                <div class="col-md-9">
-                    <input type="submit" value="Filter Year" class="btn btn-default" />
-                </div>
-            </div>
-         </td>
+        <td class="td_reportheader" colspan="3">Grand Total : As of Today - @ViewBag.AsOfToday</td>
     </tr>
+    <tr>
+        <td class="td_reportcolhdr" style="width:33%">Gross Sales</td>
+        <td class="td_reportcolhdr" style="width:33%">Expenses</td>
+        <td class="td_reportcolhdr" style="width:33%">Net Sales</td>
+    </tr>
+    <tr>
+        <td class="td_reportcell">@String.Format("{0:0,0.00}", ViewBag.GTotalGrossSales)</td>
+        <td class="td_reportcell">@String.Format("{0:0,0.00}", ViewBag.GTotalExpenses)</td>
+        <td class="td_reportcell">@String.Format("{0:0,0.00}", ViewBag.GTotalNetSales)</td>
+    </tr>
+    </table>
+
+}
+
+
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DropDownList("ListOfYears", (List<SelectListItem>)ViewBag.YearsList, "- Select a Year -", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" value="Filter Year" class="btn btn-default" />
+                    </div>
+                </div>
+            </td>
+        </tr>
     </table>
 
     <div class="div_space20"></div>

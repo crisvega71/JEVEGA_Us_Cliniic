@@ -137,12 +137,13 @@ namespace JEVEGA_Us_Cliniic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Patient_Id,Lastname,Firstname,Age,Sex,Address,Email,Phone,Status,LMP")] PatientData patientData)
+        public ActionResult Create([Bind(Include = "Id,Patient_Id,Lastname,Firstname,Age,Sex,Address,Email,Phone,Status,LMP")] PatientData patientData, FormCollection frmCollection)
         {
             if (ModelState.IsValid)
             {
                 string patientId = patientData.Patient_Id;
                 bool patientIdExist = checkPatientExamIdExist(patientId);
+                string createExam = frmCollection["chkExam"].ToUpper();
 
                 if (patientIdExist)
                 {
@@ -151,6 +152,10 @@ namespace JEVEGA_Us_Cliniic.Controllers
                 else {
                     db.PatientDatas.Add(patientData);
                     db.SaveChanges();
+
+                    if (createExam == "ON") {
+                        return RedirectToAction("Create", "PatientExam", new { p_id = patientData.Patient_Id, lmp = patientData.LMP } );
+                    }
                     return RedirectToAction("Index");
                 }
             }

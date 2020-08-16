@@ -1,0 +1,621 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+@{
+    ViewBag.Title = "Initial Report";
+    Layout = "~/Views/Shared/Layout_inner_page.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#btnLoadReport').on({
+            'click': function () {
+
+                var template_index = $('#ReportTemplateList').find(":selected").val();
+                if (template_index == 0) { alert("Please select a template ..."); }
+
+                $.ajax({
+                    url: '/PatientExam/loadReportTemplate/' + template_index.toString(),
+                    type: 'GET',
+                    success: function (report_template_data) {
+                        $("#ExamReport").append(report_template_data);
+                    },
+                    error: function (error) {
+                        $(that).remove();
+                        DisplayError(error.statusText);
+                    }
+                });
+
+            }
+        });
+
+        $("#btnClearReport").on({
+            'click': function () {
+                $("#ExamReport").empty();
+            }
+        });
+
+        $('#zoom1').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile01');
+            }
+        });
+
+        $('#zoom2').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile02');
+            }
+        });
+
+        $('#zoom3').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile03');
+            }
+        });
+
+        $('#zoom4').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile04');
+            }
+        });
+
+        $('#zoom5').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile05');
+            }
+        });
+
+        $('#zoom6').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile06');
+            }
+        });
+
+        $('#zoom7').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile07');
+            }
+        });
+
+        $('#zoom8').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile08');
+            }
+        });
+
+        $('#zoom9').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile09');
+            }
+        });
+
+        $('#zoom10').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile10');
+            }
+        });
+
+        $('#zoom11').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile11');
+            }
+        });
+
+        $('#zoom12').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile12');
+            }
+        });
+
+        $('#zoom13').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile13');
+            }
+        });
+
+        $('#zoom14').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile14');
+            }
+        });
+
+        $('#zoom15').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile15');
+            }
+        });
+
+        $('#zoom16').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile16');
+            }
+        });
+
+         $('#zoom17').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile17');
+            }
+        });
+
+         $('#zoom18').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile18');
+            }
+        });
+
+         $('#zoom19').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile19');
+            }
+        });
+
+         $('#zoom20').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile20');
+            }
+        });
+
+        $('#zoom21').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile21');
+            }
+        });
+        $('#zoom22').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile22');
+            }
+        });
+        $('#zoom23').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile23');
+            }
+        });
+        $('#zoom24').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile24');
+            }
+        });
+        $('#zoom25').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile25');
+            }
+        });
+        $('#zoom26').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile26');
+            }
+        });
+        $('#zoom27').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile27');
+            }
+        });
+        $('#zoom28').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile28');
+            }
+        });
+        $('#zoom29').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile29');
+            }
+        });
+        $('#zoom30').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile30');
+            }
+        });
+        $('#zoom31').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile31');
+            }
+        });
+        $('#zoom32').on({
+            'click': function () {
+                $('#examimage').attr('src', '/ExamImages/@ViewBag.imageFile32');
+            }
+        });
+
+    });
+
+</script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:840px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Exam Images : @Model.getPatientName | @Model.ExamId</h4>
+            </div>
+            <div class="modal-body"><img id="examimage" src="" class="" /></div>
+        </div>
+
+    </div>
+</div>
+
+<table class="table_clinic_pageheader">
+    <tr>
+        <td><h3>Exam Diagnostic Report</h3></td>
+        <td align="right"><input type="button" value="Normal Single View" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" /></td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-lg-6">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <table class="table_clinic">
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamDate)</span></td>
+                <td>
+                    <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ExamDate)</span>
+                </td>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamId)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ExamId)</span></td>
+            </tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.PatientID)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getPatientIdName)</span></td>
+
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamType)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getExamName)</span></td>
+            </tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td><span class="report_fieldvalue_01">Age</span></td>
+                <td><span class="report_fieldvalue_01">@ViewBag.PatientAge</span></td>
+
+                <td><span class="report_fieldvalue_01">Marital Status</span></td>
+                <td><span class="report_fieldvalue_01">@ViewBag.PatientStatus</span></td>
+            </tr>
+
+            <tr>
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.Radiologist)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getDoctorName)</span></td>
+
+                <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.Sonographer)</span></td>
+                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getSonographerName)</span></td>
+            </tr>
+            <tr><td colspan="4"><div class="div_space20"></div></td></tr>
+
+            <tr><td colspan="4"><span class="report_fieldvalue_01"><b>History:</b></span></td></tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td colspan="4">
+                    <textarea class="text_form_value" readonly style="width:100%" rows="4">@Html.DisplayFor(model => model.History)</textarea>
+                </td>
+            </tr>
+
+            <tr><td colspan="4"><div class="div_space20"></div></td></tr>
+            <tr>
+                <td colspan="4"><div id="div_report" name="div_report"></div></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+
+                    <table class="table_clinic_pageheader">
+                        <tr>
+                            <td style="width:180px;"><span class="report_fieldvalue_01">Diagnostic Report:</span>&nbsp;&nbsp;</td>
+                            <td style="width:300px;">@Html.DropDownList("ReportTemplateList", (SelectList)ViewBag.ReportTemplateList, "- Select a Template -", new { @class = "form-control" })</td>
+                            <td><input type="button" id="btnLoadReport" name="btnLoadReport" value="Load Template" class="btn btn-default"></td>
+                            <td style="text-align:right"><input type="button" id="btnClearReport" name="btnClearReport" value="Clear Report" class="btn btn-default"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr><td colspan="4"><div class="line_space"></div></td></tr>
+            <tr>
+                <td colspan="4">
+                    @if (ViewBag.ExamImageExist)
+                    {
+                        @Html.TextAreaFor(model => model.ExamReport, new { @class = "textarea_report", rows = "25" })
+                    }
+                    else
+                    { <div><span class="error_message">@ViewBag.ReportImageError</span></div>}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-lg-6 split_rdiv" >
+
+        <div>
+            <span class="report_fieldvalue_01">Image 1. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom1" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile01_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile01" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 2. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom2" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile02_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile02" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 3. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom3" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile03_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile03" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 4. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom4" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile04_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile04" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 5. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom5" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile05_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile05" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 6. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom6" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile06_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile06" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 7. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom7" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile07_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile07" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 8. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom8" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile08_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile08" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 9. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom9" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile09_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile09" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 10. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom10" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile10_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile10" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 11. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom11" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile11_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile11" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 12. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom12" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile12_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile12" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 13. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom13" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile13_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile13" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 14. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom14" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile14_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile14" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 15. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom15" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile15_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile15" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 16. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom16" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile16_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile16" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 17. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom17" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile17_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile17" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 18. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom18" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile18_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile18" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 19. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom19" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile19_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile19" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 20. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom20" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile20_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile20" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 21. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom21" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile21_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile21" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 22. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom22" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile22_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile22" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 23. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom23" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile23_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile23" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 24. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom24" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile24_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile24" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 25. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom25" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile25_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile25" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 26. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom26" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile26_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile26" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 27. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom27" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile27_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile27" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 28. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom28" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile28_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile28" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 29. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom29" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile29_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile29" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 30. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom30" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile30_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile30" class="img-responsive" />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 31. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom31" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile31_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile31" class="img-responsive " />}
+        </div>
+
+        <div class="div_space20"></div>
+        <div>
+            <span class="report_fieldvalue_01">Image 32. </span> <div style="float:right"><img src="~/images/zoom_icon.png" id="zoom32" data-toggle="modal" data-target="#myModal" class="hand_cursor" border="0" /></div>
+            <br />
+            @if (ViewBag.imageFile32_Up)
+            {<img src="~/ExamImages/@ViewBag.imageFile32" class="img-responsive" />}
+        </div>
+
+    </div>
+</div>
+    
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+
+        @if (!ViewBag.ExamImageExist)
+        {
+            <div class="div_space20"></div>
+            <table class="table table-bordered">
+            <tr>
+                <td>
+                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam") + "'");" />
+                </td>
+            </tr>
+            </table>
+        }
+        else
+        {
+            <div class="line_space"></div>
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        <input type="submit" value="Save Report" class="btn btn-default" />
+                        &nbsp;
+                        <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
+                    </td>
+                </tr>
+            </table>
+        }
+
+    </div>
+}

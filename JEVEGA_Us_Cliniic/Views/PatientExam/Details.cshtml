@@ -244,6 +244,10 @@
                 &nbsp;
                 @if (ViewBag.ExamImagesExist)
                 {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
+                &nbsp;
+                <input type="button" value="Load Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" />
+                &nbsp;
+                <input type="button" value="Split View" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("DetailSplitView", "PatientExam", new { id=Model.Id, split_view="ON" }) + "'");" />
             </td>
         </tr>
     </table>
@@ -260,6 +264,9 @@
                 <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.ExamId)</span></td>
                 <td>
                     <span class="report_fieldvalue_01">@Html.DisplayFor(model => model.ExamId)</span>
+                </td>
+                <td rowspan="6" align="right" valign="top">
+                    <img src="~/images/patient_info_icon.png" alt="Patient Info" class="img-responsive hand_cursor" onclick="@("window.location.href='" + @Url.Action("Details", "PatientData", new { id=ViewBag.PatientInfoId }) + "'");" />
                 </td>
             </tr>
 
@@ -290,30 +297,30 @@
                 <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getSonographerName)</span></td>
             </tr>
 
-            <tr><td colspan="4"><div class="line_space"></div></td></tr>
-            <tr><td colspan="4"><hr /></td></tr>
+            <tr><td colspan="5"><div class="line_space"></div></td></tr>
+            <tr><td colspan="5"><hr /></td></tr>
             <tr>
                 <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.SignByDoctor)</span></td>
                 <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.getSignDefinition)</span></td>
 
                 <td><span class="report_fieldvalue_01">@Html.LabelFor(model => model.DateSigned)</span></td>
-                <td><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.DateSigned)</span></td>
+                <td colspan="2"><span class="report_fieldvalue_01">@Html.DisplayFor(model => model.DateSigned)</span></td>
             </tr>
 
-            <tr><td colspan="4"><span class="report_fieldvalue_01"><b>History:</b></span></td></tr>
+            <tr><td colspan="5"><span class="report_fieldvalue_01"><b>History:</b></span></td></tr>
             <tr><td colspan="4"><div class="line_space"></div></td></tr>
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                     <textarea class="text_form_value" readonly style="width:100%" rows="4">@Html.DisplayFor(model => model.History)</textarea>
                 </td>
             </tr>
 
             <tr><td colspan="4"><div class="div_space20"></div></td></tr>
             <tr>
-                <td colspan="4"><span class="report_fieldvalue_01"><b>Diagnostic Report:</b></span></td>
+                <td colspan="5"><span class="report_fieldvalue_01"><b>Diagnostic Report:</b></span></td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                     <textarea class="text_form_value" readonly style="width:100%" rows="11">@Html.DisplayFor(model => model.ExamReport)</textarea>
                 </td>
             </tr>
@@ -591,21 +598,23 @@
 
         <div class="line_space"></div>
         <table class="table table-bordered">
-            <tr>
-                <td>
-                    <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
-                    &nbsp;
-                    @if (Model.ExamReport != null)
-                    {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
-                    &nbsp;
-                    <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
-                    &nbsp;
-                    <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
-                    &nbsp;
-                    @if (ViewBag.ExamImagesExist)
-                    {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
+                &nbsp;
+                @if (Model.ExamReport != null)
+                {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
+                &nbsp;
+                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                @if (ViewBag.ExamImagesExist)
+                {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
+                &nbsp;
+                <input type="button" value="Load Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" />
+            </td>
+        </tr>
         </table>
 
     </div>

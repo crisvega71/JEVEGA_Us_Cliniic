@@ -138,7 +138,7 @@ namespace JEVEGA_Us_Cliniic
             {
                 int Id = utHelper.getPatientIdKey(PatientID);
 
-                string email = dbUSClinic.PatientDatas.Find(Id).Email.ToString();
+                string email = dbUSClinic.PatientDatas.Find(Id).Email;
                 return email;
             }
         }

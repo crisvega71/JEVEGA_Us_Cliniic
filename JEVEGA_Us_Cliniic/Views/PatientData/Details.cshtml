@@ -52,6 +52,8 @@
         <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientData") + "'");" />
         &nbsp;
         <input type="button" value="Update Patient Info" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit/"+Model.Id.ToString(), "PatientData") + "'");" />
+        &nbsp;
+        <input type="button" value="View Exams" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("ShowPatientExam", "PatientExam", new { p_id = Model.Patient_Id }) + "'");"  />
     </td>
 </tr>
 </table>

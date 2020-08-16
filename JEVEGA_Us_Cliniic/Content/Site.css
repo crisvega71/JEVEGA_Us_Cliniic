@@ -124,6 +124,13 @@ select {
     color: red !important;
 }
 
+.chk_message {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95em;
+    color: red !important;
+    position:relative;      top:4px;
+}
+
 .scan_image {
     width: 520px;
 }
@@ -275,4 +282,53 @@ select {
     width: 44px;
     height: 43px;
     font-size: 1.40em;
+}
+
+.td_reportheader {
+    background-color: #bbbfca;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    color: black;
+    font-weight: 600;
+}
+
+.td_reportcolhdr {
+    background-color: #dde0e8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.15em;
+    color: black;
+    font-weight: 600;
+}
+
+.td_reportcell {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.15em;
+    color: black;
+    font-weight: 600;
+}
+
+.split_rdiv {
+    height:980px;
+    overflow:auto;
+}
+
+.split_rdiv2 {
+    height: 675px;
+    overflow: auto;
+}
+
+.split_rdiv3 {
+    height: 650px;
+    overflow: auto;
+}
+
+.form_exam_id_input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.70em;
+    font-weight: 600;
+    color: #0070b9;
+    height: 40px;    width: 110px;
+    border-radius: 7px;
+    background: #e4e5e9;
+    border: solid 2px #bbbfca;
 }
