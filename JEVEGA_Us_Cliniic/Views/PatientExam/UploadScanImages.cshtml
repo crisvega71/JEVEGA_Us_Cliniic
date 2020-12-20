@@ -445,6 +445,8 @@
                 <input type="button" value="Back to List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
                 &nbsp;
                 <input type="button" value="Upload Again" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("ScanImages", "PatientExam", new { id = ViewBag.patientExamId }) + "'");" />
+                &nbsp;
+                <input type="button" value="Go To Details" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id = ViewBag.patientExamId }) + "'");" />
             </td>
         </tr>
         </table>

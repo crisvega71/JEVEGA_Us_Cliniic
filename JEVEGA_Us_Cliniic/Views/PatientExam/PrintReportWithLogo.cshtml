@@ -46,13 +46,13 @@
         <div class="line_space"></div>
 
         <table class="table-bordered table_clinic">
-            <tr>
-                <td style="vertical-align:top;">
-                    <div class="div_textarea">
-                        <textarea class="textarea_exam_history" readonly >@Html.DisplayFor(model => model.History)</textarea>
-                    </div>
-                </td>
-            </tr>
+        <tr>
+            <td style="vertical-align:top;">
+                <div class="div_textarea">
+                    <textarea class="textarea_exam_history_print" rows="@ViewBag.LineCountHistory" readonly >@Html.DisplayFor(model => model.History)</textarea>
+                </div>
+            </td>
+        </tr>
         </table>
 
         <div class="div_space20"></div>
@@ -61,13 +61,13 @@
         <div class="line_space"></div>
 
         <table class="table-bordered table_clinic" style="height:120px;">
-            <tr>
-                <td style="vertical-align:top;">
-                    <div class="div_textarea">
-                        <textarea class="textarea_exam_report" readonly >@ViewBag.ExamReport</textarea>
-                    </div>
-                </td>
-            </tr>
+        <tr>
+            <td style="vertical-align:top;">
+            <div class="div_textarea">
+                <textarea class="textarea_exam_report_print" rows="@ViewBag.LineCount" readonly >@ViewBag.ExamReport</textarea>
+            </div>
+            </td>
+        </tr>
         </table>
 
         <div class="div_space20"></div>
@@ -84,7 +84,7 @@
                 <tr>
                     <td>
                         <span class="report_text2">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
-                        <span class="report_text2">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
+                        <span class="report_text2">Radiologist / Sonologist | PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo)</span>
                     </td>
                 </tr>
             </table>

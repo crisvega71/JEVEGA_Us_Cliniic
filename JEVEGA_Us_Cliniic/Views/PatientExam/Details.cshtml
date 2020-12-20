@@ -233,21 +233,23 @@
     <table class="table table-bordered">
         <tr>
             <td align="right">
-                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
-                &nbsp;
                 @if (Model.ExamReport != null)
-                {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
+                {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport", "PatientExam", new { id=Model.Id }) + "'");" />}
                 &nbsp;
-                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages\\"+Model.Id, "PatientExam") + "'");" />
+                <input type="button" value="Print Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamImages", "PatientExam", new { id=Model.Id }) + "'");" />
                 &nbsp;
                 <input type="button" value="Send to Radiologist" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToRadiologist\\"+Model.Id, "PatientExam") + "'");" />
                 &nbsp;
                 @if (ViewBag.ExamImagesExist)
                 {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
                 &nbsp;
-                <input type="button" value="Load Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" />
+                <input type="button" value="Upload Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" />
+                &nbsp;
+                <input type="button" value="Upload Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("ScanImages", "PatientExam", new { id=Model.Id }) + "'");" />
                 &nbsp;
                 <input type="button" value="Split View" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("DetailSplitView", "PatientExam", new { id=Model.Id, split_view="ON" }) + "'");" />
+                &nbsp;
+                <input type="button" value="Plain Detail" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PlainDetails", "PatientExam", new { id=Model.Id }) + "'");" />
             </td>
         </tr>
     </table>
@@ -600,8 +602,6 @@
         <table class="table table-bordered">
         <tr>
             <td>
-                <input type="button" value="Back To List" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
-                &nbsp;
                 @if (Model.ExamReport != null)
                 {<input type="button" value="Print Report" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintExamReport\\"+Model.Id, "PatientExam") + "'");" />}
                 &nbsp;
@@ -613,6 +613,8 @@
                 {<input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />}
                 &nbsp;
                 <input type="button" value="Load Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("InitialReport", "PatientExam", new { id=Model.Id }) + "'");" />
+                &nbsp;
+                <input type="button" value="Upload Images" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("ScanImages", "PatientExam", new { id=Model.Id }) + "'");" />
             </td>
         </tr>
         </table>

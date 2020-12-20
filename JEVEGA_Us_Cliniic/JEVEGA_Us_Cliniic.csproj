@@ -283,6 +283,7 @@
     <Content Include="images\ultrasound-icon.png" />
     <Content Include="images\upload_cashref_ico.png" />
     <Content Include="images\UsLogo_print.png" />
+    <Content Include="images\UsLogo_print_ii.png" />
     <Content Include="images\US_web_banner.jpg" />
     <Content Include="images\US_web_banner_inner.jpg" />
     <Content Include="images\VideoLink_icon.png" />
@@ -446,6 +447,10 @@
     <Content Include="Views\PatientExam\InitialRepSplitView.cshtml" />
     <Content Include="Views\PatientExam\SignMedReportSplitView.cshtml" />
     <Content Include="Views\PatientExam\DetailSplitView.cshtml" />
+    <Content Include="Views\PatientExam\PlainDetails.cshtml" />
+    <Content Include="Views\Shared\Layout_plain_page.cshtml" />
+    <Content Include="Views\PatientExam\PrintOBTemplate.cshtml" />
+    <Content Include="Views\PatientExam\PrintObBPSTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

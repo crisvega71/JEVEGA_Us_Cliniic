@@ -261,5 +261,24 @@ namespace JEVEGA_Us_Cliniic.Controllers
             return listOfYears;
         } //--
 
+        public int CountOfNewline(string string_data)
+        {
+            int lenStr = string_data.Length;
+            int lineCount = 0;
+            for (int i = 0; i < lenStr; i++)
+            {
+                switch (string_data[i])
+                {
+                    case '\r':
+                        ++lineCount;
+                        break;
+                    case '\n':
+                        ++lineCount;
+                        break;
+                }
+            }
+            lineCount = (lineCount / 2); 
+            return (lineCount);
+        } //-- end of line count ---
     }
 }

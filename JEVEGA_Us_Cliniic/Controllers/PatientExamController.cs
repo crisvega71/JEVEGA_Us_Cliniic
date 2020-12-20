@@ -61,7 +61,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.SelectedYear = this_year;
             //...............................................................................................
 
-            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
 
             //return View(db.PatientExams.ToList());
             return View(patientExamList);
@@ -134,7 +134,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.DateList = fullMonthName[this_month-1] + " " + this_year;
             //...............................................................................................
 
-            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
 
             int? totalAmount = patientExamList.Sum(a => a.getDoctorsExamPrice);
             double? totalPF = patientExamList.Sum(a => a.getDoctorsPF);
@@ -240,8 +240,9 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.DateList = fullMonthName[this_month - 1] + " " + this_year;
             //...............................................................................................
 
-            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month).ToList();
+            List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
 
+            int examCount = patientExamList.Count;
             int? totalSalesAmount = patientExamList.Sum(a => a.ExamPrice);
             string strTotalAmount = string.Format("{0:0,0.00}", totalSalesAmount);
 
@@ -251,6 +252,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.TotalSalesAmount = strTotalAmount;
             ViewBag.TotalExtraCharge = strTotalExtraCharge;
             ViewBag.MonthReport = this_month;
+            ViewBag.ExamCount = examCount;
 
             return View(patientExamList);
         } //--
@@ -276,6 +278,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             //...............................................................................................
             List<PatientExam> patientExamList = db.PatientExams.Where(p => p.ExamDate.Value.Month == this_month && p.ExamDate.Value.Year == this_year).ToList();
 
+            int examCount = patientExamList.Count;
             int? totalSalesAmount = patientExamList.Sum(a => a.ExamPrice);
             string strTotalAmount = string.Format("{0:0,0.00}", totalSalesAmount);
 
@@ -285,6 +288,7 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.TotalSalesAmount = strTotalAmount;
             ViewBag.TotalExtraCharge = strTotalExtraCharge;
             ViewBag.MonthReport = this_month;
+            ViewBag.ExamCount = examCount;
 
             return View(patientExamList);
         } //--
@@ -364,7 +368,6 @@ namespace JEVEGA_Us_Cliniic.Controllers
         } //--
 
         // GET: PatientExam/Details/5
-        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -385,6 +388,77 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (examImagesExist)
             {   ViewBag.ExamImagesExist = true; }
             else { ViewBag.ExamImagesExist = false;   }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            string examIdNo = patientExam.ExamId.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+
+            ViewBag.imageFile01 = getImageFileUploaded(ViewBag.imageFile01_Up, examIdNo, "-01.jpg");
+            ViewBag.imageFile02 = getImageFileUploaded(ViewBag.imageFile02_Up, examIdNo, "-02.jpg");
+            ViewBag.imageFile03 = getImageFileUploaded(ViewBag.imageFile03_Up, examIdNo, "-03.jpg");
+            ViewBag.imageFile04 = getImageFileUploaded(ViewBag.imageFile04_Up, examIdNo, "-04.jpg");
+            ViewBag.imageFile05 = getImageFileUploaded(ViewBag.imageFile05_Up, examIdNo, "-05.jpg");
+            ViewBag.imageFile06 = getImageFileUploaded(ViewBag.imageFile06_Up, examIdNo, "-06.jpg");
+            ViewBag.imageFile07 = getImageFileUploaded(ViewBag.imageFile07_Up, examIdNo, "-07.jpg");
+            ViewBag.imageFile08 = getImageFileUploaded(ViewBag.imageFile08_Up, examIdNo, "-08.jpg");
+            ViewBag.imageFile09 = getImageFileUploaded(ViewBag.imageFile09_Up, examIdNo, "-09.jpg");
+            ViewBag.imageFile10 = getImageFileUploaded(ViewBag.imageFile10_Up, examIdNo, "-10.jpg");
+
+            ViewBag.imageFile11 = getImageFileUploaded(ViewBag.imageFile11_Up, examIdNo, "-11.jpg");
+            ViewBag.imageFile12 = getImageFileUploaded(ViewBag.imageFile12_Up, examIdNo, "-12.jpg");
+            ViewBag.imageFile13 = getImageFileUploaded(ViewBag.imageFile13_Up, examIdNo, "-13.jpg");
+            ViewBag.imageFile14 = getImageFileUploaded(ViewBag.imageFile14_Up, examIdNo, "-14.jpg");
+            ViewBag.imageFile15 = getImageFileUploaded(ViewBag.imageFile15_Up, examIdNo, "-15.jpg");
+            ViewBag.imageFile16 = getImageFileUploaded(ViewBag.imageFile16_Up, examIdNo, "-16.jpg");
+            ViewBag.imageFile17 = getImageFileUploaded(ViewBag.imageFile17_Up, examIdNo, "-17.jpg");
+            ViewBag.imageFile18 = getImageFileUploaded(ViewBag.imageFile18_Up, examIdNo, "-18.jpg");
+            ViewBag.imageFile19 = getImageFileUploaded(ViewBag.imageFile19_Up, examIdNo, "-19.jpg");
+            ViewBag.imageFile20 = getImageFileUploaded(ViewBag.imageFile20_Up, examIdNo, "-20.jpg");
+
+            ViewBag.imageFile21 = getImageFileUploaded(ViewBag.imageFile21_Up, examIdNo, "-21.jpg");
+            ViewBag.imageFile22 = getImageFileUploaded(ViewBag.imageFile22_Up, examIdNo, "-22.jpg");
+            ViewBag.imageFile23 = getImageFileUploaded(ViewBag.imageFile23_Up, examIdNo, "-23.jpg");
+            ViewBag.imageFile24 = getImageFileUploaded(ViewBag.imageFile24_Up, examIdNo, "-24.jpg");
+            ViewBag.imageFile25 = getImageFileUploaded(ViewBag.imageFile25_Up, examIdNo, "-25.jpg");
+            ViewBag.imageFile26 = getImageFileUploaded(ViewBag.imageFile26_Up, examIdNo, "-26.jpg");
+            ViewBag.imageFile27 = getImageFileUploaded(ViewBag.imageFile27_Up, examIdNo, "-27.jpg");
+            ViewBag.imageFile28 = getImageFileUploaded(ViewBag.imageFile28_Up, examIdNo, "-28.jpg");
+            ViewBag.imageFile29 = getImageFileUploaded(ViewBag.imageFile29_Up, examIdNo, "-29.jpg");
+            ViewBag.imageFile30 = getImageFileUploaded(ViewBag.imageFile30_Up, examIdNo, "-30.jpg");
+            ViewBag.imageFile31 = getImageFileUploaded(ViewBag.imageFile31_Up, examIdNo, "-31.jpg");
+            ViewBag.imageFile32 = getImageFileUploaded(ViewBag.imageFile32_Up, examIdNo, "-32.jpg");
+
+            ViewBag.EditMonth = patientExam.ExamDate.Value.Month.ToString();
+            ViewBag.EditYear = patientExam.ExamDate.Value.Year.ToString();
+
+            ViewBag.PatientAge = patientData.Age;
+            ViewBag.PatientStatus = patientData.getStatusDesc;
+            ViewBag.PatientInfoId = id_key;
+
+            return View(patientExam);
+        } //--
+
+        [AllowAnonymous]
+        public ActionResult PlainDetails(int? id)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patientDataID = patientExam.PatientID;
+            int id_key = utHelp.getPatientIdKey(patientDataID);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            SetViewBagFileUpStatus(patientExam);
+
+            bool examImagesExist = checkExamImagesExist(id);
+            if (examImagesExist)
+            { ViewBag.ExamImagesExist = true; }
+            else { ViewBag.ExamImagesExist = false; }
 
             string patiendIDNo = patientExam.PatientID.ToString();
             string examIdNo = patientExam.ExamId.ToString();
@@ -585,13 +659,26 @@ namespace JEVEGA_Us_Cliniic.Controllers
                 patientExam.Image31 = false;
                 patientExam.Image32 = false;
 
+                //-- check for duplicate entry ... 
+                bool isDuplicate = IsPatientExamExist(patientExam.PatientID, patientExam.ExamId);
+                if (isDuplicate)
+                {
+                    ViewBag.DuplicateErrorMessage = "Patient exam duplicate error or patient exam exist already ... ";
+
+                    ViewBag.PatientList = new SelectList(db.PatientDatas.OrderBy(p => p.Lastname), "Patient_Id", "GetFullname");
+                    ViewBag.ExamtypeList = new SelectList(db.DiagnosticExams, "Id", "GetfullExamName");
+                    ViewBag.SonographerList = new SelectList(db.Sonographers, "Id", "GetFullname");
+                    ViewBag.DoctorList = new SelectList(db.RadiologistDoctors, "Id", "GetFullname");
+
+                    return View(patientExam);
+                }
+
                 db.PatientExams.Add(patientExam);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
-            {
-                ViewBag.PatientList = new SelectList(db.PatientDatas, "Patient_Id", "GetIDFullname");
+            {   ViewBag.PatientList = new SelectList(db.PatientDatas.OrderBy(p => p.Lastname), "Patient_Id", "GetFullname");
                 ViewBag.ExamtypeList = new SelectList(db.DiagnosticExams, "Id", "GetfullExamName");
                 ViewBag.SonographerList = new SelectList(db.Sonographers, "Id", "GetFullname");
                 ViewBag.DoctorList = new SelectList(db.RadiologistDoctors, "Id", "GetFullname");
@@ -1518,6 +1605,23 @@ namespace JEVEGA_Us_Cliniic.Controllers
             if (patientExam == null)
             { return HttpNotFound(); }
 
+            string OBTemplate;
+            int examTypeId = (int)patientExam.ExamType;
+            switch (examTypeId)
+            {
+                case 2:
+                    OBTemplate = "PrintOBTemplate"; break;  //-- OB 2nd Trimester ... 
+                case 3:
+                    OBTemplate = "PrintOBTemplate"; break;  //-- OB 3rd Trimester ...
+                case 1005:
+                    OBTemplate = "PrintObBPSTemplate"; break;  //-- OB BPS ...
+                case 1006:
+                    OBTemplate = "PrintObBPSTemplate"; break;  //-- OB BPS with Fetal Growth ...
+                default:
+                    OBTemplate = "PrintReportWithLogo"; break;  //-- Normal Template ...
+            }
+            ViewBag.PrintReportTemplate = OBTemplate;
+
             string patiendIDNo = patientExam.PatientID.ToString();
             ViewBag.PatientIdNo = patiendIDNo;
             int id_key = utHelp.getPatientIdKey(patiendIDNo);
@@ -1537,6 +1641,202 @@ namespace JEVEGA_Us_Cliniic.Controllers
             {
                 ViewBag.PatientHasEmail = true;
             }
+
+            return View(patientExam);
+        } //--
+
+        public ActionResult PrintOBTemplate(int? id, int? layout)
+        {
+            if (id == null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+            int id_key = utHelp.getPatientIdKey(patiendIDNo);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
+            ViewBag.Age = patientData.Age.ToString();
+            ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
+
+            string examReport = patientExam.ExamReport.ToString();
+            int crlIndex = examReport.IndexOf("CRL");
+            int bpdIndex = examReport.IndexOf("BPD");
+            int hcIndex = examReport.IndexOf("HC");
+            int acIndex = examReport.IndexOf("AC");
+            int flIndex = examReport.IndexOf("FL");
+            int afvIndex = examReport.IndexOf("AFV");
+            int efbwIndex = examReport.IndexOf("EFBW");
+            int fhrIndex = examReport.IndexOf("FHR");
+            int bpmIndex = examReport.IndexOf("bpm", fhrIndex);
+
+            if (crlIndex != -1)
+            {
+                string crlValue = examReport.Substring(bpdIndex - 10, 8).Trim();
+                ViewBag.CRLvalue = "CRL : " + crlValue;
+            }
+            else { ViewBag.CRLvalue = "0"; }
+
+            string bpdValue = examReport.Substring(hcIndex - 11, 8).Trim();
+            string hcValue = examReport.Substring(acIndex - 11, 8).Trim();
+            string acValue = examReport.Substring(flIndex - 11, 8).Trim();
+            string flValue = examReport.Substring(afvIndex - 11, 8).Trim();
+            string afvValue = examReport.Substring(efbwIndex - 11, 9).Trim();
+            string efbwValue = examReport.Substring(fhrIndex - 11, 8).Trim();
+            string fhrValue = examReport.Substring(bpmIndex - 5, 8).Trim();
+
+            string initialReport = examReport.Substring(0, bpdIndex).Trim();
+            string closingReport = examReport.Substring(bpmIndex+3).Trim();
+
+            ViewBag.BPDvalue = "BPD : " + bpdValue;
+            ViewBag.HCvalue = "HC : " + hcValue;
+            ViewBag.ACvalue = "AC : " + acValue;
+            ViewBag.FLvalue = "FL : " + flValue;
+            ViewBag.AFVvalue = "AFV : " + afvValue;
+            ViewBag.EFBWvalue = "EFBW : " + efbwValue;
+            ViewBag.FHRvalue = "FHR : " + fhrValue;
+
+            ViewBag.InitialReport = initialReport;
+            ViewBag.ClosingReport = closingReport;
+
+            int lineCountHistory = utHelp.CountOfNewline(patientExam.History) + 1;  //-- add 1 lines
+            int lineCount = utHelp.CountOfNewline(closingReport) + 2; //-- add 2 lines
+
+            if (layout == 2)
+            {
+                ViewBag.PrintLayout = "Layout_print_report.cshtml";
+            }
+            else {
+                ViewBag.PrintLayout = "Layout_inner_page.cshtml";
+            }
+
+            ViewBag.LineCount = lineCount;
+            ViewBag.LineCountHistory = lineCountHistory;
+            ViewBag.ExamReport = examReport;
+
+            return View(patientExam);
+        } //--
+
+        public ActionResult PrintObBPSTemplate(int? id, int? layout)
+        {
+            PatientExam patientExam = db.PatientExams.Find(id);
+            if (patientExam == null)
+            { return HttpNotFound(); }
+
+            string patiendIDNo = patientExam.PatientID.ToString();
+            ViewBag.PatientIdNo = patiendIDNo;
+            int id_key = utHelp.getPatientIdKey(patiendIDNo);
+
+            PatientData patientData = db.PatientDatas.Find(id_key);
+
+            ViewBag.PatientSex = utHelp.getGenderDefinition(patientData.Sex.ToString());
+            ViewBag.Age = patientData.Age.ToString();
+            ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
+
+            string examReport = patientExam.ExamReport.ToString();
+
+            if (patientExam.ExamType == 1006)  //-- OB BPS with Fetal Growth ... 
+            {
+                int bpdIndex = examReport.IndexOf("BPD");
+                int hypen01 = examReport.IndexOf("–", bpdIndex);
+                int hcIndex = examReport.IndexOf("HC");
+                int hypen02 = examReport.IndexOf("–", hcIndex);
+                int acIndex = examReport.IndexOf("AC");
+                int hypen03 = examReport.IndexOf("–", acIndex);
+                int flIndex = examReport.IndexOf("FL");
+                int hypen04 = examReport.IndexOf("–", flIndex);
+                int afvIndex = examReport.IndexOf("AFV");
+                int hypen05 = examReport.IndexOf("–", afvIndex);
+                int efbwIndex = examReport.IndexOf("EFBW");
+                int hypen06 = examReport.IndexOf("–", efbwIndex);
+                int fhrIndex = examReport.IndexOf("FHR");
+                int hypen07 = examReport.IndexOf("–", fhrIndex);
+                int bpmIndex = examReport.IndexOf("bpm", fhrIndex);
+                int fetusscoreIdx= examReport.IndexOf("Fetus Score");
+
+                int lenBPD = (hcIndex - 1) - (hypen01 + 1);
+                int lenHC = (acIndex - 1) - (hypen02 + 1);
+                int lenAC = (flIndex - 1) - (hypen03 + 1);
+                int lenFL = (afvIndex - 1) - (hypen04 + 1);
+                int lenAFV = (efbwIndex - 1) - (hypen05 + 1);
+                int lenEFBW = (fhrIndex - 1) - (hypen06 + 1);
+                int lenFHR = (bpmIndex + 4) - (hypen07 + 1);
+
+                string bpdValue = examReport.Substring(hypen01 + 1, lenBPD).Trim();
+                string hcValue = examReport.Substring(hypen02 + 1, lenHC).Trim();
+                string acValue = examReport.Substring(hypen03 + 1, lenAC).Trim();
+                string flValue = examReport.Substring(hypen04 + 1, lenFL).Trim();
+                string afvValue = examReport.Substring(hypen05 + 1, lenAFV).Trim();
+                string efbwValue = examReport.Substring(hypen06 + 1, lenEFBW).Trim();
+                string fhrValue = examReport.Substring(hypen07 + 1, lenFHR).Trim();
+
+                ViewBag.ExamTypeName = "OBBPSFetal";
+                ViewBag.BPDvalue = "BPD : " + bpdValue;
+                ViewBag.HCvalue = "HC : " + hcValue;
+                ViewBag.ACvalue = "AC : " + acValue;
+                ViewBag.FLvalue = "FL : " + flValue;
+                ViewBag.AFVvalue = "AFV : " + afvValue;
+                ViewBag.EFBWvalue = "EFBW : " + efbwValue;
+                ViewBag.FHRvalue = "FHR : " + fhrValue;
+
+                string initialBpsReport = examReport.Substring(0, bpdIndex).Trim();
+                string closingBpsReport = examReport.Substring((bpmIndex + 3), (fetusscoreIdx - (bpmIndex+3))).Trim();
+                int lineCountClosingReport = utHelp.CountOfNewline(closingBpsReport) + 2;  //-- add 2 lines ...
+
+                ViewBag.InitialBPSreport = initialBpsReport;
+                ViewBag.ClosingBPSreport = closingBpsReport;
+                ViewBag.LineCountCloseRep = lineCountClosingReport;
+            } //-- end if ... 
+
+            int fetusscoreIndex = examReport.IndexOf("Fetus Score");
+            int impressionIndex = examReport.IndexOf("Impression");
+            int fmIndex = examReport.IndexOf("FM", fetusscoreIndex);
+            int fbmIndex = examReport.IndexOf("FBM", fetusscoreIndex);
+            int ftIndex = examReport.IndexOf("FT", fetusscoreIndex);
+            int afIndex = examReport.IndexOf("AF", fetusscoreIndex);
+            int totalScoreIndex = examReport.IndexOf("Total Score", fetusscoreIndex);
+
+            string initialReport = examReport.Substring(0, fetusscoreIndex - 1).Trim();
+            string impressionReport = examReport.Substring(impressionIndex).Trim();
+
+            string fmValue = examReport.Substring(fmIndex + 4, 8).Trim();
+            string fbmValue = examReport.Substring(fbmIndex + 5, 6).Trim();
+            string ftValue = examReport.Substring(ftIndex + 4, 8).Trim();
+            string afValue = examReport.Substring(afIndex + 4, 8).Trim();
+            string totalScoreValue = examReport.Substring(totalScoreIndex + 11, 5).Trim();
+
+            int lenScoreMean = impressionIndex - (totalScoreIndex + 16);
+            string scoreMeaning = examReport.Substring(totalScoreIndex + 15, lenScoreMean).Trim();
+
+            ViewBag.InitialReport = initialReport;
+            ViewBag.ImpressionReport = impressionReport;
+            ViewBag.FMvalue = fmValue;
+            ViewBag.FBMvalue = fbmValue;
+            ViewBag.FTvalue = ftValue;
+            ViewBag.AFvalue = afValue;
+            ViewBag.TotalScoreValue = totalScoreValue;
+            ViewBag.ScoreMeaning = scoreMeaning;
+
+            int lineCountHistory = utHelp.CountOfNewline(patientExam.History) + 1;  //-- add 1 lines
+            int lineCountInitialReport = utHelp.CountOfNewline(initialReport) + 1; //-- add 2 lines
+            int lineCountImpression = utHelp.CountOfNewline(impressionReport) + 1; //-- add 2 lines
+
+            if (layout == 2)
+            {
+                ViewBag.PrintLayout = "Layout_print_report.cshtml";
+            }
+            else
+            {   ViewBag.PrintLayout = "Layout_inner_page.cshtml";   }
+
+            ViewBag.LineCountInitRep = lineCountInitialReport;
+            ViewBag.LineCountImpRep = lineCountImpression;
+            ViewBag.LineCountHistory = lineCountHistory;
+            ViewBag.ExamReport = examReport;
 
             return View(patientExam);
         } //--
@@ -1938,6 +2238,13 @@ namespace JEVEGA_Us_Cliniic.Controllers
             ViewBag.Status = utHelp.getStatusDefinition(patientData.Status.ToString());
 
             string examReport = patientExam.ExamReport.ToString();
+            int lineCount = utHelp.CountOfNewline(examReport) + 3; //-- add 3 lines
+
+            string examHistory = patientExam.History;
+            int lineCountHistory = utHelp.CountOfNewline(examHistory) + 1; //-- add 1 line
+
+            ViewBag.LineCount = lineCount;
+            ViewBag.LineCountHistory = lineCountHistory;
             ViewBag.ExamReport = examReport;
 
             return View(patientExam);
@@ -2682,6 +2989,18 @@ namespace JEVEGA_Us_Cliniic.Controllers
             } //--
 
             return examImagesExist;
+        } //--
+
+        public bool IsPatientExamExist(string patientId, string examId)
+        {
+            bool isExist = false;
+
+            PatientExam patientExam = db.PatientExams.FirstOrDefault(p => p.PatientID == patientId && p.ExamId == examId);
+            if (patientExam != null)
+            {
+                isExist = true;
+            }
+            return isExist;
         } //--
 
     }

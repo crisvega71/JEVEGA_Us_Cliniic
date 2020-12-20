@@ -90,19 +90,24 @@
         <div class="div_space20"></div>
         <div class="line_space"></div>
         <table class="table table-bordered">
-            <tr>
-                <td>
-                    <input type="submit" value="Print Using Template" class="btn btn-default" />
-                    &nbsp;
-                    <input type="button" value="Print In LetterHead" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportLetterHead", "PatientExam") + "'");" />
-                    &nbsp;
-                    <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />
-                    &nbsp;
-                    @if (ViewBag.PatientHasEmail)  {
-                        <input type="button" value="Send to Patient" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToPatient\\" + Model.Id, "PatientExam") + "'");" />
-                    }
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Print Normal Template" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="Print OB Template" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action(ViewBag.PrintReportTemplate, "PatientExam", new { id = Model.Id}) + "'");" />
+                &nbsp;
+                <input type="button" value="Print In LetterHead" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("PrintReportLetterHead", "PatientExam") + "'");" />
+                &nbsp;
+                <input type="button" value="Send to OB Doctor" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToOBDoctor\\" + Model.Id, "PatientExam") + "'");" />
+                &nbsp;
+                @if (ViewBag.PatientHasEmail)
+                {
+                    <input type="button" value="Send to Patient" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("SendExamReportToPatient", "PatientExam", new { id = Model.Id}) + "'");" />
+                }
+                &nbsp;
+                <input type="button" value="Back to Details" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id = Model.Id}) + "'");" />
+            </td>
+        </tr>
         </table>
 
     </div>

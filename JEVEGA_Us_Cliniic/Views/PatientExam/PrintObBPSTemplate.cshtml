@@ -1,0 +1,193 @@
+﻿@model JEVEGA_Us_Cliniic.PatientExam
+
+@{
+    ViewBag.Title = "Print In OB Template";
+    Layout = "~/Views/Shared/" + ViewBag.PrintLayout;
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = @Url.Action("PrintObBPSTemplate", "PatientExam", new { id = Model.Id, layout = 2 }), target = "_blank" }))
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    <div style="float:right">
+        <span class="report_text2">Report Date : @Html.DisplayFor(model => model.formattedExamDate)</span>
+    </div>
+
+    <div class="div_space20"></div>
+    <table class="table-bordered table_clinic">
+        <tr>
+            <td style="width:140px;"><span class="report_text1" style="padding:7px;">Patient Name:</span></td>
+            <td colspan="2"><span class="report_text1">@Html.DisplayFor(model => model.getPatientName)</span></td>
+            <td style="width:140px;">
+                <div style="padding:7px;"><span class="report_text1">Exam Id:</span></div>
+            </td>
+            <td><span class="report_text1">@Html.DisplayFor(model => model.ExamId)</span></td>
+        </tr>
+
+        <tr>
+            <td><div style="padding:7px;"><span class="print_label">Sex:</span></div></td>
+            <td><span class="print_value">@ViewBag.PatientSex</span></td>
+            <td><span class="print_label" style="padding:7px;">Age:&nbsp;&nbsp;@ViewBag.Age</span></td>
+            <td><span class="print_label" style="padding:7px;">Marital Status:</span></td>
+            <td><span class="print_value">@ViewBag.Status</span></td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div><span class="report_text1">History</span></div>
+    <div class="line_space"></div>
+    <div class="line_space"></div>
+
+    <table class="table-bordered table_clinic">
+        <tr>
+            <td style="vertical-align:top;">
+                <div class="div_textarea">
+                    <textarea class="textarea_exam_report_print" rows="@ViewBag.LineCountHistory" readonly>@Html.DisplayFor(model => model.History)</textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div><span class="report_text1">Exam : @Html.DisplayFor(model => model.getExamName)</span></div>
+    <div class="line_space"></div>
+    <div class="line_space"></div>
+
+    @{ if (ViewBag.ExamTypeName != "OBBPSFetal")
+        {
+            <table class="table-bordered table_clinic">
+            <tr>
+                <td style="vertical-align:top;">
+                    <div class="div_textarea">
+                        <textarea class="textarea_exam_report_print" rows="@ViewBag.LineCountInitRep" readonly>@ViewBag.InitialReport</textarea>
+                    </div>
+                </td>
+            </tr>
+            </table>
+        }
+    }
+
+    @{ if (ViewBag.ExamTypeName == "OBBPSFetal")
+        {
+            <p><span class="textarea_exam_report">@ViewBag.InitialBPSreport</span></p>
+
+            <table class="table-bordered table_clinic" style="width:100%;">
+                <tr>
+                    <td width="25%"><span class="report_text1">@ViewBag.BPDvalue</span></td>
+                    <td width="25%"><span class="report_text1">@ViewBag.HCvalue</span></td>
+                    <td width="25%"><span class="report_text1">@ViewBag.ACvalue</span></td>
+                    <td width="25%"><span class="report_text1">@ViewBag.FLvalue</span></td>
+                </tr>
+            </table>
+            <div class="line_space"></div>
+            <div class="line_space"></div>
+            <table class="table-bordered table_clinic" style="width:100%;">
+                <tr>
+                    <td width="25%"><span class="report_text1">@ViewBag.AFVvalue</span></td>
+                    <td width="25%"><span class="report_text1">@ViewBag.EFBWvalue</span></td>
+                    <td width="25%"><span class="report_text1">@ViewBag.FHRvalue</span></td>
+                    <td width="25%"><span class="report_text1">&nbsp;</span></td>
+                </tr>
+            </table>
+
+            <div class="line_space"></div>
+            <div class="line_space"></div>
+            <table class="table-bordered table_clinic">
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div class="div_textarea">
+                            <textarea class="textarea_exam_report_print" rows="@ViewBag.LineCountCloseRep" readonly>@ViewBag.ClosingBPSreport</textarea>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+
+    <div class="div_space20"></div>
+    <table class="table-bordered table_ob">
+        <tr>
+            <td colspan="3" class="table_ob_hdr"><b>Fetus SCORE</b></td>
+        </tr>
+        <tr>
+            <td>FM</td>
+            <td width="30" align="center">@ViewBag.FMvalue</td>
+            <td>FM≥3 times(Continuous movement is deemed to 1 time)</td>
+        </tr>
+        <tr>
+            <td>FBM</td>
+            <td align="center">@ViewBag.FBMvalue</td>
+            <td>FBM≥1 times, duration ≥30s</td>
+        </tr>
+        <tr>
+            <td>FT</td>
+            <td align="center">@ViewBag.FTvalue</td>
+            <td>Limbs and spine stretch-bend≥1 time</td>
+        </tr>
+        <tr>
+            <td>AF</td>
+            <td align="center">@ViewBag.AFvalue</td>
+            <td>One or more AF volume ≥2x2 cm</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap"><b>Total Score</b></td>
+            <td align="center">@ViewBag.TotalScoreValue</td>
+            <td>@ViewBag.ScoreMeaning</td>
+        </tr>
+    </table>
+
+
+    <div class="line_space"></div>
+    <div class="line_space"></div>
+
+    <table class="table-bordered table_clinic">
+        <tr>
+            <td style="vertical-align:top;">
+                <div class="div_textarea">
+                    <textarea class="textarea_exam_report_print" rows="@ViewBag.LineCountImpRep" readonly>@ViewBag.ImpressionReport</textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+    <div class="div_space20"></div>
+
+    <div>
+        <table class="table_clinic">
+            <tr>
+                <td><img src="~/ClinicStaff/sign-1.jpg" style="width:200px;" /></td>
+            </tr>
+            <tr><td><div class="line_space"></div></td></tr>
+            <tr>
+                <td>
+                    <span class="report_text2">Report by: Dr. @Html.DisplayFor(model => model.getDoctorFistLastName) - @Html.DisplayFor(model => model.getDoctorPostTitle)</span><br />
+                    <span class="report_text2">PRC License No. : @Html.DisplayFor(model => model.getDoctorPRCLicenseNo) | Radiologist / Sonologist</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @if (ViewBag.PrintLayout == "Layout_inner_page.cshtml")
+    {
+        <div class="div_space20"></div>
+        <div class="div_space20"></div>
+        <div class="line_space"></div>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <input type="submit" value="Print In OB Template" class="btn btn-default" />
+                    &nbsp;
+                    <input type="button" value="Back to Details" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id = Model.Id}) + "'");" />
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+}

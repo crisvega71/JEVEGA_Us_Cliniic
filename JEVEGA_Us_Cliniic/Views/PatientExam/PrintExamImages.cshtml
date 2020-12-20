@@ -20,6 +20,8 @@
     <table class="table table-bordered">
     <tr>
         <td align="right">
+            <input type="button" value="Back to Details" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id = Model.Id }) + "'");" />
+            &nbsp;
             <input type="submit" value="Print Selected Images" class="btn btn-default" />
         </td>
     </tr>
@@ -417,12 +419,15 @@
             </div>
         </div>
 
-
         <div class="line_space"></div>
         <table class="table table-bordered">
-            <tr>
-                <td><input type="submit" value="Print Selected Images" class="btn btn-default" /></td>
-            </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Print Selected Images" class="btn btn-default" />
+                &nbsp;
+                <input type="button" value="Back to Details" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id = Model.Id } ) + "'");" />
+            </td>
+        </tr>
         </table>
 
     </div>

@@ -607,13 +607,17 @@
         {
             <div class="line_space"></div>
             <table class="table table-bordered">
-                <tr>
-                    <td>
-                        <input type="submit" value="Save Report" class="btn btn-default" />
-                        &nbsp;
-                        <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Save Report" class="btn btn-default" />
+                    &nbsp;
+
+                    @*<input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Index", "PatientExam", new { mo=ViewBag.EditMonth, yr=ViewBag.EditYear }) + "'");" />*@
+
+                    <input type="button" value="Cancel" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Details", "PatientExam", new { id=Model.Id }) + "'");" />
+
+                </td>
+            </tr>
             </table>
         }
 
